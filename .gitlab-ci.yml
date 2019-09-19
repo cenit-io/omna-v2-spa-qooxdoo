@@ -3,21 +3,20 @@ stages:
   - build
   - deploy
 
-cache:
-  paths:
-    - node_modules/
-
 install_dependencies:
   image: node:8.11.1
   stage: install
   only:
     - develop
     - master
-  before_script:
+  script:
     - npm install --save-dev
+  artifacts:
+    paths:
+      - node_modules/
 
 build:
-  image: python:latest
+  image: python:2.7.15
   stage: build
   only:
     - develop
@@ -29,7 +28,7 @@ build:
       - build/
     expire_in: 1 hour
 
-staging:
+deploy_dev:
   image: python:2.7.15
   stage: deploy
   only:
@@ -38,11 +37,11 @@ staging:
     - pip install awscli
     - aws s3 sync --acl public-read --delete --region us-west-2 build/ s3://omna-v2-dev
 
-production:
-  image: python:latest
+deploy_prod:
+  image: python:2.7.15
   stage: deploy
   only:
-    - master
+    - v1.2.x
   script:
     - pip install awscli
     - aws s3 sync --acl public-read --delete --region us-west-2 build/ s3://omna-v2-prod
