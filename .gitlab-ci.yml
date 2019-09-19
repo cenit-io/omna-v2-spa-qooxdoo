@@ -26,7 +26,7 @@ build:
     - develop
     - master
   script:
-    - python generate.py build
+    - python generate.py build > /dev/null
   artifacts:
     paths:
       - build/
