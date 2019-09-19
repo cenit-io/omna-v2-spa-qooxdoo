@@ -29,8 +29,7 @@
     "translation",
     "validate-config",
     "validate-manifest",
-    "watch",
-    "deploy"
+    "watch"
   ],
   "default-job": "source-hybrid",
   "let": {
