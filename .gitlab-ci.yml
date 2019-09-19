@@ -1,4 +1,5 @@
 stages:
+  - install
   - build
   - deploy
 
@@ -8,7 +9,7 @@ cache:
 
 install_dependencies:
   image: node:8.11.1
-  stage: build
+  stage: install
   only:
     - develop
     - master
@@ -25,7 +26,7 @@ build:
     - develop
     - master
   script:
-    - ./generate.py build
+    - python generate.py build
   artifacts:
     paths:
       - build/
