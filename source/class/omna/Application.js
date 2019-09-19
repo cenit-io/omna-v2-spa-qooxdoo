@@ -36,11 +36,6 @@ qx.Class.define("omna.Application", {
 
     members: {
         __toolTipTemplate: "<span title='{{localization}}'>{{description}}</span>",
-        __managementComponents: new qx.data.Array,
-        __formFieldComponents: new qx.data.Array,
-        __cellRendererComponents: new qx.data.Array,
-        __formFieldValidators: new qx.data.Array,
-        __actionComponents: new qx.data.Array,
 
         /**
          * This method contains the initial application code and gets called
@@ -157,16 +152,6 @@ qx.Class.define("omna.Application", {
 
         __parseToolTipMsg: function (msg) {
             return qx.lang.Type.isString(msg) ? msg : qx.bom.Template.render(this.__toolTipTemplate, msg);
-        },
-
-        registerFormFieldComponents: function (componentClasses) {
-            componentClasses && this.__formFieldComponents.append(this.__classesToStrings(componentClasses));
-            return this.__formFieldComponents;
-        },
-
-        registerFormFieldValidators: function (componentClasses) {
-            componentClasses && this.__formFieldValidators.append(this.__classesToStrings(componentClasses));
-            return this.__formFieldValidators;
         },
 
         getToolTioPlaceToWidget: function () {
