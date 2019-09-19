@@ -1,4 +1,5 @@
 stages:
+  - install
   - build
   - deploy
 
@@ -6,15 +7,21 @@ cache:
   paths:
     - node_modules/
 
+install_dependencies:
+  image: node:8.11.1
+  stage: install
+  only:
+    - develop
+    - master
+  before_script:
+    - npm install --save-dev
+
 build:
   image: python:latest
   stage: build
   only:
     - develop
     - master
-  before_script:
-    - apt-get update -qq && apt-get install -y -qq npm
-    - npm install --save-dev
   script:
     - python generate.py build
   artifacts:
@@ -23,7 +30,7 @@ build:
     expire_in: 1 hour
 
 staging:
-  image: python:latest
+  image: python:2.7.15+
   stage: deploy
   only:
     - develop
