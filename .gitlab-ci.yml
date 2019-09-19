@@ -13,12 +13,8 @@ install_dependencies:
   only:
     - develop
     - master
-  script:
+  before_script:
     - npm install --save-dev
-  artifacts:
-    paths:
-      - node_modules/
-      - generate.py
 
 build:
   image: python:latest
