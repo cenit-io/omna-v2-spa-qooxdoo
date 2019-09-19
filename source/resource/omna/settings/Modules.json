@@ -1,0 +1,43 @@
+[
+  {
+    "id": "Home",
+    "verticalLayout": false,
+    "disabled": true
+  },
+  {
+    "id": "Integrations",
+    "verticalLayout": false,
+    "children": [
+      {
+        "id": "Products",
+        "verticalLayout": false
+      },
+      {
+        "id": "Orders",
+        "verticalLayout": false
+      },
+      {
+        "id": "Flows",
+        "verticalLayout": false
+      }
+    ]
+  },
+  {
+    "id": "System",
+    "verticalLayout": false,
+    "children": [
+      {
+        "id": "Webhooks",
+        "verticalLayout": false
+      },
+      {
+        "id": "Tenants",
+        "verticalLayout": false
+      },
+      {
+        "id": "Tasks",
+        "verticalLayout": false
+      }
+    ]
+  }
+]

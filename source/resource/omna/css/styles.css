@@ -1,0 +1,15 @@
+.qx-omna-management .qx-omna-property-grid .qooxdoo-table-cell {
+    padding-top: 3px;
+}
+
+.qooxdoo-table-cell img.gallery {
+    margin-top: 4px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+.qooxdoo-table-cell.task-message {
+    overflow-y: auto;
+    text-overflow: inherit;
+    white-space: normal;
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "name": "MODULE-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Tenants"
+  },
+  {
+    "name": "is_ready_to_omna",
+    "subCatalog": "Labels",
+    "value": "Is ready"
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "name": "MODULE-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Orders"
+  },
+  {
+    "name": "MODULE-REFERENCE-PRINT-DOCUMENTS",
+    "subCatalog": "Labels",
+    "value": "Order / %1 / Documents"
+  },
+  {
+    "name": "number",
+    "subCatalog": "Labels",
+    "value": "Number"
+  },
+  {
+    "name": "total_price",
+    "subCatalog": "Labels",
+    "value": "Total Price"
+  },
+  {
+    "name": "total_quantity",
+    "subCatalog": "Labels",
+    "value": "Total Quantity"
+  },
+  {
+    "name": "reimport",
+    "subCatalog": "Labels",
+    "value": "Re-Import"
+  },
+  {
+    "name": "documents",
+    "subCatalog": "Labels",
+    "value": "Documents"
+  },
+  {
+    "name": "select_document_type",
+    "subCatalog": "Labels",
+    "value": "Select document type:"
+  },
+  {
+    "name": "CONFIRM-REIMPORT",
+    "subCatalog": "Messages",
+    "value": "Do you really want to reimport the selected order?"
+  },
+  {
+    "name": "SUCCESSFUL-REIMPORT",
+    "subCatalog": "Messages",
+    "value": "A task was created to reimport the selected order from its foreign channel."
+  },
+  {
+    "name": "FAILED-REIMPORT",
+    "subCatalog": "Messages",
+    "value": "Failed the creation of the task to reimport the selected order from its external channel."
+  },
+  {
+    "name": "FAILED-LOAD-DOC",
+    "subCatalog": "Messages",
+    "value": "Error loading order document."
+  },
+  {
+    "name": "FAILED-LOAD-DOC-TYPES",
+    "subCatalog": "Messages",
+    "value": "Error loading order document types."
+  }
+]

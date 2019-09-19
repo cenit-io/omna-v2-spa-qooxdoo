@@ -1,0 +1,17 @@
+[
+  {
+    "name": "MODULE-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Products"
+  },
+  {
+    "name": "variants",
+    "subCatalog": "Labels",
+    "value": "Variants"
+  },
+  {
+    "name": "images",
+    "subCatalog": "Labels",
+    "value": "Images"
+  }
+]

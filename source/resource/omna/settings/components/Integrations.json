@@ -1,0 +1,61 @@
+[
+  {
+    "id": "integrations",
+    "i18n": "Integrations",
+    "widgetClass": "omna.management.DataGridRestService",
+    "requestManagementClass": "omna.request.Integrations",
+    "formWidth": 300,
+    "formHeight": 150,
+    "baseParams": {
+      "with_details": true
+    },
+    "actions": [
+      "omna.action.Reload",
+      "omna.action.Separator",
+      "omna.action.Add",
+      "omna.action.Authorize",
+      "omna.action.Remove",
+      "omna.action.Separator",
+      "omna.action.Search"
+    ],
+    "fields": [
+      {
+        "name": "name",
+        "widgetClass": "omna.form.field.TextField",
+        "showInGrid": true,
+        "includeInSearch": true,
+        "accessInAddForm": "W",
+        "required": true,
+        "minLength": 2,
+        "maxLength": 50,
+        "pattern": "\\w+"
+      },
+      {
+        "name": "channel",
+        "widgetClass": "omna.form.field.remote.ChannelSelectBox",
+        "accessInAddForm": "W",
+        "includeInSearch": true,
+        "showInGrid": true,
+        "gridColumnWidth": 150
+      },
+      {
+        "name": "authorized",
+        "cellRendererClass": "omna.table.cellrenderer.Boolean",
+        "showInGrid": true,
+        "gridColumnWidth": 100
+      },
+      {
+        "name": "created_at",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 150
+      },
+      {
+        "name": "created_at",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 150
+      }
+    ]
+  }
+]

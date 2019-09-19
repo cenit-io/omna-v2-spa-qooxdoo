@@ -1,0 +1,53 @@
+[
+  {
+    "id": "flows",
+    "i18n": "Flows",
+    "widgetClass": "omna.management.DataGridRestService",
+    "serviceBasePath": "flows",
+    "formWidth": 300,
+    "formHeight": 300,
+    "baseParams": {
+      "with_details": true
+    },
+    "actions": [
+      "omna.action.Reload",
+      "omna.action.Separator",
+      "omna.action.Add",
+      "omna.action.Edit",
+      "omna.action.Remove",
+      "omna.action.Separator",
+      "omna.action.Search"
+    ],
+    "fields": [
+      {
+        "name": "type",
+        "widgetClass": "omna.form.field.TextField",
+        "showInGrid": true,
+        "includeInSearch": true,
+        "accessInAddForm": "W",
+        "accessInEditForm": "R",
+        "gridColumnWidth": 150,
+        "required": true,
+        "minLength": 2,
+        "maxLength": 50,
+        "pattern": "\\w+"
+      },
+      {
+        "name": "title",
+        "label": "description",
+        "showInGrid": true
+      },
+      {
+        "name": "integration",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Integration"
+      },
+      {
+        "name": "updated_at",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 150
+      }
+    ]
+  }
+]

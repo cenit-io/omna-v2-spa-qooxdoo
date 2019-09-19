@@ -1,0 +1,57 @@
+[
+  {
+    "name": "MODULE-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Integrations"
+  },
+  {
+    "name": "SINGLE-ITEM-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Integration"
+  },
+  {
+    "name": "channel",
+    "subCatalog": "Labels",
+    "value": "Channel"
+  },
+  {
+    "name": "authorized",
+    "subCatalog": "Labels",
+    "value": "Authorized"
+  },
+  {
+    "name": "authorize",
+    "subCatalog": "Labels",
+    "value": "Authorize"
+  },
+  {
+    "name": "unauthorize",
+    "subCatalog": "Labels",
+    "value": "Unauthorize"
+  },
+  {
+    "name": "CONFIRM-AUTHORIZE",
+    "subCatalog": "Messages",
+    "value": "Do you really want to authorize the selected integration?"
+  },
+  {
+    "name": "CONFIRM-UNAUTHORIZE",
+    "subCatalog": "Messages",
+    "value": "Do you really want to cancel the authorization of the selected integration?"
+  },
+  {
+    "name": "SUCCESSFUL-DELETING",
+    "subCatalog": "Messages",
+    "value": "A task was created to remove the selected integration."
+  },
+  {
+    "name": "SUCCESSFUL-UNAUTHORIZE",
+    "subCatalog": "Messages",
+    "value": "The authorization of the selected integration was successfully canceled."
+  },
+  {
+    "name": "FAILED-UNAUTHORIZE",
+    "subCatalog": "Messages",
+    "value": "The authorization of the selected integration could not be canceled."
+  }
+]

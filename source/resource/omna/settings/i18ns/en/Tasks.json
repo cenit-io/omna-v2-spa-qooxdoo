@@ -1,0 +1,37 @@
+[
+  {
+    "name": "MODULE-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Tasks"
+  },
+  {
+    "name": "progress",
+    "subCatalog": "Labels",
+    "value": "Progress"
+  },
+  {
+    "name": "details",
+    "subCatalog": "Labels",
+    "value": "Task details"
+  },
+  {
+    "name": "started_at",
+    "subCatalog": "Labels",
+    "value": "Started at"
+  },
+  {
+    "name": "completed_at",
+    "subCatalog": "Labels",
+    "value": "Completed at"
+  },
+  {
+    "name": "executions",
+    "subCatalog": "Labels",
+    "value": "Executions"
+  },
+  {
+    "name": "notifications",
+    "subCatalog": "Labels",
+    "value": "Notifications"
+  }
+]

@@ -1,0 +1,102 @@
+[
+  {
+    "id": "orders",
+    "i18n": "Orders",
+    "widgetClass": "omna.management.DataGridRestService",
+    "requestManagementClass": "omna.request.Orders",
+    "formWidth": 300,
+    "formHeight": 150,
+    "baseParams": {
+      "with_details": true
+    },
+    "actions": [
+      "omna.action.Reload",
+      "omna.action.Separator",
+      "omna.action.ReImport",
+      "omna.action.order.Documents",
+      "omna.action.Separator",
+      "omna.action.Search"
+    ],
+    "fields": [
+      {
+        "name": "number",
+        "widgetClass": "omna.form.field.TextField",
+        "showInGrid": true,
+        "includeInSearch": true,
+        "gridColumnWidth": 150
+      },
+      {
+        "name": "total_price",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Number",
+        "maximumFractionDigits": 2,
+        "minimumFractionDigits": 2,
+        "prefix": "$",
+        "gridColumnWidth": 100
+      },
+      {
+        "name": "total_quantity",
+        "showInGrid": true,
+        "gridColumnWidth": 110,
+        "gridRendererStyle": {
+          "textAlign": "center"
+        }
+      },
+      {
+        "name": "status",
+        "widgetClass": "omna.form.field.TextField",
+        "showInGrid": true,
+        "includeInSearch": true,
+        "gridColumnWidth": 100,
+        "gridRendererStyle": {
+          "textAlign": "center",
+          "conditions": [
+            {
+              "value": "pending",
+              "color": "#FFC107"
+            },
+            {
+              "value": "completed",
+              "color": "#007BFF"
+            },
+            {
+              "operator": "/cancel/i",
+              "color": "#DC3545"
+            }
+          ]
+        }
+      },
+      {
+        "name": "integration",
+        "widgetClass": "omna.form.field.remote.FilteringSelectBox",
+        "includeInSearch": true,
+        "searchAttrName": "integration_id",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Integration",
+        "serviceBasePath": "integrations",
+        "labelAttr": "name",
+        "valueAttr": "id"
+      },
+      {
+        "name": "last_import_date",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 150
+      },
+      {
+        "name": "created_date",
+        "label": "created_at",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 150
+      },
+      {
+        "name": "updated_date",
+        "label": "updated_at",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 150
+      }
+    ]
+  }
+]

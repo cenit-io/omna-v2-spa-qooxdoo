@@ -1,0 +1,7 @@
+[
+  {
+    "name": "TIME-24H",
+    "subCatalog": "Values",
+    "value": "[\\d:]"
+  }
+]

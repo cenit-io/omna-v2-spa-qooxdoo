@@ -1,0 +1,284 @@
+[
+  {
+    "name": "CONFIRMATION",
+    "subCatalog": "Titles",
+    "value": "Confirmation:"
+  },
+  {
+    "name": "details",
+    "subCatalog": "Title",
+    "value": "Details"
+  },
+  {
+    "name": "channel",
+    "subCatalog": "Labels",
+    "value": "Channel"
+  },
+  {
+    "name": "name",
+    "subCatalog": "Labels",
+    "value": "Name"
+  },
+  {
+    "name": "Add",
+    "subCatalog": "Titles",
+    "value": "%1 data to be created:"
+  },
+  {
+    "name": "description",
+    "subCatalog": "Labels",
+    "value": "Description"
+  },
+  {
+    "name": "label",
+    "subCatalog": "Labels",
+    "value": "Label"
+  },
+  {
+    "name": "title",
+    "subCatalog": "Labels",
+    "value": "Title"
+  },
+  {
+    "name": "ok",
+    "subCatalog": "Labels",
+    "value": "Ok"
+  },
+  {
+    "name": "edit",
+    "subCatalog": "Labels",
+    "value": "Edit"
+  },
+  {
+    "name": "disabled",
+    "subCatalog": "Labels",
+    "value": "Disabled"
+  },
+  {
+    "name": "remove",
+    "subCatalog": "Labels",
+    "value": "Remove"
+  },
+  {
+    "name": "created_at",
+    "subCatalog": "Labels",
+    "value": "Created at"
+  },
+  {
+    "name": "updated_at",
+    "subCatalog": "Labels",
+    "value": "Updated at"
+  },
+  {
+    "name": "last_import_date",
+    "subCatalog": "Labels",
+    "value": "Imported at"
+  },
+  {
+    "name": "status",
+    "subCatalog": "Labels",
+    "value": "Status"
+  },
+  {
+    "name": "print",
+    "subCatalog": "Labels",
+    "value": "Print"
+  },
+  {
+    "name": "type",
+    "subCatalog": "Labels",
+    "value": "Type"
+  },
+  {
+    "name": "integration",
+    "subCatalog": "Labels",
+    "value": "Integration"
+  },
+  {
+    "name": "integrations",
+    "subCatalog": "Labels",
+    "value": "Integrations"
+  },
+  {
+    "name": "add",
+    "subCatalog": "Labels",
+    "value": "Add"
+  },
+  {
+    "name": "save",
+    "subCatalog": "Labels",
+    "value": "Save"
+  },
+  {
+    "name": "cancel",
+    "subCatalog": "Labels",
+    "value": "Cancel"
+  },
+  {
+    "name": "undo",
+    "subCatalog": "Labels",
+    "value": "Undo"
+  },
+  {
+    "name": "yes",
+    "subCatalog": "Labels",
+    "value": "yes"
+  },
+  {
+    "name": "no",
+    "subCatalog": "Labels",
+    "value": "no"
+  },
+  {
+    "name": "id",
+    "subCatalog": "Labels",
+    "value": "Identify"
+  },
+  {
+    "name": "price",
+    "subCatalog": "Labels",
+    "value": "Price"
+  },
+  {
+    "name": "saveFinish",
+    "subCatalog": "Labels",
+    "value": "Save and finish"
+  },
+  {
+    "name": "properties",
+    "subCatalog": "Labels",
+    "value": "Properties"
+  },
+  {
+    "name": "reload",
+    "subCatalog": "Labels",
+    "value": "Reload"
+  },
+  {
+    "name": "timeout",
+    "subCatalog": "Labels",
+    "value": "Timeout"
+  },
+  {
+    "name": "message",
+    "subCatalog": "Labels",
+    "value": "Message"
+  },
+  {
+    "name": "none",
+    "subCatalog": "Labels",
+    "value": "None"
+  },
+  {
+    "name": "scheduler",
+    "subCatalog": "Labels",
+    "value": "Scheduler"
+  },
+  {
+    "name": "start_date",
+    "subCatalog": "Labels",
+    "value": "Start date"
+  },
+  {
+    "name": "end_date",
+    "subCatalog": "Labels",
+    "value": "End date"
+  },
+  {
+    "name": "time",
+    "subCatalog": "Labels",
+    "value": "Time"
+  },
+  {
+    "name": "days_of_week",
+    "subCatalog": "Labels",
+    "value": "Days of week"
+  },
+  {
+    "name": "weeks_of_month",
+    "subCatalog": "Labels",
+    "value": "Weeks of month"
+  },
+  {
+    "name": "months_of_year",
+    "subCatalog": "Labels",
+    "value": "Months of year"
+  },
+  {
+    "name": "active",
+    "subCatalog": "Labels",
+    "value": "Active"
+  },
+  {
+    "name": "preview",
+    "subCatalog": "Labels",
+    "value": "Preview"
+  },
+  {
+    "name": "Edit",
+    "subCatalog": "Titles",
+    "value": "%1 data to be updated:"
+  },
+  {
+    "name": "search",
+    "subCatalog": "Labels",
+    "value": "Search"
+  },
+  {
+    "name": "Search",
+    "subCatalog": "Titles",
+    "value": "Search data:"
+  },
+  {
+    "name": "APPLICATION-TITLE",
+    "subCatalog": "Labels",
+    "value": "OMNA eCommerce LTD"
+  },
+  {
+    "name": "add",
+    "subCatalog": "Messages",
+    "value": "New item details"
+  },
+  {
+    "name": "CONFIRM-DELETING",
+    "subCatalog": "Messages",
+    "value": "Do you really want to delete the selected %1?"
+  },
+
+  {
+    "name": "SUCCESSFUL-ADDING",
+    "subCatalog": "Messages",
+    "value": "The new %1 was successfully added."
+  },
+  {
+    "name": "SUCCESSFUL-UPDATING",
+    "subCatalog": "Messages",
+    "value": "The selected %1 was successfully updated."
+  },
+  {
+    "name": "SUCCESSFUL-DELETING",
+    "subCatalog": "Messages",
+    "value": "The selected %1 was successfully deleted."
+  },
+
+  {
+    "name": "FAILED-DELETING",
+    "subCatalog": "Messages",
+    "value": "The deleting of the selected %1 is failed."
+  },
+  {
+    "name": "FAILED-ADDING",
+    "subCatalog": "Messages",
+    "value": "The new %1 adding is failed."
+  },
+  {
+    "name": "FAILED-UPDATING",
+    "subCatalog": "Messages",
+    "value": "The update of the selected %1 is failed."
+  },
+  {
+    "name": "FAILED-LOAD",
+    "subCatalog": "Messages",
+    "value": "The reading failed."
+  }
+]

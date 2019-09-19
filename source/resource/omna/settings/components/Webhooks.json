@@ -1,0 +1,65 @@
+[
+  {
+    "id": "webhooks",
+    "i18n": "Webhooks",
+    "widgetClass": "omna.management.DataGridRestService",
+    "serviceBasePath": "webhooks",
+    "formWidth": 600,
+    "formHeight": 300,
+    "baseParams": {
+      "with_details": true
+    },
+    "actions": [
+      "omna.action.Reload",
+      "omna.action.Separator",
+      "omna.action.Add",
+      "omna.action.Edit",
+      "omna.action.Remove",
+      "omna.action.Separator",
+      "omna.action.Search"
+    ],
+    "fields": [
+      {
+        "name": "topic",
+        "widgetClass": "omna.form.field.TextField",
+        "showInGrid": true,
+        "includeInSearch": true,
+        "accessInAddForm": "W",
+        "accessInEditForm": "R",
+        "gridColumnWidth": 150,
+        "required": true,
+        "minLength": 2,
+        "maxLength": 50,
+        "pattern": "\\w+"
+      },
+      {
+        "name": "address",
+        "label": "URL",
+        "widgetClass": "omna.form.field.net.URLField",
+        "showInGrid": true,
+        "includeInSearch": true,
+        "accessInAddForm": "W",
+        "accessInEditForm": "R",
+        "gridColumnWidth": 150,
+        "required": true
+      },
+      {
+        "name": "integration",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Integration"
+      },
+      {
+        "name": "created_at",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 150
+      },
+      {
+        "name": "updated_at",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 150
+      }
+    ]
+  }
+]

@@ -1,0 +1,83 @@
+[
+  {
+    "id": "products",
+    "i18n": "Products",
+    "widgetClass": "omna.management.DataGridRestService",
+    "requestManagementClass": "omna.request.Products",
+    "rowHeight": 60,
+    "formWidth": 300,
+    "formHeight": 300,
+    "baseParams": {
+      "with_details": true
+    },
+    "actions": [
+      "omna.action.Reload",
+      "omna.action.Separator",
+      "omna.action.Add",
+      "omna.action.Edit",
+      "omna.action.Remove",
+      "omna.action.Separator",
+      "omna.action.Search"
+    ],
+    "fields": [
+      {
+        "name": "images",
+        "widgetClass": "omna.form.field.grid.Gallery",
+        "showInGrid": true,
+        "includeInSearch": false,
+        "accessInAddForm": "N",
+        "accessInEditForm": "N",
+        "gridColumnWidth": 60
+      },
+      {
+        "name": "name",
+        "widgetClass": "omna.form.field.TextField",
+        "showInGrid": true,
+        "includeInSearch": true,
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": true,
+        "minLength": 2,
+        "pattern": "^[^\t].*[][^\t]$"
+      },
+      {
+        "name": "price",
+        "widgetClass": "omna.form.field.NumberField",
+        "showInGrid": true,
+        "includeInSearch": true,
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": true,
+        "minimum": 0,
+        "maximumFractionDigits": 2,
+        "minimumFractionDigits": 2,
+        "prefix": "$",
+        "gridColumnWidth": 100
+      },
+      {
+        "name": "variants",
+        "widgetClass": "omna.form.field.NumberField",
+        "showInGrid": true,
+        "includeInSearch": false,
+        "accessInAddForm": "N",
+        "accessInEditForm": "N",
+        "gridColumnWidth": 100,
+        "gridRendererStyle": {
+          "textAlign": "center"
+        }
+      },
+      {
+        "name": "integrations",
+        "widgetClass": "omna.form.field.NumberField",
+        "showInGrid": true,
+        "includeInSearch": false,
+        "accessInAddForm": "N",
+        "accessInEditForm": "N",
+        "gridColumnWidth": 100,
+        "gridRendererStyle": {
+          "textAlign": "center"
+        }
+      }
+    ]
+  }
+]

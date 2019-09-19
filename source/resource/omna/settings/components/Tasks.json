@@ -1,0 +1,89 @@
+[
+  {
+    "id": "tasks",
+    "i18n": "Tasks",
+    "widgetClass": "omna.management.DataGridRestService",
+    "serviceBasePath": "tasks",
+    "region": 75,
+    "formWidth": 300,
+    "formHeight": 300,
+    "baseParams": {
+      "with_details": true
+    },
+    "actions": [
+      "omna.action.Reload",
+      "omna.action.Separator",
+      "omna.action.Remove",
+      "omna.action.Separator",
+      "omna.action.Search"
+    ],
+    "fields": [
+      {
+        "name": "status",
+        "showInGrid": true,
+        "includeInSearch": true,
+        "gridColumnWidth": 100,
+        "gridRendererStyle": {
+          "conditions": [
+            {
+              "value": "pending",
+              "color": "#FFC107"
+            },
+            {
+              "value": "running",
+              "color": "#28A745"
+            },
+            {
+              "value": "paused",
+              "color": "#17A2B8"
+            },
+            {
+              "value": "completed",
+              "color": "#007BFF"
+            },
+            {
+              "value": "failed",
+              "color": "#DC3545"
+            }
+          ]
+        }
+      },
+      {
+        "name": "progress",
+        "cellRendererClass": "omna.table.cellrenderer.Number",
+        "showInGrid": true,
+        "gridColumnWidth": 100,
+        "maximumFractionDigits": 0,
+        "postfix": "%",
+        "gridRendererStyle": {
+          "textAlign": "center"
+        }
+      },
+      {
+        "name": "description",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.LongText"
+      },
+      {
+        "name": "created_at",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 150
+      },
+      {
+        "name": "updated_at",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 150
+      }
+    ]
+  },
+  {
+    "id": "tasks-details",
+    "widgetClass": "omna.management.task.Details",
+    "i18n": "Tasks",
+    "edge": "east",
+    "region": 25,
+    "listenFromComponentId": "tasks"
+  }
+]
