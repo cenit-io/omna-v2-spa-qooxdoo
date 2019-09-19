@@ -30,6 +30,16 @@
     "value": "Unauthorize"
   },
   {
+    "name": "last_import_orders_date",
+    "subCatalog": "Labels",
+    "value": "Orders imported at"
+  },
+  {
+    "name": "last_import_products_date",
+    "subCatalog": "Labels",
+    "value": "Products imported at"
+  },
+  {
     "name": "CONFIRM-AUTHORIZE",
     "subCatalog": "Messages",
     "value": "Do you really want to authorize the selected integration?"
