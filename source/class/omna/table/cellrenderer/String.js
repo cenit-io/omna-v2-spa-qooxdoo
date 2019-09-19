@@ -164,6 +164,13 @@ qx.Class.define("omna.table.cellrenderer.String", {
             for (var key in style) if (style[key]) styleString.push(key, ":", style[key], ";");
 
             return styleString.join("");
+        },
+
+        __applyFormatting: function (condition, style) {
+            if (condition[1] != null) style["text-align"] = condition[1];
+            if (condition[2] != null) style["color"] = condition[2];
+            if (condition[3] != null) style["font-style"] = condition[3];
+            if (condition[4] != null) style["font-weight"] = condition[4];
         }
     }
 });
