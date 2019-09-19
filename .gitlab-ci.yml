@@ -17,7 +17,8 @@ install_dependencies:
     - npm install --save-dev
   artifacts:
     paths:
-      - build/
+      - node_modules/
+      - generate.py
 
 build:
   image: python:latest
