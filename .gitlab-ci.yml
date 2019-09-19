@@ -13,7 +13,7 @@ build:
     - develop
     - master
   before_script:
-    - apt-get update -qq && apt-get install -y -qq nodejs
+    - apt-get update -qq && apt-get install -y -qq npm
     - npm install --save-dev
   script:
     - python generate.py build
