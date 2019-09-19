@@ -11,6 +11,8 @@
 /**
  * @asset(omna/icon/16/actions/search.png)
  * @asset(omna/icon/16/actions/filter.png)
+ * @asset(omna/images/ajax-loader.gif)
+ * @asset(omna/css/styles.css)
  */
 qx.Theme.define("omna.theme.Appearance", {
     extend: qx.theme.indigo.Appearance,

@@ -13,6 +13,9 @@
  *
  * @require(qx.module.Messaging)
  * @require(omna.dialog.Waiting)
+ *
+ * @asset(omna/libs/*)
+ * @asset(omna/settings/*)
  */
 qx.Class.define("omna.Application", {
     extend: qx.application.Standalone,
