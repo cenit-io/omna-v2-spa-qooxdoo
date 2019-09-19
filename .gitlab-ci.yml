@@ -30,7 +30,7 @@ build:
     expire_in: 1 hour
 
 staging:
-  image: python:2.7.15+
+  image: python:2.7.15
   stage: deploy
   only:
     - develop
@@ -42,7 +42,7 @@ production:
   image: python:latest
   stage: deploy
   only:
-    - v1.2.x
+    - master
   script:
     - pip install awscli
     - aws s3 sync --acl public-read --delete --region us-west-2 build/ s3://omna-v2-prod
