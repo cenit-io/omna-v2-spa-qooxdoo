@@ -1,3 +1,6 @@
+/**
+ * @asset(omna/icon/16/actions/edit.png)
+ */
 qx.Class.define("omna.action.Edit", {
     extend: omna.action.AbstractActionWithSelectedItem,
 

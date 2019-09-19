@@ -8,6 +8,10 @@
 
  ************************************************************************ */
 
+/**
+ * @asset(omna/icon/16/actions/search.png)
+ * @asset(omna/icon/16/actions/filter.png)
+ */
 qx.Theme.define("omna.theme.Appearance", {
     extend: qx.theme.indigo.Appearance,
 

@@ -1,3 +1,6 @@
+/**
+ * @asset(omna/icon/16/actions/import.png)
+ */
 qx.Class.define("omna.action.ReImport", {
     extend: omna.action.AbstractActionWithSelectedItem,
 

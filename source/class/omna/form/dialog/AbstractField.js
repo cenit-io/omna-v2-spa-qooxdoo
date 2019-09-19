@@ -1,3 +1,7 @@
+/**
+ * @asset(omna/icon/16/actions/yes.png)
+ * @asset(omna/icon/16/actions/no.png)
+ */
 qx.Class.define("omna.form.dialog.AbstractField", {
     type: 'abstract',
     extend: omna.dialog.AbstractForm,

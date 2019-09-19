@@ -1,3 +1,6 @@
+/**
+ * @asset(omna/icon/16/actions/document_down.png)
+ */
 qx.Class.define('omna.action.order.DocumentSelectBox', {
     extend: qx.ui.form.SelectBox,
 

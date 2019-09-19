@@ -11,7 +11,6 @@
 /**
  * This is the main application class of your custom application "omna-gui"
  *
- * @asset(omna/*)
  * @require(qx.module.Messaging)
  * @require(omna.dialog.Waiting)
  */

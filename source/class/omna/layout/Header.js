@@ -11,6 +11,7 @@
 /**
  * Here you documentation for you class
  *
+ * @asset(omna/icon/24/actions/logout.png)
  */
 qx.Class.define("omna.layout.Header", {
     type: "singleton",

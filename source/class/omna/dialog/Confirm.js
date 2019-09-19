@@ -1,3 +1,8 @@
+/**
+ * @asset(omna/icon/32/question.png)
+ * @asset(omna/icon/16/actions/yes.png)
+ * @asset(omna/icon/16/actions/no.png)
+ */
 qx.Class.define('omna.dialog.Confirm', {
     extend: omna.dialog.AbstractDialog,
 

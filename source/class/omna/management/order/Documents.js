@@ -1,3 +1,7 @@
+/**
+ * @asset(omna/icon/32/info.png)
+ * @asset(omna/icon/32/error.png)
+ */
 qx.Class.define("omna.management.order.Documents", {
     extend: omna.management.AbstractManagement,
 

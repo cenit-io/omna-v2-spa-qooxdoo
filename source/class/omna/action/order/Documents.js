@@ -1,3 +1,6 @@
+/**
+ * @asset(omna/icon/16/actions/documents.png)
+ */
 qx.Class.define('omna.action.order.Documents', {
     extend: omna.action.AbstractActionWithSelectedItem,
 

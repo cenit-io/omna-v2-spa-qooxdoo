@@ -1,3 +1,9 @@
+/**
+ * @asset(omna/icon/32/info.png)
+ * @asset(omna/icon/32/good.png)
+ * @asset(omna/icon/32/warn.png)
+ * @asset(omna/icon/32/error.png)
+ */
 qx.Class.define("omna.ToolTip", {
     type: "singleton",
     extend: qx.core.Object,
