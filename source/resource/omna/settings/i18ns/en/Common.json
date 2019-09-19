@@ -20,7 +20,7 @@
     "value": "Name"
   },
   {
-    "name": "Add",
+    "name": "add",
     "subCatalog": "Titles",
     "value": "%1 data to be created:"
   },
@@ -215,7 +215,7 @@
     "value": "Preview"
   },
   {
-    "name": "Edit",
+    "name": "edit",
     "subCatalog": "Titles",
     "value": "%1 data to be updated:"
   },
@@ -225,7 +225,7 @@
     "value": "Search"
   },
   {
-    "name": "Search",
+    "name": "search",
     "subCatalog": "Titles",
     "value": "Search data:"
   },

@@ -11,7 +11,7 @@ qx.Class.define("omna.action.Search", {
     members: {
         onExecute: function () {
             if (!this.dlg) {
-                var caption = this.i18nTrans('Titles', 'Search');
+                var caption = this.i18nTrans('Titles', 'search');
 
                 this.dlg = new omna.form.dialog.Search(this.getManagement(), caption, this.getIcon());
                 this.dlg.addListener('accept', this.onAccept, this);

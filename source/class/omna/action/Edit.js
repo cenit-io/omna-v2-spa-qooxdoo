@@ -11,7 +11,7 @@ qx.Class.define("omna.action.Edit", {
     members: {
         onExecute: function () {
             var itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
-                caption = this.i18nTrans('Titles', 'Edit', [itemLabel]),
+                caption = this.i18nTrans('Titles', 'edit', [itemLabel]),
                 dlg = new omna.form.dialog.Custom(this.getManagement(), 'edit', caption, this.getIcon());
 
             dlg.addListener('accept', this.onAccept, this);
