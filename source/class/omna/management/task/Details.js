@@ -14,7 +14,7 @@ qx.Class.define("omna.management.task.Details", {
         propertiesDefaultValues: {
             i18n: 'Tasks',
             edge: 'east',
-            region:30,
+            region: 30,
             listenFromComponentId: null
         }
     },
@@ -74,7 +74,7 @@ qx.Class.define("omna.management.task.Details", {
                     break;
 
                 case "notifications":
-                    control = this._createTable(['type', 'message'], 56);
+                    control = this._createTable(['type', 'message']);
                     control.addListener('cellTap', this.onNotificationCellTap, this);
                     this._createTapPage(control, 'notifications');
                     break;
@@ -103,7 +103,7 @@ qx.Class.define("omna.management.task.Details", {
             return control
         },
 
-        _createTable: function (fields, rowHeight) {
+        _createTable: function (fields) {
             var tableModel = new qx.ui.table.model.Simple(),
                 table, columnNames = [], columnIDs = [];
 
@@ -121,7 +121,7 @@ qx.Class.define("omna.management.task.Details", {
             });
 
             table.set({
-                rowHeight: rowHeight || 28,
+                rowHeight: 28,
                 showCellFocusIndicator: false,
                 decorator: 'omna-data-grid',
                 columnVisibilityButtonVisible: false
@@ -143,36 +143,57 @@ qx.Class.define("omna.management.task.Details", {
             switch ( field ) {
                 case "status":
                     return new omna.table.cellrenderer.String({
-                        "gridRendererStyle": {
-                            "conditions": [
+                        gridRendererStyle: {
+                            conditions: [
                                 {
-                                    "value": "pending",
-                                    "color": "#FFC107"
+                                    value: "pending",
+                                    color: "#FFC107"
                                 },
                                 {
-                                    "value": "running",
-                                    "color": "#28A745"
+                                    value: "running",
+                                    color: "#28A745"
                                 },
                                 {
-                                    "value": "paused",
-                                    "color": "#17A2B8"
+                                    value: "paused",
+                                    color: "#17A2B8"
                                 },
                                 {
-                                    "value": "completed",
-                                    "color": "#007BFF"
+                                    value: "completed",
+                                    color: "#007BFF"
                                 },
                                 {
-                                    "value": "failed",
-                                    "color": "#DC3545"
+                                    value: "failed",
+                                    color: "#DC3545"
                                 }
                             ]
                         }
                     });
+
+                case "type":
+                    return new omna.table.cellrenderer.String({
+                        gridRendererStyle: {
+                            conditions: [
+                                {
+                                    value: "info",
+                                    color: "#007BFF"
+                                },
+                                {
+                                    value: "warning",
+                                    color: "#FFC107"
+                                },
+                                {
+                                    value: "error",
+                                    color: "#DC3545"
+                                }
+                            ]
+                        }
+                    });
+
                 case "started_at":
                 case "completed_at":
                     return new omna.table.cellrenderer.Date();
-                case "message":
-                    return new omna.table.cellrenderer.String({ cellClass: 'task-message' });
+                // case "message":
+                //     return new omna.table.cellrenderer.String({ cellClass: 'task-message' });
                 default:
                     return new omna.table.cellrenderer.String();
             }
