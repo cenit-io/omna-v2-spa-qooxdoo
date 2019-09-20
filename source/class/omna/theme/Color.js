@@ -15,6 +15,7 @@ qx.Theme.define("omna.theme.Color", {
         odd: "#E0F0FA",
         even: "#dbffff",
         info: "#FFFFFF",
+        question: "#FFFFFF",
         good: "#AAFFAA",
         warn: "#FFFFAA",
         error: "#C00F00",

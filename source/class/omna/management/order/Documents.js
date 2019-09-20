@@ -76,7 +76,7 @@ qx.Class.define("omna.management.order.Documents", {
                         });
                     } else {
                         this.__docuemnetTip.set({
-                            label: response.message, icon: 'omna/icon/32/error.png', backgroundColor: 'warn'
+                            label: response.message, icon: 'omna/icon/32/warn.png', backgroundColor: 'warn'
                         });
                         this.__docuemnetTip.show();
                     }

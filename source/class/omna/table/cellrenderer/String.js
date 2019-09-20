@@ -157,7 +157,7 @@ qx.Class.define("omna.table.cellrenderer.String", {
                 }
 
                 // Apply formatting, if any.
-                if (cond_test == true) this.__applyFormatting(condition, style);
+                if (cond_test == true) this.__applyCellFormatting(condition, style);
             }, this);
 
             var styleString = [];
@@ -166,7 +166,7 @@ qx.Class.define("omna.table.cellrenderer.String", {
             return styleString.join("");
         },
 
-        __applyFormatting: function (condition, style) {
+        __applyCellFormatting: function (condition, style) {
             if (condition[1] != null) style["text-align"] = condition[1];
             if (condition[2] != null) style["color"] = condition[2];
             if (condition[3] != null) style["font-style"] = condition[3];

@@ -1,7 +1,7 @@
 qx.Class.define("omna.form.dialog.Search", {
     extend: omna.dialog.AbstractForm,
-    include: [omna.mixin.MI18n],
-    implement: [omna.mixin.II18n],
+    include: [omna.mixin.MWitchManagement],
+
 
     /**
      * Constructor
@@ -22,17 +22,7 @@ qx.Class.define("omna.form.dialog.Search", {
         this.base(arguments, caption, icon);
     },
 
-    properties: {
-        management: {
-            check: 'omna.management.AbstractManagement'
-        }
-    },
-
     members: {
-        getI18nCatalog: function () {
-            return this.getManagement().getI18nCatalog()
-        },
-
         _createRenderer: function () {
             var renderer = new omna.form.renderer.SingleWithCheck(this._form);
             renderer.getLayout().setColumnFlex(1, 0);

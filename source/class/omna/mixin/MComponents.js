@@ -7,6 +7,7 @@
  * @require(omna.action.Reload)
  * @require(omna.action.Remove)
  * @require(omna.action.Search)
+ * @require(omna.action.integration.Import)
  * @require(omna.action.ReImport)
  * @require(omna.action.Separator)
  * @require(omna.action.order.Documents)

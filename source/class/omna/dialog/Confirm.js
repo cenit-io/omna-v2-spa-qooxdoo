@@ -78,7 +78,7 @@ qx.Class.define('omna.dialog.Confirm', {
             bN.addListener('execute', function () {
                 this.getCallback().call(this.getScope(), 'no', this);
                 this.destroy();
-            }, this)
+            }, this);
 
             this.addListener('appear', function () {
                 bN.focus();

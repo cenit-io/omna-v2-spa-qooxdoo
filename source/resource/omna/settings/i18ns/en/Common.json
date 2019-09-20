@@ -220,6 +220,21 @@
     "value": "%1 data to be updated:"
   },
   {
+    "name": "orders",
+    "subCatalog": "Labels",
+    "value": "Orders"
+  },
+  {
+    "name": "products",
+    "subCatalog": "Labels",
+    "value": "Products"
+  },
+  {
+    "name": "resource",
+    "subCatalog": "Labels",
+    "value": "Resource"
+  },
+  {
     "name": "search",
     "subCatalog": "Labels",
     "value": "Search"
@@ -244,7 +259,6 @@
     "subCatalog": "Messages",
     "value": "Do you really want to delete the selected %1?"
   },
-
   {
     "name": "SUCCESSFUL-ADDING",
     "subCatalog": "Messages",
@@ -260,7 +274,6 @@
     "subCatalog": "Messages",
     "value": "The selected %1 was successfully deleted."
   },
-
   {
     "name": "FAILED-DELETING",
     "subCatalog": "Messages",

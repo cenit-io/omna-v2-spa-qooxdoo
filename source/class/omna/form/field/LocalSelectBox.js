@@ -7,17 +7,15 @@ qx.Class.define("omna.form.field.LocalSelectBox", {
 
     properties: {
         options: {
-            check: 'String',
-            init: '[]',
+            check: Array,
+            init: [],
             apply: '_applyOptions'
         }
     },
 
     members: {
         _applyOptions: function (value) {
-            var options = qx.lang.Json.parse(value);
-
-            options.forEach(function (item) {
+            value.forEach(function (item) {
                 this.add(new qx.ui.form.ListItem(item.label, null, item.value));
             }, this);
         }

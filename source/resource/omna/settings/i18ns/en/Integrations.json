@@ -30,6 +30,16 @@
     "value": "Unauthorize"
   },
   {
+    "name": "import",
+    "subCatalog": "Labels",
+    "value": "Import"
+  },
+  {
+    "name": "import_items",
+    "subCatalog": "Labels",
+    "value": "Import %1 updated after %2"
+  },
+  {
     "name": "last_import_orders_date",
     "subCatalog": "Labels",
     "value": "Orders imported at"
@@ -50,9 +60,19 @@
     "value": "Do you really want to cancel the authorization of the selected integration?"
   },
   {
+    "name": "CONFIRM-IMPORT",
+    "subCatalog": "Messages",
+    "value": "Do you really want to import, from the <b>%1</b> integration of the <b>%2</b> channel, the updated elements, of the type of resource selected, since its last import date?"
+  },
+  {
     "name": "SUCCESSFUL-DELETING",
     "subCatalog": "Messages",
     "value": "A task was created to remove the selected integration."
+  },
+  {
+    "name": "SUCCESSFUL-IMPORT",
+    "subCatalog": "Messages",
+    "value": "A task was created to imported updated %1."
   },
   {
     "name": "SUCCESSFUL-UNAUTHORIZE",
@@ -63,5 +83,10 @@
     "name": "FAILED-UNAUTHORIZE",
     "subCatalog": "Messages",
     "value": "The authorization of the selected integration could not be canceled."
+  },
+  {
+    "name": "FAILED-IMPORT",
+    "subCatalog": "Messages",
+    "value": "The creation of a task to import xx of the selected integration has failed."
   }
 ]

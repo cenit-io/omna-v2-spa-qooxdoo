@@ -1,7 +1,6 @@
 qx.Class.define("omna.form.dialog.Custom", {
     extend: omna.dialog.AbstractForm,
-    include: [omna.mixin.MI18n],
-    implement: [omna.mixin.II18n],
+    include: [omna.mixin.MWitchManagement],
 
     /**
      * Constructor
@@ -16,7 +15,6 @@ qx.Class.define("omna.form.dialog.Custom", {
 
         this.set({
             management: management,
-            //height: properties.formHeight,
             width: settings.formWidth,
             action: action
         });
@@ -26,20 +24,12 @@ qx.Class.define("omna.form.dialog.Custom", {
     },
 
     properties: {
-        management: {
-            check: 'omna.management.DataGridRestService'
-        },
-
         action: {
             check: 'String'
         }
     },
 
     members: {
-        getI18nCatalog: function () {
-            return this.getManagement().getI18nCatalog()
-        },
-
         _createFormFields: function (form) {
             var management = this.getManagement(),
                 fields = management.getFields(),

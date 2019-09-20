@@ -45,6 +45,18 @@ qx.Class.define("omna.request.Integrations", {
                     q.messaging.emit('Application', 'error', msg)
                 }
             }, this);
+        },
+
+        import: function (id, type, callBack, scope) {
+            // Call remote service
+            this.submit("GET", id + '/' + type + '/import', null, function (response) {
+                if (response.successful) {
+                    callBack.call(scope, response);
+                } else {
+                    var msg = omna.I18n.trans('Orders', 'Messages', 'FAILED-INTEGRATION-CHANNELS');
+                    q.messaging.emit('Application', 'error', msg)
+                }
+            }, this);
         }
     }
 });
