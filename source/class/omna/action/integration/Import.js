@@ -18,7 +18,7 @@ qx.Class.define("omna.action.integration.Import", {
                             type = dlg.getImportType(),
                             msg;
 
-                        request.import(item.id, type, function (response) {
+                        request.doImportTask(item.id, type, function (response) {
                             if (response.successful) {
                                 msg = this.i18nTrans('Messages', 'SUCCESSFUL-IMPORT', [type]);
                                 q.messaging.emit('Application', 'good', msg);

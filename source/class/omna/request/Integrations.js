@@ -47,7 +47,7 @@ qx.Class.define("omna.request.Integrations", {
             }, this);
         },
 
-        import: function (id, type, callBack, scope) {
+        doImportTask: function (id, type, callBack, scope) {
             // Call remote service
             this.submit("GET", id + '/' + type + '/import', null, function (response) {
                 if (response.successful) {
