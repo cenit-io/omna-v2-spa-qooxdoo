@@ -4,8 +4,6 @@
     "i18n": "Webhooks",
     "widgetClass": "omna.management.DataGridRestService",
     "serviceBasePath": "webhooks",
-    "formWidth": 600,
-    "formHeight": 300,
     "baseParams": {
       "with_details": true
     },

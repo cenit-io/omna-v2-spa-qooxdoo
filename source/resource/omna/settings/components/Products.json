@@ -5,8 +5,6 @@
     "widgetClass": "omna.management.DataGridRestService",
     "requestManagementClass": "omna.request.Products",
     "rowHeight": 60,
-    "formWidth": 300,
-    "formHeight": 300,
     "baseParams": {
       "with_details": true
     },

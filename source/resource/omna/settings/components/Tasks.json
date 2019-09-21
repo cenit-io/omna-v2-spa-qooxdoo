@@ -5,8 +5,6 @@
     "widgetClass": "omna.management.DataGridRestService",
     "serviceBasePath": "tasks",
     "region": 75,
-    "formWidth": 300,
-    "formHeight": 300,
     "baseParams": {
       "with_details": true
     },

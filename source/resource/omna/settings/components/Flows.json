@@ -4,8 +4,6 @@
     "i18n": "Flows",
     "widgetClass": "omna.management.DataGridRestService",
     "serviceBasePath": "flows",
-    "formWidth": 300,
-    "formHeight": 300,
     "baseParams": {
       "with_details": true
     },

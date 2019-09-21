@@ -4,7 +4,6 @@
     "i18n": "Orders",
     "widgetClass": "omna.management.DataGridRestService",
     "requestManagementClass": "omna.request.Orders",
-    "formWidth": 300,
     "formHeight": 150,
     "baseParams": {
       "with_details": true
