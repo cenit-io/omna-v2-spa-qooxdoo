@@ -24,6 +24,7 @@ qx.Mixin.define('omna.mixin.MSettings', {
             id = qx.util.Base64.encode(url);
 
             if (!omna['settings'][id]) {
+                url = url.match(/\/source\//) ? url + '?tc=' + (new Date()).getTime() : url;
                 var req = new qx.io.request.Xhr(url);
 
                 req.setAsync(false);
