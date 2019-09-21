@@ -130,45 +130,11 @@ qx.Class.define("omna.management.DataGridRestService", {
         },
 
         onExecuteAdd: function (data) {
-            var dlg = data.customData.dlg,
-                request = this.getRequestManagement();
-
-            qx.lang.Object.mergeWith(data.params, this.getCustomData().filters);
-
-            request.create(data.params, function (response) {
-                var itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE');
-
-                if (response.successful) {
-                    q.messaging.emit(
-                        'Application', 'good', this.i18nTrans('Messages', 'SUCCESSFUL-ADDING', [itemLabel])
-                    );
-                    this.emitMessaging('execute-reload');
-                    dlg.close();
-                } else {
-                    q.messaging.emit(
-                        'Application', 'error', this.i18nTrans('Messages', 'FAILED-ADDING', [itemLabel])
-                    );
-                }
-            }, this);
+            this.onExecuteReload();
         },
 
         onExecuteUpdate: function (data) {
-            var dlg = data.params.dlg,
-                record = data.customData,
-                settings = this.getSettings(),
-                request = new omna.request.Customs(settings.serviceBasePath);
-
-            request.update(record.id, record, function (response) {
-                var msg, i18nCatalog = settings.i18n;
-
-                if (response.successful) {
-                    q.messaging.emit('Application', 'good', this.i18nTrans('Messages', 'SUCCESSFUL-UPDATING'));
-                    this.emitMessaging('execute-reload');
-                    dlg.close();
-                } else {
-                    q.messaging.emit('Application', 'error', this.i18nTrans('Messages', 'FAILED-UPDATING'));
-                }
-            }, this);
+            this.onExecuteReload();
         },
 
         onExecuteRemove: function (data) {

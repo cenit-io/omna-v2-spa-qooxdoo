@@ -20,7 +20,25 @@ qx.Class.define("omna.action.Edit", {
         },
 
         onAccept: function (e) {
-            this.emitMessaging('execute-update', e.getData(), { dlg: e.getTarget() });
+            var management = this.getManagement(),
+                request = management.getRequestManagement(),
+                itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
+                dlg = e.getTarget(),
+                data = e.getData();
+
+            request.update(data.id, data, function (response) {
+                if (response.successful) {
+                    q.messaging.emit(
+                        'Application', 'good', this.i18nTrans('Messages', 'SUCCESSFUL-UPDATING', [itemLabel])
+                    );
+                    this.emitMessaging('execute-update', { dlg: dlg }, data);
+                    dlg.close();
+                } else {
+                    q.messaging.emit(
+                        'Application', 'error', this.i18nTrans('Messages', 'FAILED-UPDATING', [itemLabel])
+                    );
+                }
+            }, this);
         }
     }
 });
