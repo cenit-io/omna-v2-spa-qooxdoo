@@ -5,6 +5,11 @@
     "value": "Products"
   },
   {
+    "name": "SINGLE-ITEM-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Product"
+  },
+  {
     "name": "variants",
     "subCatalog": "Labels",
     "value": "Variants"

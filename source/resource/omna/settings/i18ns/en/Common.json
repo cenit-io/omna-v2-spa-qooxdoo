@@ -257,22 +257,22 @@
   {
     "name": "CONFIRM-DELETING",
     "subCatalog": "Messages",
-    "value": "Do you really want to delete the selected %1?"
+    "value": "Do you really want to delete the selected <b class='resource'>%1</b>?"
   },
   {
     "name": "SUCCESSFUL-ADDING",
     "subCatalog": "Messages",
-    "value": "The new %1 was successfully added."
+    "value": "The new <b class='resource'>%1</b> was successfully added."
   },
   {
     "name": "SUCCESSFUL-UPDATING",
     "subCatalog": "Messages",
-    "value": "The selected %1 was successfully updated."
+    "value": "The selected <b class='resource'>%1</b> was successfully updated."
   },
   {
     "name": "SUCCESSFUL-DELETING",
     "subCatalog": "Messages",
-    "value": "The selected %1 was successfully deleted."
+    "value": "The selected <b class='resource'>%1</b> was successfully deleted."
   },
   {
     "name": "FAILED-REQUEST",
@@ -282,17 +282,17 @@
   {
     "name": "FAILED-DELETING",
     "subCatalog": "Messages",
-    "value": "The deleting of the selected %1 is failed."
+    "value": "The deleting of the selected <b class='resource'>%1</b> is failed."
   },
   {
     "name": "FAILED-ADDING",
     "subCatalog": "Messages",
-    "value": "The new %1 adding is failed."
+    "value": "The new <b class='resource'>%1</b> adding is failed."
   },
   {
     "name": "FAILED-UPDATING",
     "subCatalog": "Messages",
-    "value": "The update of the selected %1 is failed."
+    "value": "The update of the selected <b class='resource'>%1</b> is failed."
   },
   {
     "name": "FAILED-LOAD",

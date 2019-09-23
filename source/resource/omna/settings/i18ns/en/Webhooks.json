@@ -3,5 +3,10 @@
     "name": "MODULE-REFERENCE",
     "subCatalog": "Labels",
     "value": "Webhooks"
+  },
+  {
+    "name": "SINGLE-ITEM-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Webhook"
   }
 ]

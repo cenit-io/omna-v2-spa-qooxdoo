@@ -3,5 +3,10 @@
     "name": "MODULE-REFERENCE",
     "subCatalog": "Labels",
     "value": "Flows"
+  },
+  {
+    "name": "SINGLE-ITEM-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Flow"
   }
 ]

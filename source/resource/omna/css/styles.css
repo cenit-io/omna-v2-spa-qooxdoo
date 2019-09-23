@@ -13,3 +13,8 @@
     text-overflow: inherit;
     white-space: normal;
 }
+
+b.resource {
+    text-transform: lowercase;
+    font-weight: bold;
+}

@@ -1,6 +1,6 @@
 qx.Class.define("omna.form.dialog.Import", {
     extend: omna.dialog.Confirm,
-    include: [omna.mixin.MWitchManagement],
+    include: [omna.mixin.MWithManagement],
 
     statics: {
         show: function (management, integration, callback, scope) {

@@ -1,4 +1,4 @@
-qx.Mixin.define('omna.mixin.MWitchManagement', {
+qx.Mixin.define('omna.mixin.MWithManagement', {
 
     properties: {
         management: {

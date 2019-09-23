@@ -5,6 +5,11 @@
     "value": "Tenants"
   },
   {
+    "name": "SINGLE-ITEM-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Tenant"
+  },
+  {
     "name": "is_ready_to_omna",
     "subCatalog": "Labels",
     "value": "Is ready"

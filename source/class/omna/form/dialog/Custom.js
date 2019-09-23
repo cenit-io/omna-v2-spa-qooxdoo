@@ -1,6 +1,6 @@
 qx.Class.define("omna.form.dialog.Custom", {
     extend: omna.dialog.AbstractForm,
-    include: [omna.mixin.MWitchManagement],
+    include: [omna.mixin.MWithManagement],
 
     /**
      * Constructor

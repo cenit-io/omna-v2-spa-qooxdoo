@@ -5,6 +5,11 @@
     "value": "Tasks"
   },
   {
+    "name": "SINGLE-ITEM-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Task"
+  },
+  {
     "name": "progress",
     "subCatalog": "Labels",
     "value": "Progress"
