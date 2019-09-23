@@ -19,6 +19,14 @@
       {
         "name": "status",
         "showInGrid": true,
+        "widgetClass": "omna.form.field.LocalSelectBox",
+        "options": [
+          "pending",
+          "running",
+          "paused",
+          "completed",
+          "failed"
+        ],
         "includeInSearch": true,
         "gridColumnWidth": 100,
         "gridRendererStyle": {
@@ -59,7 +67,9 @@
       },
       {
         "name": "description",
+        "widgetClass": "omna.form.field.TextField",
         "showInGrid": true,
+        "includeInSearch": true,
         "cellRendererClass": "omna.table.cellrenderer.LongText"
       },
       {
