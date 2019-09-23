@@ -64,19 +64,19 @@ qx.Class.define("omna.I18n", {
          * @return {String|boolean}
          */
         trans: function (catalog, subCatalog, name, args) {
-            var aux, create = true;
+            var aux, create = true, leng = arguments.length;
 
-            if (arguments.length == 1) {
-                aux = catalog.split('.');
-                name = aux.pop();
-                subCatalog = aux.pop() || 'Labels';
-                catalog = aux.pop() || 'Common';
-            } else if (arguments.length == 2) {
+            if (leng === 1 || (leng === 2 && !qx.lang.Type.isString(subCatalog))) {
                 args = subCatalog;
                 aux = catalog.split('.');
                 name = aux.pop();
                 subCatalog = aux.pop() || 'Labels';
                 catalog = aux.pop() || 'Common';
+            } else if (leng === 2 || (leng === 3 && !qx.lang.Type.isString(name))) {
+                args = name;
+                name = subCatalog;
+                subCatalog = catalog;
+                catalog = 'Common';
             }
 
             if (!this.__loadedCatalogs[catalog]) this.__load(catalog);

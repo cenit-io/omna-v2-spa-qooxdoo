@@ -25,16 +25,15 @@ qx.Mixin.define('omna.mixin.MSettings', {
 
             if (!omna['settings'][id]) {
                 url = url.match(/\/source\//) ? url + '?tc=' + (new Date()).getTime() : url;
-                var req = new qx.io.request.Xhr(url);
+                var req = new omna.request.Xhr(url);
 
                 req.setAsync(false);
 
-                req.addListenerOnce('success', function (e) {
+                req.addListener('success', function (e) {
                     omna['settings'][id] = e.getTarget().getResponse();
                 }, this);
 
-                req.addListenerOnce('statusError', function (e) {
-                    // Send message to logs
+                req.addListener('statusError', function (e) {
                     q.messaging.emit("Application", "error", this.tr("Failed load setting from: '%1'.", url));
                 }, this);
 
@@ -50,5 +49,4 @@ qx.Mixin.define('omna.mixin.MSettings', {
             }
         }
     }
-})
-;
+});

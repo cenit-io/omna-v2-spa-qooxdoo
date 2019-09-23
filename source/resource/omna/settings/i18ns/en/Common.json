@@ -275,6 +275,11 @@
     "value": "The selected %1 was successfully deleted."
   },
   {
+    "name": "FAILED-REQUEST",
+    "subCatalog": "Messages",
+    "value": "Failed connection with server."
+  },
+  {
     "name": "FAILED-DELETING",
     "subCatalog": "Messages",
     "value": "The deleting of the selected %1 is failed."

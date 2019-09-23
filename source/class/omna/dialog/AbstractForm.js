@@ -113,9 +113,7 @@ qx.Class.define("omna.dialog.AbstractForm", {
     destruct: function () {
         var name, items = this._form.getItems();
 
-        for (name in items) {
-            items[name].destroy();
-        }
+        for (name in items) items[name].destroy();
 
         this._form.getButtons().forEach(function (item) {
             item.destroy();

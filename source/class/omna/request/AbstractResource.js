@@ -3,7 +3,7 @@
  */
 qx.Class.define("omna.request.AbstractResource", {
     type: "abstract",
-    extend: qx.io.request.Xhr,
+    extend: qx.core.Object,
     include: [qx.locale.MTranslation],
 
     statics: {
@@ -96,19 +96,15 @@ qx.Class.define("omna.request.AbstractResource", {
     properties: {
         serviceBasePath: {
             check: 'String'
+        },
+
+        async: {
+            check: 'Boolean',
+            init: true
         }
     },
 
     members: {
-        /**
-         * Create XHR transport.
-         *
-         * @return {qx.bom.request.Xhr} Transport.
-         */
-        _createTransport: function () {
-            return new qx.bom.request.Xhr();
-        },
-
         _getServiceUrl: function (url) {
             if (!url.match(/^https?:/)) url = this._getServerBaseUrl() + '/' + url;
 
@@ -155,40 +151,26 @@ qx.Class.define("omna.request.AbstractResource", {
 
             pPath = this._getServicePath(pPath);
 
-            this.setUrl(this._getServiceUrl(pPath));
-            this.setMethod(pMethod);
+            var request = new omna.request.Xhr(this._getServiceUrl(pPath), pMethod);
 
             // Set request headers
-            this.setRequestHeader("Accept", "application/json");
-            if (pMethod.match(/^(POST|PUT)$/)) this.setRequestHeader("Content-Type", "application/json");
+            request.setRequestHeader("Accept", "application/json");
+            if (pMethod.match(/^(POST|PUT)$/)) request.setRequestHeader("Content-Type", "application/json");
 
             // Set params
-            this.resetRequestData();
-            this.setRequestData(this._signRequest(pPath, pData || {}));
-
-            // Send cookies in request header
-            try {
-                //this.getTransport().__nativeXhr.withCredentials = true
-            } catch ( e ) {
-                console.error(e);
-            }
+            request.resetRequestData();
+            request.set({ requestData: this._signRequest(pPath, pData || {}), async: this.getAsync() });
 
             // Listener events
-            this.addListenerOnce("success", function (e) {
-                // !this.isAsync() && omna.dialog.Waiting.release();
-                omna.dialog.Waiting.release();
+            request.addListener("success", function (e) {
                 this.onSuccess(e, pCallBack, pScope);
             }, this);
 
-            this.addListenerOnce("statusError", function (e) {
-                // !this.isAsync() && omna.dialog.Waiting.release();
-                omna.dialog.Waiting.release();
+            request.addListener("statusError", function (e) {
                 this.onStatusError(e, pCallBack, pScope);
             }, this);
 
-            this.addListenerOnce("error", this.onError, this);
-
-            this.send();
+            request.send();
         },
 
         find: function (pId, pCallBack, pScope) {
@@ -300,16 +282,6 @@ qx.Class.define("omna.request.AbstractResource", {
 
             pCallBack && pCallBack.call(pScope || this, response, e);
             q.messaging.emit("Application", "error", response.message);
-        },
-
-        /**
-         * Fired when request completes with error.
-         */
-        onError: function (e) {
-            // Send message to logs
-            q.messaging.emit("Application", "error", this.tr("Failed connection with server."));
-            // !this.isAsync() && omna.dialog.Waiting.release();
-            omna.dialog.Waiting.release();
         }
     }
 });

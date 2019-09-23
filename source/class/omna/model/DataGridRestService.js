@@ -7,9 +7,14 @@ qx.Class.define("omna.model.DataGridRestService", {
 
     construct: function (fields, settings, filters) {
         this.base(arguments);
-        this.setBlockSize(settings.blockSize || 20);
-        this.setMaxCachedBlockCount(settings.maxCachedBlockCount || 5);
-        this.setFilters(filters);
+        this.set({
+            blockSize: settings.blockSize || 20,
+            maxCachedBlockCount: settings.maxCachedBlockCount || 5,
+            requestManagementClass: settings.requestManagementClass,
+            serviceBasePath: settings.serviceBasePath,
+            filters: filters
+        });
+
         this.__widgetsClass = new Map();
 
         var i18nCatalog = settings.i18n,
@@ -25,14 +30,6 @@ qx.Class.define("omna.model.DataGridRestService", {
         }, this);
 
         this.setColumns(columnNames, columnIDs);
-
-        if (settings.requestManagementClass) {
-            var RequestManagementClass = qx.Class.getByName(settings.requestManagementClass);
-            this.setRequestManagement(new RequestManagementClass())
-        } else {
-            this.setRequestManagement(new omna.request.Customs(settings.serviceBasePath))
-        }
-
         this.addListener('changeFilter', this.reloadData, this);
     },
 
@@ -43,24 +40,43 @@ qx.Class.define("omna.model.DataGridRestService", {
             event: 'changeFilter'
         },
 
-        requestManagement: {
-            check: 'omna.request.AbstractResource'
+        requestManagementClass: {
+            nullable: true
+        },
+
+        serviceBasePath: {
+            nullable: true
         }
     },
 
     members: {
+        getRequestManagement: function () {
+            var RequestManagementClass = this.getRequestManagementClass();
+
+            if (RequestManagementClass) {
+                RequestManagementClass = qx.Class.getByName(RequestManagementClass);
+                return new RequestManagementClass()
+            }
+
+            return new omna.request.Customs(this.getServiceBasePath())
+        },
+
         _loadRowCount: function () {
-            this.getRequestManagement().count(this.getFilters(), function (response) {
+            var requestManagement = this.getRequestManagement();
+
+            requestManagement.count(this.getFilters(), function (response) {
                 if (response.successful) this._onRowCountLoaded(response.pagination.total);
+                requestManagement.dispose()
             }, this);
 
             this._onRowCountLoaded(0);
         },
 
         _loadRowData: function (pFrom, pTo) {
-            this.getRequestManagement().findRange(pFrom, pTo, this.getOrder(), this.getFilters(), function (response) {
-                if (response.successful) {
+            var requestManagement = this.getRequestManagement();
 
+            requestManagement.findRange(pFrom, pTo, this.getOrder(), this.getFilters(), function (response) {
+                if (response.successful) {
                     response.data.forEach(function (record, index) {
                         Object.keys(record).forEach(function (field) {
                             record[field] = this.parseValue(field, record[field]);
@@ -69,6 +85,7 @@ qx.Class.define("omna.model.DataGridRestService", {
 
                     this._onRowDataLoaded(response.data);
                 }
+                requestManagement.dispose()
             }, this);
         },
 

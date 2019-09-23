@@ -17,9 +17,9 @@ qx.Class.define("omna.action.Remove", {
 
             omna.dialog.Confirm.show(msg, function (response) {
                 if (response === 'yes') {
-                    var request = management.getRequestManagement();
+                    var requestManagement = management.getRequestManagement();
 
-                    request.remove(this.getSelectedItem().id, function (response) {
+                    requestManagement.remove(this.getSelectedItem().id, function (response) {
                         if (response.successful) {
                             msg = this.i18nTrans('Messages', 'SUCCESSFUL-DELETING', [itemLabel]);
                             q.messaging.emit('Application', 'good', msg);
@@ -28,6 +28,8 @@ qx.Class.define("omna.action.Remove", {
                             msg = this.i18nTrans('Messages', 'FAILED-DELETING', [itemLabel]);
                             q.messaging.emit('Application', 'error', msg);
                         }
+
+                        requestManagement.dispose()
                     }, this);
                 }
             }, this);

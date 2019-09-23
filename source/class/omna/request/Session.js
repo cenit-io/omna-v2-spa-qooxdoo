@@ -52,7 +52,7 @@ qx.Class.define("omna.request.Session", {
                 appUrl = this.getAppBaseUrl();
 
             if (params.queryKey.code) {
-                var request = new qx.io.request.Xhr(serverBaseUrl + '/get_access_token', 'POST');
+                var request = new omna.request.Xhr(serverBaseUrl + '/get_access_token', 'POST');
 
                 request.setRequestData({ code: params.queryKey.code });
                 request.setRequestHeader("Accept", "application/json");
