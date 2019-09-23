@@ -10,8 +10,8 @@ qx.Class.define("omna.model.DataGridRestService", {
         this.set({
             blockSize: settings.blockSize || 20,
             maxCachedBlockCount: settings.maxCachedBlockCount || 5,
-            requestManagementClass: settings.requestManagementClass,
-            serviceBasePath: settings.serviceBasePath,
+            requestManagementClass: settings.requestManagementClass || null,
+            serviceBasePath: settings.serviceBasePath || null,
             filters: filters
         });
 

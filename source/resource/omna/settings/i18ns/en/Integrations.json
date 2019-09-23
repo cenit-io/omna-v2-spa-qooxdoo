@@ -88,5 +88,10 @@
     "name": "FAILED-IMPORT",
     "subCatalog": "Messages",
     "value": "The creation of a task to import xx of the selected integration has failed."
+  },
+  {
+    "name": "FAILED-LOADING-CHANNELS",
+    "subCatalog": "Messages",
+    "value": "The loading of the integration channels has failed."
   }
 ]

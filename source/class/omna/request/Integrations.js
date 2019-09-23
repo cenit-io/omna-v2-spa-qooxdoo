@@ -18,7 +18,7 @@ qx.Class.define("omna.request.Integrations", {
                     if (response.successful) {
                         qx.module.Storage.setSessionItem(cacheId, response);
                     } else {
-                        var msg = omna.I18n.trans('Orders', 'Messages', 'FAILED-INTEGRATION-CHANNELS');
+                        var msg = omna.I18n.trans('Integrations', 'Messages', 'FAILED-LOADING-CHANNELS');
                         q.messaging.emit('Application', 'error', msg)
                     }
 
@@ -41,7 +41,7 @@ qx.Class.define("omna.request.Integrations", {
                 if (response.successful) {
                     callBack.call(scope, response);
                 } else {
-                    var msg = omna.I18n.trans('Orders', 'Messages', 'FAILED-INTEGRATION-CHANNELS');
+                    var msg = omna.I18n.trans('Integrations', 'Messages', 'FAILED-UNAUTHORIZE');
                     q.messaging.emit('Application', 'error', msg)
                 }
             }, this);
@@ -53,7 +53,7 @@ qx.Class.define("omna.request.Integrations", {
                 if (response.successful) {
                     callBack.call(scope, response);
                 } else {
-                    var msg = omna.I18n.trans('Orders', 'Messages', 'FAILED-INTEGRATION-CHANNELS');
+                    var msg = omna.I18n.trans('Integrations', 'Messages', 'FAILED-IMPORT');
                     q.messaging.emit('Application', 'error', msg)
                 }
             }, this);
