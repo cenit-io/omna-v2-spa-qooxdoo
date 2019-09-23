@@ -19,16 +19,10 @@ qx.Class.define("omna.action.integration.Import", {
                             msg;
 
                         request.doImportTask(item.id, type, function (response) {
-                            if (response.successful) {
-                                msg = this.i18nTrans('Messages', 'SUCCESSFUL-IMPORT', [type]);
-                                q.messaging.emit('Application', 'good', msg);
-                            } else {
-                                msg = this.i18nTrans('Messages', 'FAILED-IMPORT', [type]);
-                                q.messaging.emit('Application', 'error', msg);
-                            }
+                            msg = this.i18nTrans('Messages', 'SUCCESSFUL-IMPORT', [type]);
+                            q.messaging.emit('Application', 'good', msg);
                         }, this);
                     }
-                    console.log(response,);
                 }
             }, this);
         },
