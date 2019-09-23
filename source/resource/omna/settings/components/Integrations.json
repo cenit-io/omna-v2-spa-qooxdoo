@@ -4,7 +4,6 @@
     "i18n": "Integrations",
     "widgetClass": "omna.management.DataGridRestService",
     "requestManagementClass": "omna.request.Integrations",
-    "formHeight": 250,
     "baseParams": {
       "with_details": true
     },

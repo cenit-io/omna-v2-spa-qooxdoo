@@ -9,7 +9,6 @@ qx.Class.define("omna.management.DataGridRestService", {
             i18n: 'Common',
             serviceBasePath: '/serviceBasePath',
             formWidth: 500,
-            formHeight: 300,
             edge: 'center',
             region: 100,
             rowHeight: 28,

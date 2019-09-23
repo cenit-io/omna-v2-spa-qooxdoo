@@ -15,7 +15,6 @@ qx.Class.define("omna.form.dialog.Search", {
 
         this.set({
             management: management,
-            height: settings.formHeight,
             width: settings.formWidth
         });
 
