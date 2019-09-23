@@ -5,7 +5,7 @@ qx.Class.define('omna.action.tenant.Startup', {
     extend: omna.action.AbstractActionWithSelectedItem,
 
     construct: function (management) {
-        this.base(arguments, management, 'print', 'icon/16/actions/dialog-apply.png');
+        this.base(arguments, management, 'startup', 'icon/16/actions/dialog-apply.png');
     },
 
     members: {
@@ -21,14 +21,16 @@ qx.Class.define('omna.action.tenant.Startup', {
 
                     request.doStartup(item, function (response) {
                         if (response.successful) {
-                            q.messaging.emit('Application', 'good', this.i18nTrans('Messages', 'SUCCESSFUL-REIMPORT'));
-                            this.emitMessaging('execute-reimport', { index: this.getSelectedIndex() });
-                        } else {
-                            q.messaging.emit('Application', 'error', this.i18nTrans('Messages', 'FAILED-REIMPORT'));
+                            // TODO: Open task details
                         }
                     }, this);
                 }
             }, this);
+        },
+
+        onSelectionChange: function (data) {
+            this.base(arguments, data);
+            this.setEnabled(data.customData && !data.customData.item.is_ready_to_omna ? true : false);
         }
     }
 });

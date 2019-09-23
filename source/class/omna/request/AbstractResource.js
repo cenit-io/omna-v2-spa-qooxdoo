@@ -127,25 +127,25 @@ qx.Class.define("omna.request.AbstractResource", {
             return qx.util.Uri.getAbsolute('').replace(/[\?#].*/, '');
         },
 
-        _signRequest: function (pPath, pData) {
+        _signRequest: function (pPath, pData, token, secret) {
             var credentials = omna.request.Session.getCredentials();
 
             pData = qx.lang.Object.clone(pData) || {};
 
             // Add token and timestamp to URL parameters.
-            Object.assign(pData, { token: credentials.token, timestamp: Date.now() });
+            Object.assign(pData, { token: token || credentials.token, timestamp: Date.now() });
 
             // Join the service path and the ordered sequence of characters, excluding the quotes,
             // corresponding to the JSON of the parameters that will be sent.
             var msg = pPath + JSON.stringify(pData).replace(/["']/g, '').split('').sort().join('');
 
             // Generate the corresponding hmac parameter using the js-sha256 or similar library.
-            pData.hmac = sha256.hmac.update(credentials.secret, msg).hex();
+            pData.hmac = sha256.hmac.update(secret || credentials.secret, msg).hex();
 
             return pData;
         },
 
-        submit: function (pMethod, pPath, pData, pCallBack, pScope) {
+        submit: function (pMethod, pPath, pData, pCallBack, pScope, token, secret) {
             // !this.isAsync() && omna.dialog.Waiting.activate();
             omna.dialog.Waiting.activate();
 
@@ -159,7 +159,7 @@ qx.Class.define("omna.request.AbstractResource", {
 
             // Set params
             request.resetRequestData();
-            request.set({ requestData: this._signRequest(pPath, pData || {}), async: this.getAsync() });
+            request.set({ requestData: this._signRequest(pPath, pData || {}, token, secret), async: this.getAsync() });
 
             // Listener events
             request.addListener("success", function (e) {

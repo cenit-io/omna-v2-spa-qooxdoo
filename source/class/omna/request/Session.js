@@ -12,6 +12,11 @@ qx.Class.define("omna.request.Session", {
             return omna.request.Session.getInstance().getProfile();
         },
 
+
+        setProfile: function (profile) {
+            return omna.request.Session.getInstance().setProfile(profile);
+        },
+
         isAuthenticated: function () {
             return omna.request.Session.getInstance().isAuthenticated();
         }
@@ -27,7 +32,6 @@ qx.Class.define("omna.request.Session", {
     },
 
     members: {
-
         getServerBaseUrl: function () {
             return qx.core.Init.getApplication().getServerBaseUrl();
         },
@@ -91,6 +95,9 @@ qx.Class.define("omna.request.Session", {
                 qx.module.Storage.clearSession();
             } else {
                 qx.module.Storage.setSessionItem('profile', value);
+
+                q.messaging.emit("Application", "good", this.tr("Successful login"));
+                q.messaging.emit("Application", "update-session", { action: "login", profile: value });
             }
         },
 
@@ -102,12 +109,8 @@ qx.Class.define("omna.request.Session", {
          * Fired when request completes without error and transport’s status indicates success.
          */
         onLoginSuccess: function (e) {
-            var response = e.getTarget().getResponse();
-
-            this.setProfile(response.data);
-
-            q.messaging.emit("Application", "good", this.tr("Successful login"));
-            q.messaging.emit("Application", "update-session", { action: "login", profile: response });
+            this.setProfile(e.getTarget().getResponse().data);
+            window.location = this.getAppBaseUrl()
         },
 
         /**

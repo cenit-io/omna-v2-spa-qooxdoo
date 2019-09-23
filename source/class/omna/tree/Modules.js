@@ -125,7 +125,9 @@ qx.Class.define("omna.tree.Modules", {
          * @param e {qx.event.type.Mouse}
          */
         onClick: function (e) {
-            q.messaging.emit("Application", "open-module", this.getSelectedNodes()[0].columnData[0]);
+            var node = this.getSelectedNodes()[0];
+
+            if (node) q.messaging.emit("Application", "open-module", node.columnData[0]);
         },
 
         /**

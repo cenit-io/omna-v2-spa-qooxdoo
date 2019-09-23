@@ -12,6 +12,8 @@
  * @require(omna.action.Separator)
  * @require(omna.action.order.Documents)
  * @require(omna.action.order.Print)
+ * @require(omna.action.tenant.Switch)
+ * @require(omna.action.tenant.Startup)
  *
  ** Cell Renderer
  * @require(omna.table.cellrenderer.Integration)

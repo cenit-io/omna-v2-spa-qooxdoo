@@ -11,6 +11,8 @@
       "omna.action.Reload",
       "omna.action.Separator",
       "omna.action.Add",
+      "omna.action.tenant.Switch",
+      "omna.action.tenant.Startup",
       "omna.action.Remove",
       "omna.action.Separator",
       "omna.action.Search"

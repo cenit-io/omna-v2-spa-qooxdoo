@@ -59,18 +59,7 @@ qx.Class.define("omna.Application", {
             }
 
             if (omna.request.Session.isAuthenticated()) {
-                var root = this.getRoot();
-
-                root.setBlockerOpacity(0.6);
-                root.setBlockerColor("black");
-
-                // Create main layout
-                var dockLayout = new qx.ui.layout.Dock();
-                var dockLayoutComposite = new qx.ui.container.Composite(dockLayout);
-                dockLayout.setSort("y");
-                root.add(dockLayoutComposite, { edge: 0 });
-
-                this.__doLayouts(dockLayoutComposite);
+                this.__doLayouts();
             } else {
                 omna.request.Session.getInstance().login();
             }
@@ -82,7 +71,6 @@ qx.Class.define("omna.Application", {
             q.messaging.on("Application", "warn", this.onTipWarning, this);
             q.messaging.on("Application", "warning", this.onTipWarning, this);
             q.messaging.on("Application", "error", this.onTipError, this);
-            q.messaging.on("Application", "update-session", this.onUpdateSession, this);
 
             // Set application title in html page.
             var qTitle = document.getElementsByTagName('title')[0];
@@ -109,18 +97,29 @@ qx.Class.define("omna.Application", {
         /**
          * Crate layouts
          *
-         * @param dockLayoutComposite {qx.ui.container.Composite}
          * @private
          */
-        __doLayouts: function (dockLayoutComposite) {
+        __doLayouts: function () {
+            var root = this.getRoot();
+
+            root.setBlockerOpacity(0.6);
+            root.setBlockerColor("black");
+
+            // Create main layout
+            var dockLayout = new qx.ui.layout.Dock(),
+                dockLayoutComposite = new qx.ui.container.Composite(dockLayout);
+
+            dockLayout.setSort("y");
+            root.add(dockLayoutComposite, { edge: 0 });
+
             // Create header
             this.__headerBox = omna.layout.Header.getInstance();
             dockLayoutComposite.add(this.__headerBox, { edge: "north" });
 
-
             // Create horizontal splitpane for left, main and right boxs
             var mainBoxWidth = qx.bom.Viewport.getWidth(),
                 leftSplitPane = new qx.ui.splitpane.Pane();
+
             dockLayoutComposite.add(leftSplitPane, { edge: "center" });
 
             // Create left box
@@ -175,16 +174,6 @@ qx.Class.define("omna.Application", {
 
         onTipError: function (data) {
             omna.ToolTip.error(this.__parseToolTipMsg(data.params));
-        },
-
-        /**
-         * Execute when user login or logout.
-         * Open login dialog when user is logout.
-         *
-         * @param data {Map} Login or logout data.
-         */
-        onUpdateSession: function (data) {
-            window.location = omna.request.Session.getInstance().getAppBaseUrl();
         }
     }
 
