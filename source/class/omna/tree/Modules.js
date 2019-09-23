@@ -23,9 +23,6 @@ qx.Class.define("omna.tree.Modules", {
         // Add Listener events.
         this.addListener('keyup', this.onKeyup, this);
         this.addListener("click", this.onClick, this);
-
-        // Create route handler for messaging channels.
-        q.messaging.on("Application", "update-session", this.onUpdateSession, this);
     },
 
     members: {
@@ -81,16 +78,6 @@ qx.Class.define("omna.tree.Modules", {
                 }
                 return true;
             });
-        },
-
-        /**
-         * Fired after session is login or logout.
-         *
-         * @param data {Object} Message data with response info from login or logout action.
-         */
-        onUpdateSession: function (data) {
-            this.getDataModel().clearData();
-            this.loadModules();
         },
 
         /**
