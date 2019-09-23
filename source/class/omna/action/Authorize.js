@@ -22,9 +22,7 @@ qx.Class.define("omna.action.Authorize", {
 
                     if (isAuthorized) {
                         request.unauthorize(selectedItemId, function (response) {
-                            msg = this.i18nTrans('Messages', 'SUCCESSFUL-UNAUTHORIZE');
-                            q.messaging.emit('Application', 'good', msg);
-                            this.emitMessaging('execute-reload');
+                            if (response.successful) this.emitMessaging('execute-reload');
                         }, this)
                     } else {
                         request.authorize(selectedItemId);

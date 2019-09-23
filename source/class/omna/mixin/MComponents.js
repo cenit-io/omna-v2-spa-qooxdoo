@@ -26,6 +26,7 @@
  * @require(omna.request.Orders)
  * @require(omna.request.Products)
  * @require(omna.request.Tasks)
+ * @require(omna.request.Tenants)
  *
  ** Management components
  * @require(omna.management.DataGridRestService)

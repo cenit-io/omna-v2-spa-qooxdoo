@@ -15,12 +15,10 @@ qx.Class.define("omna.action.integration.Import", {
                     if (response === 'yes') {
                         var request = new omna.request.Integrations(),
                             item = this.getSelectedItem(),
-                            type = dlg.getImportType(),
-                            msg;
+                            type = dlg.getImportType();
 
                         request.doImportTask(item.id, type, function (response) {
-                            msg = this.i18nTrans('Messages', 'SUCCESSFUL-IMPORT', [type]);
-                            q.messaging.emit('Application', 'good', msg);
+                            // TODO: Open task details
                         }, this);
                     }
                 }

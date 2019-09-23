@@ -22,11 +22,11 @@ qx.Class.define("omna.action.Add", {
         onAccept: function (e) {
             var management = this.getManagement(),
                 itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
-                requestManagement = management.getRequestManagement(),
+                request = management.getRequestManagement(),
                 dlg = e.getTarget(),
                 data = e.getData();
 
-            requestManagement.create(data, function (response) {
+            request.create(data, function (response) {
                 if (response.successful) {
                     q.messaging.emit(
                         'Application', 'good', this.i18nTrans('Messages', 'SUCCESSFUL-ADDING', [itemLabel])
@@ -38,7 +38,6 @@ qx.Class.define("omna.action.Add", {
                         'Application', 'error', this.i18nTrans('Messages', 'FAILED-ADDING', [itemLabel])
                     );
                 }
-                requestManagement.dispose();
             }, this);
         }
     }

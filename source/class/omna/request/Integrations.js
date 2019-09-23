@@ -21,7 +21,6 @@ qx.Class.define("omna.request.Integrations", {
                         var msg = omna.I18n.trans('Integrations', 'Messages', 'FAILED-LOADING-CHANNELS');
                         q.messaging.emit('Application', 'error', msg)
                     }
-
                     callBack.call(scope, response);
                 }, this);
             }
@@ -38,24 +37,32 @@ qx.Class.define("omna.request.Integrations", {
         unauthorize: function (id, callBack, scope) {
             // Call remote service
             this.submit("DELETE", id + '/authorize', null, function (response) {
+                var msg;
+
                 if (response.successful) {
-                    callBack.call(scope, response);
+                    msg = omna.I18n.trans('Integrations', 'Messages', 'SUCCESSFUL-UNAUTHORIZE');
+                    q.messaging.emit('Application', 'good', msg);
                 } else {
-                    var msg = omna.I18n.trans('Integrations', 'Messages', 'FAILED-UNAUTHORIZE');
+                    msg = omna.I18n.trans('Integrations', 'Messages', 'FAILED-UNAUTHORIZE');
                     q.messaging.emit('Application', 'error', msg)
                 }
+                callBack.call(scope, response);
             }, this);
         },
 
         doImportTask: function (id, type, callBack, scope) {
             // Call remote service
             this.submit("GET", id + '/' + type + '/import', null, function (response) {
+                var msg;
+
                 if (response.successful) {
-                    callBack.call(scope, response);
+                    msg = omna.I18n.trans('Integrations', 'Messages', 'SUCCESSFUL-IMPORT', [type]);
+                    q.messaging.emit('Application', 'good', msg);
                 } else {
-                    var msg = omna.I18n.trans('Integrations', 'Messages', 'FAILED-IMPORT');
+                    msg = omna.I18n.trans('Integrations', 'Messages', 'FAILED-IMPORT');
                     q.messaging.emit('Application', 'error', msg)
                 }
+                callBack.call(scope, response);
             }, this);
         }
     }

@@ -20,12 +20,7 @@ qx.Class.define("omna.action.ReImport", {
                         item = this.getSelectedItem();
 
                     request.reImport(item, function (response) {
-                        if (response.successful) {
-                            q.messaging.emit('Application', 'good', this.i18nTrans('Messages', 'SUCCESSFUL-REIMPORT'));
-                            this.emitMessaging('execute-reimport', { index: this.getSelectedIndex() });
-                        } else {
-                            q.messaging.emit('Application', 'error', this.i18nTrans('Messages', 'FAILED-REIMPORT'));
-                        }
+                        // TODO: Open task details
                     }, this);
                 }
             }, this);

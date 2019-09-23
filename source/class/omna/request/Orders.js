@@ -52,8 +52,13 @@ qx.Class.define("omna.request.Orders", {
 
             // Call remote service
             this.submit("GET", path, null, function (response) {
-                if (!response.successful) {
-                    var msg = omna.I18n.trans('Orders', 'Messages', 'FAILED-RE-IMPORT-ORDER', [response.message]);
+                var msg;
+
+                if (response.successful) {
+                    msg = omna.I18n.trans('Orders', 'Messages', 'SUCCESSFUL-REIMPORT');
+                    q.messaging.emit('Application', 'good', msg);
+                } else {
+                    msg = omna.I18n.trans('Orders', 'Messages', 'FAILED-REIMPORT', [response.message]);
                     q.messaging.emit('Application', 'error', msg)
                 }
 

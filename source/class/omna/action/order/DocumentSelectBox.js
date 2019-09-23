@@ -19,8 +19,10 @@ qx.Class.define('omna.action.order.DocumentSelectBox', {
     members: {
         __applyOrder: function (currentValue, previousValue) {
             if (!previousValue || previousValue.integration.channel !== currentValue.integration.channel) {
-                this.getChildrenContainer().removeAll();
                 var request = new omna.request.Orders();
+
+                this.getChildrenContainer().removeAll();
+
                 request.getOrderDocTypes(currentValue, function (response) {
                     if (response.successful) {
                         response.data.forEach(function (item) {
@@ -29,8 +31,6 @@ qx.Class.define('omna.action.order.DocumentSelectBox', {
                             );
                         }, this);
                     }
-
-                    request.dispose()
                 }, this);
             } else {
                 this.fireDataEvent('changeSelection', this.getSelection())

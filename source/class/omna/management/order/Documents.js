@@ -80,8 +80,6 @@ qx.Class.define("omna.management.order.Documents", {
                         });
                         this.__docuemnetTip.show();
                     }
-
-                    request.dispose()
                 }, this);
             }
         }

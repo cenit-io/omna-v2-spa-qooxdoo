@@ -62,20 +62,19 @@ qx.Class.define("omna.model.DataGridRestService", {
         },
 
         _loadRowCount: function () {
-            var requestManagement = this.getRequestManagement();
+            var request = this.getRequestManagement();
 
-            requestManagement.count(this.getFilters(), function (response) {
+            request.count(this.getFilters(), function (response) {
                 if (response.successful) this._onRowCountLoaded(response.pagination.total);
-                requestManagement.dispose()
             }, this);
 
             this._onRowCountLoaded(0);
         },
 
         _loadRowData: function (pFrom, pTo) {
-            var requestManagement = this.getRequestManagement();
+            var request = this.getRequestManagement();
 
-            requestManagement.findRange(pFrom, pTo, this.getOrder(), this.getFilters(), function (response) {
+            request.findRange(pFrom, pTo, this.getOrder(), this.getFilters(), function (response) {
                 if (response.successful) {
                     response.data.forEach(function (record, index) {
                         Object.keys(record).forEach(function (field) {
@@ -85,7 +84,6 @@ qx.Class.define("omna.model.DataGridRestService", {
 
                     this._onRowDataLoaded(response.data);
                 }
-                requestManagement.dispose()
             }, this);
         },
 

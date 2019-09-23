@@ -3,7 +3,7 @@
     "id": "tenants",
     "i18n": "Tenants",
     "widgetClass": "omna.management.DataGridRestService",
-    "serviceBasePath": "tenants",
+    "requestManagementClass": "omna.request.Tenants",
     "baseParams": {
       "with_details": true
     },
