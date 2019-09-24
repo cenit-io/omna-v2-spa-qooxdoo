@@ -27,6 +27,13 @@ qx.Class.define("omna.action.Search", {
             for (var i in data) if (data[i] === undefined) delete data[i];
 
             this.emitMessaging('execute-search', { dlg: e.getTarget() }, data);
+
+            if (qx.lang.Object.isEmpty(data)) {
+                this.resetTextColor();
+                this.resetFont()
+            } else {
+                this.set({textColor: 'highlight', font: 'bold'});
+            }
         }
     }
 });
