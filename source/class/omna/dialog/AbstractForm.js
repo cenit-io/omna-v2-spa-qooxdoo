@@ -79,9 +79,7 @@ qx.Class.define("omna.dialog.AbstractForm", {
         initializeItems: function () {
             var name, items = this._form.getItems();
 
-            for (name in items) {
-                items[name].initialize && items[name].initialize();
-            }
+            for (name in items) items[name].initialize && items[name].initialize();
         },
 
         getData: function () {
@@ -89,20 +87,14 @@ qx.Class.define("omna.dialog.AbstractForm", {
                 name, items = this._form.getItems();
 
             // Remove disabled items.
-            for (name in items) {
-                if (!items[name].isEnabled()) {
-                    delete data[name]
-                }
-            }
+            for (name in items) if (!items[name].isEnabled()) delete data[name];
 
             return data;
         },
 
         setData: function (data, redefineResetter) {
             qx.Class.getProperties(this._model.constructor).forEach(function (name) {
-                if (typeof data[name] != 'undefined') {
-                    this._model.set(name, data[name]);
-                }
+                if (typeof data[name] != 'undefined') this._model.set(name, data[name]);
             }, this);
 
             redefineResetter && this.redefineResetter();
