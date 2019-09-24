@@ -127,145 +127,145 @@ qx.Class.define("omna.request.AbstractResource", {
             return qx.util.Uri.getAbsolute('').replace(/[\?#].*/, '');
         },
 
-        _signRequest: function (pPath, pData, token, secret) {
+        _signRequest: function (path, data, token, secret) {
             var credentials = omna.request.Session.getCredentials();
 
-            pData = qx.lang.Object.clone(pData) || {};
+            data = qx.lang.Object.clone(data) || {};
 
             // Add token and timestamp to URL parameters.
-            Object.assign(pData, { token: token || credentials.token, timestamp: Date.now() });
+            Object.assign(data, { token: token || credentials.token, timestamp: Date.now() });
 
             // Join the service path and the ordered sequence of characters, excluding the quotes,
             // corresponding to the JSON of the parameters that will be sent.
-            var msg = pPath + JSON.stringify(pData).replace(/["']/g, '').split('').sort().join('');
+            var msg = path + JSON.stringify(data).replace(/["']/g, '').split('').sort().join('');
 
             // Generate the corresponding hmac parameter using the js-sha256 or similar library.
-            pData.hmac = sha256.hmac.update(secret || credentials.secret, msg).hex();
+            data.hmac = sha256.hmac.update(secret || credentials.secret, msg).hex();
 
-            return pData;
+            return data;
         },
 
-        submit: function (pMethod, pPath, pData, pCallBack, pScope, token, secret) {
+        submit: function (method, path, data, callBack, scope, token, secret) {
             // !this.isAsync() && omna.dialog.Waiting.activate();
             omna.dialog.Waiting.activate();
 
-            pPath = this._getServicePath(pPath);
+            path = this._getServicePath(path);
 
-            var request = new omna.request.Xhr(this._getServiceUrl(pPath), pMethod);
+            var request = new omna.request.Xhr(this._getServiceUrl(path), method);
 
             // Set request headers
             request.setRequestHeader("Accept", "application/json");
-            if (pMethod.match(/^(POST|PUT)$/)) request.setRequestHeader("Content-Type", "application/json");
+            if (method.match(/^(POST|PUT)$/)) request.setRequestHeader("Content-Type", "application/json");
 
             // Set params
             request.resetRequestData();
-            request.set({ requestData: this._signRequest(pPath, pData || {}, token, secret), async: this.getAsync() });
+            request.set({ requestData: this._signRequest(path, data || {}, token, secret), async: this.getAsync() });
 
             // Listener events
             request.addListener("success", function (e) {
-                this.onSuccess(e, pCallBack, pScope);
+                this.onSuccess(e, callBack, scope);
             }, this);
 
             request.addListener("statusError", function (e) {
-                this.onStatusError(e, pCallBack, pScope);
+                this.onStatusError(e, callBack, scope);
             }, this);
 
             request.send();
         },
 
-        find: function (pId, pCallBack, pScope) {
+        find: function (id, callBack, scope) {
             // Call remote service
-            this.submit("GET", pId, null, pCallBack, pScope);
+            this.submit("GET", id, null, callBack, scope);
         },
 
         /**
          * Call REST services to find all record.
          *
-         * @param pOrder {String?} Order of results.
-         * @param pFilters {Map?} Filter to apply.
-         * @param pCallBack {Function} Callback function with response params Ex: function(response){...}.
-         * @param pScope {Object?} Callback function scope.
+         * @param order {String?} Order of results.
+         * @param params {Map?} Filters to apply.
+         * @param callBack {Function} Callback function with response params Ex: function(response){...}.
+         * @param scope {Object?} Callback function scope.
          */
-        findAll: function (pOrder, pFilters, pCallBack, pScope) {
-            var pData = qx.lang.Object.clone(pFilters) || {};
+        findAll: function (order, params, callBack, scope) {
+            var data = qx.lang.Object.clone(params) || {};
 
-            if (pOrder) pData.order = pOrder;
+            if (order) data.order = order;
 
-            this.submit("GET", null, pData, pCallBack, pScope);
+            this.submit("GET", null, data, callBack, scope);
         },
 
         /**
          * Call REST services to find all record in a given range.
          *
-         * @param pStart {Number} Start index of results.
-         * @param pEnd {Number} End index of results.
-         * @param pOrder {String?} Order of results.
-         * @param pFilters {Map?} Filter to apply.
-         * @param pCallBack {Function} Callback function with response params Ex: function(response){...}.
-         * @param pScope {Object?} Callback function scope.
+         * @param from {Number} Start index of results.
+         * @param to {Number} End index of results.
+         * @param order {String?} Order of results.
+         * @param params {Map?} Filters to apply.
+         * @param callBack {Function} Callback function with response params Ex: function(response){...}.
+         * @param scope {Object?} Callback function scope.
          */
-        findRange: function (pFrom, pTo, pOrder, pFilters, pCallBack, pScope) {
-            if (qx.lang.Type.isFunction(pFilters)) {
-                pScope = pCallBack;
-                pCallBack = pFilters;
-                pFilters = null;
-            } else if (qx.lang.Type.isFunction(pOrder)) {
-                pScope = pFilters;
-                pCallBack = pOrder;
-                pFilters = null;
-                pOrder = null;
+        findRange: function (from, to, order, params, callBack, scope) {
+            if (qx.lang.Type.isFunction(params)) {
+                scope = callBack;
+                callBack = params;
+                params = null;
+            } else if (qx.lang.Type.isFunction(order)) {
+                scope = params;
+                callBack = order;
+                params = null;
+                order = null;
             }
 
-            var pData = qx.lang.Object.clone(pFilters) || {};
+            var data = qx.lang.Object.clone(params) || {};
 
-            pData.offset = pFrom;
-            pData.limit = pTo - pFrom + 1;
+            data.offset = from;
+            data.limit = to - from + 1;
 
-            if (pOrder) pData.order = pOrder;
+            if (order) data.order = order;
 
-            this.submit("GET", null, pData, pCallBack, pScope);
+            this.submit("GET", null, data, callBack, scope);
         },
 
-        count: function (pFilters, pCallBack, pScope) {
+        count: function (params, callBack, scope) {
 
-            var pData = qx.lang.Object.clone(pFilters);
+            var data = qx.lang.Object.clone(params);
 
-            pData.offset = 0;
-            pData.limit = 5;
+            data.offset = 0;
+            data.limit = 5;
 
             // Call remote service
-            this.submit("GET", null, pFilters, pCallBack, pScope);
+            this.submit("GET", null, params, callBack, scope);
         },
 
-        create: function (pData, pCallBack, pScope) {
+        create: function (data, callBack, scope) {
             // Call remote service
-            this.submit("POST", null, { data: pData }, pCallBack, pScope);
+            this.submit("POST", null, { data: data }, callBack, scope);
         },
 
-        update: function (pId, pData, pCallBack, pScope) {
+        update: function (id, data, callBack, scope) {
             // Call remote service
-            this.submit("PUT", pId, { data: pData }, pCallBack, pScope);
+            this.submit("PUT", id, { data: data }, callBack, scope);
         },
 
-        remove: function (pId, pCallBack, pScope) {
+        remove: function (id, callBack, scope) {
             // Call remote service
-            this.submit("DELETE", pId, null, pCallBack, pScope);
+            this.submit("DELETE", id, null, callBack, scope);
         },
 
         /**
          * Fired when request completes without error and transport’s status indicates success.
          */
-        onSuccess: function (e, pCallBack, pScope) {
+        onSuccess: function (e, callBack, scope) {
             var response = e.getTarget().getResponse();
             response.statusCode = response.statusCode || e.getTarget().getStatus();
             response.successful = true;
-            pCallBack && pCallBack.call(pScope || this, response, e);
+            callBack && callBack.call(scope || this, response, e);
         },
 
         /**
          * Fired when request completes without error but erroneous HTTP status.
          */
-        onStatusError: function (e, pCallBack, pScope) {
+        onStatusError: function (e, callBack, scope) {
             var response = e.getTarget().getResponse();
 
             if (qx.lang.Type.isString(response)) {
@@ -280,7 +280,7 @@ qx.Class.define("omna.request.AbstractResource", {
                 q.messaging.emit("Application", "login");
             }
 
-            pCallBack && pCallBack.call(pScope || this, response, e);
+            callBack && callBack.call(scope || this, response, e);
             q.messaging.emit("Application", "error", response.message);
         }
     }

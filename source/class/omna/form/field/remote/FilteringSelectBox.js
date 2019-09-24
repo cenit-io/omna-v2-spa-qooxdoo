@@ -177,9 +177,9 @@ qx.Class.define("omna.form.field.remote.FilteringSelectBox", {
             var request = new omna.request.Customs(this.getServiceBasePath(), false),
                 labelAttr = this.getLabelAttr(),
                 valueAttr = this.getValueAttr(),
-                filters = { term: value };
+                params = { term: value };
 
-            request.findRange(0, 10, null, filters, function (response) {
+            request.findRange(0, 10, null, params, function (response) {
                 this.removeAll();
 
                 if (response.successful) {

@@ -8,7 +8,7 @@ qx.Class.define("omna.management.AbstractManagement", {
      * Constructor
      *
      * @param settings {Object} Component settings.
-     * @param customData {Object} Extra custom data. Ex { filters: {...} }
+     * @param customData {Object} Extra custom data. Ex { params: {...} }
      * @param modulePage {omna.management.Page} Current page where render this component.
      */
     construct: function (settings, customData, modulePage) {
@@ -237,7 +237,6 @@ qx.Class.define("omna.management.AbstractManagement", {
         onChangeCustomData: function (e) {
             //  TODO: Virtual method.
         }
-
     },
 
     destruct: function () {
@@ -245,5 +244,4 @@ qx.Class.define("omna.management.AbstractManagement", {
             q.messaging.remove(id);
         })
     }
-
 });

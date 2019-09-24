@@ -18,14 +18,14 @@ qx.Class.define("omna.form.field.nomenclature.ItemSelectBox", {
             apply: '_applyParentNomenclatureComponentId'
         },
 
-        filters: {
+        params: {
             check: 'Object'
         }
     },
 
     construct: function () {
         this.base(arguments);
-        this.setFilters({});
+        this.setParams({});
         this._request = new omna.request.NomenclatureItems(true);
         this.addListener('changeSelection', this._onChangeSelection, this);
     },
@@ -35,20 +35,20 @@ qx.Class.define("omna.form.field.nomenclature.ItemSelectBox", {
         _parentChangeSelectionId: null,
 
         _applyNomenclatureId: function (value) {
-            var filters = this.getFilters();
+            var params = this.getParams();
 
-            filters.nomenclatureId = value;
+            params.nomenclatureId = value;
         },
 
         _applyParentNomenclatureComponentId: function (value) {
             if (value) {
                 var channel = 'Nomenclature' + value;
 
-                this.getFilters().parentId = -1;
+                this.getParams().parentId = -1;
 
                 this._parentChangeSelectionId && q.messaging.remove(this._parentChangeSelectionId);
                 this._parentChangeSelectionId = q.messaging.on(channel, 'change-selection', function (data) {
-                    this.getFilters().parentId = data.params.parentId;
+                    this.getParams().parentId = data.params.parentId;
                     this.initialize();
                 }, this);
             }
@@ -78,7 +78,7 @@ qx.Class.define("omna.form.field.nomenclature.ItemSelectBox", {
                 this.addAt(this._blanckItem, 0);
             }
 
-            this._request.findAll('label', this.getFilters(), function (response) {
+            this._request.findAll('label', this.getParams(), function (response) {
                 if (response.successful) {
                     var jsonModel = qx.data.marshal.Json.createModel(response.data),
                         controller = new qx.data.controller.List(jsonModel, this, "label");

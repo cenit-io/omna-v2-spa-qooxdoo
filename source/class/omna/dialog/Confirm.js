@@ -54,7 +54,7 @@ qx.Class.define('omna.dialog.Confirm', {
         _createContent: function () {
             this._message = new qx.ui.basic.Label();
             this._message.setRich(true);
-            this._message.setWidth(300);
+            this._message.setWidth(400);
             this._message.setAllowStretchX(true);
 
             this.add(this._message, { flex: 1 });

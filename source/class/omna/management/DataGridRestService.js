@@ -59,16 +59,16 @@ qx.Class.define("omna.management.DataGridRestService", {
                 }),
                 settings = this.getSettings(),
                 localFieldName = settings.localFieldName,
-                filters = {};
+                params = {};
 
-            qx.lang.Object.mergeWith(filters, settings.baseParams);
-            qx.lang.Object.mergeWith(filters, customData.filters);
+            qx.lang.Object.mergeWith(params, settings.baseParams);
+            qx.lang.Object.mergeWith(params, customData.params);
 
-            if (localFieldName && filters[localFieldName] === undefined) {
-                filters[localFieldName] = -1;
+            if (localFieldName && params[localFieldName] === undefined) {
+                params[localFieldName] = -1;
             }
 
-            var tableModel = new omna.model.DataGridRestService(columnFields, settings, filters),
+            var tableModel = new omna.model.DataGridRestService(columnFields, settings, params),
                 table = this._table = new qx.ui.table.Table(tableModel, {
                     tableColumnModel: function (table) {
                         return new qx.ui.table.columnmodel.Resize(table);
@@ -117,9 +117,9 @@ qx.Class.define("omna.management.DataGridRestService", {
 
         onChangeCustomData: function (e) {
             var data = e.getData();
-            if (data.filters) {
+            if (data.params) {
                 this._table.getSelectionModel().resetSelection();
-                this._table.getTableModel().setFilters(data.filters);
+                this._table.getTableModel().setParams(data.params);
             }
         },
 
@@ -145,15 +145,15 @@ qx.Class.define("omna.management.DataGridRestService", {
             // Save original customData before apply first search.
             this._customData = this._customData || qx.lang.Object.clone(this.getCustomData(), true);
 
-            var dlg = data.params.dlg,
+            var dlg = data.customData.dlg,
                 customData = qx.lang.Object.clone(this._customData, true),
                 baseParams = this.getSettings().baseParams,
-                searchData = data.customData;
+                searchData = data.params;
 
-            // Merge filters with searchData and baseParams.
-            customData.filters = customData.filters || {};
-            qx.lang.Object.mergeWith(customData.filters, searchData);
-            qx.lang.Object.mergeWith(customData.filters, baseParams);
+            // Merge params with searchData and baseParams.
+            customData.params = customData.params || {};
+            qx.lang.Object.mergeWith(customData.params, searchData);
+            qx.lang.Object.mergeWith(customData.params, baseParams);
 
             dlg.close();
             this.setCustomData(customData);
@@ -166,10 +166,10 @@ qx.Class.define("omna.management.DataGridRestService", {
                 var customData = qx.lang.Object.clone(this.getCustomData(), true),
                     baseParams = this.getSettings().baseParams;
 
-                // Merge filters with searchData and baseParams.
-                customData.filters = customData.filters || {};
-                customData.filters.term = data.customData;
-                qx.lang.Object.mergeWith(customData.filters, baseParams);
+                // Merge params with searchData and baseParams.
+                customData.params = customData.params || {};
+                customData.params.term = data.customData;
+                qx.lang.Object.mergeWith(customData.params, baseParams);
 
                 this.getModulePage().setGlobalSearchText(data.customData);
                 this.setCustomData(customData);
@@ -215,8 +215,8 @@ qx.Class.define("omna.management.DataGridRestService", {
                 if (sender && sender != this && sender.getSettings().id == listenFromComponentId) {
                     var customData = qx.lang.Object.clone(this.getCustomData(), true);
 
-                    customData.filters = qx.lang.Object.mergeWith(customData.filters || {}, settings.baseParams);
-                    customData.filters[localFieldName] = data.customData.item[primaryFieldName];
+                    customData.params = qx.lang.Object.mergeWith(customData.params || {}, settings.baseParams);
+                    customData.params[localFieldName] = data.customData.item[primaryFieldName];
 
                     this.setCustomData(customData);
                 }

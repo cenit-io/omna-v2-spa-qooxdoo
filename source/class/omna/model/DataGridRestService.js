@@ -5,14 +5,14 @@ qx.Class.define("omna.model.DataGridRestService", {
     extend: qx.ui.table.model.Remote,
     include: [qx.locale.MTranslation],
 
-    construct: function (fields, settings, filters) {
+    construct: function (fields, settings, params) {
         this.base(arguments);
         this.set({
             blockSize: settings.blockSize || 20,
             maxCachedBlockCount: settings.maxCachedBlockCount || 5,
             requestManagementClass: settings.requestManagementClass || null,
             serviceBasePath: settings.serviceBasePath || null,
-            filters: filters
+            params: params
         });
 
         this.__widgetsClass = new Map();
@@ -34,7 +34,7 @@ qx.Class.define("omna.model.DataGridRestService", {
     },
 
     properties: {
-        filters: {
+        params: {
             check: 'Object',
             init: {},
             event: 'changeFilter'
@@ -64,7 +64,7 @@ qx.Class.define("omna.model.DataGridRestService", {
         _loadRowCount: function () {
             var request = this.getRequestManagement();
 
-            request.count(this.getFilters(), function (response) {
+            request.count(this.getParams(), function (response) {
                 if (response.successful) this._onRowCountLoaded(response.pagination.total);
             }, this);
 
@@ -74,7 +74,7 @@ qx.Class.define("omna.model.DataGridRestService", {
         _loadRowData: function (pFrom, pTo) {
             var request = this.getRequestManagement();
 
-            request.findRange(pFrom, pTo, this.getOrder(), this.getFilters(), function (response) {
+            request.findRange(pFrom, pTo, this.getOrder(), this.getParams(), function (response) {
                 if (response.successful) {
                     response.data.forEach(function (record, index) {
                         Object.keys(record).forEach(function (field) {
