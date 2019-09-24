@@ -26,7 +26,7 @@ qx.Class.define("omna.action.Search", {
             // Remove empty attrs.
             for (var i in data) if (data[i] === undefined) delete data[i];
 
-            this.emitMessaging('execute-search', { dlg: e.getTarget() }, e.getData());
+            this.emitMessaging('execute-search', { dlg: e.getTarget() }, data);
         }
     }
 });
