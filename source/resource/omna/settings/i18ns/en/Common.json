@@ -235,6 +235,11 @@
     "value": "Resource"
   },
   {
+    "name": "details",
+    "subCatalog": "Labels",
+    "value": "Details"
+  },
+  {
     "name": "search",
     "subCatalog": "Labels",
     "value": "Search"

@@ -12,6 +12,7 @@
  * @require(omna.action.Separator)
  * @require(omna.action.order.Documents)
  * @require(omna.action.order.Print)
+ * @require(omna.action.tenant.Details)
  * @require(omna.action.tenant.Switch)
  * @require(omna.action.tenant.Startup)
  *
@@ -35,6 +36,7 @@
  * @require(omna.management.HtmlEmbed)
  * @require(omna.management.task.Details)
  * @require(omna.management.order.Documents)
+ * @require(omna.management.tenant.Details)
  *
  ** Nomenclature components
  * @require(omna.form.field.nomenclature.SelectBox)
@@ -74,4 +76,4 @@
  * @require(omna.form.validator.net.EMailField)
  *
  */
-qx.Mixin.define("omna.mixin.MComponents");
+qx.Mixin.define("omna.mixin.MComponents", {});

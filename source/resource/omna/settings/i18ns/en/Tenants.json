@@ -25,6 +25,11 @@
     "value": "Switch"
   },
   {
+    "name": "MODULE-REFERENCE-DETAILS",
+    "subCatalog": "Labels",
+    "value": "Tenant / %1 / Details"
+  },
+  {
     "name": "CONFIRM-STARTUP",
     "subCatalog": "Messages",
     "value": "Do you really want to prepare the selected tenant for your job at OMNA?"

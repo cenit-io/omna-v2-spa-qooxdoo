@@ -1,36 +1,38 @@
 qx.Mixin.define('omna.mixin.MSettings', {
     include: [qx.locale.MTranslation],
     members: {
-        loadSettings: function (pUrlOrClass, pCallback) {
-            var url, id, path;
+        __loadResource: function (pathOrClass, container, extension, callback) {
+            var url, id, cache, path;
 
-            pUrlOrClass = pUrlOrClass || this.constructor;
+            pathOrClass = pathOrClass || this.constructor;
 
-            if (qx.lang.Type.isString(pUrlOrClass)) {
-                if (!pUrlOrClass.match(/\//)) {
+            if (qx.lang.Type.isString(pathOrClass)) {
+                path = pathOrClass;
+                if (!path.match(/\//)) {
                     path = this.constructor.classname.replace(/\.[^\.]+$/, '').replace(/\./g, '/');
-                    pUrlOrClass = path + '/settings/' + pUrlOrClass;
+                    path = path + '/' + container + '/' + pathOrClass;
                 }
             } else {
-                path = pUrlOrClass.classname.replace(/\.[^\.]+$/, '').replace(/\./g, '/');
-                pUrlOrClass = path + '/settings/' + pUrlOrClass.classname;
+                path = pathOrClass.classname.replace(/\.[^\.]+$/, '').replace(/\./g, '/');
+                path = path + '/' + container + '/' + pathOrClass.classname;
             }
 
-            if (!pUrlOrClass.match(/\.json$/)) pUrlOrClass += '.json';
+            if (!path.match(new RegExp('\\' + extension + '$'))) path += extension;
 
-            url = qx.util.ResourceManager.getInstance().toUri(pUrlOrClass);
-
-            omna['settings'] = omna['settings'] || {};
+            url = qx.util.ResourceManager.getInstance().toUri(path);
             id = qx.util.Base64.encode(url);
 
-            if (!omna['settings'][id]) {
+            cache = omna['__cache'] = omna['__cache'] || {};
+            cache[container] = cache[container] || {};
+
+            if (!cache[container][id]) {
                 url = url.match(/\/source\//) ? url + '?tc=' + (new Date()).getTime() : url;
                 var req = new omna.request.Xhr(url);
 
                 req.setAsync(false);
 
                 req.addListener('success', function (e) {
-                    omna['settings'][id] = e.getTarget().getResponse();
+                    cache[container][id] = e.getTarget().getResponse();
                 }, this);
 
                 req.addListener('statusError', function (e) {
@@ -40,13 +42,21 @@ qx.Mixin.define('omna.mixin.MSettings', {
                 req.send();
             }
 
-            if (omna['settings'][id]) {
-                if (typeof pCallback === 'function') {
-                    pCallback.call(this, omna['settings'][id] || {})
+            if (cache[container][id]) {
+                if (typeof callback === 'function') {
+                    callback.call(this, cache[container][id] || {})
                 } else {
-                    this.set(omna['settings'][id] || {});
+                    this.set(cache[container][id] || {});
                 }
             }
+        },
+
+        loadSettings: function (pathOrClass, callback) {
+            this.__loadResource(pathOrClass, 'settings', '.json', callback)
+        },
+
+        loadTemplate: function (pathOrClass, callback) {
+            this.__loadResource(pathOrClass, 'templates', '.hbs', callback)
         }
     }
 });

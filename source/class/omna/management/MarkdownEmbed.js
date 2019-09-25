@@ -21,9 +21,9 @@ qx.Class.define("omna.management.MarkdownEmbed", {
     construct: function (settings, customData, modulePage) {
         this.base(arguments, settings, customData, modulePage);
 
-        this.setAppearance('management');
+        this.set({ appearance: 'management', contentTemplate: settings.content || '' });
 
-        this._createChildControl("title");
+        if (settings.title) this._createChildControl("title");
         this._createChildControlImpl('htmlEmbed');
 
         var listenFromComponentId = settings.listenFromComponentId;
@@ -35,21 +35,26 @@ qx.Class.define("omna.management.MarkdownEmbed", {
         }
     },
 
+    properties: {
+        contentTemplate: {
+            init: ''
+        }
+    },
+
     members: {
         // overridden
         _createChildControlImpl: function (id, hash) {
-            var control, title = this.getSettings().title || 'Details';
+            var control;
 
             switch ( id ) {
                 case "title":
-                    control = this.__title = new qx.ui.basic.Atom(this.i18nTrans(title));
+                    control = new qx.ui.basic.Atom(this.i18nTrans(this.getSettings().title));
                     control.setMaxHeight(27);
                     this._add(control, { flex: 2 });
                     break;
 
                 case "htmlEmbed":
-                    this.__showdownConverter = new showdown.Converter();
-                    this.__showdownConverter.setOption('tables', true);
+                    this.__showdownConverter = new showdown.Converter({ tables: true });
 
                     control = this.__htmlEmbed = new qx.ui.embed.Html();
                     control.set({ padding: 5, overflowX: 'auto', overflowY: 'auto' });
@@ -61,12 +66,16 @@ qx.Class.define("omna.management.MarkdownEmbed", {
             return control || this.base(arguments, id);
         },
 
-        _setContent: function (customData) {
-            var content = this.getSettings().content;
+        _setContent: function (item) {
+            var contentTemplate = this.getContentTemplate();
 
-            if (qx.lang.Type.isArray(content)) content = content.join('\n');
+            if (qx.lang.Type.isArray(contentTemplate)) contentTemplate = contentTemplate.join('\n');
 
-            this.__htmlEmbed.setHtml(this.__showdownConverter.makeHtml(qx.bom.Template.render(content, customData)))
+            this.__htmlEmbed.setHtml(
+                this.__showdownConverter.makeHtml(
+                    qx.bom.Template.render(contentTemplate, item)
+                )
+            )
         },
 
         /**
