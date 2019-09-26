@@ -4,7 +4,7 @@
     "i18n": "Tasks",
     "widgetClass": "omna.management.DataGridRestService",
     "serviceBasePath": "tasks",
-    "region": 75,
+    "region": 70,
     "baseParams": {
       "with_details": true
     },
@@ -91,7 +91,7 @@
     "widgetClass": "omna.management.task.Details",
     "i18n": "Tasks",
     "edge": "east",
-    "region": 25,
+    "region": 30,
     "listenFromComponentId": "tasks"
   }
 ]

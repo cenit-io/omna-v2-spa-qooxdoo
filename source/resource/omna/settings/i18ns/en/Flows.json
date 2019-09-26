@@ -8,5 +8,15 @@
     "name": "SINGLE-ITEM-REFERENCE",
     "subCatalog": "Labels",
     "value": "Flow"
+  },
+  {
+    "name": "import_orders",
+    "subCatalog": "Labels",
+    "value": "Import orders"
+  },
+  {
+    "name": "import_products",
+    "subCatalog": "Labels",
+    "value": "Import products"
   }
 ]

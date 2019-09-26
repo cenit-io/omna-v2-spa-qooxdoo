@@ -3,7 +3,9 @@
     "id": "flows",
     "i18n": "Flows",
     "widgetClass": "omna.management.DataGridRestService",
+    "requestManagementClass": "omna.request.Flows",
     "serviceBasePath": "flows",
+    "region": 70,
     "baseParams": {
       "with_details": true
     },
@@ -23,22 +25,27 @@
         "showInGrid": true,
         "includeInSearch": true,
         "accessInAddForm": "W",
-        "accessInEditForm": "R",
         "gridColumnWidth": 150,
         "required": true,
         "minLength": 2,
         "maxLength": 50,
-        "pattern": "\\w+"
-      },
-      {
-        "name": "title",
-        "label": "description",
-        "showInGrid": true
+        "pattern": "\\w+",
+        "i18n": {
+          "catalog": "Flows"
+        }
       },
       {
         "name": "integration",
         "showInGrid": true,
         "cellRendererClass": "omna.table.cellrenderer.Integration"
+      },
+      {
+        "name": "task",
+        "label": "scheduler",
+        "attrPath": "scheduler.active",
+        "cellRendererClass": "omna.table.cellrenderer.Boolean",
+        "showInGrid": true,
+        "gridColumnWidth": 100
       },
       {
         "name": "updated_at",
@@ -47,5 +54,13 @@
         "gridColumnWidth": 150
       }
     ]
+  },
+  {
+    "id": "flows-details",
+    "widgetClass": "omna.management.flow.Details",
+    "i18n": "Tasks",
+    "edge": "east",
+    "region": 30,
+    "listenFromComponentId": "flows"
   }
 ]

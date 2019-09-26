@@ -30,13 +30,15 @@
  * @require(omna.request.Products)
  * @require(omna.request.Tasks)
  * @require(omna.request.Tenants)
+ * @require(omna.request.Flows)
  *
  ** Management components
  * @require(omna.management.DataGridRestService)
  * @require(omna.management.HtmlEmbed)
- * @require(omna.management.task.Details)
  * @require(omna.management.order.Documents)
+ * @require(omna.management.task.Details)
  * @require(omna.management.tenant.Details)
+ * @require(omna.management.flow.Details)
  *
  ** Nomenclature components
  * @require(omna.form.field.nomenclature.SelectBox)
