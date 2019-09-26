@@ -54,8 +54,9 @@
  *
  ** Remote components.
  * @require(omna.form.field.remote.SelectBox)
- * @require(omna.form.field.remote.ChannelSelectBox)
  * @require(omna.form.field.remote.FilteringSelectBox)
+ * @require(omna.form.field.remote.ChannelSelectBox)
+ * @require(omna.form.field.remote.FlowTypeSelectBox)
  *
  ** General components for bigness.
  * @require(omna.form.field.calendar.DateField)

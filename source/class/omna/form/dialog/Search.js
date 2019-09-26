@@ -59,7 +59,7 @@ qx.Class.define("omna.form.dialog.Search", {
                             validator = widgetClass.validatorClass ? new widgetClass.validatorClass : null;
                         }
 
-                        var label = this.i18nTrans(field.name);
+                        var label = this.i18nTrans(field.label || field.name);
                         form.add(widget, label, validator, field.searchAttrName || field.name, form);
 
                     } else {

@@ -69,8 +69,7 @@ qx.Class.define("omna.table.cellrenderer.String", {
     members: {
         _getContentHtml: function (cellInfo) {
             var result = String(cellInfo.value || ""),
-                settings = this.getI18nSetting(),
-                i18n = this.getI18nSetting();
+                i18n = qx.lang.Object.clone(this.getI18nSetting());
 
             if (cellInfo.rowData && !qx.lang.Object.isEmpty(i18n)) {
                 i18n.catalog = i18n.catalog || 'Common';

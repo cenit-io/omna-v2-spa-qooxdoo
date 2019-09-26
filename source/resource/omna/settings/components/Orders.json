@@ -66,11 +66,15 @@
       },
       {
         "name": "integration",
-        "widgetClass": "omna.form.field.remote.FilteringSelectBox",
-        "includeInSearch": true,
-        "searchAttrName": "integration_id",
         "showInGrid": true,
-        "cellRendererClass": "omna.table.cellrenderer.Integration",
+        "isTemplate": true,
+        "i18n": {
+          "subCatalog": "Titles",
+          "name": "INTEGRATION"
+        },
+        "includeInSearch": true,
+        "widgetClass": "omna.form.field.remote.FilteringSelectBox",
+        "searchAttrName": "integration_id",
         "serviceBasePath": "integrations",
         "labelAttr": "name",
         "valueAttr": "id"

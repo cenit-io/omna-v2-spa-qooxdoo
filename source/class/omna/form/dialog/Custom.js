@@ -73,7 +73,7 @@ qx.Class.define("omna.form.dialog.Custom", {
                             validator = widgetClass.validatorClass ? new widgetClass.validatorClass : null;
                         }
 
-                        label = this.i18nTrans(field.name);
+                        label = this.i18nTrans(field.label || field.name);
                         form.add(widget, label, validator, field.name, form);
 
                     } else {

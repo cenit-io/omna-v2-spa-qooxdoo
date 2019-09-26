@@ -13,7 +13,6 @@
       "omna.action.Reload",
       "omna.action.Separator",
       "omna.action.Add",
-      "omna.action.Edit",
       "omna.action.Remove",
       "omna.action.Separator",
       "omna.action.Search"
@@ -21,28 +20,31 @@
     "fields": [
       {
         "name": "type",
-        "widgetClass": "omna.form.field.TextField",
+        "widgetClass": "omna.form.field.remote.FlowTypeSelectBox",
         "showInGrid": true,
         "includeInSearch": true,
         "accessInAddForm": "W",
         "gridColumnWidth": 150,
         "required": true,
-        "minLength": 2,
-        "maxLength": 50,
-        "pattern": "\\w+",
         "i18n": {
           "catalog": "Flows"
         }
       },
       {
-        "name": "integration",
+        "name": "integration_id",
+        "label": "integration",
         "showInGrid": true,
         "isTemplate": true,
         "i18n": {
-          "catalog": "Flows",
           "subCatalog": "Titles",
           "name": "INTEGRATION"
-        }
+        },
+        "includeInSearch": true,
+        "accessInAddForm": "W",
+        "widgetClass": "omna.form.field.remote.FilteringSelectBox",
+        "serviceBasePath": "integrations",
+        "labelAttr": "name",
+        "valueAttr": "id"
       },
       {
         "name": "task",
