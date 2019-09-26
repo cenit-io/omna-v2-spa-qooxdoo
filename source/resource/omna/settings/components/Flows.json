@@ -37,7 +37,12 @@
       {
         "name": "integration",
         "showInGrid": true,
-        "cellRendererClass": "omna.table.cellrenderer.Integration"
+        "isTemplate": true,
+        "i18n": {
+          "catalog": "Flows",
+          "subCatalog": "Titles",
+          "name": "INTEGRATION"
+        }
       },
       {
         "name": "task",

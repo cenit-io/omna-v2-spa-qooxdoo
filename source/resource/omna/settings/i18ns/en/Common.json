@@ -250,6 +250,11 @@
     "value": "Search data:"
   },
   {
+    "name": "INTEGRATION",
+    "subCatalog": "Titles",
+    "value": "{{integration.name}} of {{integration.channel}}"
+  },
+  {
     "name": "APPLICATION-TITLE",
     "subCatalog": "Labels",
     "value": "OMNA eCommerce LTD"

@@ -22,8 +22,11 @@ qx.Class.define("omna.table.cellrenderer.String", {
         var rendererStyle = settings.gridRendererStyle || {},
             conditions = rendererStyle.conditions || [];
 
-        this.setI18nSetting(settings.i18n || {});
-        this.setCellClass(settings.cellClass || '');
+        this.set({
+            i18nSetting: settings.i18n || {},
+            cellClass: settings.cellClass || '',
+            template: settings.isTemplate || false
+        });
 
         this.base(arguments,
             rendererStyle.textAlign || 'left',
@@ -55,12 +58,18 @@ qx.Class.define("omna.table.cellrenderer.String", {
         cellClass: {
             check: 'String',
             init: ''
+        },
+
+        template: {
+            check: 'Boolean',
+            init: false
         }
     },
 
     members: {
         _getContentHtml: function (cellInfo) {
             var result = String(cellInfo.value || ""),
+                settings = this.getI18nSetting(),
                 i18n = this.getI18nSetting();
 
             if (cellInfo.rowData && !qx.lang.Object.isEmpty(i18n)) {
@@ -68,16 +77,14 @@ qx.Class.define("omna.table.cellrenderer.String", {
                 i18n.subCatalog = i18n.subCatalog || 'Labels';
                 i18n.name = i18n.name || cellInfo.value;
 
-                var catalog = qx.bom.Template.render(i18n.catalog, cellInfo.rowData),
-                    subCatalog = qx.bom.Template.render(i18n.subCatalog, cellInfo.rowData),
-                    name = qx.bom.Template.render(i18n.name, cellInfo.rowData);
+                var catalog = qx.bom.String.unescape(qx.bom.Template.render(i18n.catalog, cellInfo.rowData)),
+                    subCatalog = qx.bom.String.unescape(qx.bom.Template.render(i18n.subCatalog, cellInfo.rowData)),
+                    name = qx.bom.String.unescape(qx.bom.Template.render(i18n.name, cellInfo.rowData));
 
-                result = omna.I18n.trans(
-                    qx.bom.String.unescape(catalog),
-                    qx.bom.String.unescape(subCatalog),
-                    qx.bom.String.unescape(name)
-                );
+                result = omna.I18n.trans(catalog, subCatalog, name);
             }
+
+            if (this.isTemplate()) result = qx.bom.Template.render(result, cellInfo.rowData);
 
             return qx.bom.String.escape(result);
         },

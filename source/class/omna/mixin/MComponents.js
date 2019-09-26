@@ -17,7 +17,6 @@
  * @require(omna.action.tenant.Startup)
  *
  ** Cell Renderer
- * @require(omna.table.cellrenderer.Integration)
  * @require(omna.table.cellrenderer.LongText)
  *
  ** Network components
