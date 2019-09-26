@@ -63,7 +63,7 @@ qx.Class.define("omna.table.cellrenderer.String", {
             var result = String(cellInfo.value || ""),
                 i18n = this.getI18nSetting();
 
-            if (cellInfo.rowData && i18n.active) {
+            if (cellInfo.rowData && !qx.lang.Object.isEmpty(i18n)) {
                 i18n.catalog = i18n.catalog || 'Common';
                 i18n.subCatalog = i18n.subCatalog || 'Labels';
                 i18n.name = i18n.name || cellInfo.value;

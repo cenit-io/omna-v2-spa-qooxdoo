@@ -15,7 +15,7 @@ qx.Class.define("omna.model.DataGridRestService", {
             params: params
         });
 
-        this.__widgetsClass = new Map();
+        this.__fields = new Map();
 
         var i18nCatalog = settings.i18n,
             columnNames = [],
@@ -25,7 +25,7 @@ qx.Class.define("omna.model.DataGridRestService", {
             if (field.showInGrid) {
                 columnNames.push(omna.I18n.trans(i18nCatalog, 'Labels', field.label || field.name));
                 columnIDs.push(field.name);
-                this.__widgetsClass.set(field.name, field.widgetClass);
+                this.__fields.set(field.name, field);
             }
         }, this);
 
@@ -100,9 +100,30 @@ qx.Class.define("omna.model.DataGridRestService", {
         },
 
         parseValue: function (fieldName, fieldValue) {
-            var widgetClass = qx.Class.getByName(this.__widgetsClass.get(fieldName));
+            var field = this.__fields.get(fieldName),
+                widgetClass = field ? qx.Class.getByName(field.widgetClass) : null;
 
             return (widgetClass && widgetClass.parseValue) ? widgetClass.parseValue(fieldValue) : fieldValue;
+        },
+
+        // overridden
+        getValue: function (columnIndex, rowIndex) {
+            var value = this.base(arguments, columnIndex, rowIndex),
+                columnId = Array.from(this.__fields.keys())[columnIndex],
+                field = this.__fields.get(columnId);
+
+            if (field.attrPath) {
+                field.attrPath.split('.').forEach(function (attr) {
+                    value = qx.lang.Type.isObject(value) ? value[attr] : null;
+                });
+            }
+
+            return value;
         }
+    },
+
+    destruct: function () {
+        this.__fields.clear();
+        delete this.__fields;
     }
 });
