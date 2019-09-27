@@ -2,11 +2,11 @@
  ** Actions
  * @require(omna.action.Add)
  * @require(omna.action.AddInChildren)
- * @require(omna.action.Authorize)
  * @require(omna.action.Edit)
  * @require(omna.action.Reload)
  * @require(omna.action.Remove)
  * @require(omna.action.Search)
+ * @require(omna.action.integration.Authorize)
  * @require(omna.action.integration.Import)
  * @require(omna.action.ReImport)
  * @require(omna.action.Separator)

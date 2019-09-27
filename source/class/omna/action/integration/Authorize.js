@@ -2,7 +2,7 @@
  * @asset(qx/icon/${qx.icontheme}/16/status/security-high.png)
  * @asset(qx/icon/${qx.icontheme}/16/status/security-low.png)
  */
-qx.Class.define("omna.action.Authorize", {
+qx.Class.define("omna.action.integration.Authorize", {
     extend: omna.action.AbstractActionWithSelectedItem,
 
     construct: function (management) {
