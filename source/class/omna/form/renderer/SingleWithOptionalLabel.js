@@ -9,7 +9,6 @@ qx.Class.define("omna.form.renderer.SingleWithOptionalLabel", {
 
         layout.setColumnFlex(0, 0);
         layout.setColumnFlex(1, 1);
-        window.xx = this
     },
 
     members: {

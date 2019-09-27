@@ -26,7 +26,10 @@ qx.Class.define("omna.action.Add", {
                 dlg = e.getTarget(),
                 data = e.getData();
 
+            dlg.setEnabled(false);
+
             request.create(data, function (response) {
+                dlg.setEnabled(true);
                 if (response.successful) {
                     q.messaging.emit(
                         'Application', 'good', this.i18nTrans('Messages', 'SUCCESSFUL-ADDING', [itemLabel])

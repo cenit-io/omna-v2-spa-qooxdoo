@@ -57,13 +57,9 @@ qx.Class.define("omna.dialog.AbstractForm", {
             }, this);
 
             manager.addListener("complete", function () {
-                // configure the accept button
-                bA.setEnabled(true);
-                bA.setLabel(this.tr("Accept"));
-                // check the validation status
-                if (manager.getValid()) {
-                    this.fireDataEvent('accept', this.getData());
-                }
+                bA.set({ label: this.tr("Sending") });
+                if (manager.getValid()) this.fireDataEvent('accept', this.getData());
+                bA.set({ enabled: this.getEnabled(), label: this.tr("Accept") });
             }, this);
         },
 
