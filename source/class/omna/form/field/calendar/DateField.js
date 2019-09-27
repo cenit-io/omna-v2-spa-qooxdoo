@@ -23,6 +23,11 @@ qx.Class.define("omna.form.field.calendar.DateField", {
         }
     },
 
+    construct: function () {
+        this.base(arguments);
+        this.set({ allowGrowY: false })
+    },
+
     members: {
         _applyStrDateFormat: function (value) {
             this.setDateFormat(new qx.util.format.DateFormat(value));

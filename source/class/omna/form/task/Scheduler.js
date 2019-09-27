@@ -13,6 +13,13 @@ qx.Class.define("omna.form.task.Scheduler", {
         this.setEnabled(editable);
         this.__createFormFields();
         this.__createButtons();
+
+        var row, layout = this.getLayout(),
+            count = layout.getRowCount();
+
+        for (row = 0; row < count; row++) {
+            layout.setRowFlex(row, row < count - 1 ? null : 1)
+        }
     },
 
     members: {
@@ -59,6 +66,7 @@ qx.Class.define("omna.form.task.Scheduler", {
             bR.setAllowStretchX(true);
             this._form.addButton(bA);
             this._form.addButton(bR);
+            this._buttonRow.set({ allowGrowY: false, alignY: 'bottom' });
 
             bA.addListener("execute", function () {
                 bA.setEnabled(false);
