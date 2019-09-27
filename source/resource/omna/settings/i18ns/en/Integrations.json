@@ -52,12 +52,12 @@
   {
     "name": "CONFIRM-AUTHORIZE",
     "subCatalog": "Messages",
-    "value": "Do you really want to authorize the selected integration?"
+    "value": "Do you really want to authorize the selected <b>integration</b>?"
   },
   {
     "name": "CONFIRM-UNAUTHORIZE",
     "subCatalog": "Messages",
-    "value": "Do you really want to cancel the authorization of the selected integration?"
+    "value": "Do you really want to cancel the authorization of the selected <b>integration</b>?"
   },
   {
     "name": "CONFIRM-IMPORT",
