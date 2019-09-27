@@ -7,15 +7,17 @@ qx.Class.define("omna.form.task.Scheduler", {
     include: [omna.mixin.MI18n],
     implement: [omna.mixin.II18n],
 
-    construct: function () {
+    construct: function (editable) {
         this.base(arguments, new qx.ui.form.Form());
 
+        this.setEnabled(editable);
         this.__createFormFields();
         this.__createButtons();
     },
 
     members: {
         __model: null,
+        __flowId: null,
 
         __createFormFields: function () {
             var field, validator;
@@ -42,14 +44,13 @@ qx.Class.define("omna.form.task.Scheduler", {
             field = new omna.form.field.calendar.MonthsOfYear();
             this._form.add(field, this.i18nTrans('months_of_year'), null, 'months_of_year');
 
-            field = new qx.ui.form.CheckBox();
-            this._form.add(field, this.i18nTrans('active'), null, 'active');
-
             var controller = new qx.data.controller.Form(null, this._form);
             this.__model = controller.createModel();
         },
 
         __createButtons: function () {
+            if (!this.getEnabled()) return;
+
             var bA = new qx.ui.form.Button(this.tr("Accept"), "icon/16/actions/dialog-apply.png"),
                 bR = new qx.ui.form.Button(this.tr("Reset"), "icon/16/actions/edit-undo.png"),
                 manager = this._form.getValidationManager();
@@ -82,10 +83,15 @@ qx.Class.define("omna.form.task.Scheduler", {
 
         getData: function () {
             var data = qx.util.Serializer.toNativeObject(this.__model),
-                name, items = this._form.getItems();
+                dateFormat = new qx.util.format.DateFormat('YYYY-MM-dd'),
+                items = this._form.getItems(),
+                name;
 
             // Remove disabled items.
             for (name in items) if (!items[name].isEnabled()) delete data[name];
+
+            data.start_date = items.start_date.getDateFormat().format(data.start_date);
+            data.end_date = items.end_date.getDateFormat().format(data.end_date);
 
             return data;
         },
@@ -104,16 +110,7 @@ qx.Class.define("omna.form.task.Scheduler", {
         },
 
         onAccept: function (data) {
-            console.log(data);
-        },
-
-        onSaved: function (response) {
-            if (response.successful) {
-                q.messaging.emit("Application", "good", this.tr("Operation successful"));
-                q.messaging.emit("Application", "update-task-scheduler");
-
-                this.close();
-            }
+            q.messaging.emit("Application", "accept-update-scheduler", data);
         }
     },
 

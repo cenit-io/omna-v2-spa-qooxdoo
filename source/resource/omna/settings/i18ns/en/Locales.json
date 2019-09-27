@@ -1,0 +1,27 @@
+[
+  {
+    "name": "First",
+    "subCatalog": "Labels",
+    "value": "First"
+  },
+  {
+    "name": "Second",
+    "subCatalog": "Labels",
+    "value": "Second"
+  },
+  {
+    "name": "Third",
+    "subCatalog": "Labels",
+    "value": "Third"
+  },
+  {
+    "name": "Fourth",
+    "subCatalog": "Labels",
+    "value": "Fourth"
+  },
+  {
+    "name": "Last",
+    "subCatalog": "Labels",
+    "value": "Last"
+  }
+]

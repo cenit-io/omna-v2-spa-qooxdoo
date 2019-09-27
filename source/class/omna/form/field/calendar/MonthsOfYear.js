@@ -1,39 +1,21 @@
-// TODO: omna.form.field.calendar.MonthsOfYear
 qx.Class.define("omna.form.field.calendar.MonthsOfYear", {
-    extend: omna.form.field.TextField,
-
-    statics: {
-        cellRendererClass: omna.table.cellrenderer.String,
-
-        parseValue: function (value) {
-            return new Date(value);
-        }
-    },
-
+    extend: omna.form.field.calendar.AbstractCheckField,
 
     members: {
-        // override
-        setValue: function (value) {
-            if (qx.lang.Type.isArray(value)) value = value.join(',');
+        _rowSize: 6,
 
-            return this.base(arguments, value);
+        getItems: function () {
+            return qx.locale.Date.getMonthNames('abbreviated', 'en').map(function (item) {
+                return item.toString()
+            })
         },
 
-        // override
-        getValue: function () {
-            var value = this.base(arguments);
-
-            return value ? value.split(',') : null
+        getItemLabel: function (idx) {
+            return qx.locale.Date.getMonthName('abbreviated', idx)
         },
 
-        validate: function (form) {
-            var value = this.getValue();
-
-            if (value == null && this.isRequired()) {
-                return this.tr('This field is required');
-            }
-
-            return true;
+        getItemValue: function (idx) {
+            return qx.locale.Date.getMonthName('abbreviated', idx, 'en')
         }
     }
 });

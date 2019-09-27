@@ -244,7 +244,7 @@ qx.Class.define("omna.request.AbstractResource", {
 
         update: function (id, data, callBack, scope) {
             // Call remote service
-            this.submit("PUT", id, { data: data }, callBack, scope);
+            this.submit("POST", id, { data: data }, callBack, scope);
         },
 
         remove: function (id, callBack, scope) {

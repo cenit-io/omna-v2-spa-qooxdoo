@@ -1,39 +1,21 @@
-// TODO: omna.form.field.calendar.DaysOfWeek
 qx.Class.define("omna.form.field.calendar.DaysOfWeek", {
-    extend: omna.form.field.TextField,
-
-    statics: {
-        cellRendererClass: omna.table.cellrenderer.String,
-
-        parseValue: function (value) {
-            return new Date(value);
-        }
-    },
-
+    extend: omna.form.field.calendar.AbstractCheckField,
 
     members: {
-        // override
-        setValue: function (value) {
-            if (qx.lang.Type.isArray(value)) value = value.join(',');
+        _rowSize: 7,
 
-            return this.base(arguments, value);
+        getItems: function () {
+            return qx.locale.Date.getDayNames('abbreviated', 'en').map(function (item) {
+                return item.toString()
+            })
         },
 
-        // override
-        getValue: function () {
-            var value = this.base(arguments);
-
-            return value ? value.split(',') : null
+        getItemLabel: function (idx) {
+            return qx.locale.Date.getDayName('abbreviated', idx)
         },
 
-        validate: function (form) {
-            var value = this.getValue();
-
-            if (value == null && this.isRequired()) {
-                return this.tr('This field is required');
-            }
-
-            return true;
+        getItemValue: function (idx) {
+            return qx.locale.Date.getDayName('abbreviated', idx, 'en')
         }
     }
 });

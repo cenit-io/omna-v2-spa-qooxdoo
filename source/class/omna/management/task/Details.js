@@ -98,7 +98,7 @@ qx.Class.define("omna.management.task.Details", {
         },
 
         _createScheduler: function () {
-            var control = new omna.form.task.Scheduler();
+            var control = new omna.form.task.Scheduler(false);
 
             return control
         },
@@ -227,24 +227,23 @@ qx.Class.define("omna.management.task.Details", {
             control.getLayoutParent().setEnabled(scheduler != 'none');
         },
 
-        /**
-         * Fired when changed selection of component items.
-         *
-         * @param data {Object} Selected item data.
-         */
+        onNotificationCellTap: function (cellInfo) {
+            var data = cellInfo.getTarget().getTable().getTableModel().getRowData(cellInfo.getRow());
+
+            q.messaging.emit("Application", data[0], data[1]);
+        },
+
         onSelectionChange: function (data) {
-            var item = data.customData ? data.customData.item : {};
+            this.setCustomData(data.customData ? data.customData.item : {});
+        },
+
+        onChangeCustomData: function (e) {
+            var item = e.getData();
 
             this._fillDescription(item.description);
             this._fillTable(item.executions, 'executions');
             this._fillTable(item.notifications, 'notifications');
             this._fillScheduler(item.scheduler || 'none');
-        },
-
-        onNotificationCellTap: function (cellInfo) {
-            var data = cellInfo.getTarget().getTable().getTableModel().getRowData(cellInfo.getRow());
-
-            q.messaging.emit("Application", data[0], data[1]);
         }
     }
 });

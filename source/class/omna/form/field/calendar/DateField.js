@@ -30,7 +30,7 @@ qx.Class.define("omna.form.field.calendar.DateField", {
 
         // override
         setValue: function (value) {
-            if (qx.lang.Type.isString(value)) value = new Date(value);
+            if (qx.lang.Type.isString(value)) value = this.getDateFormat().parse(value);
 
             return this.base(arguments, value);
         },

@@ -13,21 +13,41 @@ qx.Class.define("omna.management.flow.Details", {
     // override
     construct: function (settings, customData, modulePage) {
         this.base(arguments, settings, customData, modulePage);
+
+        q.messaging.on("Application", "accept-update-scheduler", this.onAcceptUpdateScheduler, this);
+
     },
 
     members: {
+        _flowId: null,
+
+        _createScheduler: function () {
+            var control = new omna.form.task.Scheduler(true);
+
+            return control
+        },
+
         /**
          * Fired when changed selection of component items.
          *
          * @param data {Object} Selected item data.
          */
         onSelectionChange: function (data) {
-            var item = data.customData ? data.customData.item.task : {};
+            this._flowId = data.customData ? data.customData.item.id : null;
+            this.setCustomData(data.customData ? data.customData.item.task : {});
+        },
 
-            this._fillDescription(item.description);
-            this._fillTable(item.executions, 'executions');
-            this._fillTable(item.notifications, 'notifications');
-            this._fillScheduler(item.scheduler || 'none');
+        onAcceptUpdateScheduler: function (data) {
+            var request = new omna.request.Flows();
+
+            console.log(data.params);
+
+            request.update(this._flowId, { scheduler: data.params }, function (response) {
+                if (response.successful) {
+                    q.messaging.emit('Application', 'good', this.i18nTrans('Messages', 'SUCCESSFUL-UPDATING'));
+                    this.emitMessaging('execute-update');
+                }
+            }, this);
         }
     }
 });
