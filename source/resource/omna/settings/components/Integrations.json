@@ -60,12 +60,6 @@
         "showInGrid": true,
         "cellRendererClass": "omna.table.cellrenderer.Date",
         "gridColumnWidth": 150
-      },
-      {
-        "name": "created_at",
-        "showInGrid": true,
-        "cellRendererClass": "omna.table.cellrenderer.Date",
-        "gridColumnWidth": 150
       }
     ]
   }
