@@ -59,7 +59,7 @@ qx.Class.define("omna.request.Integrations", {
                     msg = omna.I18n.trans('Integrations', 'Messages', 'SUCCESSFUL-IMPORT', [type]);
                     q.messaging.emit('Application', 'good', msg);
                 } else {
-                    msg = omna.I18n.trans('Integrations', 'Messages', 'FAILED-IMPORT');
+                    msg = omna.I18n.trans('Integrations', 'Messages', 'FAILED-IMPORT', [type]);
                     q.messaging.emit('Application', 'error', msg)
                 }
                 callBack.call(scope, response);
