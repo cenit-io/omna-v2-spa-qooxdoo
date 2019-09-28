@@ -11,7 +11,7 @@
       "omna.action.Reload",
       "omna.action.Separator",
       "omna.action.Add",
-      "omna.action.Authorize",
+      "omna.action.integration.Authorize",
       "omna.action.integration.Import",
       "omna.action.Remove",
       "omna.action.Separator",
