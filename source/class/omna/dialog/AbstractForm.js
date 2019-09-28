@@ -42,7 +42,6 @@ qx.Class.define("omna.dialog.AbstractForm", {
             this._form.addButton(bC);
 
             bA.addListener("execute", function () {
-                bA.setEnabled(false);
                 bA.setLabel(this.tr("Validating..."));
                 manager.validate();
             }, this);
@@ -57,9 +56,9 @@ qx.Class.define("omna.dialog.AbstractForm", {
             }, this);
 
             manager.addListener("complete", function () {
-                bA.set({ label: this.tr("Sending") });
+                bA.setLabel(this.tr("Sending"));
                 if (manager.getValid()) this.fireDataEvent('accept', this.getData());
-                bA.set({ enabled: this.getEnabled(), label: this.tr("Accept") });
+                bA.setLabel(this.tr("Accept"));
             }, this);
         },
 

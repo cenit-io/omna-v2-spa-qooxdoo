@@ -46,7 +46,7 @@ qx.Class.define("omna.form.dialog.Import", {
                         date = new Date(date);
                     } else {
                         date = new Date();
-                        date.setDate(date.getDate() - 90)
+                        date.setDate(date.getDate() - 180)
                     }
 
                     date = dateFormat.format(date);
