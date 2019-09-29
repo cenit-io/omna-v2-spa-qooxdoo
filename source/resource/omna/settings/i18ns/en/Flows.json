@@ -18,5 +18,40 @@
     "name": "import_products",
     "subCatalog": "Labels",
     "value": "Import products"
+  },
+  {
+    "name": "scheduler",
+    "subCatalog": "Labels",
+    "value": "Scheduler"
+  },
+  {
+    "name": "CONFIRM-SCHEDULER-ON",
+    "subCatalog": "Messages",
+    "value": "Do you really want to <b>activate</b> the <b>scheduler</b> of the selected <b>flow</b>?"
+  },
+  {
+    "name": "CONFIRM-SCHEDULER-OFF",
+    "subCatalog": "Messages",
+    "value": "Do you really want to <b>deactivate</b> the <b>scheduler</b> of the selected <b>flow</b>?"
+  },
+  {
+    "name": "SUCCESSFUL-SCHEDULER-ON",
+    "subCatalog": "Messages",
+    "value": "The <b>scheduler</b> of the selected <b>flow</b> was successfully activated."
+  },
+  {
+    "name": "SUCCESSFUL-SCHEDULER-OFF",
+    "subCatalog": "Messages",
+    "value": "The <b>scheduler</b> of the selected <b>flow</b> was successfully deactivated."
+  },
+  {
+    "name": "FAILED-LOADING-FLOW-TYPES",
+    "subCatalog": "Messages",
+    "value": "The loading of the <b>flow types</b> has failed."
+  },
+  {
+    "name": "FAILED-TOGGLE-SCHEDULER-STATUS",
+    "subCatalog": "Messages",
+    "value": "The toggle status of the <b>scheduler</b> of the selected <b>flow</b> has failed."
   }
 ]

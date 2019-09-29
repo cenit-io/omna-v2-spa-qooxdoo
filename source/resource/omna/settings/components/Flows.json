@@ -13,6 +13,8 @@
       "omna.action.Reload",
       "omna.action.Separator",
       "omna.action.Add",
+      "omna.action.Add",
+      "omna.action.flow.Scheduler",
       "omna.action.Remove",
       "omna.action.Separator",
       "omna.action.Search"

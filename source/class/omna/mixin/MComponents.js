@@ -8,6 +8,7 @@
  * @require(omna.action.Search)
  * @require(omna.action.integration.Authorize)
  * @require(omna.action.integration.Import)
+ * @require(omna.action.flow.Scheduler)
  * @require(omna.action.ReImport)
  * @require(omna.action.Separator)
  * @require(omna.action.order.Documents)
