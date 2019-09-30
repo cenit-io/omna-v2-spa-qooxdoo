@@ -12,9 +12,7 @@ qx.Class.define("omna.layout.LeftBox", {
         this.setAllowGrowY(false);
 
         var modules = omna.tree.Modules.getInstance(),
-            filterField = new omna.form.field.util.SearchTextField().set({
-                appearance: 'filter-text-field'
-            });
+            filterField = new omna.form.field.util.SearchTextField();
 
         modules.setFilter(filterField);
 

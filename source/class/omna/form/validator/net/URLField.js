@@ -4,7 +4,7 @@ qx.Class.define("omna.form.validator.net.URLField", {
     members: {
         // overridden
         onValidate: function (item, value, context) {
-            var pattern = /^(https?:\/\/)(\w[\w-]+)(\.\w[\w-]+)+(\.[a-z]{2,3})(\?.*)?$/;
+            var pattern = /^(https?:\/\/)(\w[\w-]+)(\.\w[\w-]+)*(\.[a-z]{2,3})([\/?#].*)?$/;
 
             if (value) {
                 if (!pattern.test(value)) {

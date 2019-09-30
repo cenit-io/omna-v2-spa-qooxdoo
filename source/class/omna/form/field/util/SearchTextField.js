@@ -83,7 +83,7 @@ qx.Class.define("omna.form.field.util.SearchTextField", {
         _createChildControlImpl: function (id, hash) {
             var control;
 
-            switch (id) {
+            switch ( id ) {
                 case "textField":
                     control = new qx.ui.form.TextField().set({
                         liveUpdate: true,
@@ -110,24 +110,20 @@ qx.Class.define("omna.form.field.util.SearchTextField", {
         // overridden
         getFocusElement: function () {
             var el = this.getContentElement();
-            if (el) {
-                return el;
-            }
+            if (el) return el;
         },
 
         _onChangeValue: function (e) {
-            if (this.__changeValueTimeoutHandle) {
-                clearTimeout(this.__changeValueTimeoutHandle);
-            }
+            if (this.__changeValueTimeoutHandle) clearTimeout(this.__changeValueTimeoutHandle);
 
-            this.__changeValueTimeoutHandle = setTimeout(function (vThis) {
-                vThis.fireEvent('changeValue', qx.event.type.Data, [e.getData()]);
+            this.__changeValueTimeoutHandle = setTimeout(function (vThis, data) {
+                vThis.fireEvent('changeValue', qx.event.type.Data, [data]);
                 vThis.__changeValueTimeoutHandle = null;
-            }, 500, this);
+            }, 500, this, e.getData());
         },
 
         _onChangeAppearance: function (e) {
-            this.__text.setAppearance(e.getData()+'/text-field');
+            this.__text.setAppearance(e.getData() + '/text-field');
         }
     }
 

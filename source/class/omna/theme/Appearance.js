@@ -199,14 +199,17 @@ qx.Theme.define("omna.theme.Appearance", {
             }
         },
 
-        "filter-text-field": {
-            alias: "search-text-field",
+        "filter-select-box": "textfield",
+        "filer-select-box/search-text-field": {
             include: "search-text-field",
 
             style: function (states) {
-                return {
-                    icon: "omna/icon/16/actions/filter.png"
-                };
+                return { icon: "omna/icon/16/actions/filter.png" };
+            }
+        },
+        "filer-select-box/search-text-field/text-field": {
+            style: function (states) {
+                return { decorator: "none" };
             }
         },
 

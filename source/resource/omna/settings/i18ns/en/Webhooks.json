@@ -8,5 +8,15 @@
     "name": "SINGLE-ITEM-REFERENCE",
     "subCatalog": "Labels",
     "value": "Webhook"
+  },
+  {
+    "name": "topic",
+    "subCatalog": "Labels",
+    "value": "Topic"
+  },
+  {
+    "name": "URL",
+    "subCatalog": "Labels",
+    "value": "URL"
   }
 ]

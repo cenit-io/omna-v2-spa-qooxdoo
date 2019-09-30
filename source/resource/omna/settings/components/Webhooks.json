@@ -19,16 +19,17 @@
     "fields": [
       {
         "name": "topic",
-        "widgetClass": "omna.form.field.TextField",
+        "widgetClass": "omna.form.field.LocalSelectBox",
         "showInGrid": true,
         "includeInSearch": true,
         "accessInAddForm": "W",
-        "accessInEditForm": "R",
+        "accessInEditForm": "W",
         "gridColumnWidth": 150,
         "required": true,
-        "minLength": 2,
-        "maxLength": 50,
-        "pattern": "\\w+"
+        "options": [
+          "order/registered",
+          "order/updated"
+        ]
       },
       {
         "name": "address",
@@ -37,25 +38,27 @@
         "showInGrid": true,
         "includeInSearch": true,
         "accessInAddForm": "W",
-        "accessInEditForm": "R",
-        "gridColumnWidth": 150,
+        "accessInEditForm": "W",
         "required": true
       },
       {
-        "name": "integration",
+        "name": "integration_id",
+        "label": "integration",
         "showInGrid": true,
         "isTemplate": true,
         "i18n": {
           "subCatalog": "Titles",
           "name": "INTEGRATION"
         },
+        "gridColumnWidth": 250,
         "includeInSearch": true,
         "accessInAddForm": "W",
+        "accessInEditForm": "W",
         "widgetClass": "omna.form.field.remote.FilteringSelectBox",
-        "searchAttrName": "integration_id",
         "serviceBasePath": "integrations",
         "labelAttr": "name",
-        "valueAttr": "id"
+        "valueAttr": "id",
+        "required": true
       },
       {
         "name": "created_at",
