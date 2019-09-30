@@ -15,7 +15,6 @@ qx.Class.define("omna.management.flow.Details", {
         this.base(arguments, settings, customData, modulePage);
 
         q.messaging.on("Application", "accept-update-scheduler", this.onAcceptUpdateScheduler, this);
-
     },
 
     members: {
@@ -33,8 +32,20 @@ qx.Class.define("omna.management.flow.Details", {
          * @param data {Object} Selected item data.
          */
         onSelectionChange: function (data) {
-            this._flowId = data.customData ? data.customData.item.id : null;
-            this.setCustomData(data.customData ? data.customData.item.task : {});
+            var task = {};
+
+            if (data.customData) {
+                this._flowId = data.customData.item.id;
+                if (data.customData.item.task !== 'none') {
+                    task = data.customData.item.task
+                } else {
+                    q.messaging.emit('Application', 'warn', this.i18nTrans('Flows', 'Messages', 'WITHOUT-TASK-NEITHER-SCHEDULER'));
+                }
+            } else {
+                this._flowId = null;
+            }
+
+            this.setCustomData(task);
         },
 
         onAcceptUpdateScheduler: function (data) {

@@ -35,6 +35,11 @@
     "value": "Do you really want to <b>deactivate</b> the <b>scheduler</b> of the selected <b>flow</b>?"
   },
   {
+    "name": "CONFIRM-START",
+    "subCatalog": "Messages",
+    "value": "Do you really want to <b>start</b> the selected <b>flow</b>?"
+  },
+  {
     "name": "SUCCESSFUL-SCHEDULER-ON",
     "subCatalog": "Messages",
     "value": "The <b>scheduler</b> of the selected <b>flow</b> was successfully activated."
@@ -45,6 +50,11 @@
     "value": "The <b>scheduler</b> of the selected <b>flow</b> was successfully deactivated."
   },
   {
+    "name": "SUCCESSFUL-START",
+    "subCatalog": "Messages",
+    "value": "The selected <b>flow</b> was successfully started."
+  },
+  {
     "name": "FAILED-LOADING-FLOW-TYPES",
     "subCatalog": "Messages",
     "value": "The loading of the <b>flow types</b> has failed."
@@ -53,5 +63,15 @@
     "name": "FAILED-TOGGLE-SCHEDULER-STATUS",
     "subCatalog": "Messages",
     "value": "The toggle status of the <b>scheduler</b> of the selected <b>flow</b> has failed."
+  },
+  {
+    "name": "FAILED-START",
+    "subCatalog": "Messages",
+    "value": "The start of the selected <b>flow</b> has failed."
+  },
+  {
+    "name": "WITHOUT-TASK-NEITHER-SCHEDULER",
+    "subCatalog": "Messages",
+    "value": "The selected <b>flow</b> has no associated <b>task</b> or <b>scheduler</b>. Its will be restored when you activate the flow scheduler."
   }
 ]

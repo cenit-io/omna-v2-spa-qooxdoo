@@ -13,7 +13,8 @@ qx.Class.define("omna.action.flow.Scheduler", {
         onExecute: function () {
             var management = this.getManagement(),
                 item = this.getSelectedItem(),
-                msg = this.i18nTrans('Messages', 'CONFIRM-SCHEDULER-' + (item.task.scheduler.active ? 'OFF' : 'ON'));
+                scheduler = item.task.scheduler,
+                msg = this.i18nTrans('Messages', 'CONFIRM-SCHEDULER-' + (scheduler && scheduler.active ? 'OFF' : 'ON'));
 
             omna.dialog.Confirm.show(msg, function (response) {
                 if (response === 'yes') {
@@ -30,7 +31,9 @@ qx.Class.define("omna.action.flow.Scheduler", {
             this.base(arguments, data);
 
             if (data.customData !== null) {
-                if (data.customData.item.task.scheduler.active) {
+                var scheduler = data.customData.item.task.scheduler;
+
+                if (scheduler && scheduler.active) {
                     this.set({ icon: 'omna/icon/16/actions/scheduler-off.png' })
                 } else {
                     this.set({ icon: 'omna/icon/16/actions/scheduler-on.png' })

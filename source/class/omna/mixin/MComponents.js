@@ -9,6 +9,7 @@
  * @require(omna.action.integration.Authorize)
  * @require(omna.action.integration.Import)
  * @require(omna.action.flow.Scheduler)
+ * @require(omna.action.flow.Start)
  * @require(omna.action.ReImport)
  * @require(omna.action.Separator)
  * @require(omna.action.order.Documents)
@@ -54,7 +55,6 @@
  *
  *
  ** Remote components.
- * @require(omna.form.field.remote.SelectBox)
  * @require(omna.form.field.remote.FilteringSelectBox)
  * @require(omna.form.field.remote.ChannelSelectBox)
  * @require(omna.form.field.remote.FlowTypeSelectBox)

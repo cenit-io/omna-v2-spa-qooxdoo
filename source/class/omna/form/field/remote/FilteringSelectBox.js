@@ -7,6 +7,7 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
 
     construct: function () {
         this.base(arguments);
+        xx = this
     },
 
     properties: {
@@ -26,6 +27,10 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
     },
 
     members: {
+        setSelection: function (item) {
+            console.log(111, item);
+        },
+
         // overridden
         _createChildControlImpl: function (id, hash) {
             var control;
