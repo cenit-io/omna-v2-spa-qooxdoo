@@ -7,7 +7,6 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
 
     construct: function () {
         this.base(arguments);
-        // this.__loadItems()
     },
 
     properties: {
@@ -27,16 +26,6 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
     },
 
     members: {
-        __loadItems: function () {
-            var request = new omna.request.Integrations();
-
-            request.getChannels(function (response) {
-                if (response.successful) response.data.forEach(function (item) {
-                    this.add(new qx.ui.form.ListItem(item.title, null, item.name));
-                }, this);
-            }, this);
-        },
-
         // overridden
         _createChildControlImpl: function (id, hash) {
             var control;
@@ -57,7 +46,7 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
 
                     control.addListener("changeVisibility", this._onPopupChangeVisibility, this);
 
-                    this._loadItems('')
+                    this._loadItems('');
                     break;
             }
 
