@@ -13,7 +13,7 @@ qx.Class.define("omna.ToolTip", {
             var application = qx.core.Init.getApplication(),
                 placeWidget = application.getToolTioPlaceToWidget(),
                 applicationWidth = application.getRoot().getLayout().getSizeHint().width,
-                offsetTop = 0;
+                offsetTop = 5;
 
             if (!this.lastToolTip) {
                 this.lastToolTip = new qx.ui.tooltip.ToolTip();
@@ -31,8 +31,6 @@ qx.Class.define("omna.ToolTip", {
                 offsetTop = lastToolTipBounds.top + lastToolTipBounds.height - placeWidgetBounds.height;
                 this.lastToolTip = new qx.ui.tooltip.ToolTip();
                 this.lastToolTip.addListener("changeVisibility", this.onChangeVisibility, this);
-            } else {
-                offsetTop = 0;
             }
 
             msg = (msg.trim() + '.').replace(/\.{2,}$/, '.');
