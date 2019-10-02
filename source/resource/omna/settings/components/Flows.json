@@ -33,8 +33,7 @@
         }
       },
       {
-        "name": "integration_id",
-        "label": "integration",
+        "name": "integration",
         "showInGrid": true,
         "isTemplate": true,
         "i18n": {
@@ -43,6 +42,8 @@
         },
         "includeInSearch": true,
         "accessInAddForm": "W",
+        "attrPath": "id",
+        "attrModelName": "integration_id",
         "widgetClass": "omna.form.field.remote.FilteringSelectBox",
         "serviceBasePath": "integrations",
         "labelAttr": "name",

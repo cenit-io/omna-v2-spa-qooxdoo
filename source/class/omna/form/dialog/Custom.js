@@ -43,7 +43,7 @@ qx.Class.define("omna.form.dialog.Custom", {
                     validatorClass,
                     label;
 
-                if (accessFormAction != 'N' && field.widgetClass) {
+                if (accessFormAction !== 'N' && field.widgetClass) {
                     widgetClass = qx.Class.getByName(field.widgetClass);
 
                     if (widgetClass) {
@@ -52,9 +52,9 @@ qx.Class.define("omna.form.dialog.Custom", {
                         widget.setWidth && widget.setWidth(Math.floor(this.getWidth() * 67 / 100));
                         widget.setFromJSON(field);
 
-                        if (accessFormAction == 'H') {
+                        if (accessFormAction === 'H') {
                             widget.setVisibility("excluded");
-                        } else if (accessFormAction == 'R') {
+                        } else if (accessFormAction === 'R') {
                             // TODO: set property readOnly for all field type.
                             // Los campos con propiedad readOnly=true no son modificables pero si se incluyen
                             // en el getData del formulario. A diferencia de los enabled=false que no son
@@ -74,7 +74,7 @@ qx.Class.define("omna.form.dialog.Custom", {
                         }
 
                         label = this.i18nTrans(field.label || field.name);
-                        form.add(widget, label, validator, field.name, form);
+                        form.add(widget, label, validator, field.attrModelName || field.name, form);
 
                     } else {
                         q.messaging.emit("Application", "error", this.tr("Class no found: '%1'.", field.widgetClass));
@@ -83,6 +83,29 @@ qx.Class.define("omna.form.dialog.Custom", {
             }, this);
 
             this.initializeItems();
+        },
+
+        setData: function (data, redefineResetter) {
+            var accessFormAction, attrModelName, value;
+
+            this.getManagement().getFields().forEach(function (field) {
+                accessFormAction = field.accessInEditForm || 'N';
+
+                if (accessFormAction !== 'N' && field.widgetClass) {
+                    value = data[field.name];
+                    attrModelName = field.attrModelName || field.name;
+
+                    if (field.attrPath) field.attrPath.split('.').forEach(function (attr) {
+                        value = qx.lang.Type.isObject(value) ? value[attr] : undefined;
+                    });
+
+                    if (value !== undefined) this._model.set(attrModelName, value);
+                }
+            }, this);
+
+            redefineResetter && this.redefineResetter();
+
+            return this;
         }
     }
 });

@@ -5,11 +5,6 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
         cellRendererClass: omna.table.cellrenderer.String
     },
 
-    construct: function () {
-        this.base(arguments);
-        xx = this
-    },
-
     properties: {
         serviceBasePath: {
             check: 'String'
@@ -27,9 +22,7 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
     },
 
     members: {
-        setSelection: function (item) {
-            console.log(111, item);
-        },
+        __searchText: null,
 
         // overridden
         _createChildControlImpl: function (id, hash) {
@@ -38,7 +31,7 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
             switch ( id ) {
                 case "searchTextField":
                     control = new omna.form.field.util.SearchTextField().set({ focusable: false });
-                    control.addListener("changeValue", this._onSearchTextFieldChangeValue, this);
+                    control.addListener("changeValue", this._loadItems, this);
                     break;
                 case "popup":
                     var searchTextField = this.getChildControl("searchTextField");
@@ -51,20 +44,25 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
 
                     control.addListener("changeVisibility", this._onPopupChangeVisibility, this);
 
-                    this._loadItems('');
                     break;
             }
 
             return control || this.base(arguments, id);
         },
 
-        _loadItems: function (searchText) {
-            var request = new omna.request.Customs(this.getServiceBasePath(), false),
+        _loadItems: function () {
+            var searchText = this.getChildControl("searchTextField").getValue();
+
+            if (this.__searchText === searchText) return;
+
+            this.__searchText = searchText;
+
+            var request = new omna.request.Customs(this.getServiceBasePath(), true),
                 labelAttr = this.getLabelAttr(),
                 valueAttr = this.getValueAttr(),
                 params = { term: searchText };
 
-            request.findRange(0, 99, null, params, function (response) {
+            request.findRange(0, 25, null, params, function (response) {
                 this.removeAll();
 
                 if (response.successful) {
@@ -77,8 +75,9 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
             }, this);
         },
 
-        _onSearchTextFieldChangeValue: function (e) {
-            this._loadItems(e.getData());
+        _getItems: function () {
+            this._loadItems();
+            return this.base(arguments);
         },
 
         _onBlur: function (e) {

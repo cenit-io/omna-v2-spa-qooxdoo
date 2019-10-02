@@ -126,5 +126,4 @@ qx.Class.define("omna.form.field.util.SearchTextField", {
             this.__text.setAppearance(e.getData() + '/text-field');
         }
     }
-
 });
