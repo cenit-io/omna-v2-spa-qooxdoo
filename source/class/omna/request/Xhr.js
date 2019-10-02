@@ -9,11 +9,16 @@ qx.Class.define("omna.request.Xhr", {
     },
 
     members: {
+        send: function () {
+            q.messaging.emit('Application', 'loading-start');
+            this.base(arguments)
+        },
+
         /**
          * Fired when request completes with or without error.
          */
         __onLoadEnd: function (e) {
-            if (qx.core.Init.getApplication()) omna.dialog.Waiting.release();
+            q.messaging.emit('Application', 'loading-release');
             this.dispose()
         },
 

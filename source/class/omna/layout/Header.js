@@ -12,6 +12,7 @@
  * Here you documentation for you class
  *
  * @asset(omna/icon/24/actions/logout.png)
+ * @asset(omna/images/loading.gif)
  * @asset(omna/images/logo.png)
  */
 qx.Class.define("omna.layout.Header", {
@@ -35,8 +36,12 @@ qx.Class.define("omna.layout.Header", {
         this.__user = new qx.ui.basic.Label(profile.name || "-");
         this.__user.setAppearance('profile');
 
+        this.__loading = new qx.ui.basic.Image("omna/images/loading.gif");
+        this.__loading.hide();
+
         this.add(logo);
         this.add(new qx.ui.core.Spacer, { flex: 1 });
+        this.add(this.__loading);
         this.add(this.__searchField);
         this.add(this.__user);
         this.add(logout);
@@ -44,16 +49,33 @@ qx.Class.define("omna.layout.Header", {
         this.__searchField.setAppearance('global-search-text-field');
         this.__searchField.addListener("changeValue", this.onGlobalSearchChangeValue, this);
 
-        logout.addListener("click", function () { q.messaging.emit("Application", "logout"); }, this);
+        logout.addListener("click", function () {
+            q.messaging.emit("Application", "logout");
+        }, this);
 
         // Create route handler for messaging channels.
         q.messaging.on("Application", "update-session", this.onUpdateSession, this);
         q.messaging.on("Application", "change-active-module", this.onChangeActiveModule, this);
+        q.messaging.on("Application", "loading-start", this.onLoaddingStart, this);
+        q.messaging.on("Application", "loading-release", this.onLoaddingRelease, this);
     },
 
     members: {
         __user: null,
         __activeModule: null,
+        __loadingStatus: 0,
+
+        onLoaddingStart: function () {
+            if (this.__loadingStatus === 0) this.__loading.show();
+            this.__loadingStatus++;
+            console.log(1, this.__loadingStatus);
+        },
+
+        onLoaddingRelease: function () {
+            this.__loadingStatus = Math.max(0, this.__loadingStatus - 1);
+            console.log(2, this.__loadingStatus);
+            if (this.__loadingStatus === 0) this.__loading.hide();
+        },
 
         /**
          * Execute when user login or logout.

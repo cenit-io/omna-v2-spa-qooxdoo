@@ -146,9 +146,6 @@ qx.Class.define("omna.request.AbstractResource", {
         },
 
         submit: function (method, path, data, callBack, scope, token, secret) {
-            // !this.isAsync() && omna.dialog.Waiting.activate();
-            omna.dialog.Waiting.activate();
-
             path = this._getServicePath(path);
 
             var request = new omna.request.Xhr(this._getServiceUrl(path), method);
