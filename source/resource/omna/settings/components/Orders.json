@@ -74,7 +74,7 @@
         },
         "includeInSearch": true,
         "widgetClass": "omna.form.field.remote.FilteringSelectBox",
-        "searchAttrName": "integration_id",
+        "attrModelName": "integration_id",
         "serviceBasePath": "integrations",
         "labelAttr": "name",
         "valueAttr": "id"

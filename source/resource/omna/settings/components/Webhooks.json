@@ -36,7 +36,6 @@
         "label": "URL",
         "widgetClass": "omna.form.field.net.URLField",
         "showInGrid": true,
-        "includeInSearch": true,
         "accessInAddForm": "W",
         "accessInEditForm": "W",
         "required": true
