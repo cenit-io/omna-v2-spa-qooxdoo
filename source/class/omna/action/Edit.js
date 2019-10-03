@@ -3,17 +3,19 @@
  */
 qx.Class.define("omna.action.Edit", {
     extend: omna.action.AbstractActionWithSelectedItem,
+    include: [omna.mixin.MActionWithDlg],
 
     construct: function (management) {
         this.base(arguments, management, 'edit', 'omna/icon/16/actions/edit.png');
     },
 
     members: {
-        onExecute: function () {
+        _createDlg: function () {
             var itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
                 caption = this.i18nTrans('Titles', 'edit', [itemLabel]),
                 dlg = new omna.form.dialog.Custom(this.getManagement(), 'edit', caption, this.getIcon());
 
+            dlg.addListener('appear', this.onAppear, this);
             dlg.addListener('accept', this.onAccept, this);
             dlg.setData(this.getSelectedItem());
             dlg.open();
@@ -26,7 +28,10 @@ qx.Class.define("omna.action.Edit", {
                 dlg = e.getTarget(),
                 data = e.getData();
 
-            request.update(data.id, data, function (response) {
+            dlg.setEnabled(false);
+
+            request.update(this.getSelectedItem().id, data, function (response) {
+                dlg.setEnabled(true);
                 if (response.successful) {
                     q.messaging.emit(
                         'Application', 'good', this.i18nTrans('Messages', 'SUCCESSFUL-UPDATING', [itemLabel])

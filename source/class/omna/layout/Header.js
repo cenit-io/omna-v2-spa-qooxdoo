@@ -68,12 +68,10 @@ qx.Class.define("omna.layout.Header", {
         onLoaddingStart: function () {
             if (this.__loadingStatus === 0) this.__loading.show();
             this.__loadingStatus++;
-            console.log(1, this.__loadingStatus);
         },
 
         onLoaddingRelease: function () {
             this.__loadingStatus = Math.max(0, this.__loadingStatus - 1);
-            console.log(2, this.__loadingStatus);
             if (this.__loadingStatus === 0) this.__loading.hide();
         },
 

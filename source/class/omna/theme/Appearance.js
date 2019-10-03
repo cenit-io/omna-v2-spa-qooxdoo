@@ -11,7 +11,6 @@
 /**
  * @asset(omna/icon/16/actions/search.png)
  * @asset(omna/icon/16/actions/filter.png)
- * @asset(omna/images/ajax-loader.gif)
  * @asset(omna/css/styles.css)
  */
 qx.Theme.define("omna.theme.Appearance", {
@@ -99,15 +98,6 @@ qx.Theme.define("omna.theme.Appearance", {
                 };
             }
         },
-
-        "waiting": {
-            style: function (states) {
-                return {
-                    icon: "omna/images/ajax-loader.gif"
-                };
-            }
-        },
-        "waiting/captionbar": {},
 
         "textfield": {
             style: function (states) {
