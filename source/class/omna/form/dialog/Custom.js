@@ -1,5 +1,5 @@
 qx.Class.define("omna.form.dialog.Custom", {
-    extend: omna.dialog.AbstractForm,
+    extend: omna.form.dialog.AbstractForm,
     include: [omna.mixin.MWithManagement],
 
     /**

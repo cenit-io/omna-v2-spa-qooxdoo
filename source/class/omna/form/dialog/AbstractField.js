@@ -4,7 +4,7 @@
  */
 qx.Class.define("omna.form.dialog.AbstractField", {
     type: 'abstract',
-    extend: omna.dialog.AbstractForm,
+    extend: omna.form.dialog.AbstractForm,
 
     // override
     construct: function (caption, icon) {

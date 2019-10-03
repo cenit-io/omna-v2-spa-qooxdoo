@@ -1,7 +1,6 @@
 qx.Class.define("omna.form.dialog.Search", {
-    extend: omna.dialog.AbstractForm,
+    extend: omna.form.dialog.AbstractForm,
     include: [omna.mixin.MWithManagement],
-
 
     /**
      * Constructor

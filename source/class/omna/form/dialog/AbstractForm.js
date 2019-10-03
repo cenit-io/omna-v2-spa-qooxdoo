@@ -1,4 +1,4 @@
-qx.Class.define("omna.dialog.AbstractForm", {
+qx.Class.define("omna.form.dialog.AbstractForm", {
     type: "abstract",
     extend: omna.dialog.AbstractDialog,
 
