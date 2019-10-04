@@ -64,22 +64,22 @@ qx.Class.define("omna.ToolTip", {
 
         info: function (msg) {
             this.create(msg, 'omna/icon/32/info.png', 'info', 'black');
-            console.info(msg);
+            console.info(qx.lang.String.stripTags(msg));
         },
 
         good: function (msg) {
             this.create(msg, 'omna/icon/32/good.png', 'good', 'black');
-            console.log(msg);
+            console.log(qx.lang.String.stripTags(msg));
         },
 
         warn: function (msg) {
             this.create(msg, 'omna/icon/32/warn.png', 'warn', 'black');
-            console.warn(msg);
+            console.warn(qx.lang.String.stripTags(msg));
         },
 
         error: function (msg) {
             this.create(msg, 'omna/icon/32/error.png', 'error', 'white');
-            console.error(msg);
+            console.error(qx.lang.String.stripTags(msg));
         },
 
         warning: function (msg) {
