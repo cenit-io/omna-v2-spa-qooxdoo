@@ -81,11 +81,9 @@ qx.Class.define("omna.action.AbstractAction", {
             this.animate({
                 duration: 200,
                 keyFrames: {
-                    0: { scale: 1 },
-                    25: { scale: 0.9 },
-                    50: { scale: 1.0 },
-                    75: { scale: 1.1 },
-                    100: { scale: 1 }
+                    000: { scale: 1.0 },
+                    050: { scale: 0.9 },
+                    100: { scale: 1.0 }
                 }
             });
         }
