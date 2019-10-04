@@ -270,6 +270,11 @@
     "value": "New item details"
   },
   {
+    "name": "CONFIRM-LOGOUT",
+    "subCatalog": "Messages",
+    "value": "Do you really want close the current session?"
+  },
+  {
     "name": "CONFIRM-DELETING",
     "subCatalog": "Messages",
     "value": "Do you really want to delete the selected <b class='resource'>%1</b>?"

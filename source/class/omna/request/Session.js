@@ -77,12 +77,19 @@ qx.Class.define("omna.request.Session", {
          * The response will be processed in the events methods onSuccess or onError.
          */
         logout: function () {
-            this.setProfile(null);
 
-            var serverBaseUrl = this.getServerBaseUrl(),
-                appUrl = this.getAppBaseUrl();
+            var msg = omna.I18n.trans('Messages', 'CONFIRM-LOGOUT');
 
-            window.location = serverBaseUrl + '/sign_out?redirect_uri=' + appUrl;
+            omna.dialog.Confirm.show(msg, function (response) {
+                if (response === 'yes') {
+                    this.setProfile(null);
+
+                    var serverBaseUrl = this.getServerBaseUrl(),
+                        appUrl = this.getAppBaseUrl();
+
+                    window.location = serverBaseUrl + '/sign_out?redirect_uri=' + appUrl;
+                }
+            }, this);
         },
 
         isAuthenticated: function () {
