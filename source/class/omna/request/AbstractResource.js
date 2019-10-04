@@ -224,14 +224,12 @@ qx.Class.define("omna.request.AbstractResource", {
         },
 
         count: function (params, callBack, scope) {
-
             var data = qx.lang.Object.clone(params);
 
-            data.offset = 0;
-            data.limit = 5;
+            data.without_data = true;
 
             // Call remote service
-            this.submit("GET", null, params, callBack, scope);
+            this.submit("GET", null, data, callBack, scope);
         },
 
         create: function (data, callBack, scope) {

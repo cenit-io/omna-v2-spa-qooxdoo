@@ -16,7 +16,7 @@ qx.Class.define("omna.management.DataGridRestService", {
             maxCachedBlockCount: 5,
             listenFromComponentId: null,
             primaryFieldName: 'id',
-            localFieldName: 'null',
+            localFieldName: null,
             baseParams: {}
         }
     },
