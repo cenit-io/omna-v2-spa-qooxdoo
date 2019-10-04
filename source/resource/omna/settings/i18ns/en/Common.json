@@ -260,6 +260,11 @@
     "value": "{{integration.name}} of {{integration.channel}}"
   },
   {
+    "name": "INTEGRATIONS",
+    "subCatalog": "Titles",
+    "value": "{{#integrations}}<span><b>{{name}}</b> of <b>{{channel}}</b></span>{{/integrations}}"
+  },
+  {
     "name": "APPLICATION-TITLE",
     "subCatalog": "Labels",
     "value": "OMNA eCommerce LTD"

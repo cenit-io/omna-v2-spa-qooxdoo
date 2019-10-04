@@ -5,6 +5,8 @@
     "widgetClass": "omna.management.DataGridRestService",
     "requestManagementClass": "omna.request.Products",
     "rowHeight": 60,
+    "formWidth": 800,
+    "searchFormWidth": 400,
     "baseParams": {
       "with_details": true
     },
@@ -36,7 +38,8 @@
         "accessInEditForm": "W",
         "required": true,
         "minLength": 2,
-        "pattern": "^[^\t].*[][^\t]$"
+        "pattern": "^[^\\t\\s].*[^\\t\\s]$",
+        "gridColumnWidth": 400
       },
       {
         "name": "price",
@@ -56,9 +59,6 @@
         "name": "variants",
         "widgetClass": "omna.form.field.NumberField",
         "showInGrid": true,
-        "includeInSearch": false,
-        "accessInAddForm": "N",
-        "accessInEditForm": "N",
         "gridColumnWidth": 100,
         "gridRendererStyle": {
           "textAlign": "center"
@@ -66,15 +66,23 @@
       },
       {
         "name": "integrations",
-        "widgetClass": "omna.form.field.NumberField",
         "showInGrid": true,
-        "includeInSearch": false,
-        "accessInAddForm": "N",
-        "accessInEditForm": "N",
-        "gridColumnWidth": 100,
-        "gridRendererStyle": {
-          "textAlign": "center"
+        "cellRendererClass": "omna.table.cellrenderer.String",
+        "cellClass": "integrations",
+        "isTemplate": true,
+        "isRichText": true,
+        "i18n": {
+          "subCatalog": "Titles",
+          "name": "INTEGRATIONS"
         }
+      },
+      {
+        "name": "description",
+        "widgetClass": "omna.form.field.TextArea",
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": true,
+        "minLength": 3
       }
     ]
   }

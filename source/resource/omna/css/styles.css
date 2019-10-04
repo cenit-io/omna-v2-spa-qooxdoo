@@ -18,3 +18,26 @@ b.resource {
     text-transform: lowercase;
     font-weight: bold;
 }
+
+.qooxdoo-table-cell.integrations {
+    overflow-y: auto;
+    white-space: normal;
+}
+
+.qooxdoo-table-cell.integrations span {
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    padding: 0px 5px;
+    margin-right: 5px;
+    margin-top: 4px;
+    display: inline-table;
+    color: black !important;
+}
+
+.qooxdoo-table-cell.integrations span:nth-child(odd) {
+    background-color: lightcyan;
+}
+
+.qooxdoo-table-cell.integrations span:nth-child(even) {
+    background-color: mintcream;
+}
