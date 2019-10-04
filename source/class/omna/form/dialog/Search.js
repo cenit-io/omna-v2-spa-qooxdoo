@@ -12,7 +12,7 @@ qx.Class.define("omna.form.dialog.Search", {
     construct: function (management, caption, icon) {
         var settings = management.getSettings();
 
-        this.set({ management: management, width: settings.formWidth });
+        this.set({ management: management, width: settings.searchFormWidth || settings.formWidth });
 
         this.base(arguments, caption, icon);
     },
