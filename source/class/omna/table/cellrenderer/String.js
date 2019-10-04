@@ -24,8 +24,9 @@ qx.Class.define("omna.table.cellrenderer.String", {
 
         this.set({
             i18nSetting: settings.i18n || {},
-            cellClass: settings.cellClass || '',
-            template: settings.isTemplate || false
+            cellClass: settings.cellClass || settings.name,
+            template: settings.isTemplate || false,
+            richText: settings.isRichText || false
         });
 
         this.base(arguments,
@@ -63,6 +64,11 @@ qx.Class.define("omna.table.cellrenderer.String", {
         template: {
             check: 'Boolean',
             init: false
+        },
+
+        richText: {
+            check: 'Boolean',
+            init: false
         }
     },
 
@@ -85,7 +91,7 @@ qx.Class.define("omna.table.cellrenderer.String", {
 
             if (this.isTemplate()) result = qx.bom.Template.render(result, cellInfo.rowData);
 
-            return qx.bom.String.escape(result);
+            return this.isRichText() ? result : qx.bom.String.escape(result);
         },
 
         // overridden
