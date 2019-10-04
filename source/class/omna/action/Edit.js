@@ -15,10 +15,9 @@ qx.Class.define("omna.action.Edit", {
                 caption = this.i18nTrans('Titles', 'edit', [itemLabel]),
                 dlg = new omna.form.dialog.Custom(this.getManagement(), 'edit', caption, this.getIcon());
 
-            dlg.addListener('appear', this.onAppear, this);
-            dlg.addListener('accept', this.onAccept, this);
             dlg.setData(this.getSelectedItem());
-            dlg.open();
+
+            return dlg;
         },
 
         onAccept: function (e) {

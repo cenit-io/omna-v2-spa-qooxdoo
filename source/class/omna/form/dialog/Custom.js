@@ -20,7 +20,7 @@ qx.Class.define("omna.form.dialog.Custom", {
         });
 
         this.base(arguments, caption, icon);
-        this.addListener("close", this.destroy);
+        // this.addListener("close", this.destroy);
     },
 
     properties: {

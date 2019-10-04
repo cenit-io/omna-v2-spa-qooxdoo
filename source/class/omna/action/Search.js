@@ -11,15 +11,9 @@ qx.Class.define("omna.action.Search", {
 
     members: {
         _createDlg: function () {
-            if (!this.__dlg) {
-                var caption = this.i18nTrans('Titles', 'search');
+            var caption = this.i18nTrans('Titles', 'search');
 
-                this.__dlg = new omna.form.dialog.Search(this.getManagement(), caption, this.getIcon());
-                this.__dlg.addListener('appear', this.onAppear, this);
-                this.__dlg.addListener('accept', this.onAccept, this);
-            }
-
-            this.__dlg.open();
+            return new omna.form.dialog.Search(this.getManagement(), caption, this.getIcon());
         },
 
         onAccept: function (e) {
@@ -37,9 +31,5 @@ qx.Class.define("omna.action.Search", {
                 this.set({ textColor: 'highlight', font: 'bold' });
             }
         }
-    },
-
-    destruct: function () {
-        this.__dlg && this.__dlg.destroy();
     }
 });

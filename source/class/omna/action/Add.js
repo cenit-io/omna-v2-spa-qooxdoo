@@ -13,11 +13,9 @@ qx.Class.define("omna.action.Add", {
         _createDlg: function () {
             var management = this.getManagement(),
                 itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
-                caption = this.i18nTrans('Titles', 'add', [itemLabel]),
-                dlg = new omna.form.dialog.Custom(management, 'add', caption, this.getIcon());
+                caption = this.i18nTrans('Titles', 'add', [itemLabel]);
 
-            dlg.addListener('accept', this.onAccept, this);
-            dlg.open();
+            return new omna.form.dialog.Custom(management, 'add', caption, this.getIcon());
         },
 
         onAccept: function (e) {
