@@ -16,7 +16,7 @@ qx.Class.define("omna.action.AbstractAction", {
         command.setToolTipText(label);
         command.addListener("execute", this.onExecute, this);
 
-        // this.addListener("focusin", this.onFocusAnimate, this);
+        this.addListener("focusin", this.onFocusAnimate, this);
         this.addListener("pointerover", this.focus, this);
 
         this._messagingRouteIds = [];
