@@ -3,17 +3,19 @@
  */
 qx.Class.define("omna.action.Search", {
     extend: omna.action.AbstractAction,
+    include: [omna.mixin.MActionWithDlg],
 
     construct: function (management) {
         this.base(arguments, management, 'search', 'icon/16/actions/system-search.png');
     },
 
     members: {
-        onExecute: function () {
+        _createDlg: function () {
             if (!this.__dlg) {
                 var caption = this.i18nTrans('Titles', 'search');
 
                 this.__dlg = new omna.form.dialog.Search(this.getManagement(), caption, this.getIcon());
+                this.__dlg.addListener('appear', this.onAppear, this);
                 this.__dlg.addListener('accept', this.onAccept, this);
             }
 
@@ -32,8 +34,12 @@ qx.Class.define("omna.action.Search", {
                 this.resetTextColor();
                 this.resetFont()
             } else {
-                this.set({textColor: 'highlight', font: 'bold'});
+                this.set({ textColor: 'highlight', font: 'bold' });
             }
         }
+    },
+
+    destruct: function () {
+        this.__dlg && this.__dlg.destroy();
     }
 });
