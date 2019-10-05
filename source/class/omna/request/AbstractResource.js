@@ -176,22 +176,6 @@ qx.Class.define("omna.request.AbstractResource", {
         },
 
         /**
-         * Call REST services to find all record.
-         *
-         * @param order {String?} Order of results.
-         * @param params {Map?} Filters to apply.
-         * @param callBack {Function} Callback function with response params Ex: function(response){...}.
-         * @param scope {Object?} Callback function scope.
-         */
-        findAll: function (order, params, callBack, scope) {
-            var data = qx.lang.Object.clone(params) || {};
-
-            if (order) data.order = order;
-
-            this.submit("GET", null, data, callBack, scope);
-        },
-
-        /**
          * Call REST services to find all record in a given range.
          *
          * @param from {Number} Start index of results.

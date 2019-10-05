@@ -17,6 +17,7 @@
  * @require(omna.action.tenant.Details)
  * @require(omna.action.tenant.Switch)
  * @require(omna.action.tenant.Startup)
+ * @require(omna.action.product.Integrations)
  *
  ** Cell Renderer
  * @require(omna.table.cellrenderer.LongText)
@@ -41,9 +42,6 @@
  * @require(omna.management.tenant.Details)
  * @require(omna.management.flow.Details)
  *
- ** Nomenclature components
- * @require(omna.form.field.nomenclature.SelectBox)
- * @require(omna.form.field.nomenclature.ItemSelectBox)
  *
  ** Safety components
  * @require(omna.form.field.safety.PasswordField)
