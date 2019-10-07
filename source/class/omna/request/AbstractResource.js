@@ -207,6 +207,30 @@ qx.Class.define("omna.request.AbstractResource", {
             this.submit("GET", null, data, callBack, scope);
         },
 
+        findAll: function (order, params, callBack, scope) {
+            var findBlock = qx.lang.Function.bind(function (from, to, items) {
+                this.findRange(from, to, params, function (response) {
+                    if (response.successful) {
+                        items = items.concat(response.data);
+
+                        var total = items.length;
+
+                        if (total < response.pagination.total) {
+                            findBlock(from + response.pagination.limit, to + response.pagination.limit, items)
+                        } else {
+                            response.data = items;
+                            response.pagination = { offset: 0, limit: total, total: total };
+                            callBack.call(scope, response)
+                        }
+                    } else {
+                        callBack.call(scope, response)
+                    }
+                }, this)
+            }, this);
+
+            findBlock(0, 99, []);
+        },
+
         count: function (params, callBack, scope) {
             var data = qx.lang.Object.clone(params);
 
