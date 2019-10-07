@@ -160,9 +160,9 @@ qx.Class.define("omna.management.task.Details", {
                         name: field,
                         gridRendererStyle: {
                             conditions: [
-                                { color: "#007BFF", value: "info", },
-                                { color: "#FFC107", value: "warning", },
-                                { color: "#DC3545", value: "error", }
+                                { color: "#007BFF", value: "info" },
+                                { color: "#FFC107", value: "warning" },
+                                { color: "#DC3545", value: "error" }
                             ]
                         }
                     });
