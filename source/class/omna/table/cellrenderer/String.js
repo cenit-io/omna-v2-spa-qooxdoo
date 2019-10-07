@@ -24,7 +24,7 @@ qx.Class.define("omna.table.cellrenderer.String", {
 
         this.set({
             i18nSetting: settings.i18n || {},
-            cellClass: settings.cellClass || settings.name,
+            cellClass: settings.cellClass || settings.name || '',
             template: settings.isTemplate || false,
             richText: settings.isRichText || false
         });

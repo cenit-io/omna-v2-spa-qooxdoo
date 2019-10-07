@@ -143,48 +143,26 @@ qx.Class.define("omna.management.task.Details", {
             switch ( field ) {
                 case "status":
                     return new omna.table.cellrenderer.String({
+                        name: field,
                         gridRendererStyle: {
                             conditions: [
-                                {
-                                    value: "pending",
-                                    color: "#FFC107"
-                                },
-                                {
-                                    value: "running",
-                                    color: "#28A745"
-                                },
-                                {
-                                    value: "paused",
-                                    color: "#17A2B8"
-                                },
-                                {
-                                    value: "completed",
-                                    color: "#007BFF"
-                                },
-                                {
-                                    value: "failed",
-                                    color: "#DC3545"
-                                }
+                                { color: "#FFC107", value: "pending" },
+                                { color: "#28A745", value: "running" },
+                                { color: "#17A2B8", value: "paused" },
+                                { color: "#007BFF", value: "completed" },
+                                { color: "#DC3545", value: "failed" }
                             ]
                         }
                     });
 
                 case "type":
                     return new omna.table.cellrenderer.String({
+                        name: field,
                         gridRendererStyle: {
                             conditions: [
-                                {
-                                    value: "info",
-                                    color: "#007BFF"
-                                },
-                                {
-                                    value: "warning",
-                                    color: "#FFC107"
-                                },
-                                {
-                                    value: "error",
-                                    color: "#DC3545"
-                                }
+                                { color: "#007BFF", value: "info", },
+                                { color: "#FFC107", value: "warning", },
+                                { color: "#DC3545", value: "error", }
                             ]
                         }
                     });
@@ -192,10 +170,8 @@ qx.Class.define("omna.management.task.Details", {
                 case "started_at":
                 case "completed_at":
                     return new omna.table.cellrenderer.Date();
-                // case "message":
-                //     return new omna.table.cellrenderer.String({ cellClass: 'task-message' });
                 default:
-                    return new omna.table.cellrenderer.String();
+                    return new omna.table.cellrenderer.String({ name: field });
             }
         },
 
