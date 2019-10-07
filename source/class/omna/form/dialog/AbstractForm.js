@@ -4,7 +4,6 @@ qx.Class.define("omna.form.dialog.AbstractForm", {
 
     members: {
         _form: null,
-        _model: null,
 
         _createContent: function () {
             // Create form login
@@ -15,10 +14,6 @@ qx.Class.define("omna.form.dialog.AbstractForm", {
 
             // Add from renderer
             this._createRenderer();
-
-            // Define form data controller and get model.
-            var controller = new qx.data.controller.Form(null, this._form);
-            this._model = controller.createModel();
         },
 
         _createRenderer: function () {
@@ -78,22 +73,41 @@ qx.Class.define("omna.form.dialog.AbstractForm", {
         },
 
         getData: function () {
-            var data = qx.util.Serializer.toNativeObject(this._model),
-                name, items = this._form.getItems();
+            var name, items = this._form.getItems(), data = {};
 
-            // Remove disabled items.
-            for (name in items) if (!items[name].isEnabled()) delete data[name];
+            for (name in items) if (items[name].isEnabled()) data[name] = this._getItemValue(items[name])
 
             return data;
         },
 
         setData: function (data, redefineResetter) {
-            qx.Class.getProperties(this._model.constructor).forEach(function (name) {
-                if (typeof data[name] != 'undefined') this._model.set(name, data[name]);
-            }, this);
+            var items = this._form.getItems(), name;
+
+            for (name in items) this._setItemValue(items[name], data[name]);
 
             redefineResetter && this.redefineResetter();
+
             return this;
+        },
+
+        _getItemValue: function (item) {
+            if (qx.Class.hasInterface(item.constructor, qx.ui.core.IMultiSelection)) {
+                return item.getModelSelection().toArray();
+            } else if (qx.Class.hasInterface(item.constructor, qx.ui.core.ISingleSelection)) {
+                return item.getModelSelection().getItem(0) || null;
+            } else {
+                return item.getValue();
+            }
+        },
+
+        _setItemValue: function (item, value) {
+            if (qx.Class.hasInterface(item.constructor, qx.ui.core.IMultiSelection)) {
+                return item.setModelSelection(value);
+            } else if (qx.Class.hasInterface(item.constructor, qx.ui.core.ISingleSelection)) {
+                return item.setModelSelection([value]);
+            } else {
+                return item.setValue(value);
+            }
         }
     },
 

@@ -48,7 +48,7 @@ qx.Class.define("omna.form.dialog.Custom", {
 
                     if (widgetClass) {
                         widget = new widgetClass();
-                        widget.setSettings && widget.setSettings(field);
+                        widget.setSettings ? widget.setSettings(field) : widget.__settings = field;
                         widget.setWidth && widget.setWidth(Math.floor(this.getWidth() * 67 / 100));
                         widget.setFromJSON(field);
 
@@ -86,22 +86,19 @@ qx.Class.define("omna.form.dialog.Custom", {
         },
 
         setData: function (data, redefineResetter) {
-            var accessFormAction, attrModelName, value;
+            var name, value, fieldSettings,
+                items = this._form.getItems();
 
-            this.getManagement().getFields().forEach(function (field) {
-                accessFormAction = field.accessInEditForm || 'N';
+            for (name in items) {
+                fieldSettings = items[name].getSettings ? items[name].getSettings() : items[name].__settings;
+                value = data[fieldSettings.name];
 
-                if (accessFormAction !== 'N' && field.widgetClass) {
-                    value = data[field.name];
-                    attrModelName = field.attrModelName || field.name;
+                if (fieldSettings.attrPath) fieldSettings.attrPath.split('.').forEach(function (attr) {
+                    value = qx.lang.Type.isObject(value) ? value[attr] : undefined;
+                });
 
-                    if (field.attrPath) field.attrPath.split('.').forEach(function (attr) {
-                        value = qx.lang.Type.isObject(value) ? value[attr] : undefined;
-                    });
-
-                    if (value !== undefined) this._model.set(attrModelName, value);
-                }
-            }, this);
+                this._setItemValue(items[name], value);
+            }
 
             redefineResetter && this.redefineResetter();
 
