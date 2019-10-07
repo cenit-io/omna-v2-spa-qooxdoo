@@ -2,9 +2,6 @@
   {
     "id": "order-documents",
     "i18n": "Orders",
-    "widgetClass": "omna.management.order.Documents",
-    "actions": [
-      "omna.action.Reload"
-    ]
+    "widgetClass": "omna.management.order.Documents"
   }
 ]
