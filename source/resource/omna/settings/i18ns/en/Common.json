@@ -25,6 +25,11 @@
     "value": "%1 data to be created:"
   },
   {
+    "name": "integrations",
+    "subCatalog": "Titles",
+    "value": "Integrations linked with the selected %1:"
+  },
+  {
     "name": "description",
     "subCatalog": "Labels",
     "value": "Description"
@@ -33,6 +38,31 @@
     "name": "label",
     "subCatalog": "Labels",
     "value": "Label"
+  },
+  {
+    "name": "after_unlink",
+    "subCatalog": "Labels",
+    "value": "After unlink"
+  },
+  {
+    "name": "keep_in_anywhere",
+    "subCatalog": "Labels",
+    "value": "Keep it in the remote integration and OMNA database"
+  },
+  {
+    "name": "remove_from_integration",
+    "subCatalog": "Labels",
+    "value": "Remove it from remote integration"
+  },
+  {
+    "name": "remove_from_omna",
+    "subCatalog": "Labels",
+    "value": "Remove it from OMNA database"
+  },
+  {
+    "name": "remove_from_anywhere",
+    "subCatalog": "Labels",
+    "value": "Remove it from remote integration and OMNA database"
   },
   {
     "name": "title",
@@ -270,6 +300,11 @@
     "value": "OMNA eCommerce LTD"
   },
   {
+    "name": "integrations",
+    "subCatalog": "Labels",
+    "value": "Integrations"
+  },
+  {
     "name": "add",
     "subCatalog": "Messages",
     "value": "New item details"
@@ -283,6 +318,11 @@
     "name": "CONFIRM-DELETING",
     "subCatalog": "Messages",
     "value": "Do you really want to delete the selected <b class='resource'>%1</b>?"
+  },
+  {
+    "name": "CONFIRM-PUBLISH",
+    "subCatalog": "Messages",
+    "value": "Do you really want to link and unlink the selected <b class='resource'>%1</b> with selected and deselected <b>integrations</b> respectively?"
   },
   {
     "name": "SUCCESSFUL-ADDING",
@@ -300,6 +340,16 @@
     "value": "The selected <b class='resource'>%1</b> was successfully deleted."
   },
   {
+    "name": "SUCCESSFUL-PUBLISH",
+    "subCatalog": "Messages",
+    "value": "The <b>task</b> to <b>link</b> the selected <b class='resource'>%1</b> with the selected <b>integrations</b> was successfully created."
+  },
+  {
+    "name": "SUCCESSFUL-UNPUBLISH",
+    "subCatalog": "Messages",
+    "value": "The <b>task</b> to <b>unlink</b> the selected <b class='resource'>%1</b> with the selected <b>integrations</b> was successfully created."
+  },
+  {
     "name": "FAILED-REQUEST",
     "subCatalog": "Messages",
     "value": "Failed connection with server."
@@ -307,21 +357,31 @@
   {
     "name": "FAILED-DELETING",
     "subCatalog": "Messages",
-    "value": "The deleting of the selected <b class='resource'>%1</b> is failed."
+    "value": "The deleting of the selected <b class='resource'>%1</b> has failed."
   },
   {
     "name": "FAILED-ADDING",
     "subCatalog": "Messages",
-    "value": "The new <b class='resource'>%1</b> adding is failed."
+    "value": "The new <b class='resource'>%1</b> adding has failed."
   },
   {
     "name": "FAILED-UPDATING",
     "subCatalog": "Messages",
-    "value": "The update of the selected <b class='resource'>%1</b> is failed."
+    "value": "The update of the selected <b class='resource'>%1</b> has failed."
   },
   {
     "name": "FAILED-LOAD",
     "subCatalog": "Messages",
     "value": "The reading failed."
+  },
+  {
+    "name": "FAILED-PUBLISH",
+    "subCatalog": "Messages",
+    "value": "The creation of the <b>task</b> to <b>link</b> the selected <b class='resource'>%1</b> with the selected <b>integrations</b> has failed."
+  },
+  {
+    "name": "FAILED-UNPUBLISH",
+    "subCatalog": "Messages",
+    "value": "The creation of the <b>task</b> to <b>unlink</b> the selected <b class='resource'>%1</b> with the selected <b>integrations</b> has failed."
   }
 ]

@@ -15,6 +15,7 @@
       "omna.action.Separator",
       "omna.action.Add",
       "omna.action.Edit",
+      "omna.action.product.Integrations",
       "omna.action.Remove",
       "omna.action.Separator",
       "omna.action.Search"

@@ -25,6 +25,26 @@ qx.Mixin.define('omna.mixin.MI18n', {
             }
 
             return omna.I18n.trans(catalog, subCatalog, name, args);
+        },
+
+        notify: function(type, name, args) {
+            q.messaging.emit('Application', type, this.i18nTrans('Messages', name, args));
+        },
+
+        good: function (name, args) {
+            this.notify('good', name, args);
+        },
+
+        info: function (name, args) {
+            this.notify('info', name, args);
+        },
+
+        warn: function (name, args) {
+            this.notify('warn', name, args);
+        },
+
+        error: function (name, args) {
+            this.notify('error', name, args);
         }
     }
 });

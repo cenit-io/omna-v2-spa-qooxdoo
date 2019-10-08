@@ -72,7 +72,7 @@
   {
     "name": "SUCCESSFUL-IMPORT",
     "subCatalog": "Messages",
-    "value": "A task was created to imported updated <b>%1</b>."
+    "value": "A task was created to imported updated <b class='resource'>%1</b>."
   },
   {
     "name": "SUCCESSFUL-UNAUTHORIZE",
@@ -87,7 +87,7 @@
   {
     "name": "FAILED-IMPORT",
     "subCatalog": "Messages",
-    "value": "The creation of a task to import <b>%1</b> of the selected integration has failed."
+    "value": "The creation of a task to import <b class='resource'>%1</b> of the selected integration has failed."
   },
   {
     "name": "FAILED-LOADING-CHANNELS",

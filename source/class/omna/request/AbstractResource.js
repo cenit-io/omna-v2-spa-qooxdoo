@@ -145,18 +145,58 @@ qx.Class.define("omna.request.AbstractResource", {
             return data;
         },
 
+        _toParameter: function (data) {
+            var qs = [],
+                add = function (k, v) {
+                    v = qx.lang.Type.isFunction(v) ? v() : v;
+                    v = v === null ? '' : v === undefined ? '' : v;
+                    qs[qs.length] = encodeURIComponent(k) + '=' + encodeURIComponent(v);
+                },
+
+                buildParams = function (prefix, obj) {
+                    var i, len, key;
+
+                    if (prefix) {
+                        if (qx.lang.Type.isArray(obj)) {
+                            for (i = 0, len = obj.length; i < len; i++) {
+                                buildParams(
+                                    prefix + '[' + (qx.lang.Type.isObject(obj[i]) && obj[i] ? i : '') + ']',
+                                    obj[i]
+                                );
+                            }
+                        } else if (qx.lang.Type.isObject(obj)) {
+                            for (key in obj) buildParams(prefix + '[' + key + ']', obj[key]);
+                        } else {
+                            add(prefix, obj);
+                        }
+                    } else if (qx.lang.Type.isArray(obj)) {
+                        for (i = 0, len = obj.length; i < len; i++) add(obj[i].name, obj[i].value);
+                    } else {
+                        for (key in obj) buildParams(key, obj[key]);
+                    }
+                    return qs;
+                };
+
+            return buildParams('', data).join('&');
+        },
+
         submit: function (method, path, data, callBack, scope, token, secret) {
             path = this._getServicePath(path);
 
-            var request = new omna.request.Xhr(this._getServiceUrl(path), method);
+            var request = new omna.request.Xhr(this._getServiceUrl(path), method),
+                params = this._signRequest(path, data || {}, token, secret);
 
-            // Set request headers
+            request.setAsync(this.getAsync());
+
+            // Set request headers and params
             request.setRequestHeader("Accept", "application/json");
-            if (method.match(/^(POST|PUT)$/)) request.setRequestHeader("Content-Type", "application/json");
-
-            // Set params
             request.resetRequestData();
-            request.set({ requestData: this._signRequest(path, data || {}, token, secret), async: this.getAsync() });
+            if (method.match(/^(POST|PUT)$/)) {
+                request.setRequestHeader("Content-Type", "application/json");
+                request.setRequestData(params)
+            } else {
+                request.setRequestData(this._toParameter(params))
+            }
 
             // Listener events
             request.addListener("success", function (e) {
@@ -165,6 +205,10 @@ qx.Class.define("omna.request.AbstractResource", {
 
             request.addListener("statusError", function (e) {
                 this.onStatusError(e, callBack, scope);
+            }, this);
+
+            request.addListener("error", function (e) {
+                this.onError(e, callBack, scope);
             }, this);
 
             request.send();
@@ -209,7 +253,7 @@ qx.Class.define("omna.request.AbstractResource", {
 
         findAll: function (order, params, callBack, scope) {
             var findBlock = qx.lang.Function.bind(function (from, to, items) {
-                this.findRange(from, to, params, function (response) {
+                this.findRange(from, to, order, params, function (response) {
                     if (response.successful) {
                         items = items.concat(response.data);
 
@@ -271,20 +315,27 @@ qx.Class.define("omna.request.AbstractResource", {
         onStatusError: function (e, callBack, scope) {
             var response = e.getTarget().getResponse();
 
-            if (qx.lang.Type.isString(response)) {
-                response = { message: response }
-            }
+            if (qx.lang.Type.isString(response)) response = { message: response };
 
             response.statusCode = response.statusCode || e.getTarget().getStatus();
             response.successful = false;
             response.message = response.message || omna.request.AbstractResource.HttpStatus(response.statusCode);
 
-            if (response.statusCode == 511) {
-                q.messaging.emit("Application", "login");
-            }
+            if (response.statusCode == 511) q.messaging.emit("Application", "login");
 
             callBack && callBack.call(scope || this, response, e);
             q.messaging.emit("Application", "error", response.message);
+        },
+
+        onError: function (e, callBack, scope) {
+            var response = e.getTarget().getResponse();
+
+            if (qx.lang.Type.isString(response)) response = { message: response };
+
+            response.statusCode = response.statusCode || e.getTarget().getStatus();
+            response.successful = false;
+
+            callBack && callBack.call(scope || this, response, e);
         }
     }
 });
