@@ -10,15 +10,10 @@ qx.Class.define("omna.action.flow.Start", {
 
     members: {
         onExecute: function () {
-            var management = this.getManagement(),
-                msg = this.i18nTrans('Messages', 'CONFIRM-START');
+            var msg = this.i18nTrans('Messages', 'CONFIRM-START');
 
             omna.dialog.Confirm.show(msg, function (response) {
-                if (response === 'yes') {
-                    var request = management.getRequestManagement();
-
-                    request.start(this.getSelectedItem().id);
-                }
+                if (response === 'yes') this.getManagement().getRequestManagement().start(this.getSelectedItem().id);
             }, this);
         }
     }

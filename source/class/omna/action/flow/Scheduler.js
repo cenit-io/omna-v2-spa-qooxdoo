@@ -11,16 +11,13 @@ qx.Class.define("omna.action.flow.Scheduler", {
 
     members: {
         onExecute: function () {
-            var management = this.getManagement(),
-                item = this.getSelectedItem(),
+            var item = this.getSelectedItem(),
                 scheduler = item.task.scheduler,
                 msg = this.i18nTrans('Messages', 'CONFIRM-SCHEDULER-' + (scheduler && scheduler.active ? 'OFF' : 'ON'));
 
             omna.dialog.Confirm.show(msg, function (response) {
                 if (response === 'yes') {
-                    var request = management.getRequestManagement();
-
-                    request.toggleSchedule(item.id, function (response) {
+                    this.getManagement().getRequestManagement().toggleSchedule(item.id, function (response) {
                         if (response.successful) this.emitMessaging('execute-reload');
                     }, this)
                 }
