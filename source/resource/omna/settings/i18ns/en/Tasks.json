@@ -38,5 +38,25 @@
     "name": "notifications",
     "subCatalog": "Labels",
     "value": "Notifications"
+  },
+  {
+    "name": "retry",
+    "subCatalog": "Labels",
+    "value": "Retry"
+  },
+  {
+    "name": "CONFIRM-RETRY",
+    "subCatalog": "Messages",
+    "value": "Do you really want to <b>retry</b> the selected <b>task</b>?"
+  },
+  {
+    "name": "SUCCESSFUL-RETRY",
+    "subCatalog": "Messages",
+    "value": "The selected <b>task</b> was retryed."
+  },
+  {
+    "name": "FAILED-RETRY",
+    "subCatalog": "Messages",
+    "value": "The <b>retry</b> of the selected <b>task</b> has failed."
   }
 ]

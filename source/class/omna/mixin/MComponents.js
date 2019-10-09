@@ -14,6 +14,7 @@
  * @require(omna.action.Separator)
  * @require(omna.action.order.Documents)
  * @require(omna.action.order.Print)
+ * @require(omna.action.task.Retry)
  * @require(omna.action.tenant.Details)
  * @require(omna.action.tenant.Switch)
  * @require(omna.action.tenant.Startup)
