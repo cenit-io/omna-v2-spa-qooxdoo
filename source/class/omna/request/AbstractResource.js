@@ -183,7 +183,7 @@ qx.Class.define("omna.request.AbstractResource", {
         submit: function (method, path, data, callBack, scope, token, secret) {
             path = this._getServicePath(path);
 
-            var request = new omna.request.Xhr(this._getServiceUrl(path), method),
+            var request = this.__requestManagement = new omna.request.Xhr(this._getServiceUrl(path), method),
                 params = this._signRequest(path, data || {}, token, secret);
 
             request.setAsync(this.getAsync());
@@ -337,5 +337,10 @@ qx.Class.define("omna.request.AbstractResource", {
 
             callBack && callBack.call(scope || this, response, e);
         }
+    },
+
+    destruct: function () {
+        var requestManagement = this.__requestManagement;
+        if (!requestManagement.isDisposed() && !requestManagement.isDone()) requestManagement.abort();
     }
 });

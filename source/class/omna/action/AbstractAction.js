@@ -5,16 +5,12 @@ qx.Class.define("omna.action.AbstractAction", {
     implement: [omna.mixin.II18n],
 
     construct: function (management, label, icon) {
-        // create and configure the command
+        // Create and configure the command
         var command = new qx.ui.command.Command();
-
-        this.setManagement(management);
-        this.base(arguments, label, icon, command);
-
-        // this.setLabel(label);
-        command.setIcon(icon);
-        command.setToolTipText(label);
         command.addListener("execute", this.onExecute, this);
+
+        this.set({ management: management, toolTipText: label });
+        this.base(arguments, label, icon, command);
 
         this.addListener("focusin", this.onFocusAnimate, this);
         this.addListener("pointerover", this.focus, this);

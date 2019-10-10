@@ -69,7 +69,7 @@ qx.Class.define("omna.management.DataGridRestService", {
             }
 
             var tableModel = new omna.model.DataGridRestService(columnFields, settings, params),
-                table = this._table = new qx.ui.table.Table(tableModel, {
+                table = this.__table = new qx.ui.table.Table(tableModel, {
                     tableColumnModel: function (table) {
                         return new qx.ui.table.columnmodel.Resize(table);
                     }
@@ -118,14 +118,14 @@ qx.Class.define("omna.management.DataGridRestService", {
         onChangeCustomData: function (e) {
             var data = e.getData();
             if (data.params) {
-                this._table.getSelectionModel().resetSelection();
-                this._table.getTableModel().setParams(data.params);
+                this.__table.getSelectionModel().resetSelection();
+                this.__table.getTableModel().setParams(data.params);
             }
         },
 
         onExecuteReload: function () {
-            this._table.getSelectionModel().resetSelection();
-            this._table.getTableModel().reloadData();
+            this.__table.getSelectionModel().resetSelection();
+            this.__table.getTableModel().reloadData();
         },
 
         onExecuteAdd: function (data) {
@@ -137,8 +137,8 @@ qx.Class.define("omna.management.DataGridRestService", {
         },
 
         onExecuteRemove: function (data) {
-            this._table.getSelectionModel().resetSelection();
-            this._table.getTableModel().removeRow(data.customData.index);
+            this.__table.getSelectionModel().resetSelection();
+            this.__table.getTableModel().removeRow(data.customData.index);
         },
 
         onExecuteSearch: function (data) {
@@ -183,7 +183,7 @@ qx.Class.define("omna.management.DataGridRestService", {
          */
         onChangeSelection: function (e) {
             var selectionModel = e.getTarget(),
-                tableModel = this._table.getTableModel(),
+                tableModel = this.__table.getTableModel(),
                 index, data, item;
 
             if (selectionModel.getSelectedCount()) {
@@ -222,5 +222,10 @@ qx.Class.define("omna.management.DataGridRestService", {
                 }
             }
         }
+    },
+
+    destruct: function () {
+        this.__table.getTableModel().dispose();
+        this.__table.dispose();
     }
 });
