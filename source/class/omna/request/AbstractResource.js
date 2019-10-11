@@ -207,8 +207,8 @@ qx.Class.define("omna.request.AbstractResource", {
                 this.onStatusError(e, callBack, scope);
             }, this);
 
-            request.addListener("error", function (e) {
-                this.onError(e, callBack, scope);
+            request.addListener("fail", function (e) {
+                this.onFail(e, callBack, scope);
             }, this);
 
             request.send();
@@ -317,8 +317,8 @@ qx.Class.define("omna.request.AbstractResource", {
 
             if (qx.lang.Type.isString(response)) response = { message: response };
 
-            response.statusCode = response.statusCode || e.getTarget().getStatus();
             response.successful = false;
+            response.statusCode = response.statusCode || e.getTarget().getStatus();
             response.message = response.message || omna.request.AbstractResource.HttpStatus(response.statusCode);
 
             if (response.statusCode == 511) q.messaging.emit("Application", "login");
@@ -327,13 +327,14 @@ qx.Class.define("omna.request.AbstractResource", {
             q.messaging.emit("Application", "error", response.message);
         },
 
-        onError: function (e, callBack, scope) {
-            var response = e.getTarget().getResponse();
+        onFail: function (e, callBack, scope) {
+            var response = e.getTarget().getResponse() || '';
 
             if (qx.lang.Type.isString(response)) response = { message: response };
 
-            response.statusCode = response.statusCode || e.getTarget().getStatus();
             response.successful = false;
+            response.statusCode = response.statusCode || e.getTarget().getStatus();
+            response.message = response.message || omna.request.AbstractResource.HttpStatus(response.statusCode) || '';
 
             callBack && callBack.call(scope || this, response, e);
         }

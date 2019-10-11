@@ -54,10 +54,7 @@
         "accessInEditForm": "W",
         "attrPath": "id",
         "attrModelName": "integration_id",
-        "widgetClass": "omna.form.field.remote.FilteringSelectBox",
-        "serviceBasePath": "integrations",
-        "labelAttr": "name",
-        "valueAttr": "id"
+        "widgetClass": "omna.form.field.remote.integrations.SelectBox"
       },
       {
         "name": "created_at",

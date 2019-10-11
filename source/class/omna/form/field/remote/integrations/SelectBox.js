@@ -1,9 +1,8 @@
-qx.Class.define('omna.form.field.remote.IntegrationsListBox', {
-    extend: qx.ui.form.List,
+qx.Class.define('omna.form.field.remote.integrations.SelectBox', {
+    extend: omna.form.field.util.AbstractSelectBox,
 
     construct: function () {
         this.base(arguments);
-        this.setSelectionMode('additive');
         this.__loadItems();
     },
 

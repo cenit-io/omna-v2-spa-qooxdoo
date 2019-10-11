@@ -25,7 +25,7 @@ qx.Class.define("omna.form.dialog.Integrations", {
         },
 
         _createFormFields: function (form) {
-            var list = new omna.form.field.remote.IntegrationsListBox,
+            var list = new omna.form.field.remote.integrations.ListBox,
                 afterUnLink = new omna.form.field.LocalSelectBox();
 
             afterUnLink.setWidth(380);
