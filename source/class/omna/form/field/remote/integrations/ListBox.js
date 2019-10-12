@@ -18,7 +18,7 @@ qx.Class.define('omna.form.field.remote.integrations.ListBox', {
                 if (response.successful) response.data.forEach(function (item) {
                     label = qx.bom.Template.render(omna.I18n.trans('Titles', 'INTEGRATION'), { integration: item });
                     listItem = new qx.ui.form.ListItem(label, null, item.id);
-                    listItem.setEnabled(item.authorized);
+                    listItem.setEnabled(item.authorized === true);
                     this.add(listItem);
                 }, this);
             }, this);
