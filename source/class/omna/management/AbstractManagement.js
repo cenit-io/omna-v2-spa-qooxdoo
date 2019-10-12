@@ -67,6 +67,16 @@ qx.Class.define("omna.management.AbstractManagement", {
             return settings;
         },
 
+        _getClassByName: function (className, notify) {
+            notify = notify !== undefined ? notify : true;
+
+            var klass = qx.Class.getByName(className);
+
+            if (!klass && notify) q.messaging.emit("Application", "error", this.tr("Class no found: '%1'.", className));
+
+            return klass
+        },
+
         _createToolbar: function () {
             var actions = this.getActions();
 
@@ -83,7 +93,7 @@ qx.Class.define("omna.management.AbstractManagement", {
 
                 actions.forEach(function (action) {
                     if (qx.lang.Type.isString(action)) {
-                        var widgetClass = qx.Class.getByName(action);
+                        var widgetClass = this._getClassByName(action);
 
                         if (widgetClass) {
                             toolbar.add(new widgetClass(this));

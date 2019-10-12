@@ -45,8 +45,8 @@ qx.Class.define("omna.management.DataGridRestService", {
             var settings = this.getSettings();
 
             if (settings.requestManagementClass) {
-                var RequestManagementClass = qx.Class.getByName(settings.requestManagementClass);
-                return new RequestManagementClass()
+                var RequestManagementClass = this._getClassByName(settings.requestManagementClass);
+                return RequestManagementClass ? new RequestManagementClass() : null
             } else {
                 return new omna.request.Customs(settings.serviceBasePath);
             }
@@ -98,17 +98,12 @@ qx.Class.define("omna.management.DataGridRestService", {
                 }
 
                 if (field.cellRendererClass) {
-                    cellRendererClass = qx.Class.getByName(field.cellRendererClass);
-                } else {
-                    widgetClass = qx.Class.getByName(field.widgetClass);
-                    cellRendererClass = widgetClass ? widgetClass.cellRendererClass : omna.table.cellrenderer.String;
+                    cellRendererClass = this._getClassByName(field.cellRendererClass);
+                } else if ((widgetClass = this._getClassByName(field.widgetClass))) {
+                    cellRendererClass = widgetClass.cellRendererClass || omna.table.cellrenderer.String
                 }
 
-                if (cellRendererClass) {
-                    tableColumnModel.setDataCellRenderer(index, new cellRendererClass(field));
-                } else {
-                    q.messaging.emit("Application", "error", this.tr("Class no found: '%1'.", field.cellRendererClass));
-                }
+                if (cellRendererClass) tableColumnModel.setDataCellRenderer(index, new cellRendererClass(field));
             }, this);
 
             this.add(table, { flex: 2 });
