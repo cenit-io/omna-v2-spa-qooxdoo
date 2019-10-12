@@ -207,8 +207,8 @@ qx.Class.define("omna.request.AbstractResource", {
                 this.onStatusError(e, callBack, scope);
             }, this);
 
-            request.addListener("fail", function (e) {
-                this.onFail(e, callBack, scope);
+            request.addListener("error", function (e) {
+                this.onError(e, callBack, scope);
             }, this);
 
             request.send();
@@ -327,7 +327,7 @@ qx.Class.define("omna.request.AbstractResource", {
             q.messaging.emit("Application", "error", response.message);
         },
 
-        onFail: function (e, callBack, scope) {
+        onError: function (e, callBack, scope) {
             var response = e.getTarget().getResponse() || '';
 
             if (qx.lang.Type.isString(response)) response = { message: response };

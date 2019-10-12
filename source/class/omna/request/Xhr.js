@@ -5,7 +5,7 @@ qx.Class.define("omna.request.Xhr", {
     construct: function (url, method) {
         this.base(arguments, url, method);
         this.addListener('loadEnd', this.__onLoadEnd, this);
-        this.addListener('fail', this.__onFail, this);
+        this.addListener('error', this.__onError, this);
     },
 
     members: {
@@ -31,7 +31,7 @@ qx.Class.define("omna.request.Xhr", {
         /**
          * Fired when request completes with error.
          */
-        __onFail: function (e) {
+        __onError: function (e) {
             q.messaging.emit("Application", "error", omna.I18n.trans('Messages', 'FAILED-REQUEST'));
         }
     }
