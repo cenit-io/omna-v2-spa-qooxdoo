@@ -72,7 +72,7 @@ qx.Class.define("omna.management.AbstractManagement", {
 
             var klass = qx.Class.getByName(className);
 
-            if (!klass && notify) q.messaging.emit("Application", "error", this.tr("Class no found: '%1'.", className));
+            if (!klass && notify) this.error("CLASS_NO_FOUND", [className]);
 
             return klass
         },

@@ -99,7 +99,7 @@ qx.Class.define("omna.management.DataGridRestService", {
 
                 if (field.cellRendererClass) {
                     cellRendererClass = this._getClassByName(field.cellRendererClass);
-                } else if ((widgetClass = this._getClassByName(field.widgetClass))) {
+                } else if (field.widgetClass && (widgetClass = this._getClassByName(field.widgetClass))) {
                     cellRendererClass = widgetClass.cellRendererClass || omna.table.cellrenderer.String
                 }
 

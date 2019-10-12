@@ -310,6 +310,11 @@
     "value": "New item details"
   },
   {
+    "name": "CLASS_NO_FOUND",
+    "subCatalog": "Messages",
+    "value": "Class no found: '%1'"
+  },
+  {
     "name": "CONFIRM-LOGOUT",
     "subCatalog": "Messages",
     "value": "Do you really want close the current session?"
