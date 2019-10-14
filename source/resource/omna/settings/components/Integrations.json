@@ -31,7 +31,7 @@
       },
       {
         "name": "channel",
-        "widgetClass": "omna.form.field.remote.ChannelSelectBox",
+        "widgetClass": "omna.form.field.remote.integrations.ChannelSelectBox",
         "accessInAddForm": "W",
         "includeInSearch": true,
         "showInGrid": true,

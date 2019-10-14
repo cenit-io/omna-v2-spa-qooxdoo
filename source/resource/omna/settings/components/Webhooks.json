@@ -19,17 +19,15 @@
     "fields": [
       {
         "name": "topic",
-        "widgetClass": "omna.form.field.LocalSelectBox",
-        "showInGrid": true,
+        "widgetClass": "omna.form.field.remote.webhooks.TopicSelectBox",
         "includeInSearch": true,
         "accessInAddForm": "W",
-        "accessInEditForm": "W",
-        "gridColumnWidth": 150,
-        "required": true,
-        "options": [
-          "order/registered",
-          "order/updated"
-        ]
+        "accessInEditForm": "W"
+      },
+      {
+        "name": "title",
+        "label": "topic",
+        "showInGrid": true
       },
       {
         "name": "address",

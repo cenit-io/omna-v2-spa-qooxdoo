@@ -18,5 +18,10 @@
     "name": "URL",
     "subCatalog": "Labels",
     "value": "URL"
+  },
+  {
+    "name": "FAILED-LOADING-WEBHOOK-TOPICS",
+    "subCatalog": "Messages",
+    "value": "The loading of the <b>webhook topics</b> has failed."
   }
 ]

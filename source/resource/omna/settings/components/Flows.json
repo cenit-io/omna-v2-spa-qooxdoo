@@ -22,15 +22,15 @@
     "fields": [
       {
         "name": "type",
-        "widgetClass": "omna.form.field.remote.FlowTypeSelectBox",
-        "showInGrid": true,
+        "widgetClass": "omna.form.field.remote.flows.TypeSelectBox",
         "includeInSearch": true,
         "accessInAddForm": "W",
-        "gridColumnWidth": 150,
-        "required": true,
-        "i18n": {
-          "catalog": "Flows"
-        }
+        "required": true
+      },
+      {
+        "name": "title",
+        "label": "type",
+        "showInGrid": true
       },
       {
         "name": "integration",

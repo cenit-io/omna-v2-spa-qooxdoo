@@ -1,4 +1,4 @@
-qx.Class.define('omna.form.field.remote.ChannelSelectBox', {
+qx.Class.define('omna.form.field.remote.integrations.ChannelSelectBox', {
     extend: omna.form.field.util.AbstractSelectBox,
 
     statics: {
