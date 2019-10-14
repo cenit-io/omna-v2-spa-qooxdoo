@@ -10,8 +10,8 @@
     "actions": [
       "omna.action.Reload",
       "omna.action.Separator",
-      "omna.action.ReImport",
       "omna.action.order.Documents",
+      "omna.action.ReImport",
       "omna.action.Separator",
       "omna.action.Search"
     ],
