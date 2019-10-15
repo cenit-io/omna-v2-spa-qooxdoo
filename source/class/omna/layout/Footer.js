@@ -25,8 +25,8 @@ qx.Class.define("omna.layout.Footer", {
         this.setLayout(new qx.ui.layout.HBox);
         this.setAppearance("app-footer");
 
-        this.add(new qx.ui.basic.Label(this.tr("Copyright")));
+        this.add(new qx.ui.basic.Label(omna.I18n.trans('copyright')));
         this.add(new qx.ui.core.Spacer, { flex: 1 });
-        this.add(new qx.ui.basic.Label(this.tr("copyright-company")));
+        this.add(new qx.ui.basic.Label(omna.I18n.trans('Messages', 'copyright-company')));
     }
 });

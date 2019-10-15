@@ -305,9 +305,19 @@
     "value": "Integrations"
   },
   {
+    "name": "copyright",
+    "subCatalog": "Labels",
+    "value": "Copyright"
+  },
+  {
     "name": "add",
     "subCatalog": "Messages",
     "value": "New item details"
+  },
+  {
+    "name": "copyright-company",
+    "subCatalog": "Messages",
+    "value": "OMNA Commerce LTS (2019): yoandrypa@gmail.com"
   },
   {
     "name": "CLASS_NO_FOUND",
