@@ -1,13 +1,9 @@
-qx.Class.define("omna.management.tenant.Details", {
-    extend: omna.management.MarkdownEmbed,
+qx.Class.define("omna.management.Details", {
+    extend: omna.management.HtmlEmbed,
     include: [omna.mixin.MSettings],
 
     statics: {
-        propertiesDefaultValues: {
-            i18n: 'Common',
-            edge: 'center',
-            region: 100
-        }
+        propertiesDefaultValues: omna.management.HtmlEmbed.propertiesDefaultValues
     },
 
     // override
@@ -20,7 +16,10 @@ qx.Class.define("omna.management.tenant.Details", {
     members: {
         _setContent: function (item) {
             if (!this.getContentTemplate()) {
-                this.loadTemplate('omna/templates/TenantDetails.md.hbs', function (template) {
+                var settings = this.getSettings(),
+                    templateFile = 'omna/templates/' + (settings.template || settings.id) + '.html.hbs';
+
+                this.loadTemplate(templateFile, function (template) {
                     this.setContentTemplate(template);
                     this._setContent(item)
                 }, this);

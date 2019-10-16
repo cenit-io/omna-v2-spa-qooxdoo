@@ -2,7 +2,7 @@
   {
     "id": "TenantsDetails",
     "i18n": "Tenants",
-    "widgetClass": "omna.management.tenant.Details",
+    "widgetClass": "omna.management.Details",
     "actions": [
       "omna.action.tenant.Switch",
       "omna.action.tenant.Startup"

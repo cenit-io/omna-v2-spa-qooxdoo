@@ -40,7 +40,7 @@
  * @require(omna.management.HtmlEmbed)
  * @require(omna.management.order.Documents)
  * @require(omna.management.task.Details)
- * @require(omna.management.tenant.Details)
+ * @require(omna.management.Details)
  * @require(omna.management.flow.Details)
  *
  *

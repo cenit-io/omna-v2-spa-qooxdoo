@@ -1,8 +1,8 @@
 [
   {
-    "id": "TenantsDetails",
-    "i18n": "Tenants",
-    "widgetClass": "omna.management.order.Details",
+    "id": "OrdersDetails",
+    "i18n": "Orders",
+    "widgetClass": "omna.management.Details",
     "actions": [
       "omna.action.order.Documents"
     ]

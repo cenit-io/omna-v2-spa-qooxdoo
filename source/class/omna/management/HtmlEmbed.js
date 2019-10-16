@@ -1,3 +1,9 @@
+/**
+ * @childControl title {qx.ui.basic.Atom} Title component properties panel.
+ * @childControl scrollPanel {qx.ui.container.Scroll} Scroll component properties panel.
+ * @childControl htmlEmbed {qx.ui.embed.Html} show the html of the content.
+ * @ignore(showdown.*)
+ */
 qx.Class.define("omna.management.HtmlEmbed", {
     extend: omna.management.AbstractManagement,
 
@@ -6,7 +12,8 @@ qx.Class.define("omna.management.HtmlEmbed", {
             i18n: 'Common',
             content: '',
             edge: 'center',
-            region: 100
+            region: 100,
+            listenFromComponentId: null
         }
     },
 
@@ -14,13 +21,64 @@ qx.Class.define("omna.management.HtmlEmbed", {
     construct: function (settings, customData, modulePage) {
         this.base(arguments, settings, customData, modulePage);
 
-        var htmlEmbed = new qx.ui.embed.Html(settings.content);
+        this.set({ appearance: 'management', contentTemplate: settings.content || '' });
 
-        htmlEmbed.set({
-            overflowX: 'auto',
-            overflowY: 'auto'
-        });
+        if (settings.title) this._createChildControl("title");
+        this._createChildControlImpl('htmlEmbed');
 
-        this.add(htmlEmbed, { flex: 1 });
+        var listenFromComponentId = settings.listenFromComponentId;
+
+        if (listenFromComponentId) {
+            this.addMessagingListener('selection-change', this.onSelectionChange, listenFromComponentId)
+        } else {
+            this._setContent(customData)
+        }
+    },
+
+    properties: {
+        contentTemplate: {
+            init: ''
+        }
+    },
+
+    members: {
+        // overridden
+        _createChildControlImpl: function (id, hash) {
+            var control;
+
+            switch ( id ) {
+                case "title":
+                    control = new qx.ui.basic.Atom(this.i18nTrans(this.getSettings().title));
+                    control.setMaxHeight(27);
+                    this._add(control, { flex: 2 });
+                    break;
+
+                case "htmlEmbed":
+                    control = this.__htmlEmbed = new qx.ui.embed.Html();
+                    control.set({ padding: 5, overflowX: 'auto', overflowY: 'auto' });
+
+                    this._add(control, { flex: 3 });
+                    break;
+            }
+
+            return control || this.base(arguments, id);
+        },
+
+        _setContent: function (item) {
+            var contentTemplate = this.getContentTemplate();
+
+            if (qx.lang.Type.isArray(contentTemplate)) contentTemplate = contentTemplate.join('\n');
+
+            this.__htmlEmbed.setHtml(qx.bom.Template.render(contentTemplate, item))
+        },
+
+        /**
+         * Fired when changed selection of component items.
+         *
+         * @param data {Object} Selected item data.
+         */
+        onSelectionChange: function (data) {
+            if (data.customData) this._setContent(data.customData.item);
+        }
     }
 });

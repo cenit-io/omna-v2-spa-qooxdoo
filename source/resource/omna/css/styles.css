@@ -41,3 +41,10 @@ b.resource {
 .qooxdoo-table-cell.integrations span:nth-child(even) {
     background-color: mintcream;
 }
+
+span.form-control {
+    overflow-x: hidden !important;
+    overflow-y: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
