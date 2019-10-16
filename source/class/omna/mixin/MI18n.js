@@ -16,18 +16,22 @@ qx.Mixin.define('omna.mixin.MI18n', {
                 args = subCatalog;
                 name = catalog;
                 subCatalog = 'Labels';
-                catalog = this.getI18nCatalog();
+                catalog = this.__getI18nCatalog()
             } else if (leng === 2 || (leng === 3 && !qx.lang.Type.isString(name))) {
                 args = name;
                 name = subCatalog;
                 subCatalog = catalog;
-                catalog = this.getI18nCatalog();
+                catalog = this.__getI18nCatalog()
             }
 
             return omna.I18n.trans(catalog, subCatalog, name, args);
         },
 
-        notify: function(type, name, args) {
+        __getI18nCatalog: function () {
+            return this.getI18nCatalog ? this.getI18nCatalog() : 'Common'
+        },
+
+        notify: function (type, name, args) {
             q.messaging.emit('Application', type, this.i18nTrans('Messages', name, args));
         },
 
