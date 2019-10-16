@@ -1,7 +1,7 @@
 /**
  * @asset(omna/icon/16/actions/details.png)
  */
-qx.Class.define('omna.action.tenant.Details', {
+qx.Class.define('omna.action.Details', {
     extend: omna.action.AbstractActionWithSelectedItem,
 
     construct: function (management) {
@@ -10,12 +10,13 @@ qx.Class.define('omna.action.tenant.Details', {
 
     members: {
         onExecute: function () {
-            var tenant = this.getSelectedItem(),
-                module = { id: 'TenantDetails', i18n: 'Tenants' },
+            var item = this.getSelectedItem(),
+                managementId = this.getManagement().getSettings().id,
+                module = { id: managementId + 'Details', i18n: this.getI18nCatalog() },
                 data = {
-                    item: tenant,
+                    item: item,
                     index: this.getSelectedIndex(),
-                    label: this.i18nTrans('MODULE-REFERENCE-DETAILS', [tenant.name])
+                    label: this.i18nTrans('MODULE-REFERENCE-DETAILS', item)
                 };
 
             q.messaging.emit('Application', 'open-module', module, data);

@@ -1,7 +1,6 @@
 [
   {
-    "id": "webhooks",
-    "i18n": "Webhooks",
+    "id": "Webhooks",
     "widgetClass": "omna.management.DataGridRestService",
     "serviceBasePath": "webhooks",
     "baseParams": {

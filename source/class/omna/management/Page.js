@@ -24,10 +24,12 @@ qx.Class.define("omna.management.Page", {
             module: module
         });
 
-        components.forEach(function (componentSettings, index) {
+        components.forEach(function (componentSettings) {
             var componentClass = qx.Class.getByName(componentSettings.widgetClass);
 
             if (componentClass) {
+                componentSettings.i18n = componentSettings.i18n || componentSettings.id;
+
                 var component = new componentClass(componentSettings, customData, this),
                     width = componentSettings.region || componentClass.propertiesDefaultValues.region,
                     edge = componentSettings.edge || componentClass.propertiesDefaultValues.edge;
@@ -35,7 +37,7 @@ qx.Class.define("omna.management.Page", {
                 this.add(component, { edge: edge, width: width + '%' });
             } else {
                 q.messaging.emit("Application", "error",
-                    this.tr("Class no found: '%1'.", componentSettings.widgetClass)
+                    omna.I18n.trans('CLASS_NO_FOUND', [componentSettings.widgetClass])
                 );
             }
         }, this);

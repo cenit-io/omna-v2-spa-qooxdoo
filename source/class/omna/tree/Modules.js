@@ -40,7 +40,7 @@ qx.Class.define("omna.tree.Modules", {
             nodes.forEach(function (module) {
                 if (module.disabled) return;
 
-                var i18nCatalog = module.id || module.id,
+                var i18nCatalog = module.i18n || module.id,
                     label = omna.I18n.trans(i18nCatalog, 'Labels', 'MODULE-REFERENCE');
 
                 if (module.children) {

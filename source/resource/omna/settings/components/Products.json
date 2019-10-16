@@ -1,7 +1,6 @@
 [
   {
-    "id": "products",
-    "i18n": "Products",
+    "id": "Products",
     "widgetClass": "omna.management.DataGridRestService",
     "requestManagementClass": "omna.request.Products",
     "rowHeight": 60,

@@ -1,7 +1,6 @@
 [
   {
-    "id": "orders",
-    "i18n": "Orders",
+    "id": "Orders",
     "widgetClass": "omna.management.DataGridRestService",
     "requestManagementClass": "omna.request.Orders",
     "baseParams": {
@@ -10,6 +9,7 @@
     "actions": [
       "omna.action.Reload",
       "omna.action.Separator",
+      "omna.action.Details",
       "omna.action.order.Documents",
       "omna.action.ReImport",
       "omna.action.Separator",

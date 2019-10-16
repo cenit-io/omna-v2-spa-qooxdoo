@@ -34,8 +34,8 @@ qx.Mixin.define("omna.form.field.util.MPatterns", {
          * @param value {String} Regular expression as string or pattern name.
          */
         __transformPattern: function (value) {
-            var newValue = omna.I18n.trans('Patterns', 'Values', value, false);
-            return newValue ? newValue : value;
+            var newValue = omna.I18n.trans('Patterns', 'Values', value);
+            return newValue.match(/^Patterns\.Values\./) ? value : newValue;
         },
 
         /**
@@ -43,8 +43,8 @@ qx.Mixin.define("omna.form.field.util.MPatterns", {
          * @param value {String} Regular expression as string or filter name.
          */
         __transformFilter: function (value) {
-            var newValue = omna.I18n.trans('Filters', 'Values', value, false);
-            return newValue ? newValue : value;
+            var newValue = omna.I18n.trans('Filters', 'Values', value);
+            return newValue.match(/^Filters\.Values\./) ? value : newValue;
         }
     }
 

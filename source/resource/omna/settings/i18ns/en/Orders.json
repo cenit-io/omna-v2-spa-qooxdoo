@@ -12,7 +12,12 @@
   {
     "name": "MODULE-REFERENCE-PRINT-DOCUMENTS",
     "subCatalog": "Labels",
-    "value": "Order / %1 / Documents"
+    "value": "Order / {{number}} / Documents"
+  },
+  {
+    "name": "MODULE-REFERENCE-DETAILS",
+    "subCatalog": "Labels",
+    "value": "Order / {{number}} / Details"
   },
   {
     "name": "number",

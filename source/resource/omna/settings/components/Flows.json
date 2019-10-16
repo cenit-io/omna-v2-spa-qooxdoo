@@ -1,7 +1,6 @@
 [
   {
-    "id": "flows",
-    "i18n": "Flows",
+    "id": "Flows",
     "widgetClass": "omna.management.DataGridRestService",
     "requestManagementClass": "omna.request.Flows",
     "serviceBasePath": "flows",

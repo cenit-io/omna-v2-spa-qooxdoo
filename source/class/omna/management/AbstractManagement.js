@@ -217,7 +217,9 @@ qx.Class.define("omna.management.AbstractManagement", {
         },
 
         getI18nCatalog: function () {
-            return this.getSettings().i18n;
+            var settings = this.getSettings();
+            
+            return settings.i18n || settings.id;
         },
 
         /**

@@ -35,7 +35,8 @@ qx.Class.define("omna.layout.MainBox", {
          */
         onOpenModule: function (data) {
             var module = data.params,
-                page = this._pages[module.id];
+                page = this._pages[module.id],
+                i18nCatalog = module.i18n || module.id;
 
             if (!page) {
                 this.loadSettings('omna/settings/components/' + module.id, function (components) {
@@ -43,7 +44,7 @@ qx.Class.define("omna.layout.MainBox", {
                         if (!module.children) {
                             q.messaging.emit('Application', 'warn',
                                 omna.I18n.trans('Modules', 'Messages', 'EMPTY', [
-                                    omna.I18n.trans(module.id, 'Labels', 'MODULE-REFERENCE')
+                                    omna.I18n.trans(i18nCatalog, 'Labels', 'MODULE-REFERENCE')
                                 ])
                             );
                         }

@@ -1,7 +1,6 @@
 [
   {
-    "id": "tenants",
-    "i18n": "Tenants",
+    "id": "Tenants",
     "widgetClass": "omna.management.DataGridRestService",
     "requestManagementClass": "omna.request.Tenants",
     "baseParams": {
@@ -11,7 +10,7 @@
       "omna.action.Reload",
       "omna.action.Separator",
       "omna.action.Add",
-      "omna.action.tenant.Details",
+      "omna.action.Details",
       "omna.action.tenant.Switch",
       "omna.action.tenant.Startup",
       "omna.action.Remove"

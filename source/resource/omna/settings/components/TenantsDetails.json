@@ -1,6 +1,6 @@
 [
   {
-    "id": "tenant-details",
+    "id": "TenantsDetails",
     "i18n": "Tenants",
     "widgetClass": "omna.management.tenant.Details",
     "actions": [

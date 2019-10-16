@@ -1,0 +1,10 @@
+[
+  {
+    "id": "TenantsDetails",
+    "i18n": "Tenants",
+    "widgetClass": "omna.management.order.Details",
+    "actions": [
+      "omna.action.order.Documents"
+    ]
+  }
+]

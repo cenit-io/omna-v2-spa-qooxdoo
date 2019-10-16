@@ -1,6 +1,6 @@
 [
   {
-    "id": "order-documents",
+    "id": "OrdersDocuments",
     "i18n": "Orders",
     "widgetClass": "omna.management.order.Documents"
   }

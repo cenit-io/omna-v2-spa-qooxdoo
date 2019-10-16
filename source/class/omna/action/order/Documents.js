@@ -14,7 +14,7 @@ qx.Class.define('omna.action.order.Documents', {
                 module = { id: 'OrderDocuments', i18n: 'Orders', 'verticalLayout': false },
                 data = {
                     order: order,
-                    label: this.i18nTrans('MODULE-REFERENCE-PRINT-DOCUMENTS', [order.number])
+                    label: this.i18nTrans('MODULE-REFERENCE-PRINT-DOCUMENTS', order)
                 };
 
             q.messaging.emit('Application', 'open-module', module, data);

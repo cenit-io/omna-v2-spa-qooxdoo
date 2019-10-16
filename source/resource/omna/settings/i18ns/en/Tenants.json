@@ -27,7 +27,7 @@
   {
     "name": "MODULE-REFERENCE-DETAILS",
     "subCatalog": "Labels",
-    "value": "Tenant / %1 / Details"
+    "value": "Tenant / {{name}} / Details"
   },
   {
     "name": "CONFIRM-STARTUP",

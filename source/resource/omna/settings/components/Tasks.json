@@ -1,7 +1,6 @@
 [
   {
-    "id": "tasks",
-    "i18n": "Tasks",
+    "id": "Tasks",
     "widgetClass": "omna.management.DataGridRestService",
     "region": 70,
     "requestManagementClass": "omna.request.Tasks",

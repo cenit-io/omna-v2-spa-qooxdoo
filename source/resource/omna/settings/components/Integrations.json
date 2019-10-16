@@ -1,7 +1,6 @@
 [
   {
-    "id": "integrations",
-    "i18n": "Integrations",
+    "id": "Integrations",
     "widgetClass": "omna.management.DataGridRestService",
     "requestManagementClass": "omna.request.Integrations",
     "baseParams": {

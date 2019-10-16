@@ -64,7 +64,7 @@ qx.Class.define("omna.I18n", {
          * @return {String|boolean}
          */
         trans: function (catalog, subCatalog, name, args) {
-            var aux, create = true, leng = arguments.length;
+            var aux, item = null, leng = arguments.length;
 
             if (leng === 1 || (leng === 2 && !qx.lang.Type.isString(subCatalog))) {
                 args = subCatalog;
@@ -81,8 +81,8 @@ qx.Class.define("omna.I18n", {
 
             if (!this.__loadedCatalogs[catalog]) this.__load(catalog);
 
-            if (typeof args != 'undefined' && qx.lang.Type.isBoolean(args)) {
-                create = args;
+            if (qx.lang.Type.isObject(args)) {
+                item = args;
                 args = [];
             }
 
@@ -90,18 +90,18 @@ qx.Class.define("omna.I18n", {
                 i18nId = catalog + '.' + subCatalog + '.' + name,
                 trans1, trans2;
 
-            trans1 = manager.translate(i18nId, args || []);
+            trans1 = manager.translate(i18nId, args || []).toString();
 
             if (trans1 == i18nId) {
                 i18nId = 'Common.' + subCatalog + '.' + name;
-                trans2 = manager.translate(i18nId, args || []);
+                trans2 = manager.translate(i18nId, args || []).toString();
 
-                if (trans2 == i18nId) return create ? trans1 : false;
-
-                trans1 = trans2
+                if (trans2 != i18nId) trans1 = trans2
             }
 
-            return String(trans1);
+            if (item) trans1 = qx.bom.Template.render(trans1, item);
+
+            return trans1;
         }
 
     },
