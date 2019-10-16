@@ -1,10 +1,12 @@
 qx.Class.define("omna.management.Page", {
     extend: qx.ui.tabview.Page,
+    include: [omna.mixin.MI18n],
 
     construct: function (module, components, customData) {
-        var i18nCatalog = module.i18n || module.id,
-            layoutClass = new qx.ui.layout.Dock(5),
+        var layoutClass = new qx.ui.layout.Dock(5),
             label;
+
+        this.setModule(module);
 
         layoutClass.setSeparatorX("separator-horizontal");
         layoutClass.setSeparatorY("separator-vertical");
@@ -12,7 +14,7 @@ qx.Class.define("omna.management.Page", {
         if (customData.label) {
             label = qx.lang.Type.isArray(customData.label) ? customData.label.join(' / ') : customData.label;
         } else {
-            label = omna.I18n.trans(i18nCatalog, 'Labels', 'MODULE-REFERENCE');
+            label = this.i18nTrans('MODULE-REFERENCE');
         }
 
         this.base(arguments, label);
@@ -20,8 +22,7 @@ qx.Class.define("omna.management.Page", {
         this.set({
             showCloseButton: true,
             layout: layoutClass,
-            allowGrowX: true,
-            module: module
+            allowGrowX: true
         });
 
         components.forEach(function (componentSettings) {
@@ -36,9 +37,7 @@ qx.Class.define("omna.management.Page", {
 
                 this.add(component, { edge: edge, width: width + '%' });
             } else {
-                q.messaging.emit("Application", "error",
-                    omna.I18n.trans('CLASS_NO_FOUND', [componentSettings.widgetClass])
-                );
+                this.error("CLASS_NO_FOUND", [componentSettings.widgetClass]);
             }
         }, this);
     },
@@ -63,6 +62,12 @@ qx.Class.define("omna.management.Page", {
             this.getChildren().forEach(function (child) {
                 child.setCustomData && child.setCustomData(customData);
             }, this);
+        },
+
+        getI18nCatalog: function () {
+            var module = this.getModule();
+
+            return module.i18n || module.id;
         }
     }
 });
