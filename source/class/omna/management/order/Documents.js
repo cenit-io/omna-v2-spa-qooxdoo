@@ -70,7 +70,7 @@ qx.Class.define("omna.management.order.Documents", {
             if (data.length !== 0) {
                 var order = this.getCustomData().order,
                     docType = data[0].getModel().type,
-                    request = new omna.request.Orders();
+                    request = this.__requestManagement = new omna.request.Orders();
 
                 request.getOrderDoc(order, docType, function (response) {
                     if (response.successful) {
@@ -91,5 +91,9 @@ qx.Class.define("omna.management.order.Documents", {
             iframe.focus();
             iframe.contentWindow.print();
         }
+    },
+
+    destruct: function () {
+        this.__requestManagement.dispose();
     }
 });
