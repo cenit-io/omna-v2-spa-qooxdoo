@@ -37,14 +37,14 @@ qx.Class.define("omna.management.order.Documents", {
         },
 
         __createContent: function (customData) {
-            this.__docuemnetTip = new qx.ui.tooltip.ToolTip();
-            this.__docuemnetFrame = new qx.ui.embed.Iframe();
+            this.__documentTip = new qx.ui.tooltip.ToolTip();
+            this.__documentIFrame = new qx.ui.embed.Iframe();
 
-            this.__docuemnetTip.set({ textColor: 'black', autoHide: false, maxHeight: 70 });
-            this.__docuemnetFrame.set({ padding: 10 });
+            this.__documentTip.set({ textColor: 'black', autoHide: false, maxHeight: 70 });
+            this.__documentIFrame.set({ padding: 10 });
 
-            this.add(this.__docuemnetTip, { flex: 2 });
-            this.add(this.__docuemnetFrame, { flex: 2 });
+            this.add(this.__documentTip, { flex: 2 });
+            this.add(this.__documentIFrame, { flex: 2 });
         },
 
         __createObjectURL: function (data) {
@@ -63,9 +63,9 @@ qx.Class.define("omna.management.order.Documents", {
         onDocumentChangeSelection: function (e) {
             var data = e.getData();
 
-            this.__docuemnetTip.set({ label: 'Loading...', icon: 'omna/icon/32/info.png', backgroundColor: 'info' });
-            this.__docuemnetTip.show();
-            this.__docuemnetFrame.set({ source: 'about:blank' });
+            this.__documentTip.set({ label: 'Loading...', icon: 'omna/icon/32/info.png', backgroundColor: 'info' });
+            this.__documentTip.show();
+            this.__documentIFrame.set({ source: 'about:blank' });
 
             if (data.length !== 0) {
                 var order = this.getCustomData().order,
@@ -74,20 +74,20 @@ qx.Class.define("omna.management.order.Documents", {
 
                 request.getOrderDoc(order, docType, function (response) {
                     if (response.successful) {
-                        this.__docuemnetTip.exclude();
-                        this.__docuemnetFrame.set({ source: this.__createObjectURL(response.data) });
+                        this.__documentTip.exclude();
+                        this.__documentIFrame.set({ source: this.__createObjectURL(response.data) });
                     } else {
-                        this.__docuemnetTip.set({
+                        this.__documentTip.set({
                             label: response.message, icon: 'omna/icon/32/warn.png', backgroundColor: 'warn'
                         });
-                        this.__docuemnetTip.show();
+                        this.__documentTip.show();
                     }
                 }, this);
             }
         },
 
         onExecutePrint: function () {
-            var iframe = this.__docuemnetFrame.getContentElement().getDomElement();
+            var iframe = this.__documentIFrame.getContentElement().getDomElement();
             iframe.focus();
             iframe.contentWindow.print();
         }
