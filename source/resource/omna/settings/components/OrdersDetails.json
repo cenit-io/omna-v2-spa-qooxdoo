@@ -4,7 +4,8 @@
     "i18n": "Orders",
     "widgetClass": "omna.management.Details",
     "actions": [
-      "omna.action.order.Documents"
+      "omna.action.order.Documents",
+      "omna.action.Print"
     ]
   }
 ]

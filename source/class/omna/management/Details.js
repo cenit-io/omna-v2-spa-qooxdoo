@@ -11,6 +11,7 @@ qx.Class.define("omna.management.Details", {
         this.base(arguments, settings, customData, modulePage);
 
         this.emitMessaging("selection-change", { index: customData.index, item: customData.item, sender: this });
+        this.addMessagingListener("execute-print", this.onExecutePrint);
     },
 
     members: {

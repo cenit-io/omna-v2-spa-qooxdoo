@@ -1,7 +1,7 @@
 /**
  * @asset(qx/icon/${qx.icontheme}/16/actions/document-print.png)
  */
-qx.Class.define('omna.action.order.Print', {
+qx.Class.define('omna.action.Print', {
     extend: omna.action.AbstractAction,
 
     construct: function (management) {

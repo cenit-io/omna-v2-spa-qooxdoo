@@ -48,3 +48,7 @@ span.form-control {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+div.page-content {
+    padding-right: 5px;
+}

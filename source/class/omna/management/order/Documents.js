@@ -27,7 +27,7 @@ qx.Class.define("omna.management.order.Documents", {
         getActions: function () {
             var a1 = new qx.ui.basic.Label(this.i18nTrans('select_document_type')),
                 a2 = this.__documentSelectBox = new omna.action.order.DocumentSelectBox(),
-                a3 = this.__documentPrint = new omna.action.order.Print(this);
+                a3 = this.__documentPrint = new omna.action.Print(this);
 
             a1.set({ padding: [2, 5], decorator: 'main' });
 
