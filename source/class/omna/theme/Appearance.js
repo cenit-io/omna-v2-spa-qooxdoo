@@ -139,7 +139,8 @@ qx.Theme.define("omna.theme.Appearance", {
                     icon: "omna/icon/16/actions/search.png",
                     margin: 1,
                     maxHeight: 30,
-                    allowGrowX: true
+                    allowGrowX: true,
+                    allowGrowY: false
                 };
             }
         },
