@@ -11,8 +11,7 @@ qx.Class.define('omna.action.Details', {
     members: {
         onExecute: function () {
             var item = this.getSelectedItem(),
-                managementId = this.getManagement().getSettings().id,
-                module = { id: managementId + 'Details', i18n: this.getI18nCatalog() },
+                module = { id: this.getManagement().getSettings().id + 'Details', i18n: this.getI18nCatalog() },
                 data = {
                     item: item,
                     index: this.getSelectedIndex(),

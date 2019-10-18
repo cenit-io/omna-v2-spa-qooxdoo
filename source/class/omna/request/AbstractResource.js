@@ -219,6 +219,11 @@ qx.Class.define("omna.request.AbstractResource", {
             this.submit("GET", id, null, callBack, scope);
         },
 
+        reload: function (item, callBack, scope) {
+            this.find(item.id, callBack, scope);
+        },
+
+
         /**
          * Call REST services to find all record in a given range.
          *

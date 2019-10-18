@@ -41,17 +41,6 @@ qx.Class.define("omna.management.DataGridRestService", {
             return this.getSettings().fields || [];
         },
 
-        getRequestManagement: function () {
-            var settings = this.getSettings();
-
-            if (settings.requestManagementClass) {
-                var RequestManagementClass = this._getClassByName(settings.requestManagementClass);
-                return RequestManagementClass ? new RequestManagementClass() : null
-            } else {
-                return new omna.request.Customs(settings.serviceBasePath);
-            }
-        },
-
         _createTable: function (customData) {
             var fields = this.getFields(),
                 columnFields = fields.filter(function (f) {

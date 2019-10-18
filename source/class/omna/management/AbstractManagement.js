@@ -18,7 +18,7 @@ qx.Class.define("omna.management.AbstractManagement", {
             layout: new qx.ui.layout.VBox(5),
             decorator: "omna-management",
             settings: settings,
-            customData: customData || {},
+            customData: {},
             modulePage: modulePage
         });
 
@@ -28,6 +28,8 @@ qx.Class.define("omna.management.AbstractManagement", {
         this._createToolbar();
 
         this.addListener("changeCustomData", this.onChangeCustomData);
+
+        if (customData) setTimeout(qx.lang.Function.bind(this.setCustomData, this), 5, customData);
     },
 
     events: {
@@ -54,6 +56,17 @@ qx.Class.define("omna.management.AbstractManagement", {
         __messagingRouteIds: null,
         __overflowMenu: null,
         __menuItemStore: null,
+
+        getRequestManagement: function () {
+            var settings = this.getSettings();
+
+            if (settings.requestManagementClass) {
+                var RequestManagementClass = this._getClassByName(settings.requestManagementClass);
+                return RequestManagementClass ? new RequestManagementClass() : null
+            } else if (settings.serviceBasePath) {
+                return new omna.request.Customs(settings.serviceBasePath);
+            }
+        },
 
         _setDefaultPropertiesValues: function (settings) {
             var propertiesSettings = this.constructor.propertiesDefaultValues;
@@ -218,7 +231,7 @@ qx.Class.define("omna.management.AbstractManagement", {
 
         getI18nCatalog: function () {
             var settings = this.getSettings();
-            
+
             return settings.i18n || settings.id;
         },
 

@@ -94,6 +94,6 @@ qx.Class.define("omna.management.order.Documents", {
     },
 
     destruct: function () {
-        this.__requestManagement.dispose();
+        this.__requestManagement && this.__requestManagement.dispose();
     }
 });

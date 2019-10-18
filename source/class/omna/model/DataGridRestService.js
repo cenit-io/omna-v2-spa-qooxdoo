@@ -125,7 +125,7 @@ qx.Class.define("omna.model.DataGridRestService", {
     },
 
     destruct: function () {
-        this.__requestManagement.dispose();
+        this.__requestManagement && this.__requestManagement.dispose();
         this.__fields.clear();
         delete this.__fields;
     }

@@ -64,6 +64,22 @@ qx.Class.define("omna.request.Orders", {
 
                 callBack.call(scope, response);
             }, this);
+        },
+
+        reload: function (order, callBack, scope) {
+            var path = qx.bom.Template.render('/integrations/{{integration.id}}/orders/{{number}}', order);
+
+            // Call remote service
+            this.submit("GET", path, null, function (response) {
+                var msg;
+
+                if (!response.successful) {
+                    msg = omna.I18n.trans('Orders', 'Messages', 'FAILED-RELOAD', [response.message]);
+                    q.messaging.emit('Application', 'error', msg)
+                }
+
+                callBack.call(scope, response);
+            }, this);
         }
     }
 });

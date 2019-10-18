@@ -26,12 +26,8 @@ qx.Class.define("omna.management.HtmlEmbed", {
         if (settings.title) this._createChildControl("title");
         this._createChildControlImpl('iFrame');
 
-        var listenFromComponentId = settings.listenFromComponentId;
-
-        if (listenFromComponentId) {
-            this.addMessagingListener('selection-change', this.onSelectionChange, listenFromComponentId)
-        } else {
-            this._setContent(customData)
+        if (settings.listenFromComponentId) {
+            this.addMessagingListener('selection-change', this.onSelectionChange, settings.listenFromComponentId)
         }
 
         this.addMessagingListener("execute-print", this.onExecutePrint);
@@ -66,15 +62,17 @@ qx.Class.define("omna.management.HtmlEmbed", {
             return control || this.base(arguments, id);
         },
 
-        _setContent: function (item) {
+        _setContent: function (data) {
             var contentTemplate = this.getContentTemplate(),
-                document = this.__documentIFrame.getContentElement().getDocument();
+                document = this.__documentIFrame ? this.__documentIFrame.getContentElement().getDocument() : null;
 
-            if (!document) return setTimeout(qx.lang.Function.bind(this._setContent, this), 0, item);
+            if (!document) return setTimeout(qx.lang.Function.bind(this._setContent, this), 5, data);
 
             if (qx.lang.Type.isArray(contentTemplate)) contentTemplate = contentTemplate.join('\n');
 
-            document.write(qx.bom.Template.render(contentTemplate, item))
+            document.open();
+            document.write(qx.bom.Template.render(contentTemplate, data));
+            document.close();
         },
 
         /**
@@ -90,6 +88,12 @@ qx.Class.define("omna.management.HtmlEmbed", {
             var iframe = this.__documentIFrame.getContentElement().getDomElement();
             iframe.focus();
             iframe.contentWindow.print();
+        },
+
+        onChangeCustomData: function (e) {
+            var data = e.getData();
+
+            this._setContent(data);
         }
     }
 });

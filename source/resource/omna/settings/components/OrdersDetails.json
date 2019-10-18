@@ -3,7 +3,10 @@
     "id": "OrdersDetails",
     "i18n": "Orders",
     "widgetClass": "omna.management.Details",
+    "requestManagementClass": "omna.request.Orders",
     "actions": [
+      "omna.action.Reload",
+      "omna.action.Separator",
       "omna.action.order.Documents",
       "omna.action.Print"
     ]
