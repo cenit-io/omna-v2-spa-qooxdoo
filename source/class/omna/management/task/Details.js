@@ -31,10 +31,8 @@ qx.Class.define("omna.management.task.Details", {
         this.getChildControl("notifications");
         this.getChildControl("scheduler");
 
-        var listenFromComponentId = settings.listenFromComponentId;
-
-        if (listenFromComponentId) {
-            this.addMessagingListener('selection-change', this.onSelectionChange, listenFromComponentId)
+        if (settings.listenFromComponentId) {
+            this.addMessagingListener('selection-change', this.onSelectionChange, settings.listenFromComponentId)
         } else {
             this._setContent(customData)
         }

@@ -67,6 +67,6 @@
     "i18n": "Tasks",
     "edge": "east",
     "region": 30,
-    "listenFromComponentId": "flows"
+    "listenFromComponentId": "Flows"
   }
 ]

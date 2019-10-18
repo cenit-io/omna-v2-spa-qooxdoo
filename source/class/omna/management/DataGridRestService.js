@@ -177,7 +177,6 @@ qx.Class.define("omna.management.DataGridRestService", {
             } else {
                 data = null
             }
-
             // Send message to accions
             this.emitMessaging("selection-change", data);
         },
