@@ -62,7 +62,6 @@ qx.Class.define("omna.request.Session", {
                 request.setRequestHeader("Accept", "application/json");
                 request.addListenerOnce("success", this.onLoginSuccess, this);
                 request.addListenerOnce("statusError", this.onLoginStatusError, this);
-                request.addListenerOnce("error", this.onError, this);
 
                 request.send();
             } else {
@@ -129,20 +128,9 @@ qx.Class.define("omna.request.Session", {
 
             var response = e.getTarget().getResponse(),
                 status = response.statusCode || e.getTarget().getStatus(),
-                msg = response.error.message
-                    || response.message
-                    || omna.request.AbstractResource.HttpStatus(status);
+                msg = response.message || omna.request.AbstractResource.HttpStatus(status);
 
             q.messaging.emit("Application", "error", msg);
-        },
-
-        /**
-         * Process the failed response from login or requests.
-         */
-        onError: function (e) {
-            // Delete the local registry of the current authenticity profile.
-            this.setProfile(null);
-            q.messaging.emit("Application", "error", this.tr("Failed connection with server."));
         }
     }
 });
