@@ -7,8 +7,9 @@
     "actions": [
       "omna.action.Reload",
       "omna.action.Separator",
+      "omna.action.Print",
       "omna.action.order.Documents",
-      "omna.action.Print"
+      "omna.action.ReImport"
     ]
   }
 ]
