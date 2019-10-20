@@ -22,7 +22,7 @@ qx.Class.define("omna.action.AbstractActionWithSelectedItem", {
         onSelectionChange: function (data) {
             var customData = data.customData || {};
             this.set({
-                enabled: data.customData !== null,
+                enabled: qx.lang.Type.isObject(customData.item),
                 selectedItem: customData.item || null,
                 selectedIndex: customData.index || null
             })
