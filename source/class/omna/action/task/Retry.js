@@ -23,7 +23,7 @@ qx.Class.define("omna.action.task.Retry", {
 
         onSelectionChange: function (data) {
             this.base(arguments, data);
-            this.setEnabled(data.customData !== null && data.customData.item.status === 'failed');
+            this.setEnabled(((data.customData || {}).item || {}).status === 'failed');
         }
     }
 });
