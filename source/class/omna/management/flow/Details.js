@@ -45,7 +45,7 @@ qx.Class.define("omna.management.flow.Details", {
                 this._flowId = null;
             }
 
-            this.setCustomData(task);
+            this.setCustomData({ item: task });
         },
 
         onAcceptUpdateScheduler: function (data) {

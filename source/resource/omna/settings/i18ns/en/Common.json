@@ -5,11 +5,6 @@
     "value": "Confirmation:"
   },
   {
-    "name": "details",
-    "subCatalog": "Title",
-    "value": "Details"
-  },
-  {
     "name": "channel",
     "subCatalog": "Labels",
     "value": "Channel"

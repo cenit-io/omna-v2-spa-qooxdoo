@@ -1,8 +1,8 @@
 [
   {
     "id": "Tasks",
-    "widgetClass": "omna.management.DataGridRestService",
     "region": 70,
+    "widgetClass": "omna.management.DataGridRestService",
     "requestManagementClass": "omna.request.Tasks",
     "baseParams": {
       "with_details": true
@@ -10,6 +10,7 @@
     "actions": [
       "omna.action.Reload",
       "omna.action.Separator",
+      "omna.action.Details",
       "omna.action.task.Retry",
       "omna.action.Remove",
       "omna.action.Separator",

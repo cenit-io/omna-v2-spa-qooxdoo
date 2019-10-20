@@ -12,10 +12,10 @@ qx.Class.define("omna.request.Tasks", {
                 var msg;
 
                 if (response.successful) {
-                    msg = omna.I18n.trans('Flows', 'Messages', 'SUCCESSFUL-RETRY');
+                    msg = omna.I18n.trans('Tasks', 'Messages', 'SUCCESSFUL-RETRY');
                     q.messaging.emit('Application', 'good', msg);
                 } else {
-                    msg = omna.I18n.trans('Flows', 'Messages', 'FAILED-RETRY');
+                    msg = omna.I18n.trans('Tasks', 'Messages', 'FAILED-RETRY');
                     q.messaging.emit('Application', 'error', msg)
                 }
                 callBack && callBack.call(scope, response);

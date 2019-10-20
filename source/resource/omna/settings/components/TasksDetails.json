@@ -1,0 +1,14 @@
+[
+  {
+    "id": "TasksDetails",
+    "i18n": "Tasks",
+    "widgetClass": "omna.management.task.Details",
+    "requestManagementClass": "omna.request.Tasks",
+    "actions": [
+      "omna.action.Reload",
+      "omna.action.Separator",
+      "omna.action.task.Retry",
+      "omna.action.Remove"
+    ]
+  }
+]

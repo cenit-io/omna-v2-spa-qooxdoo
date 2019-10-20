@@ -16,7 +16,7 @@
   },
   {
     "name": "details",
-    "subCatalog": "Labels",
+    "subCatalog": "Titles",
     "value": "Task details"
   },
   {
@@ -43,6 +43,11 @@
     "name": "retry",
     "subCatalog": "Labels",
     "value": "Retry"
+  },
+  {
+    "name": "MODULE-REFERENCE-DETAILS",
+    "subCatalog": "Labels",
+    "value": "Task / {{id}} / Details"
   },
   {
     "name": "CONFIRM-RETRY",

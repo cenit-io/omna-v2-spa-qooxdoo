@@ -13,8 +13,8 @@ qx.Class.define("omna.management.task.Details", {
     statics: {
         propertiesDefaultValues: {
             i18n: 'Tasks',
-            edge: 'east',
-            region: 30,
+            edge: 'center',
+            region: 100,
             listenFromComponentId: null
         }
     },
@@ -25,7 +25,7 @@ qx.Class.define("omna.management.task.Details", {
 
         this.setAppearance('management');
 
-        this.getChildControl("title");
+        if (settings.listenFromComponentId) this.getChildControl("title");
         this.getChildControl("description");
         this.getChildControl("executions");
         this.getChildControl("notifications");
@@ -34,8 +34,11 @@ qx.Class.define("omna.management.task.Details", {
         if (settings.listenFromComponentId) {
             this.addMessagingListener('selection-change', this.onSelectionChange, settings.listenFromComponentId)
         } else {
-            this._setContent(customData)
+            this.setCustomData(customData ? customData : {});
         }
+
+        this.addMessagingListener("execute-reload", this.onExecuteReload);
+        this.addMessagingListener("execute-remove", this.onExecuteRemove);
     },
 
     members: {
@@ -45,7 +48,7 @@ qx.Class.define("omna.management.task.Details", {
 
             switch ( id ) {
                 case "title":
-                    control = new qx.ui.basic.Atom(this.i18nTrans('details'));
+                    control = new qx.ui.basic.Atom(this.i18nTrans('Titles', 'details'));
                     control.setMaxHeight(27);
                     this._add(control, { flex: 1 });
                     break;
@@ -201,6 +204,21 @@ qx.Class.define("omna.management.task.Details", {
             control.getLayoutParent().setEnabled(scheduler != 'none');
         },
 
+        onExecuteReload: function () {
+            var request = this.__requestManagement = this.getRequestManagement(),
+                data = this.getCustomData();
+
+            this.setCustomData({});
+            request.reload(data.item, function (response) {
+                if (response.successful) data.item = response.data;
+                this.setCustomData(data)
+            }, this);
+        },
+
+        onExecuteRemove: function () {
+            this.getModulePage().fireEvent("close");
+        },
+
         onNotificationCellTap: function (cellInfo) {
             var data = cellInfo.getTarget().getTable().getTableModel().getRowData(cellInfo.getRow());
 
@@ -208,16 +226,23 @@ qx.Class.define("omna.management.task.Details", {
         },
 
         onSelectionChange: function (data) {
-            this.setCustomData(data.customData ? data.customData.item : {});
+            this.setCustomData(data.customData ? data.customData : {});
         },
 
         onChangeCustomData: function (e) {
-            var item = e.getData();
+            var data = e.getData(),
+                item = data.item || {};
 
             this._fillDescription(item.description);
             this._fillTable(item.executions, 'executions');
             this._fillTable(item.notifications, 'notifications');
             this._fillScheduler(item.scheduler || 'none');
+
+            this.emitMessaging("selection-change", { index: data.index, item: data.item, sender: this });
         }
+    },
+
+    destruct: function () {
+        this.__requestManagement && this.__requestManagement.dispose();
     }
 });
