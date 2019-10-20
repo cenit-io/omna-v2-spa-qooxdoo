@@ -9,7 +9,6 @@ qx.Class.define("omna.action.Remove", {
     },
 
     members: {
-
         onExecute: function () {
             var management = this.getManagement(),
                 itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
