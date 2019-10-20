@@ -19,10 +19,6 @@ qx.Class.define('omna.action.Details', {
                 };
 
             q.messaging.emit('Application', 'open-module', module, data);
-        },
-
-        onAccept: function (e) {
-            this.emitMessaging('execute-update', e.getData(), { dlg: e.getTarget() });
         }
     }
 });
