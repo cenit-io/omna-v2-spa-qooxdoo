@@ -97,6 +97,7 @@ qx.Class.define("omna.management.DataGridRestService", {
 
             this.add(table, { flex: 2 });
             table.getSelectionModel().addListener("changeSelection", this.onChangeSelection, this);
+            table.addListener("cellDbltap", this.onCellDbltap, this);
         },
 
         onChangeCustomData: function (e) {
@@ -158,6 +159,13 @@ qx.Class.define("omna.management.DataGridRestService", {
                 this.getModulePage().setGlobalSearchText(data.customData);
                 this.setCustomData(customData);
             }
+        },
+
+        onCellDbltap: function (e) {
+            var tableModel = this.__table.getTableModel(),
+                data = { index: e.getRow(), item: tableModel.getRowData(e.getRow()), sender: this };
+
+            this.emitMessaging("open-details", data);
         },
 
         /**

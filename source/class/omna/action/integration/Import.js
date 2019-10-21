@@ -13,12 +13,11 @@ qx.Class.define("omna.action.integration.Import", {
             omna.form.dialog.Import.show(this.getManagement(), this.getSelectedItem(), function (response, dlg) {
                 if (response === 'yes') {
                     if (response === 'yes') {
-                        var request = new omna.request.Integrations(),
-                            item = this.getSelectedItem(),
+                        var item = this.getSelectedItem(),
                             type = dlg.getImportType();
 
-                        request.doImportTask(item.id, type, function (response) {
-                            // TODO: Open task details
+                        this.getRequestManagement().doImportTask(item.id, type, function (response) {
+                            if (response.successful) this.openTaskDetails(response.data);
                         }, this);
                     }
                 }

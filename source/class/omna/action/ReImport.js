@@ -10,17 +10,12 @@ qx.Class.define("omna.action.ReImport", {
 
     members: {
         onExecute: function () {
-            var settings = this.getManagement().getSettings(),
-                msg = this.i18nTrans('Messages', 'CONFIRM-REIMPORT');
+            var msg = this.i18nTrans('Messages', 'CONFIRM-REIMPORT');
 
             omna.dialog.Confirm.show(msg, function (response) {
                 if (response === 'yes') {
-                    var RequestManagementClass = qx.Class.getByName(settings.requestManagementClass),
-                        request = new RequestManagementClass(),
-                        item = this.getSelectedItem();
-
-                    request.reImport(item, function (response) {
-                        // TODO: Open task details
+                    this.getRequestManagement().reImport(this.getSelectedItem(), function (response) {
+                        if (response.successful) this.openTaskDetails(response.data);
                     }, this);
                 }
             }, this);

@@ -35,6 +35,12 @@ qx.Class.define("omna.action.AbstractAction", {
             this._handleLabel();
         },
 
+        getRequestManagement: function () {
+            this.__requestManagement = this.__requestManagement || this.getManagement().getRequestManagement();
+
+            return this.__requestManagement;
+        },
+
         getI18nCatalog: function () {
             return this.getManagement().getI18nCatalog()
         },
@@ -50,6 +56,13 @@ qx.Class.define("omna.action.AbstractAction", {
         addMessagingListener: function (msgPatternId, handler, componentId) {
             var channel = 'C' + (componentId || this.getManagement().getSettings().id);
             this._messagingRouteIds.push(q.messaging.on(channel, msgPatternId, handler, this));
+        },
+
+        openTaskDetails: function (task) {
+            var module = { id: 'TasksDetails', i18n: 'Tasks' },
+                data = { item: task, label: this.i18nTrans('Tasks', 'Labels', 'MODULE-REFERENCE-DETAILS', task) };
+
+            q.messaging.emit('Application', 'open-module', module, data);
         },
 
         /**
@@ -86,6 +99,11 @@ qx.Class.define("omna.action.AbstractAction", {
     },
 
     destruct: function () {
+        if (this.__requestManagement) {
+            this.__requestManagement.dispose();
+            this.__requestManagement = null;
+        }
+
         this._messagingRouteIds.forEach(function (id) {
             q.messaging.remove(id);
         })
