@@ -41,6 +41,7 @@
         },
         "includeInSearch": true,
         "accessInAddForm": "W",
+        "required": true,
         "attrPath": "id",
         "attrModelName": "integration_id",
         "widgetClass": "omna.form.field.remote.integrations.SelectBox"

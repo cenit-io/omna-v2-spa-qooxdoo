@@ -32,6 +32,7 @@
         "name": "channel",
         "widgetClass": "omna.form.field.remote.integrations.ChannelSelectBox",
         "accessInAddForm": "W",
+        "required": true,
         "includeInSearch": true,
         "showInGrid": true,
         "gridColumnWidth": 150

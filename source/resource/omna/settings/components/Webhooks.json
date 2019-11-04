@@ -21,7 +21,8 @@
         "widgetClass": "omna.form.field.remote.webhooks.TopicSelectBox",
         "includeInSearch": true,
         "accessInAddForm": "W",
-        "accessInEditForm": "W"
+        "accessInEditForm": "W",
+        "required": true
       },
       {
         "name": "title",
@@ -49,6 +50,7 @@
         "includeInSearch": true,
         "accessInAddForm": "W",
         "accessInEditForm": "W",
+        "required": true,
         "attrPath": "id",
         "attrModelName": "integration_id",
         "widgetClass": "omna.form.field.remote.integrations.SelectBox"
