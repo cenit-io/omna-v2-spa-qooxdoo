@@ -63,8 +63,7 @@ qx.Class.define("omna.management.DataGridRestService", {
                         return new qx.ui.table.columnmodel.Resize(table);
                     }
                 }),
-                tableColumnModel = table.getTableColumnModel(),
-                cellRendererClass, widgetClass;
+                tableColumnModel = table.getTableColumnModel();
 
             table.set({
                 rowHeight: settings.rowHeight || 28,
@@ -74,6 +73,8 @@ qx.Class.define("omna.management.DataGridRestService", {
             });
 
             columnFields.forEach(function (field, index) {
+                var cellRendererClass, widgetClass;
+
                 if (field.gridColumnWidth) {
                     var width = String(field.gridColumnWidth);
 
