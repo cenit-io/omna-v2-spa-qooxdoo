@@ -15,7 +15,7 @@ qx.Class.define("omna.model.DataGridRestService", {
             params: params
         });
 
-        this.__fields = new Map();
+        this.__fields = [];
 
         var i18nCatalog = settings.i18n,
             columnNames = [],
@@ -25,7 +25,7 @@ qx.Class.define("omna.model.DataGridRestService", {
             if (field.showInGrid) {
                 columnNames.push(omna.I18n.trans(i18nCatalog, 'Labels', field.label || field.name));
                 columnIDs.push(field.name);
-                this.__fields.set(field.name, field);
+                this.__fields.push(field);
             }
         }, this);
 
@@ -102,7 +102,7 @@ qx.Class.define("omna.model.DataGridRestService", {
         },
 
         parseValue: function (fieldName, fieldValue) {
-            var field = this.__fields.get(fieldName),
+            var field = this.__fields[this.getColumnIndexById(fieldName)],
                 widgetClass = field ? qx.Class.getByName(field.widgetClass) : null;
 
             return (widgetClass && widgetClass.parseValue) ? widgetClass.parseValue(fieldValue) : fieldValue;
@@ -111,8 +111,7 @@ qx.Class.define("omna.model.DataGridRestService", {
         // overridden
         getValue: function (columnIndex, rowIndex) {
             var value = this.base(arguments, columnIndex, rowIndex),
-                columnId = Array.from(this.__fields.keys())[columnIndex],
-                field = this.__fields.get(columnId);
+                field = this.__fields[columnIndex];
 
             if (field.attrPath) {
                 field.attrPath.split('.').forEach(function (attr) {
@@ -126,7 +125,6 @@ qx.Class.define("omna.model.DataGridRestService", {
 
     destruct: function () {
         this.__requestManagement && this.__requestManagement.dispose();
-        this.__fields.clear();
         delete this.__fields;
     }
 });
