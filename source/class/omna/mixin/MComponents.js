@@ -22,6 +22,7 @@
  *
  ** Cell Renderer
  * @require(omna.table.cellrenderer.LongText)
+ * @require(omna.table.cellrenderer.integration.Logo)
  *
  ** Network components
  * @require(omna.form.field.net.EMailField)

@@ -10,6 +10,11 @@
     "value": "Channel"
   },
   {
+    "name": "logo",
+    "subCatalog": "Labels",
+    "value": " "
+  },
+  {
     "name": "name",
     "subCatalog": "Labels",
     "value": "Name"
