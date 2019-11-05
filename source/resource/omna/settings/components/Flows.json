@@ -3,7 +3,6 @@
     "id": "Flows",
     "widgetClass": "omna.management.DataGridRestService",
     "requestManagementClass": "omna.request.Flows",
-    "serviceBasePath": "flows",
     "region": 70,
     "baseParams": {
       "with_details": true
@@ -19,6 +18,14 @@
       "omna.action.Search"
     ],
     "fields": [
+      {
+        "name": "integration",
+        "attrPath": "channel",
+        "label": "logo",
+        "cellRendererClass": "omna.table.cellrenderer.integration.Logo",
+        "showInGrid": true,
+        "gridColumnWidth": 50
+      },
       {
         "name": "type",
         "widgetClass": "omna.form.field.remote.flows.TypeSelectBox",

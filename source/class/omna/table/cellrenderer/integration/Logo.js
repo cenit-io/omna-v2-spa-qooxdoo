@@ -4,16 +4,14 @@ qx.Class.define("omna.table.cellrenderer.integration.Logo", {
     members: {
         // overridden
         _identifyImage: function (cellInfo) {
-            var path = cellInfo.value,
+            var icon = cellInfo.value,
                 imageHints = { imageWidth: 24, imageHeight: 24 };
 
-            if (path === "" || path === null) {
+            if (icon === "" || icon === null) {
                 imageHints.url = null;
             } else {
-                path = path.replace(/[A-Z]{2}$/, '');
-                path = 'omna/icon/24/integrations/' + path + '.png';
-
-                imageHints.url = this.__am.resolve(path);
+                icon = "omna/icon/24/integrations/" + icon.replace(/[A-Z]{2}$/, '') + ".png";
+                imageHints.url = this.__am.resolve(icon);
             }
 
             imageHints.tooltip = cellInfo.value;

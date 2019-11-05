@@ -17,6 +17,14 @@
     ],
     "fields": [
       {
+        "name": "integration",
+        "attrPath": "channel",
+        "label": "logo",
+        "cellRendererClass": "omna.table.cellrenderer.integration.Logo",
+        "showInGrid": true,
+        "gridColumnWidth": 50
+      },
+      {
         "name": "number",
         "widgetClass": "omna.form.field.TextField",
         "showInGrid": true,

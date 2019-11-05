@@ -13,11 +13,12 @@ qx.Class.define('omna.form.field.remote.integrations.ListBox', {
 
             request.setAsync(false);
             request.findAll(null, { with_details: true }, function (response) {
-                var label, listItem;
+                var label, icon, listItem;
 
                 if (response.successful) response.data.forEach(function (item) {
                     label = qx.bom.Template.render(omna.I18n.trans('Titles', 'INTEGRATION'), { integration: item });
-                    listItem = new qx.ui.form.ListItem(label, null, item.id);
+                    icon = 'omna/icon/24/integrations/' + item.channel.replace(/[A-Z]{2}$/, '') + '.png';
+                    listItem = new qx.ui.form.ListItem(label, icon, item.id);
                     listItem.setEnabled(item.authorized === true);
                     this.add(listItem);
                 }, this);
