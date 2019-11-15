@@ -24,6 +24,7 @@ qx.Class.define("omna.action.Remove", {
                             msg = this.i18nTrans('Messages', 'SUCCESSFUL-DELETING', [itemLabel]);
                             q.messaging.emit('Application', 'good', msg);
                             this.emitMessaging('execute-remove', { index: this.getSelectedIndex() });
+                            if (response.type === 'task') this.openTaskDetails(response.data);
                         } else {
                             msg = this.i18nTrans('Messages', 'FAILED-DELETING', [itemLabel]);
                             q.messaging.emit('Application', 'error', msg);
