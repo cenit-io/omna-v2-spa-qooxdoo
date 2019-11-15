@@ -10,6 +10,7 @@ qx.Class.define("omna.action.Remove", {
 
     members: {
         onExecute: function () {
+            this.setEnabled(false);
             var management = this.getManagement(),
                 itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
                 msg = this.i18nTrans('Messages', 'CONFIRM-DELETING', [itemLabel]);
@@ -29,6 +30,7 @@ qx.Class.define("omna.action.Remove", {
                         }
                     }, this);
                 }
+                this.setEnabled(true);
             }, this);
         }
     }

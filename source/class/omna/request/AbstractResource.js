@@ -346,7 +346,7 @@ qx.Class.define("omna.request.AbstractResource", {
     },
 
     destruct: function () {
-        var requestManagement = this.__requestManagement;
-        if (!requestManagement.isDisposed() && !requestManagement.isDone()) requestManagement.abort();
+        var rm = this.__requestManagement;
+        if (rm && !(rm.isDisposed() || rm.isDone())) rm.abort();
     }
 });

@@ -71,12 +71,12 @@ qx.Class.define('omna.dialog.Confirm', {
             bP.add(bN);
 
             bY.addListener('execute', function () {
-                this.getCallback().call(this.getScope(), 'yes', this);
+                this.getCallback().call(this.getScope(), 'yes');
                 this.destroy();
             }, this);
 
             bN.addListener('execute', function () {
-                this.getCallback().call(this.getScope(), 'no', this);
+                this.getCallback().call(this.getScope(), 'no');
                 this.destroy();
             }, this);
 
