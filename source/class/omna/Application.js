@@ -29,7 +29,8 @@ qx.Class.define("omna.Application", {
 
     properties: {
         serverBaseUrl: {
-            init: null
+            init: null,
+            transform: '__transformServerBaseUrl'
         },
 
         locale: {
@@ -78,6 +79,10 @@ qx.Class.define("omna.Application", {
             if (qTitle) qTitle.innerText = omna.I18n.trans('APPLICATION-TITLE');
 
             this.__disableHistory();
+        },
+
+        __transformServerBaseUrl: function (v) {
+            return window.location.href.match(/omna-v2-dev/) ? v.replace(/ecapi-v1/, 'ecapi_v1') : v
         },
 
         __applyLocale: function (v) {
