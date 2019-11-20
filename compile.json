@@ -1,0 +1,32 @@
+{
+  "applications": [
+    {
+      "class": "omna.Application",
+      "theme": "omna.theme.Theme",
+      "name": "omna",
+      "bootPath": "source/boot",
+      "environment": {
+        "qx.icontheme": "Oxygen"
+      }
+    }
+  ],
+  "libraries": [
+    "node_modules/qooxdoo-sdk/framework",
+    "."
+  ],
+  "targets": [
+    {
+      "type": "source",
+      "outputPath": "compiled/source"
+    },
+    {
+      "type": "build",
+      "outputPath": "compiled/build",
+      "minify": true
+    }
+  ],
+  "defaultTarget": "source",
+  "locales": [
+    "en"
+  ]
+}
