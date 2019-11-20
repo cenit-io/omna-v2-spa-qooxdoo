@@ -10,7 +10,7 @@ qx.Class.define("omna.form.field.net.EMailField", {
     properties: {
         filter: {
             refine: true,
-            init: /[0-9a-zA-Z\.\_\@]/
+            init: new RegExp('[0-9a-zA-Z\\.\\_\\@]')
         }
     }
 });

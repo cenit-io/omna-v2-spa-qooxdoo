@@ -10,7 +10,7 @@ qx.Class.define("omna.form.field.net.URLField", {
     properties: {
         filter: {
             refine: true,
-            init: /./
+            init: new RegExp('.')
         }
     }
 });
