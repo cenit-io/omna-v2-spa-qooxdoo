@@ -1,28 +1,38 @@
 {
-    "info": {
-        "name": "omna-gui",
-        "summary": "GUI application of OMNA eCommerce LTD.",
-        "description": "This GUI application provides all interface for managing a OMNA application.",
-        "homepage": "https://github.com/yoandrypa/omna-gui",
-        "license": "LGPL-3.0",
-        "authors": [
-            {
-                "name": "Yoandry Pacheco Aguila",
-                "email": "yoandrypa@gmail.com"
-            }
-        ],
-        "version": "1.0.0",
-        "qooxdoo-versions": [
-            "5.0.1"
-        ]
-    },
-    "provides": {
-        "namespace": "omna",
-        "encoding": "utf-8",
-        "class": "source/class",
-        "resource": "source/resource",
-        "translation": "source/translation",
-        "type": "application"
-    }
+  "info": {
+    "name": "omna-gui",
+    "summary": "GUI application of OMNA eCommerce LTD.",
+    "description": "This GUI application provides all interface for managing a OMNA application.",
+    "homepage": "https://github.com/yoandrypa/omna-gui",
+    "license": "LGPL-3.0",
+    "authors": [
+      {
+        "name": "Yoandry Pacheco Aguila",
+        "email": "yoandrypa@gmail.com"
+      }
+    ],
+    "version": "1.0.0"
+  },
+  "provides": {
+    "namespace": "omna",
+    "encoding": "utf-8",
+    "class": "source/class",
+    "resource": "source/resource",
+    "translation": "source/translation",
+    "type": "application"
+  },
+  "externalResources": {
+    "script": [
+      "omna/libs/sha256.min.js",
+      "omna/libs/showdown.min.js"
+    ],
+    "css": [
+      "omna/css/styles.css"
+    ]
+  },
+  "requires": {
+    "qooxdoo-sdk": "^6.0.0-alpha-20190409-f79cc78",
+    "qooxdoo-compiler": "^0.3.0"
+  }
 }
 

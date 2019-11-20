@@ -4,8 +4,7 @@ stages:
 
 cache:
   paths:
-    - node_modules/
-    - cache/
+    - compiled/build/
 
 install_dependencies:
   image: node:8.11.1
@@ -15,6 +14,7 @@ install_dependencies:
     - master
   script:
     - npm install --save-dev
+    - ./node_modules/.bin/qx compile --target build
 
 staging:
   image: python:2.7.15
@@ -22,9 +22,8 @@ staging:
   only:
     - develop
   script:
-    - python generate.py build > /dev/null
     - pip install awscli
-    - aws s3 sync --acl public-read --delete --region us-west-2 build/ s3://omna-v2-dev
+    - aws s3 sync --acl public-read --delete --region us-west-2 compiled/build/ s3://omna-v2-dev
 
 production:
   image: python:2.7.15
@@ -32,6 +31,5 @@ production:
   only:
     - master
   script:
-    - python generate.py build > /dev/null
     - pip install awscli
-    - aws s3 sync --acl public-read --delete --region us-west-2 build/ s3://omna-v2-prod
+    - aws s3 sync --acl public-read --delete --region us-west-2 compiled/build/ s3://omna-v2-prod

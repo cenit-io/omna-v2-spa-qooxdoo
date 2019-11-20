@@ -95,7 +95,7 @@ qx.Class.define("omna.Application", {
         __disableHistory: function () {
             window.onhashchange = function () {
                 // It works without the History API, but will clutter up the history
-                history.pushState ? history.pushState(null, '', '#HOFF') : location.hash = '#HOFF'
+                history.pushState ? history.pushState(null, '', '#HOFF') : window.location.hash = '#HOFF'
             };
             window.onhashchange();
         },
