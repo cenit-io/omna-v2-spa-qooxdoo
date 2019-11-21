@@ -27,5 +27,10 @@
   "devDependencies": {
     "qooxdoo-sdk": "^6.0.0-alpha-20190409-f79cc78",
     "qxcompiler": "^0.3.0"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/qx compile --target build && npm run del_1 && npm run del_2",
+    "del_1": "rm -r ./compiled/build/transpiled && rm ./compiled/build/*/*.map && rm ./compiled/build/*/*.json",
+    "del_2": "rm ./compiled/build/*.json && rm ./compiled/build/*.txt"
   }
 }

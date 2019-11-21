@@ -14,7 +14,7 @@ install_dependencies:
     - master
   script:
     - npm install --save-dev
-    - ./node_modules/.bin/qx compile --target build
+    - npm run build
 
 staging:
   image: python:2.7.15

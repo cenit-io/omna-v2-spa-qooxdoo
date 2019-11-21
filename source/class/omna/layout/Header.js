@@ -13,6 +13,7 @@
  *
  * @asset(omna/icon/24/actions/logout.png)
  * @asset(omna/images/loading.gif)
+ * @asset(omna/images/favicon.png)
  * @asset(omna/images/logo.png)
  */
 qx.Class.define("omna.layout.Header", {
