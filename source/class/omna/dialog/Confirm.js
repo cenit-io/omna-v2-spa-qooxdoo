@@ -1,7 +1,7 @@
 /**
  * @asset(omna/icon/32/question.png)
- * @asset(omna/icon/16/actions/yes.png)
- * @asset(omna/icon/16/actions/no.png)
+ * @asset(qx/icon/${qx.icontheme}/16/actions/dialog-apply.png)
+ * @asset(qx/icon/${qx.icontheme}/16/actions/dialog-cancel.png)
  */
 qx.Class.define('omna.dialog.Confirm', {
     extend: omna.dialog.AbstractDialog,
@@ -62,8 +62,8 @@ qx.Class.define('omna.dialog.Confirm', {
 
         _createButtons: function () {
             var bP = this.base(arguments),
-                bY = new qx.ui.form.Button(this.i18nTrans('yes'), 'omna/icon/16/actions/yes.png'),
-                bN = new qx.ui.form.Button(this.i18nTrans('no'), 'omna/icon/16/actions/no.png');
+                bY = new qx.ui.form.Button(this.i18nTrans('yes'), 'icon/16/actions/dialog-apply.png'),
+                bN = new qx.ui.form.Button(this.i18nTrans('no'), 'icon/16/actions/dialog-cancel.png');
 
             bY.setAllowStretchX(true);
             bN.setAllowStretchX(true);

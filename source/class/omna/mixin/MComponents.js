@@ -6,6 +6,7 @@
  * @require(omna.action.Details)
  * @require(omna.action.Reload)
  * @require(omna.action.Remove)
+ * @require(omna.action.Cancel)
  * @require(omna.action.Search)
  * @require(omna.action.Print)
  * @require(omna.action.integration.Authorize)

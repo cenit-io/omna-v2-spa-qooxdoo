@@ -82,7 +82,7 @@ qx.Class.define("omna.Application", {
         },
 
         __transformServerBaseUrl: function (v) {
-            return window.location.href.match(/omna-v2-dev/) ? v.replace(/ecapi-v1/, 'ecapi_v1') : v
+            return this.isDevelopment() ? v.replace(/ecapi-v1/, 'ecapi_v1') : v
         },
 
         __applyLocale: function (v) {

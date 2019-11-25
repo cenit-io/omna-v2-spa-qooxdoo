@@ -21,7 +21,7 @@ qx.Mixin.define('omna.mixin.MSettings', {
 
             url = qx.util.ResourceManager.getInstance().toUri(path);
             id = qx.util.Base64.encode(url);
-            isDev = url.match(/\/source\//);
+            isDev = this.isDevelopment();
 
             cache = omna['__cache'] = omna['__cache'] || {};
             cache[container] = cache[container] || {};
@@ -59,6 +59,10 @@ qx.Mixin.define('omna.mixin.MSettings', {
 
         loadTemplate: function (pathOrClass, callback) {
             this.__loadResource(pathOrClass, 'templates', '.hbs', callback)
+        },
+
+        isDevelopment: function () {
+            return !window.location.href.match(/omna-v2-prod/)
         }
     }
 });
