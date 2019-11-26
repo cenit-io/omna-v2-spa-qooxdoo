@@ -335,6 +335,11 @@
     "value": "Do you really want to delete the selected <b class='resource'>%1</b>?"
   },
   {
+    "name": "CONFIRM-CANCELLATION",
+    "subCatalog": "Messages",
+    "value": "Do you really want to cancel the selected <b class='resource'>%1</b>?"
+  },
+  {
     "name": "CONFIRM-PUBLISH",
     "subCatalog": "Messages",
     "value": "Do you really want to link and unlink the selected <b class='resource'>%1</b> with selected and deselected <b>integrations</b> respectively?"
@@ -355,6 +360,11 @@
     "value": "The selected <b class='resource'>%1</b> was successfully deleted."
   },
   {
+    "name": "SUCCESSFUL-CANCELLATION",
+    "subCatalog": "Messages",
+    "value": "The selected <b class='resource'>%1</b> was successfully canceled."
+  },
+  {
     "name": "SUCCESSFUL-PUBLISH",
     "subCatalog": "Messages",
     "value": "The <b>task</b> to <b>link</b> the selected <b class='resource'>%1</b> with the selected <b>integrations</b> was successfully created."
@@ -373,6 +383,11 @@
     "name": "FAILED-DELETING",
     "subCatalog": "Messages",
     "value": "The deleting of the selected <b class='resource'>%1</b> has failed."
+  },
+  {
+    "name": "FAILED-CANCELLATION",
+    "subCatalog": "Messages",
+    "value": "The cancellation of the selected <b class='resource'>%1</b> has failed."
   },
   {
     "name": "FAILED-ADDING",
