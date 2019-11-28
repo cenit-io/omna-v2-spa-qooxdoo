@@ -30,7 +30,6 @@ qx.Class.define("omna.request.Integrations", {
             var path = this._getServicePath(id + '/authorize'),
                 data = this._signRequest(path, { redirect_uri: this._getAppBaseUrl() }),
                 url = this._getServiceUrl(path) + '?' + qx.util.Uri.toParameter(data);
-
             window.location = url
         },
 
