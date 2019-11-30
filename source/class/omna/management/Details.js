@@ -28,14 +28,17 @@ qx.Class.define("omna.management.Details", {
             }
         },
 
-        onExecuteReload: function () {
+        onExecuteReload: function (e) {
             var request = this.__requestManagement = this.getRequestManagement(),
-                data = this.getCustomData();
+                data = this.getCustomData(),
+                action = e.customData.action;
 
+            action.setEnabled(false);
             request.reload(data.item, function (response) {
                 if (response.successful) {
                     this.setCustomData({ item: response.data, index: data.index, label: data.label })
                 }
+                action.setEnabled(true);
             }, this);
         },
 

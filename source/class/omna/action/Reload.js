@@ -10,7 +10,7 @@ qx.Class.define("omna.action.Reload", {
 
     members: {
         onExecute: function () {
-            this.emitMessaging('execute-reload');
+            this.emitMessaging('execute-reload', { action: this });
         }
     }
 });

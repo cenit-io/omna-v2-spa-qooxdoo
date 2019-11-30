@@ -204,14 +204,17 @@ qx.Class.define("omna.management.task.Details", {
             control.getLayoutParent().setEnabled(scheduler != 'none');
         },
 
-        onExecuteReload: function () {
+        onExecuteReload: function (e) {
             var request = this.__requestManagement = this.getRequestManagement(),
-                data = this.getCustomData();
+                data = this.getCustomData(),
+                action = e.customData.action;
 
+            action.setEnabled(false);
             this.setCustomData({});
             request.reload(data.item, function (response) {
                 if (response.successful) data.item = response.data;
-                this.setCustomData(data)
+                this.setCustomData(data);
+                action.setEnabled(true);
             }, this);
         },
 
