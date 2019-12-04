@@ -1,42 +1,54 @@
 [
   {
     "id": "Home",
-    "verticalLayout": false,
     "disabled": true
   },
   {
     "id": "Integrations",
-    "verticalLayout": false,
     "children": [
       {
-        "id": "Products",
-        "verticalLayout": false
+        "id": "Products"
       },
       {
-        "id": "Orders",
-        "verticalLayout": false
+        "id": "Orders"
       },
       {
-        "id": "Flows",
-        "verticalLayout": false
+        "id": "Workflows",
+        "children": [
+          {
+            "id": "Flows"
+          },
+          {
+            "id": "Webhooks"
+          },
+          {
+            "id": "Tasks"
+          }
+        ]
       }
     ]
   },
   {
-    "id": "System",
-    "verticalLayout": false,
+    "id": "Security",
     "children": [
       {
-        "id": "Webhooks",
-        "verticalLayout": false
+        "id": "CurrentTenant",
+        "customData": "current-tenant"
       },
       {
-        "id": "Tenants",
-        "verticalLayout": false
+        "id": "Tenants"
+      }
+    ]
+  },
+  {
+    "id": "Development",
+    "children": [
+      {
+        "id": "ApiCredentials",
+        "customData": "current-tenant"
       },
       {
-        "id": "Tasks",
-        "verticalLayout": false
+        "id": "ApiReference"
       }
     ]
   }

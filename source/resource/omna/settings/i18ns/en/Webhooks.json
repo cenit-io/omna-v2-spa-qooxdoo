@@ -15,9 +15,9 @@
     "value": "Topic"
   },
   {
-    "name": "URL",
+    "name": "address",
     "subCatalog": "Labels",
-    "value": "URL"
+    "value": "Address"
   },
   {
     "name": "FAILED-LOADING-WEBHOOK-TOPICS",

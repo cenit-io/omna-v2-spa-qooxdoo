@@ -39,7 +39,6 @@
       },
       {
         "name": "address",
-        "label": "URL",
         "widgetClass": "omna.form.field.net.URLField",
         "showInGrid": true,
         "accessInAddForm": "W",

@@ -36,7 +36,12 @@ qx.Class.define("omna.layout.MainBox", {
         onOpenModule: function (data) {
             var module = data.params,
                 page = this._pages[module.id],
-                i18nCatalog = module.i18n || module.id;
+                i18nCatalog = module.i18n || module.id,
+                customData = data.customData || module.customData || {};
+
+            if (customData === 'current-tenant') {
+                customData = { index: null, item: omna.request.Session.getProfile(), sender: this }
+            }
 
             if (!page) {
                 this.loadSettings('omna/settings/components/' + module.id, function (components) {
@@ -49,7 +54,7 @@ qx.Class.define("omna.layout.MainBox", {
                             );
                         }
                     } else {
-                        page = new omna.management.Page(module, components, data.customData || {});
+                        page = new omna.management.Page(module, components, customData);
                         page.addListener('close', this.onClosePage, this);
 
                         this.add(page);
@@ -59,7 +64,7 @@ qx.Class.define("omna.layout.MainBox", {
                 });
             } else {
                 this.setSelection([page]);
-                page.setCustomData(data.customData || {});
+                page.setCustomData(customData);
             }
         },
 

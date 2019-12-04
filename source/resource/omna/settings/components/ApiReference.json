@@ -1,0 +1,7 @@
+[
+  {
+    "id": "ApiReference",
+    "widgetClass": "omna.management.HtmlEmbed",
+    "content": "http://doc-api.omna.io"
+  }
+]

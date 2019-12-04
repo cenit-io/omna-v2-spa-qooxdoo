@@ -1,0 +1,11 @@
+[
+  {
+    "id": "CurrentTenant",
+    "i18n": "Tenants",
+    "widgetClass": "omna.management.Details",
+    "template": "TenantsDetails",
+    "actions": [
+      "omna.action.tenant.Startup"
+    ]
+  }
+]

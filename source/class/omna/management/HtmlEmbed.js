@@ -64,15 +64,22 @@ qx.Class.define("omna.management.HtmlEmbed", {
 
         _setContent: function (data) {
             var contentTemplate = this.getContentTemplate(),
-                document = this.__documentIFrame ? this.__documentIFrame.getContentElement().getDocument() : null;
+                document = this.__documentIFrame ? this.__documentIFrame.getContentElement().getDocument() : null,
+                content;
 
             if (!document) return setTimeout(qx.lang.Function.bind(this._setContent, this), 5, data);
 
             if (qx.lang.Type.isArray(contentTemplate)) contentTemplate = contentTemplate.join('\n');
 
-            document.open();
-            document.write(qx.bom.Template.render(contentTemplate, data));
-            document.close();
+            content = qx.bom.Template.render(contentTemplate, data)
+
+            if (content.match(/^(https?:\/\/)(\w[\w-]+)(\.\w[\w-]+)*(\.[a-z]{2,3})([\/?#].*)?$/)) {
+                this.__documentIFrame.set({ source: content });
+            } else {
+                document.open();
+                document.write(content);
+                document.close();
+            }
         },
 
         /**
