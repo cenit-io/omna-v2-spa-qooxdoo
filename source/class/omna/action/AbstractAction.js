@@ -16,6 +16,8 @@ qx.Class.define("omna.action.AbstractAction", {
         this.addListener("pointerover", this.focus, this);
 
         this._messagingRouteIds = [];
+
+        this.addMessagingListener('enabled-toolbar', this.onSetEnabledToolbar);
     },
 
     properties: {
@@ -56,6 +58,22 @@ qx.Class.define("omna.action.AbstractAction", {
         addMessagingListener: function (msgPatternId, handler, componentId) {
             var channel = 'C' + (componentId || this.getManagement().getSettings().id);
             this._messagingRouteIds.push(q.messaging.on(channel, msgPatternId, handler, this));
+        },
+
+        onSetEnabledToolbar: function (data) {
+          var enabled = data.customData;
+
+          if (qx.lang.Type.isBoolean(this.__previousStatus)) {
+              if (enabled){
+                  this.setEnabled(this.__previousStatus);
+                  this.__previousStatus = null;
+              } else {
+                  this.setEnabled(false);
+              }
+          } else {
+              this.__previousStatus = this.getEnabled();
+              this.setEnabled(enabled && this.__previousStatus);
+          }
         },
 
         openTaskDetails: function (task) {

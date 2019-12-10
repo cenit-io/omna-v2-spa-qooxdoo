@@ -65,7 +65,6 @@ qx.Class.define("omna.model.DataGridRestService", {
             var request = this.__requestManagement = this.getRequestManagement();
 
             request.count(this.getParams(), function (response) {
-                // if (this.isDisposed()) return;
                 if (response.successful) this._onRowCountLoaded(response.pagination.total);
             }, this);
 
@@ -77,7 +76,6 @@ qx.Class.define("omna.model.DataGridRestService", {
 
             request.findRange(pFrom, pTo, this.getOrder(), this.getParams(), function (response) {
                 if (response.successful) {
-                    // if (this.isDisposed()) return;
                     response.data.forEach(function (record, index) {
                         Object.keys(record).forEach(function (field) {
                             record[field] = this.parseValue(field, record[field]);

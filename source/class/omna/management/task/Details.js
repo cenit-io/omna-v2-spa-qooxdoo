@@ -206,15 +206,14 @@ qx.Class.define("omna.management.task.Details", {
 
         onExecuteReload: function (e) {
             var request = this.__requestManagement = this.getRequestManagement(),
-                data = this.getCustomData(),
-                action = e.customData.action;
+                data = this.getCustomData();
 
-            action.setEnabled(false);
+            this.emitMessaging('enabled-toolbar', false);
             this.setCustomData({});
             request.reload(data.item, function (response) {
                 if (response.successful) data.item = response.data;
                 this.setCustomData(data);
-                action.setEnabled(true);
+                this.emitMessaging('enabled-toolbar', true);
             }, this);
         },
 

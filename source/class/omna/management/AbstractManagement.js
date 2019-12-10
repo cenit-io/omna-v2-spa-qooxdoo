@@ -1,3 +1,7 @@
+/**
+ * @childControl toolbar {qx.ui.toolbar.ToolBar} Toolbar
+ *
+ */
 qx.Class.define("omna.management.AbstractManagement", {
     type: 'abstract',
     extend: qx.ui.container.Composite,
@@ -25,7 +29,7 @@ qx.Class.define("omna.management.AbstractManagement", {
         this.__messagingRouteIds = [];
         this.__menuItemStore = {};
 
-        this._createToolbar();
+        this._createChildControlImpl('toolbar');
 
         this.addListener("changeCustomData", this.onChangeCustomData);
 
@@ -68,6 +72,25 @@ qx.Class.define("omna.management.AbstractManagement", {
             }
         },
 
+        // overridden
+        _createChildControlImpl: function (id, hash) {
+            var control;
+
+            switch ( id ) {
+                case "toolbar":
+                    var actions = this.getActions();
+
+                    if (actions.length) {
+                        control = this._createToolbar(actions);
+                        this._add(control, { flex: 1 });
+                    }
+
+                    break;
+            }
+
+            return control || this.base(arguments, id);
+        },
+
         _setDefaultPropertiesValues: function (settings) {
             var propertiesSettings = this.constructor.propertiesDefaultValues;
 
@@ -90,48 +113,44 @@ qx.Class.define("omna.management.AbstractManagement", {
             return klass
         },
 
-        _createToolbar: function () {
-            var actions = this.getActions();
+        _createToolbar: function (actions) {
+            var toolbar = new qx.ui.toolbar.ToolBar();
 
-            if (actions.length) {
-                var toolbar = new qx.ui.toolbar.ToolBar();
+            toolbar.setSpacing(5);
+            toolbar.setMinHeight(35);
+            toolbar.setMaxHeight(35);
+            toolbar.setOverflowHandling(true);
+            toolbar.addSeparator();
 
-                toolbar.setSpacing(5);
-                toolbar.setMinHeight(35);
-                toolbar.setMaxHeight(35);
-                toolbar.setOverflowHandling(true);
-                toolbar.addSeparator();
+            actions.forEach(function (action) {
+                if (qx.lang.Type.isString(action)) {
+                    var widgetClass = this._getClassByName(action);
 
-                this.add(toolbar, { flex: 1 });
-
-                actions.forEach(function (action) {
-                    if (qx.lang.Type.isString(action)) {
-                        var widgetClass = this._getClassByName(action);
-
-                        if (widgetClass) {
-                            toolbar.add(new widgetClass(this));
-                        } else {
-                            q.messaging.emit("Application", "error", this.tr("Class no found: '%1'.", action));
-                        }
+                    if (widgetClass) {
+                        toolbar.add(new widgetClass(this));
                     } else {
-                        toolbar.add(action);
+                        q.messaging.emit("Application", "error", this.tr("Class no found: '%1'.", action));
                     }
-                }, this);
+                } else {
+                    toolbar.add(action);
+                }
+            }, this);
 
-                // Add overflow indicator.
-                var chevron = new qx.ui.form.MenuButton(null, "icon/16/actions/media-seek-forward.png"),
-                    overflowMenu = this.__overflowMenu = new qx.ui.menu.Menu();
+            // Add overflow indicator.
+            var chevron = new qx.ui.form.MenuButton(null, "icon/16/actions/media-seek-forward.png"),
+                overflowMenu = this.__overflowMenu = new qx.ui.menu.Menu();
 
-                chevron.setAppearance("button");
-                chevron.setMenu(overflowMenu);
-                chevron.setAlignX('right');
-                toolbar.add(chevron);
-                toolbar.setOverflowIndicator(chevron);
+            chevron.setAppearance("button");
+            chevron.setMenu(overflowMenu);
+            chevron.setAlignX('right');
+            toolbar.add(chevron);
+            toolbar.setOverflowIndicator(chevron);
 
-                // add the listener
-                toolbar.addListener("hideItem", this._onHideItem, this);
-                toolbar.addListener("showItem", this._onShowItem, this);
-            }
+            // add the listener
+            toolbar.addListener("hideItem", this._onHideItem, this);
+            toolbar.addListener("showItem", this._onShowItem, this);
+
+            return toolbar;
         },
 
         /**
