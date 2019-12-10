@@ -26,7 +26,8 @@ qx.Class.define("omna.action.integration.Import", {
 
         onSelectionChange: function (data) {
             this.base(arguments, data);
-            this.setEnabled(((data.customData || {}).item || {}).authorized ? true : false);
+            this.__previousStatus = ((data.customData || {}).item || {}).authorized ? true : false;
+            this.setEnabled(this.__previousStatus);
         }
     }
 });
