@@ -66,6 +66,26 @@ qx.Class.define("omna.request.Orders", {
             }, this);
         },
 
+
+        export: function (order, callBack, scope) {
+            var path = qx.bom.Template.render('/integrations/{{integration.id}}/orders/{{number}}', order);
+
+            // Call remote service
+            this.submit("PUT", path, null, function (response) {
+                var msg;
+
+                if (response.successful) {
+                    msg = omna.I18n.trans('Orders', 'Messages', 'SUCCESSFUL-EXPORT');
+                    q.messaging.emit('Application', 'good', msg);
+                } else {
+                    msg = omna.I18n.trans('Orders', 'Messages', 'FAILED-EXPORT', [response.message]);
+                    q.messaging.emit('Application', 'error', msg)
+                }
+
+                callBack.call(scope, response);
+            }, this);
+        },
+
         reload: function (order, callBack, scope) {
             var path = qx.bom.Template.render('/integrations/{{integration.id}}/orders/{{number}}', order);
 

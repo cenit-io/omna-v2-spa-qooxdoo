@@ -12,6 +12,7 @@
       "omna.action.Details",
       "omna.action.order.Documents",
       "omna.action.ReImport",
+      "omna.action.order.Export",
       "omna.action.Cancel",
       "omna.action.Separator",
       "omna.action.Search"

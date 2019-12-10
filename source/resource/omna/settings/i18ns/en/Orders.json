@@ -45,6 +45,11 @@
     "value": "Documents"
   },
   {
+    "name": "export",
+    "subCatalog": "Labels",
+    "value": "Export"
+  },
+  {
     "name": "select_document_type",
     "subCatalog": "Labels",
     "value": "Select document type:"
@@ -55,14 +60,29 @@
     "value": "Do you really want to reimport the selected order?"
   },
   {
+    "name": "CONFIRM-EXPORT",
+    "subCatalog": "Messages",
+    "value": "Do you really want to export the selected order?"
+  },
+  {
     "name": "SUCCESSFUL-REIMPORT",
     "subCatalog": "Messages",
     "value": "A task was created to reimport the selected order from its foreign channel."
   },
   {
+    "name": "SUCCESSFUL-EXPORT",
+    "subCatalog": "Messages",
+    "value": "A task was created to export the selected order."
+  },
+  {
     "name": "FAILED-REIMPORT",
     "subCatalog": "Messages",
     "value": "Failed the creation of the task to reimport the selected order from its external channel."
+  },
+  {
+    "name": "FAILED-EXPORT",
+    "subCatalog": "Messages",
+    "value": "Failed the creation of the task to export the selected order."
   },
   {
     "name": "FAILED-LOAD-DOC",

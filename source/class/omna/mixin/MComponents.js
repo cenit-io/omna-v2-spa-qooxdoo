@@ -16,6 +16,7 @@
  * @require(omna.action.ReImport)
  * @require(omna.action.Separator)
  * @require(omna.action.order.Documents)
+ * @require(omna.action.order.Export)
  * @require(omna.action.task.Retry)
  * @require(omna.action.tenant.Switch)
  * @require(omna.action.tenant.Startup)

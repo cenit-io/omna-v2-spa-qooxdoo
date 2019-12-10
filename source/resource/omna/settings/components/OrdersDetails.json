@@ -9,7 +9,8 @@
       "omna.action.Separator",
       "omna.action.Print",
       "omna.action.order.Documents",
-      "omna.action.ReImport"
+      "omna.action.ReImport",
+      "omna.action.order.Export"
     ]
   }
 ]
