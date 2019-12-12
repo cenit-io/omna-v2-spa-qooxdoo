@@ -101,6 +101,8 @@ qx.Class.define("omna.form.dialog.AbstractForm", {
         },
 
         _setItemValue: function (item, value) {
+            if (value === undefined) value = null;
+
             if (qx.Class.hasInterface(item.constructor, qx.ui.core.IMultiSelection)) {
                 return item.setModelSelection(value);
             } else if (qx.Class.hasInterface(item.constructor, qx.ui.core.ISingleSelection)) {

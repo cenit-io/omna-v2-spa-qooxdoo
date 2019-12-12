@@ -16,6 +16,10 @@ qx.Class.define("omna.action.Search", {
             return new omna.form.dialog.Search(this.getManagement(), caption, this.getIcon());
         },
 
+        getSelectedItem: function () {
+            return this.__dlg.getData();
+        },
+
         onAccept: function (e) {
             var data = e.getData();
 
