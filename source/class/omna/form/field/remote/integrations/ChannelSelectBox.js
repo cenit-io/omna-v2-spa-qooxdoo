@@ -1,5 +1,6 @@
 qx.Class.define('omna.form.field.remote.integrations.ChannelSelectBox', {
     extend: omna.form.field.util.AbstractSelectBox,
+    include: omna.mixin.MChannel,
 
     statics: {
         cellRendererClass: omna.table.cellrenderer.String
@@ -16,8 +17,7 @@ qx.Class.define('omna.form.field.remote.integrations.ChannelSelectBox', {
 
             request.getChannels(function (response) {
                 if (response.successful) response.data.forEach(function (item) {
-                    var icon = 'omna/icon/24/integrations/' + item.name.replace(/[A-Z]{2}$/, '') + '.png';
-                    this.add(new qx.ui.form.ListItem(item.title, icon, item.name));
+                    this.add(new qx.ui.form.ListItem(item.title, this.channelIcon(item.name), item.name));
                 }, this);
             }, this);
         }

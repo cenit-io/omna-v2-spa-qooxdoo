@@ -1,5 +1,6 @@
 qx.Class.define('omna.form.field.remote.integrations.SelectBox', {
     extend: omna.form.field.util.AbstractSelectBox,
+    include: omna.mixin.MChannel,
 
     construct: function () {
         this.base(arguments);
@@ -12,12 +13,11 @@ qx.Class.define('omna.form.field.remote.integrations.SelectBox', {
 
             request.setAsync(false);
             request.findAll(null, { with_details: true }, function (response) {
-                var label, icon, listItem;
+                var label, listItem;
 
                 if (response.successful) response.data.forEach(function (item) {
-                    icon = 'omna/icon/24/integrations/' + item.channel.replace(/[A-Z]{2}$/, '') + '.png';
                     label = qx.bom.Template.render(omna.I18n.trans('Titles', 'INTEGRATION'), { integration: item });
-                    listItem = new qx.ui.form.ListItem(label, icon, item.id);
+                    listItem = new qx.ui.form.ListItem(label, this.channelIcon(item.channel), item.id);
                     listItem.setEnabled(item.authorized === true);
                     this.add(listItem);
                 }, this);
