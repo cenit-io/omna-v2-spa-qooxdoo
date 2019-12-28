@@ -77,6 +77,12 @@
         }
       },
       {
+        "name": "integration",
+        "includeInSearch": true,
+        "attrModelName": "integration_id",
+        "widgetClass": "omna.form.field.remote.integrations.SelectBox"
+      },
+      {
         "name": "description",
         "widgetClass": "omna.form.field.TextArea",
         "accessInAddForm": "W",
