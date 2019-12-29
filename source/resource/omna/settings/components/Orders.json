@@ -83,8 +83,9 @@
           "name": "INTEGRATION"
         },
         "includeInSearch": true,
-        "widgetClass": "omna.form.field.remote.integrations.FilteringSelectBox",
-        "attrModelName": "integration_id"
+        "attrModelName": "integration_id",
+        "widgetClass": "omna.form.field.remote.integrations.SelectBox",
+        "disableUnauthorized": false
       },
       {
         "name": "last_import_date",
