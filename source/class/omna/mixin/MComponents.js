@@ -64,7 +64,7 @@
 
 /**
  * Remote components.
- * @require(omna.form.field.remote.FilteringSelectBox)
+ * @require(omna.form.field.remote.integrations.FilteringSelectBox)
  * @require(omna.form.field.remote.integrations.ChannelSelectBox)
  * @require(omna.form.field.remote.integrations.SelectBox)
  * @require(omna.form.field.remote.flows.TypeSelectBox)

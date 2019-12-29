@@ -80,7 +80,8 @@
         "name": "integration",
         "includeInSearch": true,
         "attrModelName": "integration_id",
-        "widgetClass": "omna.form.field.remote.integrations.SelectBox"
+        "widgetClass": "omna.form.field.remote.integrations.SelectBox",
+        "disableUnauthorized": false
       },
       {
         "name": "description",

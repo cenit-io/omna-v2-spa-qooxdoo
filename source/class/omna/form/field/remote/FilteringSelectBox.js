@@ -67,12 +67,16 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
 
                 if (response.successful) {
                     response.data.forEach(function (item) {
-                        this.add(new qx.ui.form.ListItem(item[labelAttr], null, item[valueAttr]));
+                        this.add(new qx.ui.form.ListItem(item[labelAttr], this._getIcon(item), item[valueAttr]));
                     }, this);
                 } else {
                     q.messaging.emit('Application', 'error', omna.I18n.trans('Messages', 'FAILED-LOAD'));
                 }
             }, this);
+        },
+
+        _getIcon: function(item){
+            return null
         },
 
         _getItems: function () {

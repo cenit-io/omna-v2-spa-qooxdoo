@@ -54,13 +54,20 @@
           "name": "INTEGRATION"
         },
         "gridColumnWidth": 250,
-        "includeInSearch": true,
         "accessInAddForm": "W",
         "accessInEditForm": "W",
         "required": true,
         "attrPath": "id",
         "attrModelName": "integration_id",
-        "widgetClass": "omna.form.field.remote.integrations.SelectBox"
+        "widgetClass": "omna.form.field.remote.integrations.SelectBox",
+        "disableUnauthorized": true
+      },
+      {
+        "name": "integration",
+        "includeInSearch": true,
+        "attrModelName": "integration_id",
+        "widgetClass": "omna.form.field.remote.integrations.SelectBox",
+        "disableUnauthorized": false
       },
       {
         "name": "created_at",
