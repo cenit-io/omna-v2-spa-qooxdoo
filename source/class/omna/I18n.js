@@ -49,9 +49,15 @@ qx.Class.define("omna.I18n", {
 
             this.loadSettings('omna/settings/i18ns/' + locale + '/' + catalog, fillTranslationMap);
 
-            this.__loadedCatalogs[catalog] = true;
+            this.__loadedCatalogs[catalog] = this.isDevelopment() ? Date.now() : true;
 
             manager.addTranslation(locale, translationMap);
+        },
+
+        __isLoadedCatalogs: function (catalog) {
+            var loaded = this.__loadedCatalogs[catalog];
+
+            return this.isDevelopment() ? loaded && (Date.now() - loaded < 30000) : loaded;
         },
 
         /**
@@ -79,7 +85,7 @@ qx.Class.define("omna.I18n", {
                 catalog = 'Common';
             }
 
-            if (!this.__loadedCatalogs[catalog]) this.__load(catalog);
+            this.__isLoadedCatalogs(catalog) || this.__load(catalog);
 
             if (qx.lang.Type.isObject(args)) {
                 item = args;
