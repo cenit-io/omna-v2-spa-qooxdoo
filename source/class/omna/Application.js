@@ -20,7 +20,7 @@
  */
 qx.Class.define("omna.Application", {
     extend: qx.application.Standalone,
-    include: [omna.mixin.MComponents, omna.mixin.MSettings],
+    include: [omna.mixin.MSettings],
 
     construct: function () {
         this.base(arguments);

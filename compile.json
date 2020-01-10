@@ -7,7 +7,77 @@
       "bootPath": "source/boot",
       "environment": {
         "qx.icontheme": "Oxygen"
-      }
+      },
+      "include": [
+        // Actions
+        "omna.action.Add",
+        "omna.action.AddInChildren",
+        "omna.action.Edit",
+        "omna.action.Details",
+        "omna.action.Reload",
+        "omna.action.Remove",
+        "omna.action.Cancel",
+        "omna.action.Search",
+        "omna.action.Print",
+        "omna.action.integration.Authorize",
+        "omna.action.integration.Import",
+        "omna.action.flow.Scheduler",
+        "omna.action.flow.Start",
+        "omna.action.ReImport",
+        "omna.action.Separator",
+        "omna.action.order.Documents",
+        "omna.action.order.Export",
+        "omna.action.task.Retry",
+        "omna.action.tenant.Switch",
+        "omna.action.tenant.Startup",
+        "omna.action.product.Integrations",
+        // Cell Renderer
+        "omna.table.cellrenderer.LongText",
+        "omna.table.cellrenderer.integration.Logo",
+        "omna.form.field.net.EMailField",
+        "omna.form.field.net.URLField",
+        // Request services managements
+        "omna.request.Integrations",
+        "omna.request.Orders",
+        "omna.request.Products",
+        "omna.request.Tasks",
+        "omna.request.Tenants",
+        "omna.request.Flows",
+        // Management components
+        "omna.management.Details",
+        "omna.management.DataGridRestService",
+        "omna.management.order.Documents",
+        "omna.management.task.Details",
+        "omna.management.flow.Details",
+        "omna.management.product.Details",
+        // Safety components
+        "omna.form.field.safety.PasswordField",
+        // Boolean components
+        "omna.form.field.boolean.CheckBox",
+        "omna.form.field.boolean.RadioBox",
+        "omna.form.field.boolean.SelectBox",
+        // Remote components.
+        "omna.form.field.remote.integrations.ChannelSelectBox",
+        "omna.form.field.remote.integrations.SelectBox",
+        "omna.form.field.remote.flows.TypeSelectBox",
+        "omna.form.field.remote.webhooks.TopicSelectBox",
+        // General components for bigness.
+        "omna.form.field.calendar.DateField",
+        "omna.form.field.GenderRadioBox",
+        "omna.form.field.IntegerField",
+        "omna.form.field.LocalSelectBox",
+        "omna.form.field.SimpleQuestionRadioBox",
+        "omna.form.field.SwitchRadioBox",
+        "omna.form.field.TextArea",
+        "omna.form.field.TextField",
+        "omna.form.field.NumberField",
+        // DataGrid components.
+        "omna.form.field.grid.Gallery",
+        // Validator class
+        "omna.form.validator.TextField",
+        "omna.form.validator.TextArea",
+        "omna.form.validator.net.EMailField"
+      ]
     }
   ],
   "libraries": [
