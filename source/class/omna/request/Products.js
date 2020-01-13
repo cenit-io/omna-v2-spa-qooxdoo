@@ -13,7 +13,7 @@ qx.Class.define("omna.request.Products", {
 
         unPublish: function (id, data, callBack, scope) {
             // Call remote service
-            this.submit("DELETE", id, { data: data }, callBack, scope);
+            this.submit("PATCH", id, { data: data }, callBack, scope);
         }
     }
 });
