@@ -76,13 +76,6 @@ qx.Class.define("omna.action.AbstractAction", {
           }
         },
 
-        openTaskDetails: function (task) {
-            var module = { id: 'TasksDetails', i18n: 'Tasks' },
-                data = { item: task, label: this.i18nTrans('Tasks', 'Labels', 'MODULE-REFERENCE-DETAILS', task) };
-
-            q.messaging.emit('Application', 'open-module', module, data);
-        },
-
         /**
          * Sends a message on the current module channel and informs all matching route handlers.
          *

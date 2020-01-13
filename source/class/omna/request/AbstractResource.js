@@ -317,9 +317,12 @@ qx.Class.define("omna.request.AbstractResource", {
          */
         onSuccess: function (e, callBack, scope) {
             var response = e.getTarget().getResponse();
+
             response.statusCode = response.statusCode || e.getTarget().getStatus();
             response.successful = true;
+
             callBack && callBack.call(scope || this, response, e);
+
             if (response.type === 'task') this.openTaskDetails(response.data);
         },
 
