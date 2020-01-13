@@ -13,11 +13,7 @@ qx.Class.define("omna.action.order.Export", {
             var msg = this.i18nTrans('Messages', 'CONFIRM-EXPORT');
 
             omna.dialog.Confirm.show(msg, function (response) {
-                if (response === 'yes') {
-                    this.getRequestManagement().export(this.getSelectedItem(), function (response) {
-                        if (response.successful) this.openTaskDetails(response.data);
-                    }, this);
-                }
+                if (response === 'yes') this.getRequestManagement().export(this.getSelectedItem());
             }, this);
         }
     }

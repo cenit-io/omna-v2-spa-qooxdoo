@@ -35,11 +35,6 @@
     "value": "Executions"
   },
   {
-    "name": "notifications",
-    "subCatalog": "Labels",
-    "value": "Notifications"
-  },
-  {
     "name": "retry",
     "subCatalog": "Labels",
     "value": "Retry"

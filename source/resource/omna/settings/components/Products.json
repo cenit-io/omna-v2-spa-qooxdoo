@@ -12,6 +12,7 @@
     "actions": [
       "omna.action.Reload",
       "omna.action.Separator",
+      "omna.action.Details",
       "omna.action.Add",
       "omna.action.Edit",
       "omna.action.product.Integrations",

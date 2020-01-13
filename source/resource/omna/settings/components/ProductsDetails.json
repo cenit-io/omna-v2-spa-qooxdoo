@@ -1,0 +1,12 @@
+[
+  {
+    "id": "ProductsDetails",
+    "i18n": "Products",
+    "widgetClass": "omna.management.product.Details",
+    "actions": [
+      "omna.action.Reload",
+      "omna.action.Separator",
+      "omna.action.Print"
+    ]
+  }
+]

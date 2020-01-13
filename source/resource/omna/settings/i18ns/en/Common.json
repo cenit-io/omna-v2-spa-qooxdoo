@@ -40,6 +40,11 @@
     "value": "Label"
   },
   {
+    "name": "notifications",
+    "subCatalog": "Labels",
+    "value": "Notifications"
+  },
+  {
     "name": "after_unlink",
     "subCatalog": "Labels",
     "value": "After unlink"

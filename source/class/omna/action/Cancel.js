@@ -24,7 +24,6 @@ qx.Class.define("omna.action.Cancel", {
                             msg = this.i18nTrans('Messages', 'SUCCESSFUL-CANCELLATION', [itemLabel]);
                             q.messaging.emit('Application', 'good', msg);
                             this.emitMessaging('execute-reload');
-                            if (response.type === 'task') this.openTaskDetails(response.data);
                         } else {
                             msg = this.i18nTrans('Messages', 'FAILED-CANCELLATION', [itemLabel]);
                             q.messaging.emit('Application', 'error', msg);

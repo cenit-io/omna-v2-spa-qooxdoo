@@ -45,7 +45,7 @@ qx.Class.define("omna.request.Integrations", {
                     msg = omna.I18n.trans('Integrations', 'Messages', 'FAILED-UNAUTHORIZE');
                     q.messaging.emit('Application', 'error', msg)
                 }
-                callBack.call(scope, response);
+                callBack && callBack.call(scope, response);
             }, this);
         },
 
@@ -61,7 +61,8 @@ qx.Class.define("omna.request.Integrations", {
                     msg = omna.I18n.trans('Integrations', 'Messages', 'FAILED-IMPORT', [type]);
                     q.messaging.emit('Application', 'error', msg)
                 }
-                callBack.call(scope, response);
+
+                callBack && callBack.call(scope, response);
             }, this);
         }
     }

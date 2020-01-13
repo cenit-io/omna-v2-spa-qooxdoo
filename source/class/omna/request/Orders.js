@@ -82,7 +82,7 @@ qx.Class.define("omna.request.Orders", {
                     q.messaging.emit('Application', 'error', msg)
                 }
 
-                callBack.call(scope, response);
+                callBack && callBack.call(scope, response);
             }, this);
         },
 

@@ -5,6 +5,7 @@ qx.Class.define("omna.request.AbstractResource", {
     type: "abstract",
     extend: qx.core.Object,
     include: [qx.locale.MTranslation],
+    include: [omna.mixin.MI18n],
 
     statics: {
         HttpStatus: function (code) {
@@ -304,6 +305,13 @@ qx.Class.define("omna.request.AbstractResource", {
             this.submit("DELETE", id, null, callBack, scope);
         },
 
+        openTaskDetails: function (task) {
+            var module = { id: 'TasksDetails', i18n: 'Tasks' },
+                data = { item: task, label: this.i18nTrans('Tasks', 'Labels', 'MODULE-REFERENCE-DETAILS', task) };
+
+            q.messaging.emit('Application', 'open-module', module, data);
+        },
+
         /**
          * Fired when request completes without error and transport’s status indicates success.
          */
@@ -312,6 +320,7 @@ qx.Class.define("omna.request.AbstractResource", {
             response.statusCode = response.statusCode || e.getTarget().getStatus();
             response.successful = true;
             callBack && callBack.call(scope || this, response, e);
+            if (response.type === 'task') this.openTaskDetails(response.data);
         },
 
         /**

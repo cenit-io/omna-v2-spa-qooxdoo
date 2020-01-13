@@ -10,6 +10,11 @@
     "value": "Product"
   },
   {
+    "name": "MODULE-REFERENCE-DETAILS",
+    "subCatalog": "Labels",
+    "value": "Product / {{id}} / Details"
+  },
+  {
     "name": "variants",
     "subCatalog": "Labels",
     "value": "Variants"
@@ -18,5 +23,10 @@
     "name": "images",
     "subCatalog": "Labels",
     "value": "Images"
+  },
+  {
+    "name": "general",
+    "subCatalog": "Labels",
+    "value": "General"
   }
 ]

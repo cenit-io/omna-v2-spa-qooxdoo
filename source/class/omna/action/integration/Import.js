@@ -16,9 +16,7 @@ qx.Class.define("omna.action.integration.Import", {
                         var item = this.getSelectedItem(),
                             type = dlg.getImportType();
 
-                        this.getRequestManagement().doImportTask(item.id, type, function (response) {
-                            if (response.successful) this.openTaskDetails(response.data);
-                        }, this);
+                        this.getRequestManagement().doImportTask(item.id, type);
                     }
                 }
             }, this);

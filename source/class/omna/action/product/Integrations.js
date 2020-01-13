@@ -31,7 +31,7 @@ qx.Class.define("omna.action.product.Integrations", {
             request[action](itemId, params, function (response) {
                 if (response.successful) {
                     this.good('SUCCESSFUL-' + action.toUpperCase(), [itemLabel]);
-                    done.call(this);
+                    done.call(this, response);
                 } else {
                     this.error('FAILED-' + action.toUpperCase(), [itemLabel]);
                 }
