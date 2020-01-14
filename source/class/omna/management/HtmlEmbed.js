@@ -8,13 +8,10 @@ qx.Class.define("omna.management.HtmlEmbed", {
     extend: omna.management.AbstractManagement,
 
     statics: {
-        propertiesDefaultValues: {
-            i18n: 'Common',
-            content: '',
-            edge: 'center',
-            region: 100,
-            listenFromComponentId: null
-        }
+        propertiesDefaultValues: qx.lang.Object.mergeWith(
+            { content: '' },
+            omna.management.AbstractManagement.propertiesDefaultValues, false
+        )
     },
 
     // override

@@ -77,7 +77,7 @@
     ]
   },
   {
-    "id": "flows-details",
+    "id": "FlowsDetails",
     "widgetClass": "omna.management.flow.Details",
     "i18n": "Tasks",
     "edge": "east",

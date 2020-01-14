@@ -2,12 +2,9 @@ qx.Class.define("omna.management.flow.Details", {
     extend: omna.management.task.Details,
 
     statics: {
-        propertiesDefaultValues: {
-            i18n: 'Flows',
-            edge: 'east',
-            region: 30,
-            listenFromComponentId: null
-        }
+        propertiesDefaultValues: qx.lang.Object.mergeWith(
+            {}, omna.management.task.Details.propertiesDefaultValues, false
+        )
     },
 
     // override

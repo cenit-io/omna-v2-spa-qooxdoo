@@ -5,20 +5,17 @@ qx.Class.define("omna.management.DataGridRestService", {
     extend: omna.management.AbstractManagement,
 
     statics: {
-        propertiesDefaultValues: {
-            i18n: 'Common',
-            serviceBasePath: '/serviceBasePath',
-            formWidth: 500,
-            edge: 'center',
-            region: 100,
-            rowHeight: 28,
-            blockSize: 25,
-            maxCachedBlockCount: 5,
-            listenFromComponentId: null,
-            primaryFieldName: 'id',
-            localFieldName: null,
-            baseParams: {}
-        }
+        propertiesDefaultValues: qx.lang.Object.mergeWith(
+            {
+                serviceBasePath: '/serviceBasePath',
+                rowHeight: 28,
+                blockSize: 25,
+                maxCachedBlockCount: 5,
+                primaryFieldName: 'id',
+                localFieldName: null,
+                baseParams: {}
+            }, omna.management.AbstractManagement.propertiesDefaultValues, false
+        )
     },
 
     // override

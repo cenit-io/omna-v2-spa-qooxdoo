@@ -6,11 +6,9 @@ qx.Class.define("omna.management.order.Documents", {
     extend: omna.management.AbstractManagement,
 
     statics: {
-        propertiesDefaultValues: {
-            i18n: 'Common',
-            edge: 'center',
-            region: 100
-        }
+        propertiesDefaultValues: qx.lang.Object.mergeWith(
+            {}, omna.management.AbstractManagement.propertiesDefaultValues, false
+        )
     },
 
     // override

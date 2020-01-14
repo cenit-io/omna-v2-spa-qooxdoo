@@ -3,7 +3,9 @@ qx.Class.define("omna.management.Details", {
     include: [omna.mixin.MSettings],
 
     statics: {
-        propertiesDefaultValues: omna.management.HtmlEmbed.propertiesDefaultValues
+        propertiesDefaultValues: qx.lang.Object.mergeWith(
+            {}, omna.management.HtmlEmbed.propertiesDefaultValues, false
+        )
     },
 
     // override

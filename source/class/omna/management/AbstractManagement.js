@@ -8,6 +8,15 @@ qx.Class.define("omna.management.AbstractManagement", {
     include: [omna.mixin.MI18n],
     implement: [omna.mixin.II18n],
 
+    statics: {
+        propertiesDefaultValues: {
+            i18n: 'Common',
+            edge: 'center',
+            region: 100,
+            listenFromComponentId: null
+        }
+    },
+
     /**
      * Constructor
      *

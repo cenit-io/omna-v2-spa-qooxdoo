@@ -2,12 +2,10 @@ qx.Class.define("omna.management.RemotePage", {
     extend: omna.management.AbstractManagement,
 
     statics: {
-        propertiesDefaultValues: {
-            i18n: 'Common',
-            src: '/src',
-            edge: 'center',
-            region: 100
-        }
+        propertiesDefaultValues: qx.lang.Object.mergeWith(
+            { src: '/src' },
+            omna.management.AbstractManagement.propertiesDefaultValues, false
+        )
     },
 
     // override

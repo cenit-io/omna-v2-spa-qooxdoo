@@ -11,12 +11,9 @@ qx.Class.define("omna.management.task.Details", {
     extend: omna.management.AbstractManagement,
 
     statics: {
-        propertiesDefaultValues: {
-            i18n: 'Tasks',
-            edge: 'center',
-            region: 100,
-            listenFromComponentId: null
-        }
+        propertiesDefaultValues: qx.lang.Object.mergeWith(
+            {}, omna.management.AbstractManagement.propertiesDefaultValues, false
+        )
     },
 
     // override
