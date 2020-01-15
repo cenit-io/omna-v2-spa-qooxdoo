@@ -2,7 +2,6 @@
  * @childControl title {qx.ui.basic.Atom} Title component properties panel.
  * @childControl scrollPanel {qx.ui.container.Scroll} Scroll component properties panel.
  * @childControl iFrame {qx.ui.embed.Html} show the html of the content.
- * @ignore(showdown.*)
  */
 qx.Class.define("omna.management.HtmlEmbed", {
     extend: omna.management.AbstractManagement,

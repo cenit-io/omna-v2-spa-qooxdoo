@@ -2,7 +2,6 @@
  * @childControl tabsPanel {qx.ui.tabview.TabView} show the tabs of task details.
  * @childControl description {qx.ui.embed.Html} show the task description.
  * @childControl notifications {qx.ui.table.Table} show the product notifications.
- * @ignore(showdown.*)
  */
 qx.Class.define("omna.management.product.Details", {
     extend: omna.management.AbstractManagement,

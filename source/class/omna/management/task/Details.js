@@ -5,7 +5,6 @@
  * @childControl executions {qx.ui.table.Table} show the task executions.
  * @childControl notifications {qx.ui.table.Table} show the task notifications.
  * @childControl scheduler {qx.ui.table.Table} show the task notifications.
- * @ignore(showdown.*)
  */
 qx.Class.define("omna.management.task.Details", {
     extend: omna.management.AbstractManagement,
