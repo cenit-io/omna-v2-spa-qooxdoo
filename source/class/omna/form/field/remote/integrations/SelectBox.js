@@ -1,6 +1,6 @@
 qx.Class.define('omna.form.field.remote.integrations.SelectBox', {
     extend: omna.form.field.util.AbstractSelectBox,
-    include: omna.mixin.MIntegrationLogo,
+    include: omna.mixin.MLogo,
 
     construct: function () {
         this.base(arguments);
@@ -17,7 +17,7 @@ qx.Class.define('omna.form.field.remote.integrations.SelectBox', {
 
     members: {
         __loadItems: function () {
-            var request = new omna.request.Connections();
+            var request = new omna.request.Integrations();
 
             this.removeAll();
 

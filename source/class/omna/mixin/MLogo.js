@@ -1,4 +1,4 @@
-qx.Mixin.define('omna.mixin.MIntegrationLogo', {
+qx.Mixin.define('omna.mixin.MLogo', {
     members: {
         decamelize: function (str, separator) {
             separator = typeof separator === 'undefined' ? '_' : separator;
@@ -12,7 +12,7 @@ qx.Mixin.define('omna.mixin.MIntegrationLogo', {
         integrationLogo: function (name) {
             name = this.decamelize(name.replace(/^Ov2|omna_v2_|[A-Z]{2}$/g, ''));
 
-            return 'omna/icon/24/integrations/' + name + '.png'
+            return 'omna/icon/24/logos/' + name + '.png'
         }
     }
 });

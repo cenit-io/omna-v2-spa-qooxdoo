@@ -16,7 +16,7 @@
  * @asset(omna/libs/*)
  * @asset(omna/settings/*)
  * @asset(omna/templates/*)
- * @asset(omna/icon/24/integrations/*)
+ * @asset(omna/icon/24/logos/*)
  */
 qx.Class.define("omna.Application", {
     extend: qx.application.Standalone,

@@ -110,11 +110,6 @@
     "value": "Updated at"
   },
   {
-    "name": "installed_at",
-    "subCatalog": "Labels",
-    "value": "Installed at"
-  },
-  {
     "name": "last_import_date",
     "subCatalog": "Labels",
     "value": "Imported at"

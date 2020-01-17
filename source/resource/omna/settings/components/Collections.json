@@ -1,0 +1,74 @@
+[
+  {
+    "id": "Collections",
+    "widgetClass": "omna.management.DataGridRestService",
+    "requestManagementClass": "omna.request.Collections",
+    "baseParams": {
+      "with_details": true
+    },
+    "actions": [
+      "omna.action.Reload",
+      "omna.action.Separator",
+      "omna.action.Add",
+      "omna.action.Remove"
+    ],
+    "fields": [
+      {
+        "name": "name",
+        "label": "logo",
+        "cellRendererClass": "omna.table.cellrenderer.Logo",
+        "showInGrid": true,
+        "gridColumnWidth": 50
+      },
+      {
+        "name": "title",
+        "showInGrid": true,
+        "gridColumnWidth": 200
+      },
+      {
+        "name": "summary",
+        "showInGrid": true
+      },
+      {
+        "name": "shared_version",
+        "showInGrid": true,
+        "gridColumnWidth": 150
+      },
+      {
+        "name": "status",
+        "cellRendererClass": "omna.table.cellrenderer.String",
+        "showInGrid": true,
+        "gridColumnWidth": 100,
+        "gridRendererStyle": {
+          "textAlign": "center",
+          "conditions": [
+            {
+              "value": "outdated",
+              "color": "#FFC107"
+            },
+            {
+              "value": "installed",
+              "color": "#007BFF"
+            },
+            {
+              "operator": "not_installed",
+              "color": "#DC3545"
+            }
+          ]
+        }
+      },
+      {
+        "name": "updated_at",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 150
+      },
+      {
+        "name": "installed_at",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 150
+      }
+    ]
+  }
+]

@@ -33,12 +33,12 @@
         "omna.action.product.Integrations",
         // Cell Renderer
         "omna.table.cellrenderer.LongText",
-        "omna.table.cellrenderer.integration.Logo",
+        "omna.table.cellrenderer.Logo",
         "omna.form.field.net.EMailField",
         "omna.form.field.net.URLField",
         // Request services managements
         "omna.request.Integrations",
-        "omna.request.Connections",
+        "omna.request.Collections",
         "omna.request.Orders",
         "omna.request.Products",
         "omna.request.Tasks",

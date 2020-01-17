@@ -1,0 +1,22 @@
+[
+  {
+    "name": "MODULE-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Collections"
+  },
+  {
+    "name": "SINGLE-ITEM-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Collection"
+  },
+  {
+    "name": "shared_version",
+    "subCatalog": "Labels",
+    "value": "Shared version"
+  },
+  {
+    "name": "installed_at",
+    "subCatalog": "Labels",
+    "value": "Installed at"
+  }
+]

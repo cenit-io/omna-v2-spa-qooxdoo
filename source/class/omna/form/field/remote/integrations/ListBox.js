@@ -1,6 +1,6 @@
 qx.Class.define('omna.form.field.remote.integrations.ListBox', {
     extend: qx.ui.form.List,
-    include: omna.mixin.MIntegrationLogo,
+    include: omna.mixin.MLogo,
 
     construct: function () {
         this.base(arguments);
@@ -10,7 +10,7 @@ qx.Class.define('omna.form.field.remote.integrations.ListBox', {
 
     members: {
         __loadItems: function () {
-            var request = new omna.request.Connections();
+            var request = new omna.request.Integrations();
 
             request.setAsync(false);
             request.findAll(null, { with_details: true }, function (response) {

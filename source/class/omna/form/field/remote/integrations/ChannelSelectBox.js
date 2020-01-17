@@ -1,6 +1,6 @@
 qx.Class.define('omna.form.field.remote.integrations.ChannelSelectBox', {
     extend: omna.form.field.util.AbstractSelectBox,
-    include: omna.mixin.MIntegrationLogo,
+    include: omna.mixin.MLogo,
 
     statics: {
         cellRendererClass: omna.table.cellrenderer.String
@@ -13,7 +13,7 @@ qx.Class.define('omna.form.field.remote.integrations.ChannelSelectBox', {
 
     members: {
         __loadItems: function () {
-            var request = new omna.request.Connections();
+            var request = new omna.request.Integrations();
 
             request.getChannels(function (response) {
                 if (response.successful) response.data.forEach(function (item) {

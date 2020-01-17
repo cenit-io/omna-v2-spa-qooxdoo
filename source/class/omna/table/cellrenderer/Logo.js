@@ -1,6 +1,6 @@
-qx.Class.define("omna.table.cellrenderer.integration.Logo", {
+qx.Class.define("omna.table.cellrenderer.Logo", {
     extend: qx.ui.table.cellrenderer.Image,
-    include: omna.mixin.MIntegrationLogo,
+    include: omna.mixin.MLogo,
 
     members: {
         // overridden

@@ -10,9 +10,9 @@
     "value": "Integration"
   },
   {
-    "name": "shared_version",
+    "name": "channel",
     "subCatalog": "Labels",
-    "value": "Version"
+    "value": "Channel"
   },
   {
     "name": "authorized",
