@@ -40,6 +40,11 @@
     "value": "Label"
   },
   {
+    "name": "summary",
+    "subCatalog": "Labels",
+    "value": "Summary"
+  },
+  {
     "name": "notifications",
     "subCatalog": "Labels",
     "value": "Notifications"
@@ -103,6 +108,11 @@
     "name": "updated_at",
     "subCatalog": "Labels",
     "value": "Updated at"
+  },
+  {
+    "name": "installed_at",
+    "subCatalog": "Labels",
+    "value": "Installed at"
   },
   {
     "name": "last_import_date",

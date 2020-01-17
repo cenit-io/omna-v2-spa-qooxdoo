@@ -1,6 +1,6 @@
 qx.Class.define('omna.form.field.remote.integrations.FilteringSelectBox', {
     extend: omna.form.field.remote.FilteringSelectBox,
-    include: omna.mixin.MChannel,
+    include: omna.mixin.MIntegrationLogo,
 
     construct: function () {
         this.base(arguments);
@@ -9,7 +9,7 @@ qx.Class.define('omna.form.field.remote.integrations.FilteringSelectBox', {
 
     members: {
         _getIcon: function (item) {
-            return this.channelIcon(item.channel)
+            return this.integrationLogo(item.channel)
         }
     }
 });

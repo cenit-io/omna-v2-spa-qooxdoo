@@ -2,17 +2,17 @@
   {
     "name": "MODULE-REFERENCE",
     "subCatalog": "Labels",
-    "value": "Integrations"
+    "value": "Connections"
   },
   {
     "name": "SINGLE-ITEM-REFERENCE",
     "subCatalog": "Labels",
-    "value": "Integration"
+    "value": "Connection"
   },
   {
-    "name": "shared_version",
+    "name": "channel",
     "subCatalog": "Labels",
-    "value": "Version"
+    "value": "Channel"
   },
   {
     "name": "authorized",
@@ -52,22 +52,22 @@
   {
     "name": "CONFIRM-AUTHORIZE",
     "subCatalog": "Messages",
-    "value": "Do you really want to authorize the selected <b>integration</b>?"
+    "value": "Do you really want to authorize the selected <b>connection</b>?"
   },
   {
     "name": "CONFIRM-UNAUTHORIZE",
     "subCatalog": "Messages",
-    "value": "Do you really want to cancel the authorization of the selected <b>integration</b>?"
+    "value": "Do you really want to cancel the authorization of the selected <b>connection</b>?"
   },
   {
     "name": "CONFIRM-IMPORT",
     "subCatalog": "Messages",
-    "value": "Do you really want to import, from the <b>%1</b> integration of the <b>%2</b> channel, the updated elements, of the type of resource selected, since its last import date?"
+    "value": "Do you really want to import, from the <b>%1</b> connection of the <b>%2</b> channel, the updated elements, of the type of resource selected, since its last import date?"
   },
   {
     "name": "SUCCESSFUL-DELETING",
     "subCatalog": "Messages",
-    "value": "A task was created to remove the selected <b>integration</b>."
+    "value": "A task was created to remove the selected <b>connection</b>."
   },
   {
     "name": "SUCCESSFUL-IMPORT",
@@ -77,21 +77,21 @@
   {
     "name": "SUCCESSFUL-UNAUTHORIZE",
     "subCatalog": "Messages",
-    "value": "The authorization of the selected <b>integration</b> was successfully canceled."
+    "value": "The authorization of the selected <b>connection</b> was successfully canceled."
   },
   {
     "name": "FAILED-UNAUTHORIZE",
     "subCatalog": "Messages",
-    "value": "The authorization of the selected <b>integration</b> could not be canceled."
+    "value": "The authorization of the selected <b>connection</b> could not be canceled."
   },
   {
     "name": "FAILED-IMPORT",
     "subCatalog": "Messages",
-    "value": "The creation of a task to import <b class='resource'>%1</b> of the selected integration has failed."
+    "value": "The creation of a task to import <b class='resource'>%1</b> of the selected connection has failed."
   },
   {
     "name": "FAILED-LOADING-CHANNELS",
     "subCatalog": "Messages",
-    "value": "The loading of the <b>integration channels</b> has failed."
+    "value": "The loading of the <b>connection channels</b> has failed."
   }
 ]

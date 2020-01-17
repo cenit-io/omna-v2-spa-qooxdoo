@@ -1,6 +1,6 @@
 qx.Class.define('omna.form.field.remote.integrations.ListBox', {
     extend: qx.ui.form.List,
-    include: omna.mixin.MChannel,
+    include: omna.mixin.MIntegrationLogo,
 
     construct: function () {
         this.base(arguments);
@@ -10,7 +10,7 @@ qx.Class.define('omna.form.field.remote.integrations.ListBox', {
 
     members: {
         __loadItems: function () {
-            var request = new omna.request.Integrations();
+            var request = new omna.request.Connections();
 
             request.setAsync(false);
             request.findAll(null, { with_details: true }, function (response) {
@@ -18,7 +18,7 @@ qx.Class.define('omna.form.field.remote.integrations.ListBox', {
 
                 if (response.successful) response.data.forEach(function (item) {
                     label = qx.bom.Template.render(omna.I18n.trans('Titles', 'INTEGRATION'), { integration: item });
-                    listItem = new qx.ui.form.ListItem(label, this.channelIcon(item.channel), item.id);
+                    listItem = new qx.ui.form.ListItem(label, this.integrationLogo(item.channel), item.id);
                     listItem.setEnabled(item.authorized === true);
                     this.add(listItem);
                 }, this);

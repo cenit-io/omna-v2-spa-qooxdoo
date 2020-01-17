@@ -7,6 +7,9 @@
     "id": "Integrations",
     "children": [
       {
+        "id": "Connections"
+      },
+      {
         "id": "Products"
       },
       {

@@ -38,6 +38,7 @@
         "omna.form.field.net.URLField",
         // Request services managements
         "omna.request.Integrations",
+        "omna.request.Connections",
         "omna.request.Orders",
         "omna.request.Products",
         "omna.request.Tasks",
@@ -50,6 +51,7 @@
         "omna.management.task.Details",
         "omna.management.flow.Details",
         "omna.management.product.Details",
+        "omna.management.TabViews",
         // Safety components
         "omna.form.field.safety.PasswordField",
         // Boolean components

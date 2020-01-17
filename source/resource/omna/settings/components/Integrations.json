@@ -10,60 +10,45 @@
       "omna.action.Reload",
       "omna.action.Separator",
       "omna.action.Add",
-      "omna.action.integration.Authorize",
-      "omna.action.integration.Import",
       "omna.action.Remove",
       "omna.action.Separator",
       "omna.action.Search"
     ],
     "fields": [
       {
-        "name": "channel",
+        "name": "name",
         "label": "logo",
         "cellRendererClass": "omna.table.cellrenderer.integration.Logo",
         "showInGrid": true,
         "gridColumnWidth": 50
       },
       {
-        "name": "name",
-        "widgetClass": "omna.form.field.TextField",
+        "name": "title",
         "showInGrid": true,
-        "includeInSearch": true,
-        "accessInAddForm": "W",
-        "required": true,
-        "minLength": 2,
-        "maxLength": 50,
-        "pattern": "\\w+"
+        "gridColumnWidth": 200
       },
       {
-        "name": "channel",
-        "widgetClass": "omna.form.field.remote.integrations.ChannelSelectBox",
-        "accessInAddForm": "W",
-        "required": true,
-        "includeInSearch": true,
-        "showInGrid": true,
-        "gridColumnWidth": 150
+        "name": "summary",
+        "showInGrid": true
       },
       {
-        "name": "authorized",
-        "cellRendererClass": "omna.table.cellrenderer.Boolean",
+        "name": "shared_version",
         "showInGrid": true,
         "gridColumnWidth": 100
       },
       {
-        "name": "last_import_orders_date",
+        "name": "status",
+        "showInGrid": true,
+        "gridColumnWidth": 100
+      },
+      {
+        "name": "updated_at",
         "showInGrid": true,
         "cellRendererClass": "omna.table.cellrenderer.Date",
         "gridColumnWidth": 150
       },
       {
-        "name": "last_import_products_date",
-        "showInGrid": true,
-        "cellRendererClass": "omna.table.cellrenderer.Date",
-        "gridColumnWidth": 160
-      },
-      {
-        "name": "created_at",
+        "name": "installed_at",
         "showInGrid": true,
         "cellRendererClass": "omna.table.cellrenderer.Date",
         "gridColumnWidth": 150
