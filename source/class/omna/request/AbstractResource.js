@@ -323,7 +323,7 @@ qx.Class.define("omna.request.AbstractResource", {
 
             callBack && callBack.call(scope || this, response, e);
 
-            if (response.type === 'task') this.openTaskDetails(response.data);
+            if (response.type === 'task' && qx.lang.Type.isObject(response.data)) this.openTaskDetails(response.data);
         },
 
         /**
