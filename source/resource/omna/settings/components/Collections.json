@@ -3,13 +3,14 @@
     "id": "Collections",
     "widgetClass": "omna.management.DataGridRestService",
     "requestManagementClass": "omna.request.Collections",
+    "reloadAfterRemove": true,
     "baseParams": {
       "with_details": true
     },
     "actions": [
       "omna.action.Reload",
       "omna.action.Separator",
-      "omna.action.Add",
+      "omna.action.Install",
       "omna.action.Remove"
     ],
     "fields": [

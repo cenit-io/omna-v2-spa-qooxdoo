@@ -19,6 +19,7 @@
         "omna.action.Cancel",
         "omna.action.Search",
         "omna.action.Print",
+        "omna.action.Install",
         "omna.action.integration.Authorize",
         "omna.action.integration.Import",
         "omna.action.flow.Scheduler",

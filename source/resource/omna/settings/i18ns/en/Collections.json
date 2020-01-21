@@ -18,5 +18,45 @@
     "name": "installed_at",
     "subCatalog": "Labels",
     "value": "Installed at"
+  },
+  {
+    "name": "install",
+    "subCatalog": "Labels",
+    "value": "Install"
+  },
+  {
+    "name": "remove",
+    "subCatalog": "Labels",
+    "value": "Uninstall"
+  },
+  {
+    "name": "CONFIRM-DELETING",
+    "subCatalog": "Messages",
+    "value": "Do you really want to <b>uninstall</b> the selected <b class='resource'>%1</b>?"
+  },
+  {
+    "name": "CONFIRM-INSTALL",
+    "subCatalog": "Messages",
+    "value": "Do you really want to <b>install</b> the selected <b class='resource'>%1</b>?"
+  },
+  {
+    "name": "SUCCESSFUL-INSTALLING",
+    "subCatalog": "Messages",
+    "value": "A <b>task</b> was created to <b>install</b> the selected <b>collection</b>."
+  },
+  {
+    "name": "SUCCESSFUL-DELETING",
+    "subCatalog": "Messages",
+    "value": "The selected <b class='resource'>%1</b> was successfully <b>uninstalled</b>."
+  },
+  {
+    "name": "FAILED-INSTALLING",
+    "subCatalog": "Messages",
+    "value": "Failed the <b>creation</b> of the task to install the selected <b>collection</b>."
+  },
+  {
+    "name": "FAILED-DELETING",
+    "subCatalog": "Messages",
+    "value": "The <b>uninstalling</b> of the selected <b class='resource'>%1</b> has failed."
   }
 ]
