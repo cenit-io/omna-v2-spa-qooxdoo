@@ -10,9 +10,9 @@
     "value": "Collection"
   },
   {
-    "name": "shared_version",
+    "name": "version",
     "subCatalog": "Labels",
-    "value": "Shared version"
+    "value": "Version"
   },
   {
     "name": "installed_at",
