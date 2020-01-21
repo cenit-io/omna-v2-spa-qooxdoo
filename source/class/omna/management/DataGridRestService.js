@@ -122,6 +122,10 @@ qx.Class.define("omna.management.DataGridRestService", {
         },
 
         onExecuteRemove: function (data) {
+            var settings = this.getSettings();
+
+            if (settings.reloadAfterRemove) return this.onExecuteReload();
+
             this.__table.getSelectionModel().resetSelection();
             this.__table.getTableModel().removeRow(data.customData.index);
         },
