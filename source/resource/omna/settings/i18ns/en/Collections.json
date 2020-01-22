@@ -30,6 +30,21 @@
     "value": "Uninstall"
   },
   {
+    "name": "installed",
+    "subCatalog": "Labels",
+    "value": "installed"
+  },
+  {
+    "name": "not_installed",
+    "subCatalog": "Labels",
+    "value": "not installed"
+  },
+  {
+    "name": "outdated",
+    "subCatalog": "Labels",
+    "value": "outdated"
+  },
+  {
     "name": "CONFIRM-DELETING",
     "subCatalog": "Messages",
     "value": "Do you really want to <b>uninstall</b> the selected <b class='resource'>%1</b>?"

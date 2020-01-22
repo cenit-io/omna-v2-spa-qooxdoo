@@ -52,10 +52,13 @@
               "color": "#007BFF"
             },
             {
-              "operator": "not_installed",
+              "value": "not_installed",
               "color": "#DC3545"
             }
           ]
+        },
+        "i18n": {
+          "catalog": "Collections"
         }
       },
       {

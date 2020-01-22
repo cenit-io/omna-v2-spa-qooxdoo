@@ -7,7 +7,7 @@ qx.Class.define("omna.request.Collections", {
 
     members: {
         getI18nCatalog: function () {
-          return 'Collections'
+            return 'Collections'
         },
 
         install: function (id, callBack, scope) {
@@ -27,8 +27,10 @@ qx.Class.define("omna.request.Collections", {
             }, this);
         },
 
-        uninstall: function (id, callBack, scope) {
-            alert('TODO:..')
+        // override
+        onSuccess: function (e, callBack, scope) {
+            qx.module.Storage.removeSessionItem('integration-channels');
+            this.base(arguments, e, callBack, scope);
         }
     }
 });
