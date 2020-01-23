@@ -12,7 +12,6 @@
       "omna.action.Add",
       "omna.action.Details",
       "omna.action.tenant.Switch",
-      "omna.action.tenant.Startup",
       "omna.action.Remove"
     ],
     "fields": [

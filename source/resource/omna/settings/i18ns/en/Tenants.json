@@ -15,11 +15,6 @@
     "value": "Is ready"
   },
   {
-    "name": "startup",
-    "subCatalog": "Labels",
-    "value": "Startup"
-  },
-  {
     "name": "switch",
     "subCatalog": "Labels",
     "value": "Switch"
@@ -30,23 +25,8 @@
     "value": "Tenant / {{name}} / Details"
   },
   {
-    "name": "CONFIRM-STARTUP",
-    "subCatalog": "Messages",
-    "value": "Do you really want to prepare the selected tenant for your job at OMNA?"
-  },
-  {
     "name": "CONFIRM-SWITCH",
     "subCatalog": "Messages",
     "value": "Do you really want to exchange the session with that of the selected tenant?"
-  },
-  {
-    "name": "SUCCESSFUL-STARTUP",
-    "subCatalog": "Messages",
-    "value": "A task was created to startup the selected tenant."
-  },
-  {
-    "name": "FAILED-STARTUP",
-    "subCatalog": "Messages",
-    "value": "Failed the creation of the task to startup the selected tenant."
   }
 ]

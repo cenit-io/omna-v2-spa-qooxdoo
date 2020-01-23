@@ -132,17 +132,26 @@ qx.Class.define("omna.management.AbstractManagement", {
             toolbar.addSeparator();
 
             actions.forEach(function (action) {
-                if (qx.lang.Type.isString(action)) {
+                if (!(action instanceof qx.ui.core.Widget)) {
+                    var enablingRules;
+
+                    if (!qx.lang.Type.isString(action)) {
+                        enablingRules = action.enablingRules;
+                        action = action.widgetClass
+                    }
+
                     var widgetClass = this._getClassByName(action);
 
                     if (widgetClass) {
-                        toolbar.add(new widgetClass(this));
+                        action = new widgetClass(this);
+                        enablingRules && action.setEnablingRules && action.setEnablingRules(enablingRules);
                     } else {
                         q.messaging.emit("Application", "error", this.tr("Class no found: '%1'.", action));
+                        return;
                     }
-                } else {
-                    toolbar.add(action);
                 }
+
+                toolbar.add(action);
             }, this);
 
             // Add overflow indicator.

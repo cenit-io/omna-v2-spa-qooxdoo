@@ -4,8 +4,7 @@
     "i18n": "Tenants",
     "widgetClass": "omna.management.Details",
     "actions": [
-      "omna.action.tenant.Switch",
-      "omna.action.tenant.Startup"
+      "omna.action.tenant.Switch"
     ]
   }
 ]
