@@ -6,6 +6,7 @@ qx.Class.define("omna.action.task.Retry", {
 
     construct: function (management) {
         this.base(arguments, management, 'retry', 'omna/icon/16/actions/retry.png');
+        this.setEnablingRules('status === "failed"');
     },
 
     members: {
@@ -19,12 +20,6 @@ qx.Class.define("omna.action.task.Retry", {
                     if (response.successful) this.emitMessaging('execute-reload');
                 }, this);
             }, this);
-        },
-
-        onSelectionChange: function (data) {
-            this.base(arguments, data);
-            this.__previousStatus = ((data.customData || {}).item || {}).status === 'failed';
-            this.setEnabled(this.__previousStatus);
         }
     }
 });

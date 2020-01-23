@@ -17,14 +17,8 @@ qx.Class.define("omna.action.tenant.Switch", {
             }, this);
         },
 
-        onSelectionChange: function (data) {
-            this.base(arguments, data);
-
-            if (this.getEnabled()) {
-                var profile = omna.request.Session.getProfile();
-
-                this.setEnabled(profile.id !== data.customData.item.id);
-            }
+        _checkEnablingRules: function (selectedItem) {
+            return omna.request.Session.getProfile().id !== selectedItem.id
         }
     }
 });

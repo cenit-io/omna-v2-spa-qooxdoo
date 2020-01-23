@@ -11,7 +11,10 @@
       "omna.action.Reload",
       "omna.action.Separator",
       "omna.action.Install",
-      "omna.action.Remove"
+      {
+        "widgetClass": "omna.action.Remove",
+        "enablingRules": "status !== 'not_installed'"
+      }
     ],
     "fields": [
       {

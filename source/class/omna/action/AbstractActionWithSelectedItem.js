@@ -15,17 +15,30 @@ qx.Class.define("omna.action.AbstractActionWithSelectedItem", {
 
         selectedIndex: {
             nullable: true
+        },
+
+        enablingRules: {
+            check: 'String',
+            nullable: true
         }
     },
 
     members: {
+        _checkEnablingRules: function (selectedItem) {
+            var enablingRules = this.getEnablingRules() || 'true';
+
+            return function (enablingRules) {
+                with (this) return eval(enablingRules);
+            }.call(selectedItem, enablingRules)
+        },
+
         onSelectionChange: function (data) {
-            var customData = data.customData || {};
-            this.set({
-                enabled: qx.lang.Type.isObject(customData.item),
-                selectedItem: customData.item || null,
-                selectedIndex: customData.index || null
-            })
+            var customData = data.customData || {},
+                selectedItem = customData.item || null,
+                selectedIndex = customData.index || null,
+                enabled = qx.lang.Type.isObject(selectedItem) && this._checkEnablingRules(selectedItem);
+
+            this.set({ enabled: enabled, selectedItem: selectedItem, selectedIndex: selectedIndex })
         }
     }
 });

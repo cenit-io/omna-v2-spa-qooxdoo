@@ -34,7 +34,7 @@ qx.Class.define("omna.action.integration.Authorize", {
         onSelectionChange: function (data) {
             this.base(arguments, data);
 
-            if (data.customData !== null) {
+            if (this.getEnabled()) {
                 if (data.customData.item.authorized) {
                     this.set({ label: 'unauthorize', icon: 'icon/16/status/security-low.png' })
                 } else {

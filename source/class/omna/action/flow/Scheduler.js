@@ -27,7 +27,7 @@ qx.Class.define("omna.action.flow.Scheduler", {
         onSelectionChange: function (data) {
             this.base(arguments, data);
 
-            if (data.customData !== null) {
+            if (this.getEnabled()) {
                 var scheduler = data.customData.item.task.scheduler;
 
                 if (scheduler && scheduler.active) {

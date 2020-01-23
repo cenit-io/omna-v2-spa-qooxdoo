@@ -6,6 +6,7 @@ qx.Class.define("omna.action.integration.Import", {
 
     construct: function (management) {
         this.base(arguments, management, 'import', 'omna/icon/16/actions/import.png');
+        this.setEnablingRules('authorized');
     },
 
     members: {
@@ -20,12 +21,6 @@ qx.Class.define("omna.action.integration.Import", {
                     }
                 }
             }, this);
-        },
-
-        onSelectionChange: function (data) {
-            this.base(arguments, data);
-            this.__previousStatus = ((data.customData || {}).item || {}).authorized ? true : false;
-            this.setEnabled(this.__previousStatus);
         }
     }
 });
