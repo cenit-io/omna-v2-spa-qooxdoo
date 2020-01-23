@@ -62,7 +62,7 @@
   {
     "name": "SUCCESSFUL-DELETING",
     "subCatalog": "Messages",
-    "value": "The selected <b class='resource'>%1</b> was successfully <b>uninstalled</b>."
+    "value": "A <b>task</b> was created to <b>uninstall</b> the selected <b>collection</b>."
   },
   {
     "name": "FAILED-INSTALLING",
