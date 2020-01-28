@@ -1,3 +1,7 @@
+/**
+ * @asset(qx/icon/${qx.icontheme}/16/actions/dialog-apply.png)
+ * @asset(qx/icon/${qx.icontheme}/16/actions/dialog-cancel.png)
+ */
 qx.Class.define("omna.form.dialog.AbstractForm", {
     type: "abstract",
     extend: omna.dialog.AbstractDialog,

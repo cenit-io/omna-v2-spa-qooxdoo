@@ -1,7 +1,3 @@
-/**
- * @asset(qx/icon/${qx.icontheme}/16/actions/dialog-apply.png)
- * @asset(qx/icon/${qx.icontheme}/16/actions/dialog-cancel.png)
- */
 qx.Class.define("omna.form.dialog.AbstractField", {
     type: 'abstract',
     extend: omna.form.dialog.AbstractForm,
@@ -18,8 +14,7 @@ qx.Class.define("omna.form.dialog.AbstractField", {
         },
 
         _createAcceptOrCancelButton: function () {
-            var bP = this.__buttonPane,
-                bA = new qx.ui.form.Button(this.tr("Accept"), "icon/16/actions/dialog-apply.png"),
+            var bA = new qx.ui.form.Button(this.tr("Accept"), "icon/16/actions/dialog-apply.png"),
                 bC = new qx.ui.form.Button(this.tr("Cancel"), "icon/16/actions/dialog-cancel.png");
 
             bA.setAllowStretchX(true);
