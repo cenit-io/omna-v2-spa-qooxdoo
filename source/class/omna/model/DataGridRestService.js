@@ -5,12 +5,12 @@ qx.Class.define("omna.model.DataGridRestService", {
     extend: qx.ui.table.model.Remote,
     include: [qx.locale.MTranslation],
 
-    construct: function (fields, settings, params) {
+    construct: function (fields, settings, params, requestManagement) {
         this.base(arguments);
         this.set({
             blockSize: settings.blockSize || 20,
             maxCachedBlockCount: settings.maxCachedBlockCount || 5,
-            requestManagementClass: settings.requestManagementClass || null,
+            requestManagement: requestManagement,
             serviceBasePath: settings.serviceBasePath || null,
             params: params
         });
@@ -40,8 +40,8 @@ qx.Class.define("omna.model.DataGridRestService", {
             event: 'changeFilter'
         },
 
-        requestManagementClass: {
-            nullable: true
+        requestManagement: {
+            check: 'omna.request.AbstractResource'
         },
 
         serviceBasePath: {
@@ -50,19 +50,8 @@ qx.Class.define("omna.model.DataGridRestService", {
     },
 
     members: {
-        getRequestManagement: function () {
-            var RequestManagementClass = this.getRequestManagementClass();
-
-            if (RequestManagementClass) {
-                RequestManagementClass = qx.Class.getByName(RequestManagementClass);
-                return new RequestManagementClass()
-            }
-
-            return new omna.request.Customs(this.getServiceBasePath())
-        },
-
         _loadRowCount: function () {
-            var request = this.__requestManagement = this.getRequestManagement();
+            var request = this.getRequestManagement();
 
             request.count(this.getParams(), function (response) {
                 if (response.successful) this._onRowCountLoaded(response.pagination.total);
@@ -72,7 +61,7 @@ qx.Class.define("omna.model.DataGridRestService", {
         },
 
         _loadRowData: function (pFrom, pTo) {
-            var request = this.__requestManagement = this.getRequestManagement();
+            var request = this.getRequestManagement();
 
             request.findRange(pFrom, pTo, this.getOrder(), this.getParams(), function (response) {
                 if (response.successful) {
@@ -122,7 +111,6 @@ qx.Class.define("omna.model.DataGridRestService", {
     },
 
     destruct: function () {
-        this.__requestManagement && this.__requestManagement.dispose();
         delete this.__fields;
     }
 });

@@ -56,7 +56,7 @@ qx.Class.define("omna.management.DataGridRestService", {
                 params[localFieldName] = -1;
             }
 
-            var tableModel = new omna.model.DataGridRestService(columnFields, settings, params),
+            var tableModel = new omna.model.DataGridRestService(columnFields, settings, params, this.getRequestManagement()),
                 table = this.__table = new qx.ui.table.Table(tableModel, {
                     tableColumnModel: function (table) {
                         return new qx.ui.table.columnmodel.Resize(table);

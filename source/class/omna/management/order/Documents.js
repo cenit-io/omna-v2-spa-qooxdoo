@@ -34,6 +34,12 @@ qx.Class.define("omna.management.order.Documents", {
             return [a1, a2, a3];
         },
 
+        getRequestManagement: function () {
+            if (this.__requestManagement) return this.__requestManagement;
+
+            return this.__requestManagement = new omna.request.Orders();
+        },
+
         __createContent: function (customData) {
             this.__documentTip = new qx.ui.tooltip.ToolTip();
             this.__documentIFrame = new qx.ui.embed.Iframe();
@@ -68,7 +74,7 @@ qx.Class.define("omna.management.order.Documents", {
             if (data.length !== 0) {
                 var order = this.getCustomData().order,
                     docType = data[0].getModel().type,
-                    request = this.__requestManagement = new omna.request.Orders();
+                    request = this.getRequestManagement();
 
                 request.getOrderDoc(order, docType, function (response) {
                     if (response.successful) {
@@ -89,9 +95,5 @@ qx.Class.define("omna.management.order.Documents", {
             iframe.focus();
             iframe.contentWindow.print();
         }
-    },
-
-    destruct: function () {
-        this.__requestManagement && this.__requestManagement.dispose();
     }
 });

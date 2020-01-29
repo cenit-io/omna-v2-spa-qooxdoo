@@ -38,9 +38,7 @@ qx.Class.define("omna.action.AbstractAction", {
         },
 
         getRequestManagement: function () {
-            this.__requestManagement = this.__requestManagement || this.getManagement().getRequestManagement();
-
-            return this.__requestManagement;
+            return this.getManagement().getRequestManagement();
         },
 
         getI18nCatalog: function () {
@@ -110,11 +108,6 @@ qx.Class.define("omna.action.AbstractAction", {
     },
 
     destruct: function () {
-        if (this.__requestManagement) {
-            this.__requestManagement.dispose();
-            this.__requestManagement = null;
-        }
-
         this._messagingRouteIds.forEach(function (id) {
             q.messaging.remove(id);
         })

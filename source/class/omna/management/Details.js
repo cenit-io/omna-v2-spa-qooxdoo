@@ -31,7 +31,7 @@ qx.Class.define("omna.management.Details", {
         },
 
         onExecuteReload: function (e) {
-            var request = this.__requestManagement = this.getRequestManagement(),
+            var request = this.getRequestManagement(),
                 data = this.getCustomData();
 
             this.emitMessaging('enabled-toolbar', false);
@@ -48,9 +48,5 @@ qx.Class.define("omna.management.Details", {
             this.base(arguments, e);
             this.emitMessaging("selection-change", { index: data.index, item: data.item, sender: this });
         }
-    },
-
-    destruct: function () {
-        this.__requestManagement && this.__requestManagement.dispose();
     }
 });

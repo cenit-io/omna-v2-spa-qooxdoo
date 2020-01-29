@@ -71,14 +71,18 @@ qx.Class.define("omna.management.AbstractManagement", {
         __menuItemStore: null,
 
         getRequestManagement: function () {
+            if (this.__requestManagement) return this.__requestManagement;
+
             var settings = this.getSettings();
 
             if (settings.requestManagementClass) {
                 var RequestManagementClass = this._getClassByName(settings.requestManagementClass);
-                return RequestManagementClass ? new RequestManagementClass() : null
+                this.__requestManagement = RequestManagementClass ? new RequestManagementClass() : null
             } else if (settings.serviceBasePath) {
-                return new omna.request.Customs(settings.serviceBasePath);
+                this.__requestManagement = new omna.request.Customs(settings.serviceBasePath);
             }
+
+            return this.__requestManagement
         },
 
         // overridden
@@ -302,6 +306,11 @@ qx.Class.define("omna.management.AbstractManagement", {
     },
 
     destruct: function () {
+        if (this.__requestManagement) {
+            this.__requestManagement.dispose();
+            this.__requestManagement = null;
+        }
+
         this.__messagingRouteIds.forEach(function (id) {
             q.messaging.remove(id);
         })
