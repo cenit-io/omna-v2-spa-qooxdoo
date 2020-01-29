@@ -31,6 +31,13 @@ qx.Theme.define("omna.theme.Decoration", {
             }
         },
 
+        "from-group-separator": {
+            style: {
+                widthBottom: 2,
+                colorBottom: "#dedede",
+            }
+        },
+
         "tooltip": {
             style: {
                 radius: 5,

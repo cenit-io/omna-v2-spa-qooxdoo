@@ -7,7 +7,7 @@ qx.Class.define("omna.form.renderer.Quad", {
 
         var i, layout = this.getLayout();
 
-        for (i = 0; i < this.__maxColumn * 2; i++) layout.setColumnFlex(i, 1);
+        for (i = 0; i < this.__maxColumn; i++) layout.setColumnFlex(i, 1);
     },
 
     members: {
@@ -56,9 +56,22 @@ qx.Class.define("omna.form.renderer.Quad", {
         //override
         addButton: function (button) {
             if (this._buttonRow == null) {
-                this.getLayout().setRowFlex(this._row, 0);
+                var hbox = new qx.ui.layout.HBox();
+
+                this._buttonRow = new qx.ui.container.Composite();
+                this._buttonRow.setMarginTop(5);
+
+                hbox.setAlignX("right");
+                hbox.setSpacing(5);
+
+                this._buttonRow.setLayout(hbox);
+
+                this._add(this._buttonRow, { row: this._row, column: 0, colSpan: this.__maxColumn });
+
+                this._row++;
             }
-            this.base(arguments, button);
+
+            this._buttonRow.add(button);
         },
 
         _createLabel: function (name, item) {
