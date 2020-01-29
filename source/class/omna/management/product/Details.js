@@ -184,6 +184,8 @@ qx.Class.define("omna.management.product.Details", {
             generalTab.setEnabled(false);
 
             request.update(item.id, data, function (response) {
+                if (response.successful) this.emitMessaging('execute-reload', null, 'Products');
+
                 generalTab.setEnabled(true);
                 this.emitMessaging('enabled-toolbar', true);
             }, this);

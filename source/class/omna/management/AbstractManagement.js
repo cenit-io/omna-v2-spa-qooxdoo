@@ -295,8 +295,8 @@ qx.Class.define("omna.management.AbstractManagement", {
          * @param msgId {String} Messaging identifier.
          * @param customData {Map?} The given custom data that should be propagated.
          */
-        emitMessaging: function (msgId, customData) {
-            var channel = 'C' + this.getSettings().id;
+        emitMessaging: function (msgId, customData, managementId) {
+            var channel = 'C' + (managementId || this.getSettings().id);
             q.messaging.emit(channel, msgId, null, customData);
         },
 
