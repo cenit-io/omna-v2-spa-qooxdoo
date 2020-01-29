@@ -20,15 +20,8 @@ qx.Class.define("omna.action.Cancel", {
                     var request = management.getRequestManagement();
 
                     request.remove(this.getSelectedItem().id, function (response) {
-                        if (response.successful) {
-                            msg = this.i18nTrans('Messages', 'SUCCESSFUL-CANCELLATION', [itemLabel]);
-                            q.messaging.emit('Application', 'good', msg);
-                            this.emitMessaging('execute-reload');
-                        } else {
-                            msg = this.i18nTrans('Messages', 'FAILED-CANCELLATION', [itemLabel]);
-                            q.messaging.emit('Application', 'error', msg);
-                        }
-                    }, this);
+                        if (response.successful) this.emitMessaging('execute-reload');
+                    }, this, 'CANCELLATION');
                 }
                 this.setEnabled(true);
             }, this);

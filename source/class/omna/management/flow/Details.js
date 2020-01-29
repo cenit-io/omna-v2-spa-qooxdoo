@@ -48,12 +48,7 @@ qx.Class.define("omna.management.flow.Details", {
         onAcceptUpdateScheduler: function (data) {
             var request = new omna.request.Flows();
 
-            request.update(this._flowId, { scheduler: data.params }, function (response) {
-                if (response.successful) {
-                    q.messaging.emit('Application', 'good', this.i18nTrans('Messages', 'SUCCESSFUL-UPDATING'));
-                    this.emitMessaging('execute-update');
-                }
-            }, this);
+            request.update(this._flowId, { scheduler: data.params });
         }
     }
 });

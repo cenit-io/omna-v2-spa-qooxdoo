@@ -21,12 +21,7 @@ qx.Class.define("omna.action.Remove", {
 
                     request.remove(this.getSelectedItem().id, function (response) {
                         if (response.successful) {
-                            msg = this.i18nTrans('Messages', 'SUCCESSFUL-DELETING', [itemLabel]);
-                            q.messaging.emit('Application', 'good', msg);
                             this.emitMessaging('execute-remove', { index: this.getSelectedIndex() });
-                        } else {
-                            msg = this.i18nTrans('Messages', 'FAILED-DELETING', [itemLabel]);
-                            q.messaging.emit('Application', 'error', msg);
                         }
                     }, this);
                 }

@@ -102,6 +102,11 @@ qx.Class.define("omna.request.AbstractResource", {
         async: {
             check: 'Boolean',
             init: true
+        },
+
+        i18nCatalog: {
+            check: 'String',
+            init: 'Common'
         }
     },
 
@@ -290,19 +295,25 @@ qx.Class.define("omna.request.AbstractResource", {
             this.submit("GET", null, data, callBack, scope);
         },
 
-        create: function (data, callBack, scope) {
+        create: function (data, callBack, scope, i18nActionName) {
             // Call remote service
-            this.submit("POST", null, { data: data }, callBack, scope);
+            this.submit("POST", null, { data: data }, function (response, e) {
+                this.processResponse(i18nActionName || 'ADDING', response, e, callBack, scope);
+            }, this);
         },
 
-        update: function (id, data, callBack, scope) {
+        update: function (id, data, callBack, scope, i18nActionName) {
             // Call remote service
-            this.submit("POST", id, { data: data }, callBack, scope);
+            this.submit("POST", id, { data: data }, function (response, e) {
+                this.processResponse(i18nActionName || 'UPDATING', response, e, callBack, scope);
+            }, this);
         },
 
-        remove: function (id, callBack, scope) {
+        remove: function (id, callBack, scope, i18nActionName) {
             // Call remote service
-            this.submit("DELETE", id, null, callBack, scope);
+            this.submit("DELETE", id, null, function (response, e) {
+                this.processResponse(i18nActionName || 'DELETING', response, e, callBack, scope);
+            }, this);
         },
 
         openTaskDetails: function (task) {
@@ -310,6 +321,23 @@ qx.Class.define("omna.request.AbstractResource", {
                 data = { item: task, label: this.i18nTrans('Tasks', 'Labels', 'MODULE-REFERENCE-DETAILS', task) };
 
             q.messaging.emit('Application', 'open-module', module, data);
+        },
+
+        processResponse: function (i18nActionName, response, e, callBack, scope) {
+            scope = scope || this;
+
+            var itemLabel = scope.i18nTrans('SINGLE-ITEM-REFERENCE'),
+                type = 'good',
+                prefix = 'SUCCESSFUL-';
+
+            if (!response.successful) {
+                type = 'error';
+                prefix = 'FAILED-'
+            }
+
+            q.messaging.emit('Application', type, scope.i18nTrans('Messages', prefix + i18nActionName, [itemLabel]));
+
+            callBack && callBack.call(scope, response, e);
         },
 
         /**

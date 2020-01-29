@@ -150,6 +150,11 @@
     "value": "Save"
   },
   {
+    "name": "reset",
+    "subCatalog": "Labels",
+    "value": "Reset"
+  },
+  {
     "name": "cancel",
     "subCatalog": "Labels",
     "value": "Cancel"
@@ -323,6 +328,16 @@
     "name": "add",
     "subCatalog": "Messages",
     "value": "New item details"
+  },
+  {
+    "name": "sending",
+    "subCatalog": "Messages",
+    "value": "Sending..."
+  },
+  {
+    "name": "validating",
+    "subCatalog": "Messages",
+    "value": "Validating..."
   },
   {
     "name": "copyright-company",

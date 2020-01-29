@@ -89,5 +89,9 @@ qx.Class.define("omna.form.renderer.Quad", {
 
             return header;
         }
+    },
+
+    destruct: function(){
+        console.log(11111);
     }
 });
