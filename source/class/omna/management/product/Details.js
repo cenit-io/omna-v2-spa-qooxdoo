@@ -47,9 +47,9 @@ qx.Class.define("omna.management.product.Details", {
                     this._createTapPage(control, 'general');
                     break;
 
-                case "notifications":
-                    control = this._createTable(['type', 'message']);
-                    this._createTapPage(control, 'notifications');
+                case "integrationTab":
+                    control = new qx.ui.tabview.TabView();
+                    this._createTapPage(control, 'integrations');
                     break;
             }
 
@@ -65,84 +65,84 @@ qx.Class.define("omna.management.product.Details", {
             this.getChildControl("tabsPanel").add(page);
         },
 
-        _createTable: function (fields) {
-            var tableModel = new qx.ui.table.model.Simple(),
-                table, columnNames = [], columnIDs = [];
-
-            fields.forEach(function (field) {
-                columnNames.push(this.i18nTrans(field));
-                columnIDs.push(field);
-            }, this);
-
-            tableModel.setColumns(columnNames, columnIDs);
-
-            table = new qx.ui.table.Table(tableModel, {
-                tableColumnModel: function (table) {
-                    return new qx.ui.table.columnmodel.Resize(table);
-                }
-            });
-
-            table.set({
-                rowHeight: 28,
-                showCellFocusIndicator: false,
-                decorator: 'omna-data-grid',
-                columnVisibilityButtonVisible: false
-            });
-
-            var tableColumnModel = table.getTableColumnModel(),
-                behavior = tableColumnModel.getBehavior();
-
-            behavior.setWidth(0, 90);
-
-            fields.forEach(function (field, index) {
-                tableColumnModel.setDataCellRenderer(index, this._createCellRenderer(field));
-            }, this);
-
-            return table
-        },
-
-        _createCellRenderer: function (field) {
-            switch ( field ) {
-                case "status":
-                    return new omna.table.cellrenderer.String({
-                        name: field,
-                        gridRendererStyle: {
-                            conditions: [
-                                { color: "#FFC107", value: "pending" },
-                                { color: "#28A745", value: "running" },
-                                { color: "#17A2B8", value: "paused" },
-                                { color: "#007BFF", value: "completed" },
-                                { color: "#DC3545", value: "failed" }
-                            ]
-                        }
-                    });
-
-                case "type":
-                    return new omna.table.cellrenderer.String({
-                        name: field,
-                        gridRendererStyle: {
-                            conditions: [
-                                { color: "#007BFF", value: "info" },
-                                { color: "#FFC107", value: "warning" },
-                                { color: "#DC3545", value: "error" }
-                            ]
-                        }
-                    });
-
-                case "started_at":
-                case "completed_at":
-                    return new omna.table.cellrenderer.Date();
-                default:
-                    return new omna.table.cellrenderer.String({ name: field });
-            }
-        },
-
-        _fillTable: function (items, controlId) {
-            var control = this.getChildControl(controlId);
-
-            items = items ? items : [];
-            control.getTableModel().setDataAsMapArray(items);
-        },
+        // _createTable: function (fields) {
+        //     var tableModel = new qx.ui.table.model.Simple(),
+        //         table, columnNames = [], columnIDs = [];
+        //
+        //     fields.forEach(function (field) {
+        //         columnNames.push(this.i18nTrans(field));
+        //         columnIDs.push(field);
+        //     }, this);
+        //
+        //     tableModel.setColumns(columnNames, columnIDs);
+        //
+        //     table = new qx.ui.table.Table(tableModel, {
+        //         tableColumnModel: function (table) {
+        //             return new qx.ui.table.columnmodel.Resize(table);
+        //         }
+        //     });
+        //
+        //     table.set({
+        //         rowHeight: 28,
+        //         showCellFocusIndicator: false,
+        //         decorator: 'omna-data-grid',
+        //         columnVisibilityButtonVisible: false
+        //     });
+        //
+        //     var tableColumnModel = table.getTableColumnModel(),
+        //         behavior = tableColumnModel.getBehavior();
+        //
+        //     behavior.setWidth(0, 90);
+        //
+        //     fields.forEach(function (field, index) {
+        //         tableColumnModel.setDataCellRenderer(index, this._createCellRenderer(field));
+        //     }, this);
+        //
+        //     return table
+        // },
+        //
+        // _createCellRenderer: function (field) {
+        //     switch ( field ) {
+        //         case "status":
+        //             return new omna.table.cellrenderer.String({
+        //                 name: field,
+        //                 gridRendererStyle: {
+        //                     conditions: [
+        //                         { color: "#FFC107", value: "pending" },
+        //                         { color: "#28A745", value: "running" },
+        //                         { color: "#17A2B8", value: "paused" },
+        //                         { color: "#007BFF", value: "completed" },
+        //                         { color: "#DC3545", value: "failed" }
+        //                     ]
+        //                 }
+        //             });
+        //
+        //         case "type":
+        //             return new omna.table.cellrenderer.String({
+        //                 name: field,
+        //                 gridRendererStyle: {
+        //                     conditions: [
+        //                         { color: "#007BFF", value: "info" },
+        //                         { color: "#FFC107", value: "warning" },
+        //                         { color: "#DC3545", value: "error" }
+        //                     ]
+        //                 }
+        //             });
+        //
+        //         case "started_at":
+        //         case "completed_at":
+        //             return new omna.table.cellrenderer.Date();
+        //         default:
+        //             return new omna.table.cellrenderer.String({ name: field });
+        //     }
+        // },
+        //
+        // _fillTable: function (items, controlId) {
+        //     var control = this.getChildControl(controlId);
+        //
+        //     items = items ? items : [];
+        //     control.getTableModel().setDataAsMapArray(items);
+        // },
 
         onExecuteReload: function (e) {
             var request = this.getRequestManagement(),
@@ -171,7 +171,6 @@ qx.Class.define("omna.management.product.Details", {
                 item = data.item || {};
 
             this._generalForm.setData(item, true);
-            this._fillTable(item.notifications, 'notifications');
         },
 
         onSaveGeneral: function (e) {
