@@ -72,7 +72,7 @@
   {
     "name": "SUCCESSFUL-IMPORT",
     "subCatalog": "Messages",
-    "value": "A task was created to imported updated <b class='resource'>%1</b>."
+    "value": "A task was created to import the updated <b class='resource'>%1</b>."
   },
   {
     "name": "SUCCESSFUL-UNAUTHORIZE",

@@ -302,12 +302,12 @@
   {
     "name": "INTEGRATION",
     "subCatalog": "Titles",
-    "value": "{{integration.name}} of {{integration.channel}}"
+    "value": "{{integration.name}} of {{integration.channel_title}}"
   },
   {
     "name": "INTEGRATIONS",
     "subCatalog": "Titles",
-    "value": "{{#integrations}}<span><b>{{name}}</b> of <b>{{channel}}</b></span>{{/integrations}}"
+    "value": "{{#integrations}}<span><b>{{name}}</b> of <b>{{channel_title}}</b></span>{{/integrations}}"
   },
   {
     "name": "APPLICATION-TITLE",
