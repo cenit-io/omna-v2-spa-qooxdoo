@@ -57,8 +57,8 @@ qx.Class.define("omna.layout.Header", {
         // Create route handler for messaging channels.
         q.messaging.on("Application", "update-session", this.onUpdateSession, this);
         q.messaging.on("Application", "change-active-module", this.onChangeActiveModule, this);
-        q.messaging.on("Application", "loading-start", this.onLoaddingStart, this);
-        q.messaging.on("Application", "loading-release", this.onLoaddingRelease, this);
+        q.messaging.on("Application", "loading-start", this.onLoadingStart, this);
+        q.messaging.on("Application", "loading-release", this.onLoadingRelease, this);
     },
 
     members: {
@@ -66,12 +66,12 @@ qx.Class.define("omna.layout.Header", {
         __activeModule: null,
         __loadingStatus: 0,
 
-        onLoaddingStart: function () {
+        onLoadingStart: function () {
             if (this.__loadingStatus === 0) this.__loading.show();
             this.__loadingStatus++;
         },
 
-        onLoaddingRelease: function () {
+        onLoadingRelease: function () {
             this.__loadingStatus = Math.max(0, this.__loadingStatus - 1);
             if (this.__loadingStatus === 0) this.__loading.hide();
         },
