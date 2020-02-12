@@ -1,7 +1,7 @@
 qx.Class.define("omna.action.AbstractAction", {
     type: 'abstract',
     extend: qx.ui.form.Button,
-    include: [omna.mixin.MI18n],
+    include: [omna.mixin.MI18n, omna.mixin.MWithManagement],
     implement: [omna.mixin.II18n],
 
     construct: function (management, label, icon) {
@@ -20,12 +20,6 @@ qx.Class.define("omna.action.AbstractAction", {
         this.addMessagingListener('enabled-toolbar', this.onSetEnabledToolbar);
     },
 
-    properties: {
-        management: {
-            check: 'omna.management.AbstractManagement'
-        }
-    },
-
     members: {
         _messagingRouteIds: null,
 
@@ -35,14 +29,6 @@ qx.Class.define("omna.action.AbstractAction", {
             if (label) label.setValue(this.i18nTrans(value));
 
             this._handleLabel();
-        },
-
-        getRequestManagement: function () {
-            return this.getManagement().getRequestManagement();
-        },
-
-        getI18nCatalog: function () {
-            return this.getManagement().getI18nCatalog()
         },
 
         /**
@@ -72,18 +58,6 @@ qx.Class.define("omna.action.AbstractAction", {
               this.__previousStatus = this.getEnabled();
               this.setEnabled(enabled && this.__previousStatus);
           }
-        },
-
-        /**
-         * Sends a message on the current module channel and informs all matching route handlers.
-         *
-         * @param msgId {String} Messaging identifier.
-         * @param customData {Object?} The given custom data that should be propagated.
-         * @param params {Object?} The extra params that should be propagated.
-         */
-        emitMessaging: function (msgId, customData, params) {
-            var channel = 'C' + this.getManagement().getSettings().id;
-            q.messaging.emit(channel, msgId, params || {}, customData);
         },
 
         animate: function (animation) {

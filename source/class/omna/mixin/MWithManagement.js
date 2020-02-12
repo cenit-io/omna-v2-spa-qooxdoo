@@ -8,18 +8,23 @@ qx.Mixin.define('omna.mixin.MWithManagement', {
 
     members: {
         /**
-         * Translate a text subscribed in the i18n catalog.
+         * Sends a message on the current module channel and informs all matching route handlers.
          *
-         * @param catalog {String?'Common'}
-         * @param subCatalog {String?'Labels'}
-         * @param name {String}
-         * @param args {Array?}
-         * @return {String|boolean}
+         * @param msgId {String} Messaging identifier.
+         * @param customData {Object?} The given custom data that should be propagated.
+         * @param params {Object?} The extra params that should be propagated.
          */
-        i18nTrans: function (catalog, subCatalog, name, args) {
-            var management = this.getManagement();
+        emitMessaging: function (msgId, customData, params) {
+            var channel = 'C' + this.getManagement().getSettings().id;
+            q.messaging.emit(channel, msgId, params || {}, customData);
+        },
 
-            return management.i18nTrans.apply(management, arguments)
+        getRequestManagement: function () {
+            return this.getManagement().getRequestManagement();
+        },
+
+        getI18nCatalog: function () {
+            return this.getManagement().getI18nCatalog()
         }
     }
 });
