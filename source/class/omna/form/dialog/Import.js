@@ -17,7 +17,7 @@ qx.Class.define("omna.form.dialog.Import", {
     construct: function (management, integration, callback, scope) {
         this.set({ management: management, width: 500, integration: integration });
 
-        var question = this.i18nTrans('Messages', 'CONFIRM-IMPORT', [integration.name, integration.channel]);
+        var question = this.i18nTrans('Messages', 'CONFIRM-IMPORT', [integration.name, integration.channel_title]);
 
         this.base(arguments, question, callback, scope);
     },
@@ -39,7 +39,7 @@ qx.Class.define("omna.form.dialog.Import", {
 
             this.__importType.set({
                 required: true,
-                options: ['orders', 'products'].map(function (item) {
+                options: ['orders', 'products', 'categories', 'brands'].map(function (item) {
                     date = integration['last_import_' + item + '_date'];
 
                     if (date) {
