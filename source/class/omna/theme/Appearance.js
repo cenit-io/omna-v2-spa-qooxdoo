@@ -69,6 +69,7 @@ qx.Theme.define("omna.theme.Appearance", {
         "management/executions": "table",
         "management/notifications": "table",
         "management/scheduler": "table",
+        "management/general-tab": "tabview-page",
 
         "cell": {
             style: function (states) {

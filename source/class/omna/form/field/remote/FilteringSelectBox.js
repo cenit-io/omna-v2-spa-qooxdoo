@@ -12,12 +12,12 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
 
         labelAttr: {
             check: 'String',
-            init: 'id'
+            init: 'name'
         },
 
         valueAttr: {
             check: 'String',
-            init: 'name'
+            init: 'id'
         }
     },
 

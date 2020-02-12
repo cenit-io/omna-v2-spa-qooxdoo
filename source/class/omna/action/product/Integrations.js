@@ -31,7 +31,7 @@ qx.Class.define("omna.action.product.Integrations", {
             request[action](itemId, params, function (response) {
                 if (response.successful) {
                     this.good('SUCCESSFUL-' + action.toUpperCase(), [itemLabel]);
-                    done.call(this, response);
+                    done && done.call(this, response);
                 } else {
                     this.error('FAILED-' + action.toUpperCase(), [itemLabel]);
                 }
@@ -61,9 +61,7 @@ qx.Class.define("omna.action.product.Integrations", {
                         };
                         this._doRequest('unPublish', item.id, itemLabel, params, function () {
                             params = { integration_ids: integrationsToAdd };
-                            this._doRequest('publish', item.id, itemLabel, params, function () {
-                                this.emitMessaging('execute-reload');
-                            });
+                            this._doRequest('publish', item.id, itemLabel, params);
                         });
                         dlg.close();
                     }

@@ -27,5 +27,9 @@ qx.Class.define("omna.form.product.DetailsGeneral", {
         getI18nCatalog: function () {
             return 'Products'
         }
+    },
+
+    destruct: function () {
+        console.log(99999);
     }
 });

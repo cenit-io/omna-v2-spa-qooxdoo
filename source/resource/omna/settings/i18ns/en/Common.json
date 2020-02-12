@@ -340,6 +340,11 @@
     "value": "Validating..."
   },
   {
+    "name": "UNSUPPORTED_INPUT_TYPE",
+    "subCatalog": "Messages",
+    "value": "The input type '%1' is not supported."
+  },
+  {
     "name": "copyright-company",
     "subCatalog": "Messages",
     "value": "OMNA Pte Ltd (2019): yoandrypa@gmail.com"

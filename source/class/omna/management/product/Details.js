@@ -1,11 +1,10 @@
 /**
  * @childControl tabsPanel {qx.ui.tabview.TabView} show the tabs of product details.
- * @childControl generalTab {omna.form.renderer.Quad} show the general product properties.
- * @childControl notifications {qx.ui.table.Table} show the product notifications.
+ * @childControl general-tab {omna.management.product.DetailsGeneral} show the general product properties.
  */
 qx.Class.define("omna.management.product.Details", {
     extend: omna.management.AbstractManagement,
-    include: [omna.mixin.MSettings],
+    include: [omna.mixin.MSettings, omna.mixin.MLogo],
 
     statics: {
         propertiesDefaultValues: qx.lang.Object.mergeWith(
@@ -19,9 +18,11 @@ qx.Class.define("omna.management.product.Details", {
 
         this.base(arguments, settings, customData, modulePage);
 
+        this._integrationPages = [];
+
         this.setAppearance('management');
-        this._createChildControl("generalTab");
-        this._createChildControl("notifications");
+
+        this._createChildControl("general-tab");
 
         this.setCustomData(customData ? customData : {});
 
@@ -36,131 +37,67 @@ qx.Class.define("omna.management.product.Details", {
 
             switch ( id ) {
                 case "tabsPanel":
-                    control = new qx.ui.tabview.TabView();
+                    control = new omna.ui.tabview.TabView();
                     this._add(control, { flex: 2 });
                     break;
 
-                case "generalTab":
-                    this._generalForm = new omna.form.product.DetailsGeneral();
-                    this._generalForm.addListener('save', this.onSaveGeneral, this);
-                    control = new omna.form.renderer.Quad(this._generalForm);
-                    this._createTapPage(control, 'general');
-                    break;
-
-                case "integrationTab":
-                    control = new qx.ui.tabview.TabView();
-                    this._createTapPage(control, 'integrations');
+                case "general-tab":
+                    control = new omna.management.product.DetailsGeneral(this);
+                    this.getChildControl('tabsPanel').add(control);
                     break;
             }
 
             return control || this.base(arguments, id);
         },
 
-        _createTapPage: function (control, label) {
-            var page = new qx.ui.tabview.Page(this.i18nTrans(label));
+        _createTapPage: function (control, label, icon) {
+            var page = new omna.ui.tabview.Page(label, icon);
 
             page.set({ layout: new qx.ui.layout.VBox() });
             page.add(control, { flex: 1 });
 
-            this.getChildControl("tabsPanel").add(page);
+            this.getChildControl('tabsPanel').add(page);
+            return page;
         },
 
-        // _createTable: function (fields) {
-        //     var tableModel = new qx.ui.table.model.Simple(),
-        //         table, columnNames = [], columnIDs = [];
-        //
-        //     fields.forEach(function (field) {
-        //         columnNames.push(this.i18nTrans(field));
-        //         columnIDs.push(field);
-        //     }, this);
-        //
-        //     tableModel.setColumns(columnNames, columnIDs);
-        //
-        //     table = new qx.ui.table.Table(tableModel, {
-        //         tableColumnModel: function (table) {
-        //             return new qx.ui.table.columnmodel.Resize(table);
-        //         }
-        //     });
-        //
-        //     table.set({
-        //         rowHeight: 28,
-        //         showCellFocusIndicator: false,
-        //         decorator: 'omna-data-grid',
-        //         columnVisibilityButtonVisible: false
-        //     });
-        //
-        //     var tableColumnModel = table.getTableColumnModel(),
-        //         behavior = tableColumnModel.getBehavior();
-        //
-        //     behavior.setWidth(0, 90);
-        //
-        //     fields.forEach(function (field, index) {
-        //         tableColumnModel.setDataCellRenderer(index, this._createCellRenderer(field));
-        //     }, this);
-        //
-        //     return table
-        // },
-        //
-        // _createCellRenderer: function (field) {
-        //     switch ( field ) {
-        //         case "status":
-        //             return new omna.table.cellrenderer.String({
-        //                 name: field,
-        //                 gridRendererStyle: {
-        //                     conditions: [
-        //                         { color: "#FFC107", value: "pending" },
-        //                         { color: "#28A745", value: "running" },
-        //                         { color: "#17A2B8", value: "paused" },
-        //                         { color: "#007BFF", value: "completed" },
-        //                         { color: "#DC3545", value: "failed" }
-        //                     ]
-        //                 }
-        //             });
-        //
-        //         case "type":
-        //             return new omna.table.cellrenderer.String({
-        //                 name: field,
-        //                 gridRendererStyle: {
-        //                     conditions: [
-        //                         { color: "#007BFF", value: "info" },
-        //                         { color: "#FFC107", value: "warning" },
-        //                         { color: "#DC3545", value: "error" }
-        //                     ]
-        //                 }
-        //             });
-        //
-        //         case "started_at":
-        //         case "completed_at":
-        //             return new omna.table.cellrenderer.Date();
-        //         default:
-        //             return new omna.table.cellrenderer.String({ name: field });
-        //     }
-        // },
-        //
-        // _fillTable: function (items, controlId) {
-        //     var control = this.getChildControl(controlId);
-        //
-        //     items = items ? items : [];
-        //     control.getTableModel().setDataAsMapArray(items);
-        // },
+        _removeIntegrationTapPages: function () {
+            var tabsPanel = this.getChildControl('tabsPanel');
+
+            this._integrationPages.forEach(function (page) {
+                tabsPanel.remove(page);
+                page.dispose();
+            });
+
+            this._integrationPages = []
+        },
+
+        _createIntegrationTapPages: function (integrations) {
+            this._removeIntegrationTapPages();
+            integrations.forEach(function (integration) {
+                var tab = new omna.management.product.DetailsProperties(this, integration);
+
+                this._integrationPages.push(tab);
+                this.getChildControl('tabsPanel').add(tab);
+            }, this);
+        },
 
         onExecuteReload: function (e) {
             var request = this.getRequestManagement(),
                 data = this.getCustomData();
 
             this.emitMessaging('enabled-toolbar', false);
-            this.setCustomData({});
+            this.setEnabled(false)
             request.reload(data.item, function (response) {
                 if (response.successful) data.item = response.data;
                 this.setCustomData(data);
                 this.emitMessaging('enabled-toolbar', true);
+                this.setEnabled(true)
             }, this);
         },
 
         onExecuteRemove: function () {
             this.getModulePage().fireEvent("close");
         },
-
 
         onSelectionChange: function (data) {
             this.setCustomData(data.customData ? data.customData : {});
@@ -170,24 +107,9 @@ qx.Class.define("omna.management.product.Details", {
             var data = e.getData(),
                 item = data.item || {};
 
-            this._generalForm.setData(item, true);
-        },
-
-        onSaveGeneral: function (e) {
-            var generalTab = this.getChildControl("generalTab"),
-                request = this.getRequestManagement(),
-                item = this.getCustomData().item,
-                data = e.getData();
-
-            this.emitMessaging('enabled-toolbar', false);
-            generalTab.setEnabled(false);
-
-            request.update(item.id, data, function (response) {
-                if (response.successful) this.emitMessaging('execute-reload', null, 'Products');
-
-                generalTab.setEnabled(true);
-                this.emitMessaging('enabled-toolbar', true);
-            }, this);
+            this.getChildControl('general-tab').getChildControl('form').setData(item, true);
+            this._createIntegrationTapPages(item.integrations || []);
         }
+
     }
 });
