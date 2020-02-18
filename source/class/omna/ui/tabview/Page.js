@@ -3,7 +3,6 @@ qx.Class.define("omna.ui.tabview.Page", {
 
     destruct: function () {
         this.getChildren().forEach(function (item) {
-            console.log(item);
             item.destroy();
         });
     }

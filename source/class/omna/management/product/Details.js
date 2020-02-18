@@ -86,7 +86,7 @@ qx.Class.define("omna.management.product.Details", {
                 data = this.getCustomData();
 
             this.emitMessaging('enabled-toolbar', false);
-            this.setEnabled(false)
+            this.setEnabled(false);
             request.reload(data.item, function (response) {
                 if (response.successful) data.item = response.data;
                 this.setCustomData(data);

@@ -23,15 +23,12 @@ qx.Class.define("omna.form.product.DetailsProperties", {
         },
 
         __getColSpan: function (property) {
-            var widget;
+            var types = /^(rich_text)$/,
+                ids = /^(category_id)$/;
 
-            switch ( property.input_type ) {
-                case 'rich_text':
-                case 'category_select_box':
-                    return 4;
-                default:
-                    return 1;
-            }
+            if (property.input_type.match(types) || property.id.match(ids)) return 4;
+
+            return 1;
         },
 
         __createPropertyField: function (property, integration) {
@@ -59,9 +56,9 @@ qx.Class.define("omna.form.product.DetailsProperties", {
                 case 'rich_text':
                     widget = new omna.form.field.TextArea();
                     break;
-                case 'category_select_box':
+                case 'single_select_with_remote_options':
                     widget = new omna.form.field.remote.FilteringSelectBox();
-                    widget.setServiceBasePath('/integrations/' + integration.id + '/categories');
+                    widget.setServiceBasePath(property.options_service_path);
                     break;
                 default:
                     this.error('UNSUPPORTED_INPUT_TYPE', [property.input_type]);
@@ -73,12 +70,22 @@ qx.Class.define("omna.form.product.DetailsProperties", {
             return widget
         },
 
+        setData: function (properties, redefineResetter) {
+            var data = {};
+
+            properties.forEach(function (property) {
+                data[property.id] = property.value
+            }, this);
+
+            return this.base(arguments, data, redefineResetter);
+        },
+
         getI18nCatalog: function () {
             return 'Products'
         }
     },
 
     destruct: function () {
-        console.log(123456);
+        //TODO: DESTRUCT
     }
 });

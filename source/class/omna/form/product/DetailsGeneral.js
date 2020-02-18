@@ -30,6 +30,6 @@ qx.Class.define("omna.form.product.DetailsGeneral", {
     },
 
     destruct: function () {
-        console.log(99999);
+        //TODO: DESTRUCT
     }
 });

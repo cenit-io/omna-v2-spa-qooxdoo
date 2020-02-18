@@ -5,9 +5,19 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
         cellRendererClass: omna.table.cellrenderer.String
     },
 
+    /**
+     * Constructor
+     */
+    construct: function () {
+        this.base(arguments);
+
+        this.__requestManagement = new omna.request.Customs('/serviceBasePath', true);
+    },
+
     properties: {
         serviceBasePath: {
-            check: 'String'
+            check: 'String',
+            apply: '__applyServiceBasePath'
         },
 
         labelAttr: {
@@ -23,6 +33,10 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
 
     members: {
         __searchText: null,
+
+        __applyServiceBasePath: function (value) {
+            this.__requestManagement.setServiceBasePath(value);
+        },
 
         // overridden
         _createChildControlImpl: function (id, hash) {
@@ -57,15 +71,14 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
 
             this.__searchText = searchText;
 
-            var request = new omna.request.Customs(this.getServiceBasePath(), true),
-                labelAttr = this.getLabelAttr(),
-                valueAttr = this.getValueAttr(),
-                params = { term: searchText };
-
-            request.findRange(0, 25, null, params, function (response) {
+            this.__requestManagement.findRange(0, 24, null, { term: searchText }, function (response) {
                 this.removeAll();
-
                 if (response.successful) {
+                    var labelAttr = this.getLabelAttr(),
+                        valueAttr = this.getValueAttr();
+
+                    this.__cache = response.data;
+
                     response.data.forEach(function (item) {
                         this.add(new qx.ui.form.ListItem(item[labelAttr], this._getIcon(item), item[valueAttr]));
                     }, this);
@@ -75,13 +88,43 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
             }, this);
         },
 
-        _getIcon: function(item){
+        _loadItem: function (id) {
+            this.__requestManagement.find(id, function (response) {
+                if (response.successful) {
+                    var labelAttr = this.getLabelAttr(),
+                        valueAttr = this.getValueAttr(),
+                        item = response.data;
+
+                    this.__cache.unshift(item);
+                    this.add(new qx.ui.form.ListItem(item[labelAttr], this._getIcon(item), item[valueAttr]));
+                    this.setModelSelection([item[valueAttr]])
+                } else {
+                    q.messaging.emit('Application', 'error', omna.I18n.trans('Messages', 'FAILED-LOAD'));
+                }
+            }, this);
+        },
+
+        _getCacheItem: function (id) {
+            return (this.__cache || []).find(function (item) {
+                return item.id == id
+            }, this);
+        },
+
+        _getIcon: function (item) {
             return null
         },
 
         _getItems: function () {
             this._loadItems();
             return this.base(arguments);
+        },
+
+        setModelSelection: function (value) {
+            if (this._getCacheItem(value[0])) {
+                this.base(arguments, value);
+            } else {
+                this._loadItem(value[0]);
+            }
         },
 
         _onBlur: function (e) {

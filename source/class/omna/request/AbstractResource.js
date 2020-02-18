@@ -118,7 +118,7 @@ qx.Class.define("omna.request.AbstractResource", {
         },
 
         _getServicePath: function (path) {
-            path = path || '';
+            path = String(path || '');
 
             if (!path.match(/^\//)) path = this.getServiceBasePath() + '/' + path;
 

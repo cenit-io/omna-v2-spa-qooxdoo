@@ -18,6 +18,8 @@ qx.Class.define('omna.management.product.DetailsProperties', {
 
         var form = this.getChildControl('form');
 
+        form.setData(integration.product.properties, true);
+
         form.addListener('save', this.__onSaveGeneral, this);
     },
 
