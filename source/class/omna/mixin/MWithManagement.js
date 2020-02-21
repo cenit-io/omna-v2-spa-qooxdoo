@@ -13,10 +13,17 @@ qx.Mixin.define('omna.mixin.MWithManagement', {
          * @param msgId {String} Messaging identifier.
          * @param customData {Object?} The given custom data that should be propagated.
          * @param params {Object?} The extra params that should be propagated.
+         * @param managementId {String} Management identifier.
          */
-        emitMessaging: function (msgId, customData, params) {
-            var channel = 'C' + this.getManagement().getSettings().id;
-            q.messaging.emit(channel, msgId, params || {}, customData);
+        emitMessaging: function (msgId, customData, params, managementId) {
+            if (qx.lang.Type.isString(params)) {
+                managementId = params;
+                params = null;
+            }
+
+            var channel = 'C' + (managementId || this.getManagement().getSettings().id);
+
+            q.messaging.emit(channel, msgId, params, customData);
         },
 
         getRequestManagement: function () {

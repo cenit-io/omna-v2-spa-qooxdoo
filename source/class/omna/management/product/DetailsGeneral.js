@@ -44,7 +44,10 @@ qx.Class.define('omna.management.product.DetailsGeneral', {
             this.setEnabled(false);
 
             request.update(product.id, data, function (response) {
-                if (response.successful) this.emitMessaging('execute-reload', null, 'Products');
+                if (response.successful) {
+                    this.emitMessaging('execute-reload', null, 'ProductsDetails');
+                    this.emitMessaging('execute-reload', null, 'Products');
+                }
 
                 this.setEnabled(true);
                 this.emitMessaging('enabled-toolbar', true);

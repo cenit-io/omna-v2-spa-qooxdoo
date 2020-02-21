@@ -47,11 +47,27 @@ qx.Class.define('omna.management.product.DetailsProperties', {
 
         __onSaveGeneral: function (e) {
             var request = this.getRequestManagement(),
-                product = this.getManagement().getCustomData().item,
                 integration = this.getIntegration(),
-                data = e.getData();
+                product = integration.product,
+                data = e.getData(),
+                properties = [];
 
-            console.log(product, integration, data);
+            product.properties.forEach(function (property) {
+                properties.push({ id: property.id, value: data[property.id] })
+            });
+
+            this.emitMessaging('enabled-toolbar', false);
+            this.setEnabled(false);
+
+            request.updateProperties(integration.id, product.remote_product_id, properties, function (response) {
+                if (response.successful) {
+                    this.emitMessaging('execute-reload', null, 'ProductsDetails');
+                    this.emitMessaging('execute-reload', null, 'Products');
+                }
+
+                this.setEnabled(true);
+                this.emitMessaging('enabled-toolbar', true);
+            }, this);
         }
     },
 

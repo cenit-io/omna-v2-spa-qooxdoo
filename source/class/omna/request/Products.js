@@ -14,6 +14,12 @@ qx.Class.define("omna.request.Products", {
         unPublish: function (id, data, callBack, scope) {
             // Call remote service
             this.submit("PATCH", id, { data: data }, callBack, scope);
+        },
+
+        updateProperties: function (integration_id, remote_product_id, properties, callBack, scope) {
+            var path = '/integrations/' + integration_id + '/products/' + remote_product_id;
+
+            this.submit("POST", path, { data: { properties: properties } }, callBack, scope);
         }
     }
 });
