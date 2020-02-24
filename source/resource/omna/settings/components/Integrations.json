@@ -10,6 +10,7 @@
       "omna.action.Reload",
       "omna.action.Separator",
       "omna.action.Add",
+      "omna.action.Edit",
       "omna.action.integration.Authorize",
       "omna.action.integration.Import",
       "omna.action.Remove",
@@ -30,6 +31,7 @@
         "showInGrid": true,
         "includeInSearch": true,
         "accessInAddForm": "W",
+        "accessInEditForm": "W",
         "required": true,
         "minLength": 2,
         "maxLength": 50,
@@ -43,6 +45,16 @@
         "includeInSearch": true,
         "showInGrid": true,
         "gridColumnWidth": 150
+      },
+      {
+        "name": "keys_to_import_brands",
+        "widgetClass": "omna.form.field.TextField",
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": false,
+        "includeInSearch": true,
+        "showInGrid": true,
+        "pattern": "^[^ ,]+( [^ ,]+)*(,[^ ,]+( [^ ,]+)*)*$"
       },
       {
         "name": "authorized",

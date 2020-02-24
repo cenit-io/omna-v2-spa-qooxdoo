@@ -15,6 +15,11 @@
     "value": "Channel"
   },
   {
+    "name": "keys_to_import_brands",
+    "subCatalog": "Labels",
+    "value": "Keys to import brands"
+  },
+  {
     "name": "authorized",
     "subCatalog": "Labels",
     "value": "Authorized"
