@@ -3,10 +3,15 @@
  */
 qx.Class.define("omna.action.task.Retry", {
     extend: omna.action.AbstractActionWithSelectedItem,
+    include: [omna.mixin.MSettings],
 
     construct: function (management) {
         this.base(arguments, management, 'retry', 'omna/icon/16/actions/retry.png');
-        this.setEnablingRules('status === "failed"');
+        if (this.isDevelopment()) {
+            this.setEnablingRules('status === "failed" || status === "completed"');
+        } else {
+            this.setEnablingRules('status === "failed"');
+        }
     },
 
     members: {
