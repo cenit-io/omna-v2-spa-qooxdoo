@@ -1,5 +1,12 @@
 /**
+ * @childControl notifications {qx.ui.container.Composite}.
  * @childControl form {omna.form.product.DetailsProperties}.
+ *
+ * @asset(omna/icon/32/info.png)
+ * @asset(omna/icon/32/good.png)
+ * @asset(omna/icon/32/warn.png)
+ * @asset(omna/icon/32/error.png)
+ * @asset(omna/icon/32/notice.png)
  */
 qx.Class.define('omna.management.product.DetailsProperties', {
     extend: qx.ui.tabview.Page,
@@ -13,14 +20,23 @@ qx.Class.define('omna.management.product.DetailsProperties', {
             layout: new qx.ui.layout.VBox()
         });
 
+        // Create route handler for messaging channels.
+        q.messaging.on("Application", /^(info|good|notice|warn|error)$/, this.onNotify, this);
+
         this.base(arguments, integration.name, this.integrationLogo(integration.channel));
         this.set({ layout: new qx.ui.layout.VBox(), appearance: 'tabview-page' });
 
-        var form = this.getChildControl('form');
+        this._createChildControl('notifications');
 
-        form.setData(integration.product.properties, true);
+        if (integration.product.errors) q.messaging.emit('Application', 'error', integration.product.errors, this);
 
-        form.addListener('save', this.__onSaveGeneral, this);
+        if (integration.product.properties.length > 0) {
+            var form = this.getChildControl('form');
+
+            form.setData(integration.product.properties, true);
+
+            form.addListener('save', this.__onSaveGeneral, this);
+        }
     },
 
     properties: {
@@ -35,6 +51,10 @@ qx.Class.define('omna.management.product.DetailsProperties', {
             var control;
 
             switch ( id ) {
+                case 'notifications':
+                    control = new qx.ui.container.Composite(new qx.ui.layout.VBox(5));
+                    this.add(control, { flex: 0 });
+                    break;
                 case 'form':
                     control = new omna.form.product.DetailsProperties(this.getIntegration());
                     this._renderer = new omna.form.renderer.Quad(control);
@@ -44,6 +64,21 @@ qx.Class.define('omna.management.product.DetailsProperties', {
 
             return control || this.base(arguments, id);
         },
+
+        _notify: function (msg, type) {
+            var notifications = this.getChildControl('notifications');
+
+            notifications.add(
+                new qx.ui.basic.Atom(msg, 'omna/icon/32/' + type + '.png').set({
+                    decorator: "tooltip",
+                    iconPosition: "left",
+                    backgroundColor: type,
+                    textColor: type === 'error' ? 'white' : 'black',
+                    padding: 5
+                })
+            );
+        },
+
 
         __onSaveGeneral: function (e) {
             var request = this.getRequestManagement(),
@@ -68,11 +103,15 @@ qx.Class.define('omna.management.product.DetailsProperties', {
                 this.setEnabled(true);
                 this.emitMessaging('enabled-toolbar', true);
             }, this);
+        },
+
+        onNotify: function (data) {
+            if (data.customData === this) this._notify(data.params, data.path);
         }
     },
 
     destruct: function () {
-        this._renderer.dispose();
+        this._renderer && this._renderer.dispose();
         this._releaseChildControl('form').dispose();
     }
 });

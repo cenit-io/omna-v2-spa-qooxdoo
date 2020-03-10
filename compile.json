@@ -31,6 +31,7 @@
         "omna.action.task.Retry",
         "omna.action.tenant.Switch",
         "omna.action.product.Integrations",
+        "omna.action.product.Variants",
         // Cell Renderer
         "omna.table.cellrenderer.LongText",
         "omna.table.cellrenderer.Logo",

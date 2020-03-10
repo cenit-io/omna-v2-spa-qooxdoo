@@ -3,6 +3,7 @@
  * @asset(omna/icon/32/good.png)
  * @asset(omna/icon/32/warn.png)
  * @asset(omna/icon/32/error.png)
+ * @asset(omna/icon/32/notice.png)
  */
 qx.Class.define("omna.ToolTip", {
     type: "singleton",
@@ -87,7 +88,7 @@ qx.Class.define("omna.ToolTip", {
         },
 
         notice: function (msg) {
-            this.good(msg)
+            this.create(msg, 'omna/icon/32/notice.png', 'notice', 'black');
         }
     }
 });

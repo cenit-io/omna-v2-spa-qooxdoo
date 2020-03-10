@@ -1,21 +1,18 @@
 [
   {
-    "id": "Products",
+    "id": "Variants",
+    "i18n": "Products",
     "widgetClass": "omna.management.DataGridRestService",
-    "requestManagementClass": "omna.request.Products",
+    "requestManagementClass": "omna.request.Variants",
     "rowHeight": 60,
     "formWidth": 800,
     "searchFormWidth": 400,
-    "baseParams": {
-      "with_details": true
-    },
     "actions": [
       "omna.action.Reload",
       "omna.action.Separator",
       "omna.action.Add",
       "omna.action.Edit",
       "omna.action.Details",
-      "omna.action.product.Variants",
       "omna.action.product.Integrations",
       "omna.action.Remove",
       "omna.action.Separator",
@@ -58,15 +55,6 @@
         "gridColumnWidth": 100
       },
       {
-        "name": "variants",
-        "widgetClass": "omna.form.field.NumberField",
-        "showInGrid": true,
-        "gridColumnWidth": 100,
-        "gridRendererStyle": {
-          "textAlign": "center"
-        }
-      },
-      {
         "name": "integrations",
         "showInGrid": true,
         "cellRendererClass": "omna.table.cellrenderer.String",
@@ -84,14 +72,6 @@
         "attrModelName": "integration_id",
         "widgetClass": "omna.form.field.remote.integrations.SelectBox",
         "disableUnauthorized": false
-      },
-      {
-        "name": "description",
-        "widgetClass": "omna.form.field.TextArea",
-        "accessInAddForm": "W",
-        "accessInEditForm": "W",
-        "required": true,
-        "minLength": 3
       }
     ]
   }
