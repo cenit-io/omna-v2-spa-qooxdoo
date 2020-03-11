@@ -88,8 +88,7 @@ qx.Class.define("omna.management.product.Details", {
             this.emitMessaging('enabled-toolbar', false);
             this.setEnabled(false);
             request.reload(data.item, function (response) {
-                if (response.successful) data.item = response.data;
-                this.setCustomData(data);
+                if (response.successful) this.setCustomData({item: response.data});
                 this.emitMessaging('enabled-toolbar', true);
                 this.setEnabled(true)
             }, this);
@@ -97,10 +96,6 @@ qx.Class.define("omna.management.product.Details", {
 
         onExecuteRemove: function () {
             this.getModulePage().fireEvent("close");
-        },
-
-        onSelectionChange: function (data) {
-            this.setCustomData(data.customData ? data.customData : {});
         },
 
         onChangeCustomData: function (e) {

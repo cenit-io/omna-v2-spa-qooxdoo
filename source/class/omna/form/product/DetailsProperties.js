@@ -43,6 +43,11 @@ qx.Class.define("omna.form.product.DetailsProperties", {
                     widget = new omna.form.field.MultiSelectBox();
                     widget.setOptions(property.options);
                     break;
+                case 'multi_enum_input':
+                    this.warn('UNSUPPORTED_INPUT_TYPE', [property.input_type]);
+                    widget = new omna.form.field.MultiSelectBox();
+                    widget.setOptions(property.options);
+                    break;
                 case 'enum_input':
                     widget = new omna.form.field.EnumSelectBox();
                     widget.setOptions(property.options);
