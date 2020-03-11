@@ -7,7 +7,7 @@
     "formWidth": 800,
     "searchFormWidth": 400,
     "baseParams": {
-      "with_details": true
+      "with_details": false
     },
     "actions": [
       "omna.action.Reload",

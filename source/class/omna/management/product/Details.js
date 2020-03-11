@@ -28,6 +28,8 @@ qx.Class.define("omna.management.product.Details", {
 
         this.addMessagingListener("execute-reload", this.onExecuteReload);
         this.addMessagingListener("execute-remove", this.onExecuteRemove);
+
+        this.emitMessaging('execute-reload', null, 'ProductsDetails');
     },
 
     members: {
@@ -65,7 +67,7 @@ qx.Class.define("omna.management.product.Details", {
 
             this._integrationPages.forEach(function (page) {
                 tabsPanel.remove(page);
-                page.dispose();
+                page.destroy();
             });
 
             this._integrationPages = []
@@ -102,7 +104,7 @@ qx.Class.define("omna.management.product.Details", {
             var data = e.getData(),
                 item = data.item || {};
 
-            this.getChildControl('general-tab').getChildControl('form').setData(item, true);
+            this.getChildControl('general-tab').setData(item, true);
             this._createIntegrationTapPages(item.integrations || []);
         }
 

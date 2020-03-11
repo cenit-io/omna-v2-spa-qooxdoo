@@ -4,6 +4,7 @@ qx.Class.define("omna.form.product.DetailsProperties", {
     construct: function (integration) {
         this.setIntegration(integration);
         this.base(arguments);
+        this.setData(integration.product.properties, true)
     },
 
     properties: {

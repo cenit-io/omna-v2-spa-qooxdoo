@@ -91,7 +91,7 @@ qx.Class.define("omna.form.renderer.Quad", {
         }
     },
 
-    destruct: function(){
-        console.log(11111);
+    destruct: function () {
+        //TODO: DESTRUCT
     }
 });

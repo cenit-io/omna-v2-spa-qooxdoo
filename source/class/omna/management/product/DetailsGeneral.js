@@ -1,5 +1,5 @@
 /**
- * @childControl form {omna.form.product.DetailsGeneral}.
+ * @childControl general-form {omna.form.renderer.Quad}.
  */
 qx.Class.define('omna.management.product.DetailsGeneral', {
     extend: qx.ui.tabview.Page,
@@ -14,28 +14,34 @@ qx.Class.define('omna.management.product.DetailsGeneral', {
 
         this.base(arguments, this.i18nTrans('general'), this.integrationLogo('omna_v2'));
 
-        var form = this.getChildControl('form');
-
-        form.addListener('save', this.__onSaveGeneral, this);
+        this._createChildControl('general-form');
     },
 
     members: {
+        _form: null,
+
+        setData: function (data, redefineResetter) {
+            this._form.setData(data, redefineResetter)
+        },
+
         // overridden
         _createChildControlImpl: function (id, hash) {
             var control;
 
             switch ( id ) {
-                case 'form':
-                    control = new omna.form.product.DetailsGeneral();
-                    this._renderer = new omna.form.renderer.Quad(control);
-                    this.add(this._renderer, { flex: 1 });
+                case 'general-form':
+                    this._form = new omna.form.product.DetailsGeneral();
+                    this._form.addListener('save', this.__onSave, this);
+
+                    control = new omna.form.renderer.Quad(this._form);
+                    this.add(control, { flex: 1 });
                     break;
             }
 
             return control || this.base(arguments, id);
         },
 
-        __onSaveGeneral: function (e) {
+        __onSave: function (e) {
             var request = this.getRequestManagement(),
                 product = this.getManagement().getCustomData().item,
                 data = e.getData();
@@ -56,7 +62,7 @@ qx.Class.define('omna.management.product.DetailsGeneral', {
     },
 
     destruct: function () {
-        this._renderer.dispose();
-        this._releaseChildControl('form').dispose();
+        this._form.removeListener("save", this.__onSave, this);
+        this._form.dispose();
     }
 });
