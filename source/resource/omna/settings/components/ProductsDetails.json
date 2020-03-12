@@ -6,7 +6,8 @@
     "actions": [
       "omna.action.Reload",
       "omna.action.Separator",
-      "omna.action.Print"
+      "omna.action.product.Variants",
+      "omna.action.product.Integrations"
     ]
   }
 ]

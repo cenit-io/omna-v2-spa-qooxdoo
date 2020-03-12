@@ -106,6 +106,8 @@ qx.Class.define("omna.management.product.Details", {
 
             this.getChildControl('general-tab').setData(item, true);
             this._createIntegrationTapPages(item.integrations || []);
+
+            this.emitMessaging("selection-change", { index: data.index, item: data.item, sender: this });
         }
 
     }
