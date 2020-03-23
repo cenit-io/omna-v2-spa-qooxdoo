@@ -1,0 +1,85 @@
+[
+  {
+    "id": "Connections",
+    "widgetClass": "omna.management.DataGridRestService",
+    "requestManagementClass": "omna.request.Connections",
+    "baseParams": {
+      "with_details": true
+    },
+    "actions": [
+      "omna.action.Reload",
+      "omna.action.Separator",
+      "omna.action.Add",
+      "omna.action.Edit",
+      "omna.action.integration.Authorize",
+      "omna.action.integration.Import",
+      "omna.action.Remove",
+      "omna.action.Separator",
+      "omna.action.Search"
+    ],
+    "fields": [
+      {
+        "name": "channel",
+        "label": "logo",
+        "cellRendererClass": "omna.table.cellrenderer.Logo",
+        "showInGrid": true,
+        "gridColumnWidth": 50
+      },
+      {
+        "name": "name",
+        "widgetClass": "omna.form.field.TextField",
+        "showInGrid": true,
+        "includeInSearch": true,
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": true,
+        "minLength": 2,
+        "maxLength": 50,
+        "pattern": "\\w+"
+      },
+      {
+        "name": "channel",
+        "widgetClass": "omna.form.field.remote.integrations.ChannelSelectBox",
+        "accessInAddForm": "W",
+        "required": true,
+        "includeInSearch": true,
+        "showInGrid": true,
+        "gridColumnWidth": 150
+      },
+      {
+        "name": "keys_to_import_brands",
+        "widgetClass": "omna.form.field.TextField",
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": false,
+        "includeInSearch": true,
+        "showInGrid": true,
+        "pattern": "^[^ ,]+( [^ ,]+)*(,[^ ,]+( [^ ,]+)*)*$"
+      },
+      {
+        "name": "authorized",
+        "cellRendererClass": "omna.table.cellrenderer.Boolean",
+        "showInGrid": true,
+        "gridColumnWidth": 100
+      },
+      {
+        "name": "last_import_orders_date",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 150
+      },
+      {
+        "name": "last_import_products_date",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 160
+      },
+      {
+        "name": "created_at",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 150
+      }
+    ]
+  }
+]

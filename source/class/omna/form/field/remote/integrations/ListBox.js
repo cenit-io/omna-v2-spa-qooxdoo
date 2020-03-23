@@ -10,7 +10,7 @@ qx.Class.define('omna.form.field.remote.integrations.ListBox', {
 
     members: {
         __loadItems: function () {
-            var request = new omna.request.Integrations();
+            var request = new omna.request.Connections();
 
             request.setAsync(false);
             request.findAll(null, { with_details: true }, function (response) {

@@ -1,4 +1,4 @@
-qx.Class.define("omna.request.Integrations", {
+qx.Class.define("omna.request.Connections", {
     extend: omna.request.AbstractResource,
 
     construct: function () {
@@ -18,7 +18,7 @@ qx.Class.define("omna.request.Integrations", {
                     if (response.successful) {
                         qx.module.Storage.setSessionItem(cacheId, response);
                     } else {
-                        var msg = omna.I18n.trans('Integrations', 'Messages', 'FAILED-LOADING-CHANNELS');
+                        var msg = omna.I18n.trans('Connections', 'Messages', 'FAILED-LOADING-CHANNELS');
                         q.messaging.emit('Application', 'error', msg)
                     }
                     callBack.call(scope, response);
@@ -39,10 +39,10 @@ qx.Class.define("omna.request.Integrations", {
                 var msg;
 
                 if (response.successful) {
-                    msg = omna.I18n.trans('Integrations', 'Messages', 'SUCCESSFUL-UNAUTHORIZE');
+                    msg = omna.I18n.trans('Connections', 'Messages', 'SUCCESSFUL-UNAUTHORIZE');
                     q.messaging.emit('Application', 'good', msg);
                 } else {
-                    msg = omna.I18n.trans('Integrations', 'Messages', 'FAILED-UNAUTHORIZE');
+                    msg = omna.I18n.trans('Connections', 'Messages', 'FAILED-UNAUTHORIZE');
                     q.messaging.emit('Application', 'error', msg)
                 }
                 callBack && callBack.call(scope, response);
@@ -55,10 +55,10 @@ qx.Class.define("omna.request.Integrations", {
                 var msg;
 
                 if (response.successful) {
-                    msg = omna.I18n.trans('Integrations', 'Messages', 'SUCCESSFUL-IMPORT', [type]);
+                    msg = omna.I18n.trans('Connections', 'Messages', 'SUCCESSFUL-IMPORT', [type]);
                     q.messaging.emit('Application', 'good', msg);
                 } else {
-                    msg = omna.I18n.trans('Integrations', 'Messages', 'FAILED-IMPORT', [type]);
+                    msg = omna.I18n.trans('Connections', 'Messages', 'FAILED-IMPORT', [type]);
                     q.messaging.emit('Application', 'error', msg)
                 }
 

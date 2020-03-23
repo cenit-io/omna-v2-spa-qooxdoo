@@ -38,8 +38,8 @@
         "omna.form.field.net.EMailField",
         "omna.form.field.net.URLField",
         // Request services managements
-        "omna.request.Integrations",
-        "omna.request.Collections",
+        "omna.request.Connections",
+        "omna.request.AvailableIntegrations",
         "omna.request.Orders",
         "omna.request.Products",
         "omna.request.Tasks",

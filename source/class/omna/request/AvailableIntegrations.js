@@ -1,25 +1,26 @@
-qx.Class.define("omna.request.Collections", {
+qx.Class.define("omna.request.AvailableIntegrations", {
     extend: omna.request.AbstractResource,
 
     construct: function () {
-        this.base(arguments, 'collections');
+        this.base(arguments, 'available/integrations');
     },
 
     members: {
         getI18nCatalog: function () {
-            return 'Collections'
+            return 'AvailableIntegrations'
         },
 
         install: function (id, callBack, scope) {
             // Call remote service
             this.submit("PATCH", id, null, function (response) {
-                var msg;
+                var itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
+                    msg;
 
                 if (response.successful) {
-                    msg = this.i18nTrans('Messages', 'SUCCESSFUL-INSTALLING');
+                    msg = this.i18nTrans('Messages', 'SUCCESSFUL-INSTALLING', [itemLabel]);
                     q.messaging.emit('Application', 'good', msg);
                 } else {
-                    msg = this.i18nTrans('Messages', 'FAILED-INSTALLING');
+                    msg = this.i18nTrans('Messages', 'FAILED-INSTALLING', [itemLabel]);
                     q.messaging.emit('Application', 'error', msg);
                 }
 

@@ -2,12 +2,12 @@
   {
     "name": "MODULE-REFERENCE",
     "subCatalog": "Labels",
-    "value": "Collections"
+    "value": "Available Integrations"
   },
   {
     "name": "SINGLE-ITEM-REFERENCE",
     "subCatalog": "Labels",
-    "value": "Collection"
+    "value": "Available Integration"
   },
   {
     "name": "version",
@@ -57,17 +57,17 @@
   {
     "name": "SUCCESSFUL-INSTALLING",
     "subCatalog": "Messages",
-    "value": "A <b>task</b> was created to <b>install</b> the selected <b>collection</b>."
+    "value": "A <b>task</b> was created to <b>install</b> the selected <b class='resource'>%1</b>."
   },
   {
     "name": "SUCCESSFUL-DELETING",
     "subCatalog": "Messages",
-    "value": "A <b>task</b> was created to <b>uninstall</b> the selected <b>collection</b>."
+    "value": "A <b>task</b> was created to <b>uninstall</b> the selected <b class='resource'>%1</b>."
   },
   {
     "name": "FAILED-INSTALLING",
     "subCatalog": "Messages",
-    "value": "Failed the <b>creation</b> of the task to install the selected <b>collection</b>."
+    "value": "Failed the <b>creation</b> of the task to install the selected <b class='resource'>%1</b>."
   },
   {
     "name": "FAILED-DELETING",

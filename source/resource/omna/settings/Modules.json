@@ -7,27 +7,35 @@
     "id": "Integrations",
     "children": [
       {
-        "id": "Collections"
+        "id": "AvailableIntegrations"
       },
+      {
+        "id": "Connections"
+      }
+    ]
+  },
+  {
+    "id": "Logistics",
+    "children": [
       {
         "id": "Products"
       },
       {
         "id": "Orders"
+      }
+    ]
+  },
+  {
+    "id": "Workflows",
+    "children": [
+      {
+        "id": "Flows"
       },
       {
-        "id": "Workflows",
-        "children": [
-          {
-            "id": "Flows"
-          },
-          {
-            "id": "Webhooks"
-          },
-          {
-            "id": "Tasks"
-          }
-        ]
+        "id": "Webhooks"
+      },
+      {
+        "id": "Tasks"
       }
     ]
   },

@@ -17,7 +17,7 @@ qx.Class.define('omna.form.field.remote.integrations.SelectBox', {
 
     members: {
         __loadItems: function () {
-            var request = new omna.request.Integrations();
+            var request = new omna.request.Connections();
 
             this.removeAll();
 

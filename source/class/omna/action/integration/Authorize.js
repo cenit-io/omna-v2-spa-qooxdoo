@@ -14,7 +14,8 @@ qx.Class.define("omna.action.integration.Authorize", {
             var management = this.getManagement(),
                 selectedItemId = this.getSelectedItem().id,
                 isAuthorized = this.getSelectedItem().authorized,
-                msg = this.i18nTrans('Messages', 'CONFIRM-' + (isAuthorized ? 'UNAUTHORIZE' : 'AUTHORIZE'));
+                itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
+                msg = this.i18nTrans('Messages', 'CONFIRM-' + (isAuthorized ? 'UNAUTHORIZE' : 'AUTHORIZE'), [itemLabel]);
 
             omna.dialog.Confirm.show(msg, function (response) {
                 if (response === 'yes') {
