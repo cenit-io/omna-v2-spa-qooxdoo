@@ -77,8 +77,6 @@ qx.Class.define("omna.Application", {
             // Set application title in html page.
             var qTitle = document.getElementsByTagName('title')[0];
             if (qTitle) qTitle.innerText = omna.I18n.trans('APPLICATION-TITLE');
-
-            this.__disableHistory();
         },
 
         __transformServerBaseUrl: function (v) {
@@ -87,17 +85,6 @@ qx.Class.define("omna.Application", {
 
         __applyLocale: function (v) {
             qx.locale.Manager.getInstance().setLocale(v);
-        },
-
-        /**
-         * Disable navigator history.
-         */
-        __disableHistory: function () {
-            window.onhashchange = function () {
-                // It works without the History API, but will clutter up the history
-                history.pushState ? history.pushState(null, '', '#HOFF') : window.location.hash = '#HOFF'
-            };
-            window.onhashchange();
         },
 
         /**
