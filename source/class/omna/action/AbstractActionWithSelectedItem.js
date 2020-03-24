@@ -35,7 +35,7 @@ qx.Class.define("omna.action.AbstractActionWithSelectedItem", {
         onSelectionChange: function (data) {
             var customData = data.customData || {},
                 selectedItem = customData.item || null,
-                selectedIndex = customData.index || null,
+                selectedIndex = customData.index === undefined ? null : customData.index,
                 enabled = qx.lang.Type.isObject(selectedItem) && this._checkEnablingRules(selectedItem);
 
             this.set({ enabled: enabled, selectedItem: selectedItem, selectedIndex: selectedIndex })
