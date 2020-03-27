@@ -24,7 +24,7 @@ qx.Class.define("omna.form.product.DetailsProperties", {
         },
 
         __getColSpan: function (property) {
-            var types = /^(rich_text)$/,
+            var types = /^(rich_text|data_grid)$/,
                 ids = /^(category_id)$/;
 
             if (property.input_type.match(types) || property.id.match(ids)) return 4;
@@ -62,6 +62,9 @@ qx.Class.define("omna.form.product.DetailsProperties", {
                 case 'rich_text':
                     widget = new omna.form.field.TextArea();
                     break;
+                case 'data_grid':
+                    widget = new omna.form.field.TextArea();
+                    break;
                 case 'single_select_with_remote_options':
                     widget = new omna.form.field.remote.FilteringSelectBox();
                     widget.setServiceBasePath(property.options_service_path);
@@ -76,12 +79,24 @@ qx.Class.define("omna.form.product.DetailsProperties", {
             return widget
         },
 
+        __parsePropertyValue: function (property) {
+            switch ( property.input_type ) {
+                case 'numeric':
+                    return property.value;
+                case 'text':
+                case 'rich_text':
+                    return property.value || '';
+                case 'data_grid':
+                    return JSON.stringify(property.value);
+                default:
+                    return property.value;
+            }
+        },
+
         setData: function (properties, redefineResetter) {
             var data = {};
 
-            properties.forEach(function (property) {
-                data[property.id] = property.value
-            }, this);
+            properties.forEach((property) => data[property.id] = this.__parsePropertyValue(property), this);
 
             return this.base(arguments, data, redefineResetter);
         },
