@@ -24,7 +24,7 @@ qx.Class.define("omna.management.DataGridRestService", {
     construct: function (settings, customData, modulePage) {
         this.base(arguments, settings, customData, modulePage);
 
-        this._createTable(customData);
+        this._createTable();
 
         this.addMessagingListener("execute-reload", this.onExecuteReload);
         this.addMessagingListener("execute-add", this.onExecuteAdd);
@@ -33,6 +33,8 @@ qx.Class.define("omna.management.DataGridRestService", {
         this.addMessagingListener("execute-search", this.onExecuteSearch);
         this.addMessagingListener("execute-global-search", this.onExecuteGlobalSearch);
         this.addMessagingListener('selection-change', this.onSelectionChange, settings.listenFromComponentId);
+
+        this.onExecuteReload();
     },
 
     members: {
@@ -40,23 +42,12 @@ qx.Class.define("omna.management.DataGridRestService", {
             return this.getSettings().fields || [];
         },
 
-        _createTable: function (customData) {
+        _createTable: function () {
             var fields = this.getFields(),
-                columnFields = fields.filter(function (f) {
-                    return f.showInGrid
-                }),
                 settings = this.getSettings(),
-                localFieldName = settings.localFieldName,
-                params = {};
+                columnFields = fields.filter((f) => f.showInGrid);
 
-            qx.lang.Object.mergeWith(params, settings.baseParams);
-            qx.lang.Object.mergeWith(params, customData.params);
-
-            if (localFieldName && params[localFieldName] === undefined) {
-                params[localFieldName] = -1;
-            }
-
-            var tableModel = new omna.model.DataGridRestService(columnFields, settings, params, this.getRequestManagement()),
+            var tableModel = new omna.model.DataGridRestService(columnFields, settings, this.getRequestManagement()),
                 table = this.__table = new qx.ui.table.Table(tableModel, {
                     tableColumnModel: function (table) {
                         return new qx.ui.table.columnmodel.Resize(table);
@@ -102,13 +93,12 @@ qx.Class.define("omna.management.DataGridRestService", {
 
         onChangeCustomData: function (e) {
             var data = e.getData();
-            if (data.params) {
-                this.__table.getSelectionModel().resetSelection();
-                this.__table.getTableModel().setParams(data.params);
-            }
+
+            if (data.params) this.onExecuteReload();
         },
 
         onExecuteReload: function () {
+            this.getRequestManagement().setBaseParams(this.getRequestBaseParams());
             this.__table.getSelectionModel().resetSelection();
             this.__table.getTableModel().reloadData();
         },

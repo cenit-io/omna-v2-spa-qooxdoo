@@ -90,8 +90,7 @@ qx.Class.define("omna.request.AbstractResource", {
      */
     construct: function (serviceBasePath, sync) {
         this.base(arguments);
-        this.setServiceBasePath(serviceBasePath);
-        this.setAsync(!sync);
+        this.set({ serviceBasePath: serviceBasePath, async: !sync, baseParams: {} });
     },
 
     properties: {
@@ -107,6 +106,10 @@ qx.Class.define("omna.request.AbstractResource", {
         i18nCatalog: {
             check: 'String',
             init: 'Common'
+        },
+
+        baseParams: {
+            check: 'Object'
         }
     },
 
@@ -117,11 +120,23 @@ qx.Class.define("omna.request.AbstractResource", {
             return url.replace(/([^:\/])\/{2,}/g, '$1/').replace(/\/$/, '');
         },
 
-        _getServicePath: function (path) {
+        _getServicePath: function (path, data) {
+            data = data || {};
+
             path = String(path || '');
 
             if (!path.match(/^\//)) path = this.getServiceBasePath() + '/' + path;
 
+            let m, v;
+            while (m = path.match(/\{(\w+)\}/)) {
+                if ((v = data[m[1]])) {
+                    path = path.replace(m[0], v);
+                    delete data[m[1]]
+                } else {
+                    path = path.replace(m[0], m[1]);
+                    this.error('REQUIRE_PATH_PARAMETER', [m[1]])
+                }
+            }
             return path.replace(/\/{2,}/g, '').replace(/\/$/g, '');
         },
 
@@ -186,8 +201,13 @@ qx.Class.define("omna.request.AbstractResource", {
             return buildParams('', data).join('&');
         },
 
-        submit: function (method, path, data, callBack, scope, token, secret) {
-            path = this._getServicePath(path);
+        submit: function (method, path, paramsData, callBack, scope, token, secret) {
+            let data = {};
+
+            qx.lang.Object.mergeWith(data, qx.lang.Object.clone(this.getBaseParams()));
+            qx.lang.Object.mergeWith(data, qx.lang.Object.clone(paramsData) || {});
+
+            path = this._getServicePath(path, data);
 
             var request = this.__requestManagement = new omna.request.Xhr(this._getServiceUrl(path), method),
                 params = this._signRequest(path, data || {}, token, secret);

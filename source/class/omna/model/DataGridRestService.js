@@ -5,14 +5,13 @@ qx.Class.define("omna.model.DataGridRestService", {
     extend: qx.ui.table.model.Remote,
     include: [qx.locale.MTranslation],
 
-    construct: function (fields, settings, params, requestManagement) {
+    construct: function (fields, settings, requestManagement) {
         this.base(arguments);
         this.set({
             blockSize: settings.blockSize || 20,
             maxCachedBlockCount: settings.maxCachedBlockCount || 5,
             requestManagement: requestManagement,
-            serviceBasePath: settings.serviceBasePath || null,
-            params: params
+            serviceBasePath: settings.serviceBasePath || null
         });
 
         this.__fields = [];
@@ -30,16 +29,9 @@ qx.Class.define("omna.model.DataGridRestService", {
         }, this);
 
         this.setColumns(columnNames, columnIDs);
-        this.addListener('changeFilter', this.reloadData, this);
     },
 
     properties: {
-        params: {
-            check: 'Object',
-            init: {},
-            event: 'changeFilter'
-        },
-
         requestManagement: {
             check: 'omna.request.AbstractResource'
         },
@@ -53,7 +45,7 @@ qx.Class.define("omna.model.DataGridRestService", {
         _loadRowCount: function () {
             var request = this.getRequestManagement();
 
-            request.count(this.getParams(), function (response) {
+            request.count({}, function (response) {
                 if (response.successful) this._onRowCountLoaded(response.pagination.total);
             }, this);
 
@@ -63,7 +55,7 @@ qx.Class.define("omna.model.DataGridRestService", {
         _loadRowData: function (pFrom, pTo) {
             var request = this.getRequestManagement();
 
-            request.findRange(pFrom, pTo, this.getOrder(), this.getParams(), function (response) {
+            request.findRange(pFrom, pTo, this.getOrder(), {}, function (response) {
                 if (response.successful) {
                     response.data.forEach(function (record, index) {
                         Object.keys(record).forEach(function (field) {

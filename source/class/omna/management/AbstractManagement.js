@@ -31,7 +31,7 @@ qx.Class.define("omna.management.AbstractManagement", {
             layout: new qx.ui.layout.VBox(5),
             decorator: "omna-management",
             settings: settings,
-            customData: {},
+            customData: customData,
             modulePage: modulePage
         });
 
@@ -42,7 +42,9 @@ qx.Class.define("omna.management.AbstractManagement", {
 
         this.addListener("changeCustomData", this.onChangeCustomData);
 
-        if (customData) setTimeout(qx.lang.Function.bind(this.setCustomData, this), 5, customData);
+        if (customData) setTimeout((customData) => {
+            this.fireEvent('changeCustomData', qx.event.type.Data, [customData]);
+        }, 5, customData);
     },
 
     events: {
@@ -70,17 +72,33 @@ qx.Class.define("omna.management.AbstractManagement", {
         __overflowMenu: null,
         __menuItemStore: null,
 
+        getRequestBaseParams: function () {
+            let settings = this.getSettings(),
+                customData = this.getCustomData(),
+                localFieldName = settings.localFieldName,
+                baseParams = {};
+
+            if (localFieldName && baseParams[localFieldName] === undefined) baseParams[localFieldName] = -1;
+
+            qx.lang.Object.mergeWith(baseParams, settings.baseParams);
+            qx.lang.Object.mergeWith(baseParams, customData.params);
+
+            return baseParams;
+        },
+
         getRequestManagement: function () {
-            if (this.__requestManagement) return this.__requestManagement;
+            if (!this.__requestManagement) {
+                let settings = this.getSettings();
 
-            var settings = this.getSettings();
-
-            if (settings.requestManagementClass) {
-                var RequestManagementClass = this._getClassByName(settings.requestManagementClass);
-                this.__requestManagement = RequestManagementClass ? new RequestManagementClass() : null
-            } else if (settings.serviceBasePath) {
-                this.__requestManagement = new omna.request.Customs(settings.serviceBasePath);
+                if (settings.requestManagementClass) {
+                    let RequestManagementClass = this._getClassByName(settings.requestManagementClass);
+                    this.__requestManagement = RequestManagementClass ? new RequestManagementClass() : null
+                } else if (settings.serviceBasePath) {
+                    this.__requestManagement = new omna.request.Customs(settings.serviceBasePath);
+                }
             }
+
+            this.__requestManagement.setBaseParams(this.getRequestBaseParams());
 
             return this.__requestManagement
         },
