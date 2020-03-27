@@ -20,6 +20,7 @@ qx.Class.define('omna.action.product.Variants', {
                 module = { id: 'Variants', i18n: this.getI18nCatalog() };
 
             data.label = this.i18nTrans('MODULE-REFERENCE-VARIANTS', data.item);
+            data.params = { product_id: data.item.id };
 
             q.messaging.emit('Application', 'open-module', module, data);
         }

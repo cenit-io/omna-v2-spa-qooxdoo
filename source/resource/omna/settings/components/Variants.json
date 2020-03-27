@@ -1,7 +1,7 @@
 [
   {
     "id": "Variants",
-    "i18n": "Products",
+    "i18n": "Variants",
     "widgetClass": "omna.management.DataGridRestService",
     "requestManagementClass": "omna.request.Variants",
     "rowHeight": 60,
@@ -10,11 +10,7 @@
     "actions": [
       "omna.action.Reload",
       "omna.action.Separator",
-      "omna.action.Add",
       "omna.action.Edit",
-      "omna.action.Details",
-      "omna.action.product.Integrations",
-      "omna.action.Remove",
       "omna.action.Separator",
       "omna.action.Search"
     ],
@@ -29,12 +25,12 @@
         "gridColumnWidth": 60
       },
       {
-        "name": "name",
+        "name": "sku",
         "widgetClass": "omna.form.field.TextField",
         "showInGrid": true,
         "includeInSearch": true,
         "accessInAddForm": "W",
-        "accessInEditForm": "W",
+        "accessInEditForm": "R",
         "required": true,
         "minLength": 2,
         "pattern": "^[^\\t\\s].*[^\\t\\s]$",
@@ -52,6 +48,33 @@
         "maximumFractionDigits": 2,
         "minimumFractionDigits": 2,
         "prefix": "$",
+        "gridColumnWidth": 100
+      },
+      {
+        "name": "cost_price",
+        "widgetClass": "omna.form.field.NumberField",
+        "showInGrid": true,
+        "includeInSearch": true,
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": true,
+        "minimum": 0,
+        "maximumFractionDigits": 2,
+        "minimumFractionDigits": 2,
+        "prefix": "$",
+        "gridColumnWidth": 100
+      },
+      {
+        "name": "quantity",
+        "widgetClass": "omna.form.field.NumberField",
+        "showInGrid": true,
+        "includeInSearch": true,
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": true,
+        "minimum": 0,
+        "maximumFractionDigits": 0,
+        "minimumFractionDigits": 0,
         "gridColumnWidth": 100
       },
       {

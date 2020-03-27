@@ -15,14 +15,14 @@
     "value": "Product / {{id}} / Details"
   },
   {
+    "name": "MODULE-REFERENCE-VARIANTS",
+    "subCatalog": "Labels",
+    "value": "Product / {{id}} / Variants"
+  },
+  {
     "name": "variants",
     "subCatalog": "Labels",
     "value": "Variants"
-  },
-  {
-    "name": "images",
-    "subCatalog": "Labels",
-    "value": "Images"
   },
   {
     "name": "general",

@@ -2,7 +2,7 @@ qx.Class.define("omna.request.Variants", {
     extend: omna.request.AbstractResource,
 
     construct: function () {
-        this.base(arguments, 'variants');
+        this.base(arguments, 'products/{product_id}/variants');
     },
 
     members: {

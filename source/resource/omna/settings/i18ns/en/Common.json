@@ -280,6 +280,11 @@
     "value": "Products"
   },
   {
+    "name": "images",
+    "subCatalog": "Labels",
+    "value": "Images"
+  },
+  {
     "name": "resource",
     "subCatalog": "Labels",
     "value": "Resource"
@@ -348,6 +353,11 @@
     "name": "copyright-company",
     "subCatalog": "Messages",
     "value": "OMNA Pte Ltd (2019): yoandrypa@gmail.com"
+  },
+  {
+    "name": "REQUIRE_PATH_PARAMETER",
+    "subCatalog": "Messages",
+    "value": "The parameter '%1' is required"
   },
   {
     "name": "CLASS_NO_FOUND",

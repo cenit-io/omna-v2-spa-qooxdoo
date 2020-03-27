@@ -42,6 +42,7 @@
         "omna.request.AvailableIntegrations",
         "omna.request.Orders",
         "omna.request.Products",
+        "omna.request.Variants",
         "omna.request.Tasks",
         "omna.request.Tenants",
         "omna.request.Flows",

@@ -1,0 +1,27 @@
+[
+  {
+    "name": "MODULE-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Variants"
+  },
+  {
+    "name": "SINGLE-ITEM-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Variant"
+  },
+  {
+    "name": "sku",
+    "subCatalog": "Labels",
+    "value": "SKU"
+  },
+  {
+    "name": "cost_price",
+    "subCatalog": "Labels",
+    "value": "Cost price"
+  },
+  {
+    "name": "quantity",
+    "subCatalog": "Labels",
+    "value": "Quantity"
+  }
+]
