@@ -22,6 +22,33 @@ qx.Class.define("omna.form.product.DetailsGeneral", {
             widget.set({ required: true, autoSize: true, wrap: false });
             label = this.i18nTrans(field);
             this.add(widget, label, null, field, this, { colSpan: 4 });
+
+            this.addGroupHeader(this.i18nTrans('package'));
+
+            widget = new omna.form.field.NumberField();
+            widget.set({ required: true, minimum: 0, maximumFractionDigits: 2, postfix: ' kg' });
+            label = this.i18nTrans('package_weight');
+            this.add(widget, label, null, 'package.weight', this, { colSpan: 1 });
+
+            widget = new omna.form.field.NumberField();
+            widget.set({ required: true, minimum: 0, maximumFractionDigits: 2, postfix: ' cm' });
+            label = this.i18nTrans('package_height');
+            this.add(widget, label, null, 'package.height', this, { colSpan: 1 });
+
+            widget = new omna.form.field.NumberField();
+            widget.set({ required: true, minimum: 0, maximumFractionDigits: 2, postfix: ' cm' });
+            label = this.i18nTrans('package_length');
+            this.add(widget, label, null, 'package.length', this, { colSpan: 1 });
+
+            widget = new omna.form.field.NumberField();
+            widget.set({ required: true, minimum: 0, maximumFractionDigits: 2, postfix: ' cm' });
+            label = this.i18nTrans('package_width');
+            this.add(widget, label, null, 'package.width', this, { colSpan: 1 });
+
+            widget = new omna.form.field.TextField();
+            widget.set({ required: true });
+            label = this.i18nTrans('package_content');
+            this.add(widget, label, null, 'package.content', this, { colSpan: 4 });
         },
 
         getI18nCatalog: function () {

@@ -51,7 +51,7 @@
         "gridColumnWidth": 100
       },
       {
-        "name": "cost_price",
+        "name": "original_price",
         "widgetClass": "omna.form.field.NumberField",
         "showInGrid": true,
         "includeInSearch": true,
@@ -95,6 +95,72 @@
         "attrModelName": "integration_id",
         "widgetClass": "omna.form.field.remote.integrations.SelectBox",
         "disableUnauthorized": false
+      },
+      {
+        "name": "package",
+        "label": "package_weight",
+        "widgetClass": "omna.form.field.NumberField",
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": false,
+        "minimum": 0,
+        "maximumFractionDigits": 2,
+        "minimumFractionDigits": 2,
+        "postfix": " kg",
+        "attrPath": "weight",
+        "attrModelName": "package.weight"
+      },
+      {
+        "name": "package",
+        "label": "package_height",
+        "widgetClass": "omna.form.field.NumberField",
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": false,
+        "minimum": 0,
+        "maximumFractionDigits": 2,
+        "minimumFractionDigits": 2,
+        "postfix": " cm",
+        "attrPath": "height",
+        "attrModelName": "package.height"
+      },
+      {
+        "name": "package",
+        "label": "package_length",
+        "widgetClass": "omna.form.field.NumberField",
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": false,
+        "minimum": 0,
+        "maximumFractionDigits": 2,
+        "minimumFractionDigits": 2,
+        "postfix": " cm",
+        "attrPath": "length",
+        "attrModelName": "package.length"
+      },
+      {
+        "name": "package",
+        "label": "package_width",
+        "widgetClass": "omna.form.field.NumberField",
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": false,
+        "minimum": 0,
+        "maximumFractionDigits": 2,
+        "minimumFractionDigits": 2,
+        "postfix": " cm",
+        "attrPath": "width",
+        "attrModelName": "package.width"
+      },
+      {
+        "name": "package",
+        "label": "package_content",
+        "widgetClass": "omna.form.field.TextArea",
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": false,
+        "attrPath": "content",
+        "attrModelName": "package.content"
       }
     ]
   }

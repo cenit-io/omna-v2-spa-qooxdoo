@@ -15,9 +15,9 @@
     "value": "SKU"
   },
   {
-    "name": "cost_price",
+    "name": "original_price",
     "subCatalog": "Labels",
-    "value": "Cost price"
+    "value": "Original price"
   },
   {
     "name": "quantity",

@@ -5,6 +5,7 @@
 qx.Class.define("omna.form.dialog.AbstractForm", {
     type: "abstract",
     extend: omna.dialog.AbstractDialog,
+    include: [omna.mixin.MFormData],
 
     members: {
         _form: null,
@@ -68,52 +69,6 @@ qx.Class.define("omna.form.dialog.AbstractForm", {
         reset: function () {
             this._form.reset();
             return this;
-        },
-
-        initializeItems: function () {
-            var name, items = this._form.getItems();
-
-            for (name in items) items[name].initialize && items[name].initialize();
-        },
-
-        getData: function () {
-            var name, items = this._form.getItems(), data = {};
-
-            for (name in items) if (items[name].isEnabled()) data[name] = this._getItemValue(items[name])
-
-            return data;
-        },
-
-        setData: function (data, redefineResetter) {
-            var items = this._form.getItems(), name;
-
-            for (name in items) this._setItemValue(items[name], data[name]);
-
-            redefineResetter && this.redefineResetter();
-
-            return this;
-        },
-
-        _getItemValue: function (item) {
-            if (qx.Class.hasInterface(item.constructor, qx.ui.core.IMultiSelection)) {
-                return item.getModelSelection().toArray();
-            } else if (qx.Class.hasInterface(item.constructor, qx.ui.core.ISingleSelection)) {
-                return item.getModelSelection().getItem(0) || null;
-            } else {
-                return item.getValue();
-            }
-        },
-
-        _setItemValue: function (item, value) {
-            if (value === undefined) value = null;
-
-            if (qx.Class.hasInterface(item.constructor, qx.ui.core.IMultiSelection)) {
-                return item.setModelSelection(value);
-            } else if (qx.Class.hasInterface(item.constructor, qx.ui.core.ISingleSelection)) {
-                return item.setModelSelection([value]);
-            } else {
-                return item.setValue(value);
-            }
         }
     },
 

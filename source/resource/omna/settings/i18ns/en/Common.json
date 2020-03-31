@@ -285,6 +285,36 @@
     "value": "Images"
   },
   {
+    "name": "package",
+    "subCatalog": "Labels",
+    "value": "Package"
+  },
+  {
+    "name": "package_weight",
+    "subCatalog": "Labels",
+    "value": "Package Weight"
+  },
+  {
+    "name": "package_height",
+    "subCatalog": "Labels",
+    "value": "Package Height"
+  },
+  {
+    "name": "package_length",
+    "subCatalog": "Labels",
+    "value": "Package Length"
+  },
+  {
+    "name": "package_width",
+    "subCatalog": "Labels",
+    "value": "Package Width"
+  },
+  {
+    "name": "package_content",
+    "subCatalog": "Labels",
+    "value": "Package Content"
+  },
+  {
     "name": "resource",
     "subCatalog": "Labels",
     "value": "Resource"
