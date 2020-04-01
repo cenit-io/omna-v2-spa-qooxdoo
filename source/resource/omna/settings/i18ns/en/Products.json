@@ -28,5 +28,20 @@
     "name": "general",
     "subCatalog": "Labels",
     "value": "General"
+  },
+  {
+    "name": "package_overwrite",
+    "subCatalog": "Labels",
+    "value": "Overwrite Package"
+  },
+  {
+    "name": "not-overwrite-package-in-any-variants",
+    "subCatalog": "Labels",
+    "value": "Do not overwrite the package information in any variant"
+  },
+  {
+    "name": "general",
+    "subCatalog": "Labels",
+    "value": "Do overwrite package information in all variants"
   }
 ]

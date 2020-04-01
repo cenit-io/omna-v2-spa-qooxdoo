@@ -158,6 +158,26 @@
         "required": false,
         "attrPath": "content",
         "attrModelName": "package.content"
+      },
+      {
+        "name": "package",
+        "label": "package_overwrite",
+        "widgetClass": "omna.form.field.LocalSelectBox",
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": true,
+        "attrModelName": "package.overwrite",
+        "i18n": "Products",
+        "options": [
+          {
+            "value": false,
+            "label": "not-overwrite-package-in-any-variants"
+          },
+          {
+            "value": true,
+            "label": "overwrite-package-in-all-variants"
+          }
+        ]
       }
     ]
   }
