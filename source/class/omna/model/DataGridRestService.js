@@ -18,14 +18,20 @@ qx.Class.define("omna.model.DataGridRestService", {
 
         var i18nCatalog = settings.i18n,
             columnNames = [],
-            columnIDs = [];
+            columnIDs = [],
+            sortables = [];
 
         fields.forEach(function (field) {
             if (field.showInGrid) {
                 columnNames.push(omna.I18n.trans(i18nCatalog, 'Labels', field.label || field.name));
                 columnIDs.push(field.name);
+                sortables.push(field.sortable !== false);
                 this.__fields.push(field);
             }
+        }, this);
+
+        sortables.forEach(function (sortable, columnIndex) {
+            this.setColumnSortable(columnIndex, sortable)
         }, this);
 
         this.setColumns(columnNames, columnIDs);
@@ -46,7 +52,7 @@ qx.Class.define("omna.model.DataGridRestService", {
             var request = this.getRequestManagement();
 
             request.count({}, function (response) {
-                if (response.successful) this._onRowCountLoaded(response.pagination.total);
+                this._onRowCountLoaded(response.successful ? response.pagination.total : 0);
             }, this);
 
             this._onRowCountLoaded(0);
@@ -64,6 +70,9 @@ qx.Class.define("omna.model.DataGridRestService", {
                     }, this);
 
                     this._onRowDataLoaded(response.data);
+                } else {
+                    this._onRowCountLoaded(0);
+                    this._onRowDataLoaded([]);
                 }
             }, this);
         },
@@ -74,13 +83,14 @@ qx.Class.define("omna.model.DataGridRestService", {
         },
 
         getSort: function () {
-            let sortField = this.getColumnId(this.getSortColumnIndex()),
-                sortOrder = this.isSortAscending() ? " asc" : " desc";
+            let field = this.__fields[this.getSortColumnIndex()];
 
-            if (!sortField) return null;
+            if (!field) return null;
 
-            let sort = {};
-            sort[sortField] = sortOrder;
+            let sortField = field.sortByField || field.name,
+                sort = {};
+
+            sort[sortField] = this.isSortAscending() ? "asc" : "desc";
             return sort
         },
 

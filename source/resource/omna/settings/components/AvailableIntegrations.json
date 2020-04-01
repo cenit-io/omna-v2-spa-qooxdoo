@@ -25,6 +25,7 @@
         "label": "logo",
         "cellRendererClass": "omna.table.cellrenderer.Logo",
         "showInGrid": true,
+        "sortable": false,
         "gridColumnWidth": 50
       },
       {

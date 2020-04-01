@@ -20,6 +20,7 @@
       {
         "name": "status",
         "showInGrid": true,
+        "sortable": false,
         "widgetClass": "omna.form.field.LocalSelectBox",
         "options": [
           "pending",
@@ -59,6 +60,7 @@
         "name": "progress",
         "cellRendererClass": "omna.table.cellrenderer.Number",
         "showInGrid": true,
+        "sortable": false,
         "gridColumnWidth": 100,
         "maximumFractionDigits": 0,
         "postfix": "%",
@@ -68,6 +70,7 @@
       },
       {
         "name": "description",
+        "sortable": false,
         "widgetClass": "omna.form.field.TextField",
         "showInGrid": true,
         "includeInSearch": true,

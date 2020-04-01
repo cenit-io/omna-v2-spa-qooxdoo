@@ -22,6 +22,7 @@
         "label": "logo",
         "cellRendererClass": "omna.table.cellrenderer.Logo",
         "showInGrid": true,
+        "sortable": false,
         "gridColumnWidth": 50
       },
       {
@@ -35,7 +36,8 @@
       {
         "name": "title",
         "label": "topic",
-        "showInGrid": true
+        "showInGrid": true,
+        "sortByField": "topic"
       },
       {
         "name": "address",
@@ -48,6 +50,7 @@
       {
         "name": "integration",
         "showInGrid": true,
+        "sortable": false,
         "isTemplate": true,
         "i18n": {
           "subCatalog": "Titles",

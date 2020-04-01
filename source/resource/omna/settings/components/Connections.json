@@ -23,6 +23,7 @@
         "label": "logo",
         "cellRendererClass": "omna.table.cellrenderer.Logo",
         "showInGrid": true,
+        "sortable": false,
         "gridColumnWidth": 50
       },
       {
@@ -58,6 +59,7 @@
       },
       {
         "name": "authorized",
+        "sortable": false,
         "cellRendererClass": "omna.table.cellrenderer.Boolean",
         "showInGrid": true,
         "gridColumnWidth": 100

@@ -26,6 +26,7 @@
         "name": "images",
         "widgetClass": "omna.form.field.grid.Gallery",
         "showInGrid": true,
+        "sortable": false,
         "includeInSearch": false,
         "accessInAddForm": "N",
         "accessInEditForm": "N",
@@ -61,6 +62,7 @@
         "name": "variants",
         "widgetClass": "omna.form.field.NumberField",
         "showInGrid": true,
+        "sortable": false,
         "gridColumnWidth": 100,
         "gridRendererStyle": {
           "textAlign": "center"
@@ -69,6 +71,7 @@
       {
         "name": "integrations",
         "showInGrid": true,
+        "sortable": false,
         "cellRendererClass": "omna.table.cellrenderer.String",
         "cellClass": "integrations",
         "isTemplate": true,

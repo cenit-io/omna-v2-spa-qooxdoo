@@ -30,6 +30,7 @@
         "name": "is_ready_to_omna",
         "cellRendererClass": "omna.table.cellrenderer.Boolean",
         "showInGrid": true,
+        "sortable": false,
         "gridColumnWidth": 100
       },
       {
