@@ -55,7 +55,7 @@ qx.Class.define("omna.model.DataGridRestService", {
         _loadRowData: function (pFrom, pTo) {
             var request = this.getRequestManagement();
 
-            request.findRange(pFrom, pTo, this.getOrder(), {}, function (response) {
+            request.findRange(pFrom, pTo, this.getSort(), {}, function (response) {
                 if (response.successful) {
                     response.data.forEach(function (record, index) {
                         Object.keys(record).forEach(function (field) {
@@ -73,11 +73,15 @@ qx.Class.define("omna.model.DataGridRestService", {
             this.base(arguments)
         },
 
-        getOrder: function () {
-            var sortField = this.getColumnId(this.getSortColumnIndex()),
+        getSort: function () {
+            let sortField = this.getColumnId(this.getSortColumnIndex()),
                 sortOrder = this.isSortAscending() ? " asc" : " desc";
 
-            return sortField ? sortField + sortOrder : null;
+            if (!sortField) return null;
+
+            let sort = {};
+            sort[sortField] = sortOrder;
+            return sort
         },
 
         parseValue: function (fieldName, fieldValue) {

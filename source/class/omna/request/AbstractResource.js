@@ -255,21 +255,21 @@ qx.Class.define("omna.request.AbstractResource", {
          *
          * @param from {Number} Start index of results.
          * @param to {Number} End index of results.
-         * @param order {String?} Order of results.
+         * @param sort {String?} Sort of results.
          * @param params {Map?} Filters to apply.
          * @param callBack {Function} Callback function with response params Ex: function(response){...}.
          * @param scope {Object?} Callback function scope.
          */
-        findRange: function (from, to, order, params, callBack, scope) {
+        findRange: function (from, to, sort, params, callBack, scope) {
             if (qx.lang.Type.isFunction(params)) {
                 scope = callBack;
                 callBack = params;
                 params = null;
-            } else if (qx.lang.Type.isFunction(order)) {
+            } else if (qx.lang.Type.isFunction(sort)) {
                 scope = params;
-                callBack = order;
+                callBack = sort;
                 params = null;
-                order = null;
+                sort = null;
             }
 
             var data = qx.lang.Object.clone(params) || {};
@@ -277,14 +277,14 @@ qx.Class.define("omna.request.AbstractResource", {
             data.offset = from;
             data.limit = to - from + 1;
 
-            if (order) data.order = order;
+            if (sort) data.sort = sort;
 
             this.submit("GET", null, data, callBack, scope);
         },
 
-        findAll: function (order, params, callBack, scope) {
+        findAll: function (sort, params, callBack, scope) {
             var findBlock = qx.lang.Function.bind(function (from, to, items) {
-                this.findRange(from, to, order, params, function (response) {
+                this.findRange(from, to, sort, params, function (response) {
                     if (response.successful) {
                         items = items.concat(response.data);
 
