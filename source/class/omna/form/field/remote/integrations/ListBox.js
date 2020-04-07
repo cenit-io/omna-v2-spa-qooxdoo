@@ -10,16 +10,16 @@ qx.Class.define('omna.form.field.remote.integrations.ListBox', {
 
     members: {
         __loadItems: function () {
-            var request = new omna.request.Connections();
+            let request = new omna.request.Connections();
 
             request.setAsync(false);
             request.findAll(null, { with_details: true }, function (response) {
-                var label, listItem;
+                let label, listItem, enabled;
 
                 if (response.successful) response.data.forEach(function (item) {
                     label = qx.bom.Template.render(omna.I18n.trans('Titles', 'INTEGRATION'), { integration: item });
                     listItem = new qx.ui.form.ListItem(label, this.integrationLogo(item.channel), item.id);
-                    listItem.setEnabled(item.authorized === true);
+                    listItem.set({ enabled: item.authorized === true, rich: true });
                     this.add(listItem);
                 }, this);
             }, this);

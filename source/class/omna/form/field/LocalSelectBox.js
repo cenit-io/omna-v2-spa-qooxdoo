@@ -31,7 +31,7 @@ qx.Class.define("omna.form.field.LocalSelectBox", {
                     label = model = item;
                 }
 
-                if (i18n) label = omna.I18n.trans(i18n, 'Labels', label)
+                if (i18n) label = omna.I18n.trans(i18n, 'Labels', label);
 
                 icon = icon || null;
 
