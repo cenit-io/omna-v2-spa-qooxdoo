@@ -43,5 +43,30 @@
     "name": "general",
     "subCatalog": "Labels",
     "value": "Do overwrite package information in all variants"
+  },
+  {
+    "name": "link_with_its_variants",
+    "subCatalog": "Labels",
+    "value": "Link with its variants"
+  },
+  {
+    "name": "not_link_with_its_variants",
+    "subCatalog": "Labels",
+    "value": "Do not link with any of its variants"
+  },
+  {
+    "name": "link_selected_with_its_variants",
+    "subCatalog": "Labels",
+    "value": "Link only selected product integrations with all its variants"
+  },
+  {
+    "name": "link_new_with_its_variants",
+    "subCatalog": "Labels",
+    "value": "Link only new product integrations with all its variants"
+  },
+  {
+    "name": "link_all_with_its_variants",
+    "subCatalog": "Labels",
+    "value": "Link all product integrations with all its variants"
   }
 ]

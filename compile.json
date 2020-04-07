@@ -30,7 +30,8 @@
         "omna.action.order.Export",
         "omna.action.task.Retry",
         "omna.action.tenant.Switch",
-        "omna.action.product.Integrations",
+        "omna.action.product.IntegrationsLink",
+        "omna.action.product.IntegrationsUnLink",
         "omna.action.product.Variants",
         // Cell Renderer
         "omna.table.cellrenderer.LongText",

@@ -25,9 +25,14 @@
     "value": "%1 data to be created:"
   },
   {
-    "name": "integrations",
+    "name": "integrations-link",
     "subCatalog": "Titles",
-    "value": "Integrations linked with the selected %1:"
+    "value": "Integrations to be link with the selected %1:"
+  },
+  {
+    "name": "integrations-unlink",
+    "subCatalog": "Titles",
+    "value": "Integrations to be unlink with the selected %1:"
   },
   {
     "name": "description",
@@ -65,14 +70,9 @@
     "value": "Remove it from remote integration"
   },
   {
-    "name": "remove_from_omna",
+    "name": "not_remove_from_integration",
     "subCatalog": "Labels",
-    "value": "Remove it from OMNA database"
-  },
-  {
-    "name": "remove_from_anywhere",
-    "subCatalog": "Labels",
-    "value": "Remove it from remote integration and OMNA database"
+    "value": "Do not remove it from remote integration"
   },
   {
     "name": "title",
@@ -337,7 +337,7 @@
   {
     "name": "INTEGRATION",
     "subCatalog": "Titles",
-    "value": "{{integration.name}} of {{integration.channel_title}}"
+    "value": "<span class='list-item integration {{^integration.authorized}}not-authorized{{/integration.authorized}}'>{{integration.name}} of {{integration.channel_title}}</span>"
   },
   {
     "name": "INTEGRATIONS",
@@ -353,6 +353,16 @@
     "name": "integrations",
     "subCatalog": "Labels",
     "value": "Integrations"
+  },
+  {
+    "name": "link",
+    "subCatalog": "Labels",
+    "value": "Link"
+  },
+  {
+    "name": "unlink",
+    "subCatalog": "Labels",
+    "value": "UnLink"
   },
   {
     "name": "copyright",
@@ -410,9 +420,14 @@
     "value": "Do you really want to cancel the selected <b class='resource'>%1</b>?"
   },
   {
-    "name": "CONFIRM-PUBLISH",
+    "name": "CONFIRM-LINK",
     "subCatalog": "Messages",
-    "value": "Do you really want to link and unlink the selected <b class='resource'>%1</b> with selected and deselected <b>integrations</b> respectively?"
+    "value": "Do you really want to link the selected <b class='resource'>%1</b> with selected <b>integrations</b>?"
+  },
+  {
+    "name": "CONFIRM-UNLINK",
+    "subCatalog": "Messages",
+    "value": "Do you really want to unlink the selected <b class='resource'>%1</b> with selected <b>integrations</b>?"
   },
   {
     "name": "SUCCESSFUL-ADDING",

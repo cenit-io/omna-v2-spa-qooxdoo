@@ -62,3 +62,15 @@ span.form-control {
 div.page-content {
     padding-right: 5px;
 }
+
+span.list-item.integration.not-authorized::after {
+    content: "not authorized";
+    color: black;
+    background-color: #FFFFAA;
+    border-radius: 6px;
+    opacity: 0.3;
+    margin-left: 12px;
+    padding: 0px 5px;
+    border: 1px solid #C00F00;
+    white-space: nowrap;
+}

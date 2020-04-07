@@ -16,7 +16,8 @@
       "omna.action.Edit",
       "omna.action.Details",
       "omna.action.product.Variants",
-      "omna.action.product.Integrations",
+      "omna.action.product.IntegrationsLink",
+      "omna.action.product.IntegrationsUnLink",
       "omna.action.Remove",
       "omna.action.Separator",
       "omna.action.Search"
