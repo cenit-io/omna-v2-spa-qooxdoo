@@ -4,12 +4,6 @@ qx.Class.define("omna.action.product.IntegrationsAbstractLink", {
     include: [omna.mixin.MActionWithDlg],
 
     members: {
-        _getCurrentIntegrations: function () {
-            return this.getSelectedItem().integrations.map(function (integration) {
-                return integration.id
-            })
-        },
-
         _doRequest: function (action, itemId, itemLabel, params, done) {
             if (params.integration_ids.length === 0) return done.call(this);
 

@@ -8,7 +8,7 @@ qx.Class.define("omna.request.Orders", {
     members: {
         getOrderDocTypes: function (order, callBack, scope) {
             var cacheId = 'order-doc-types-' + order.integration.channel,
-                cache = qx.module.Storage.getSessionItem(cacheId);
+                cache = this.getCacheItem(cacheId);
 
             if (cache) {
                 callBack.call(scope, cache);
@@ -18,7 +18,7 @@ qx.Class.define("omna.request.Orders", {
                 // Call remote service
                 this.submit("GET", path, null, function (response) {
                     if (response.successful) {
-                        qx.module.Storage.setSessionItem(cacheId, response);
+                        this.setCacheItem(cacheId, response);
                     } else {
                         var msg = omna.I18n.trans('Orders', 'Messages', 'FAILED-LOAD-DOC-TYPES');
                         q.messaging.emit('Application', 'error', msg)

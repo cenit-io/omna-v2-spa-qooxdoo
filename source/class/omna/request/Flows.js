@@ -8,7 +8,7 @@ qx.Class.define("omna.request.Flows", {
     members: {
         getTypes: function (callBack, scope) {
             var cacheId = 'flow-types',
-                cache = qx.module.Storage.getSessionItem(cacheId);
+                cache = this.getCacheItem(cacheId);
 
             if (cache) {
                 callBack.call(scope, cache);
@@ -16,7 +16,7 @@ qx.Class.define("omna.request.Flows", {
                 // Call remote service
                 this.submit("GET", 'types', null, function (response) {
                     if (response.successful) {
-                        qx.module.Storage.setSessionItem(cacheId, response);
+                        this.setCacheItem(cacheId, response);
                     } else {
                         var msg = omna.I18n.trans('Flows', 'Messages', 'FAILED-LOADING-FLOW-TYPES');
                         q.messaging.emit('Application', 'error', msg)

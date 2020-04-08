@@ -114,6 +114,18 @@ qx.Class.define("omna.request.AbstractResource", {
     },
 
     members: {
+        setCacheItem: function (cacheId, data) {
+            qx.module.Storage.setSessionItem(cacheId, data);
+        },
+
+        getCacheItem: function (cacheId) {
+            qx.module.Storage.getSessionItem(cacheId);
+        },
+
+        removeCacheItem: function (cacheId) {
+            qx.module.Storage.removeSessionItem(cacheId);
+        },
+
         _getServiceUrl: function (url) {
             if (!url.match(/^https?:/)) url = this._getServerBaseUrl() + '/' + url;
 
@@ -217,7 +229,7 @@ qx.Class.define("omna.request.AbstractResource", {
             // Set request headers and params
             request.setRequestHeader("Accept", "application/json");
             request.resetRequestData();
-            if (method.match(/^(POST|PUT)$/)) {
+            if (method.match(/^(POST|PUT|PATCH)$/)) {
                 request.setRequestHeader("Content-Type", "application/json");
                 request.setRequestData(params)
             } else {
@@ -360,19 +372,27 @@ qx.Class.define("omna.request.AbstractResource", {
             callBack && callBack.call(scope, response, e);
         },
 
+        cleanCacheItems: function (method, url, response) {
+
+        },
+
         /**
          * Fired when request completes without error and transport’s status indicates success.
          */
         onSuccess: function (e, callBack, scope) {
-            var response = e.getTarget().getResponse();
+            var target = e.getTarget(),
+                response = target.getResponse();
 
-            response.statusCode = response.statusCode || e.getTarget().getStatus();
+            response.statusCode = response.statusCode || target.getStatus();
             response.successful = true;
 
             callBack && callBack.call(scope || this, response, e);
 
             if (response.type === 'task' && qx.lang.Type.isObject(response.data)) this.openTaskDetails(response.data);
-        },
+
+            this.cleanCacheItems(target.getMethod(), target.getUrl(), response)
+        }
+        ,
 
         /**
          * Fired when request completes without error but erroneous HTTP status.
@@ -390,7 +410,8 @@ qx.Class.define("omna.request.AbstractResource", {
 
             callBack && callBack.call(scope || this, response, e);
             q.messaging.emit("Application", "error", response.message);
-        },
+        }
+        ,
 
         onError: function (e, callBack, scope) {
             var response = e.getTarget().getResponse() || '';
@@ -409,4 +430,5 @@ qx.Class.define("omna.request.AbstractResource", {
         var rm = this.__requestManagement;
         if (rm && !(rm.isDisposed() || rm.isDone())) rm.abort();
     }
-});
+})
+;

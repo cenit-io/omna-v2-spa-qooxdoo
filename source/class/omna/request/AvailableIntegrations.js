@@ -28,10 +28,8 @@ qx.Class.define("omna.request.AvailableIntegrations", {
             }, this);
         },
 
-        // override
-        onSuccess: function (e, callBack, scope) {
-            qx.module.Storage.removeSessionItem('integration-channels');
-            this.base(arguments, e, callBack, scope);
+        cleanCacheItems: function (method, url, response) {
+            if (method.match(/POST|PUT|DELETE|PATCH/)) this.removeCacheItem('integration-channels');
         }
     }
 });

@@ -6,9 +6,23 @@ qx.Class.define("omna.request.Connections", {
     },
 
     members: {
+        all: function (callBack, scope) {
+            var cacheId = 'integration-connected',
+                cache = this.getCacheItem(cacheId);
+
+            if (cache) {
+                callBack.call(scope, cache);
+            } else {
+                this.findAll(null, { with_details: true }, function (response) {
+                    if (response.successful) this.setCacheItem(cacheId, response);
+                    callBack.call(scope, response);
+                }, this)
+            }
+        },
+
         getChannels: function (callBack, scope) {
             var cacheId = 'integration-channels',
-                cache = qx.module.Storage.getSessionItem(cacheId);
+                cache = this.getCacheItem(cacheId);
 
             if (cache) {
                 callBack.call(scope, cache);
@@ -16,7 +30,7 @@ qx.Class.define("omna.request.Connections", {
                 // Call remote service
                 this.submit("GET", 'channels', null, function (response) {
                     if (response.successful) {
-                        qx.module.Storage.setSessionItem(cacheId, response);
+                        this.setCacheItem(cacheId, response);
                     } else {
                         var msg = omna.I18n.trans('Connections', 'Messages', 'FAILED-LOADING-CHANNELS');
                         q.messaging.emit('Application', 'error', msg)
@@ -64,6 +78,10 @@ qx.Class.define("omna.request.Connections", {
 
                 callBack && callBack.call(scope, response);
             }, this);
+        },
+
+        cleanCacheItems: function (method, url, response) {
+            if (method.match(/POST|PUT|DELETE|PATCH/)) this.removeCacheItem('integration-connected');
         }
     }
 });
