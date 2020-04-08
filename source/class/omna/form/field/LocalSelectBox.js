@@ -20,8 +20,10 @@ qx.Class.define("omna.form.field.LocalSelectBox", {
 
     members: {
         _applyOptions: function (items) {
+            let i18n = this.getI18n();
+
             items.forEach(function (item) {
-                var label, model, icon, i18n = this.getI18n();
+                let label, model, icon;
 
                 if (qx.lang.Type.isObject(item)) {
                     model = item.value;
@@ -32,6 +34,7 @@ qx.Class.define("omna.form.field.LocalSelectBox", {
                 }
 
                 if (i18n) label = omna.I18n.trans(i18n, 'Labels', label);
+                console.log(i18n, label);
 
                 icon = icon || null;
 

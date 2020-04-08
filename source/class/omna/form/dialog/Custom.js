@@ -74,7 +74,7 @@ qx.Class.define("omna.form.dialog.Custom", {
                         }
 
                         label = this.i18nTrans(field.label || field.name);
-                        form.add(widget, label, validator, field.attrModelName || field.name, form);
+                        form.add(widget, label, validator, field.customModelName || field.name, form);
 
                     } else {
                         q.messaging.emit("Application", "error", this.tr("Class no found: '%1'.", field.widgetClass));
@@ -83,26 +83,6 @@ qx.Class.define("omna.form.dialog.Custom", {
             }, this);
 
             this.initializeItems();
-        },
-
-        setData: function (data, redefineResetter) {
-            var name, value, fieldSettings,
-                items = this._form.getItems();
-
-            for (name in items) {
-                fieldSettings = items[name].getSettings ? items[name].getSettings() : items[name].__settings;
-                value = data[fieldSettings.name];
-
-                if (fieldSettings.attrPath) fieldSettings.attrPath.split('.').forEach(function (attr) {
-                    value = qx.lang.Type.isObject(value) ? value[attr] : undefined;
-                });
-
-                this._setItemValue(items[name], value);
-            }
-
-            redefineResetter && this.redefineResetter();
-
-            return this;
         }
     }
 });

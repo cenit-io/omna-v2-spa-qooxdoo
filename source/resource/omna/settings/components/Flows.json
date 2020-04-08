@@ -4,6 +4,7 @@
     "widgetClass": "omna.management.DataGridRestService",
     "requestManagementClass": "omna.request.Flows",
     "region": 70,
+    "formWidth": 600,
     "baseParams": {
       "with_details": true
     },
@@ -19,8 +20,7 @@
     ],
     "fields": [
       {
-        "name": "integration",
-        "attrPath": "channel",
+        "name": "integration.channel",
         "label": "logo",
         "cellRendererClass": "omna.table.cellrenderer.Logo",
         "showInGrid": true,
@@ -37,35 +37,37 @@
       {
         "name": "title",
         "label": "type",
-        "showInGrid": true
+        "showInGrid": true,
+        "gridColumnWidth": 250
       },
       {
-        "name": "integration",
+        "name": "integration.id",
+        "label": "integration",
         "showInGrid": true,
         "sortable": false,
         "isTemplate": true,
+        "isRichText": true,
         "i18n": {
           "subCatalog": "Titles",
           "name": "INTEGRATION"
         },
         "accessInAddForm": "W",
         "required": true,
-        "attrPath": "id",
-        "attrModelName": "integration_id",
         "widgetClass": "omna.form.field.remote.integrations.SelectBox",
+        "customModelName": "integration_id",
         "disableUnauthorized": true
       },
       {
-        "name": "integration",
+        "name": "integration.id",
+        "label": "integration",
         "includeInSearch": true,
-        "attrModelName": "integration_id",
         "widgetClass": "omna.form.field.remote.integrations.SelectBox",
+        "customModelName": "integration_id",
         "disableUnauthorized": false
       },
       {
-        "name": "task",
+        "name": "task.scheduler.active",
         "label": "scheduler",
-        "attrPath": "scheduler.active",
         "cellRendererClass": "omna.table.cellrenderer.Boolean",
         "showInGrid": true,
         "sortable": false,

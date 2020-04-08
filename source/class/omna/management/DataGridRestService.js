@@ -9,7 +9,6 @@ qx.Class.define("omna.management.DataGridRestService", {
             {
                 serviceBasePath: '/serviceBasePath',
                 formWidth: 500,
-                searchFormWidth: 400,
                 rowHeight: 28,
                 blockSize: 25,
                 maxCachedBlockCount: 5,

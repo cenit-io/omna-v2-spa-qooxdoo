@@ -5,15 +5,17 @@ qx.Mixin.define('omna.mixin.MFormData', {
         },
 
         initializeItems: function () {
-            var name, items = this.getForm().getItems();
+            let name, items = this.getForm().getItems();
 
             for (name in items) items[name].initialize && items[name].initialize();
         },
 
         getData: function () {
-            var name, items = this.getForm().getItems(), data = {},
+            let items = this.getForm().getItems(),
+                name, data = {},
+
                 _setModel = (attr, value, model) => {
-                    var m = attr.match(/^([^\.]+)\.(.*)$/);
+                    let m = attr.match(/^([^\.]+)\.(.*)$/);
 
                     if (!m) return model[attr] = value;
 
@@ -27,16 +29,27 @@ qx.Mixin.define('omna.mixin.MFormData', {
         },
 
         setData: function (data, redefineResetter) {
-            var items = this.getForm().getItems(), name,
+            let items = this.getForm().getItems(),
+                name, model, settings,
+
                 _getModel = (attr, model) => {
-                    var m = attr.match(/^([^\.]+)\.(.*)$/);
+                    let m = attr.match(/^([^\.]+)\.(.*)$/);
 
                     if (!m) return model[attr];
 
                     return _getModel(m[2], model[m[1]] || {});
                 };
 
-            for (name in items) this._setItemValue(items[name], _getModel(name, data));
+            for (name in items) {
+                model = _getModel(name, data);
+
+                if (model === undefined) {
+                    settings = items[name].getSettings ? items[name].getSettings() : items[name].__settings;
+                    model = settings ? _getModel(settings.name, data) : model
+                }
+
+                this._setItemValue(items[name], model);
+            }
 
             redefineResetter && this.redefineResetter();
 

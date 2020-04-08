@@ -103,14 +103,16 @@ qx.Class.define("omna.model.DataGridRestService", {
 
         // overridden
         getValue: function (columnIndex, rowIndex) {
-            var value = this.base(arguments, columnIndex, rowIndex),
-                field = this.__fields[columnIndex];
+            var rowData = this.getRowData(rowIndex);
 
-            if (field.attrPath) {
-                field.attrPath.split('.').forEach(function (attr) {
-                    value = qx.lang.Type.isObject(value) ? value[attr] : null;
-                });
-            }
+            if (rowData == null) return null;
+
+            let columnId = this.getColumnId(columnIndex),
+                value = rowData;
+
+            columnId.split('.').forEach(function (attr) {
+                value = qx.lang.Type.isObject(value) ? value[attr] : null;
+            });
 
             return value;
         }

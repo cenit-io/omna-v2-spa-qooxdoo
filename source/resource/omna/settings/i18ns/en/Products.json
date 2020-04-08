@@ -40,7 +40,7 @@
     "value": "Do not overwrite the package information in any variant"
   },
   {
-    "name": "general",
+    "name": "overwrite-package-in-all-variants",
     "subCatalog": "Labels",
     "value": "Do overwrite package information in all variants"
   },

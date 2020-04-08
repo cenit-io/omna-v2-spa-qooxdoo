@@ -35,6 +35,7 @@ qx.Class.define("omna.form.dialog.Search", {
 
                     if (widgetClass) {
                         var widget = new widgetClass();
+                        widget.setSettings ? widget.setSettings(field) : widget.__settings = field;
                         widget.setWidth && widget.setWidth(Math.floor(this.getWidth() * 67 / 100));
                         widget.setFromJSON(field);
 
@@ -54,7 +55,7 @@ qx.Class.define("omna.form.dialog.Search", {
                         }
 
                         var label = this.i18nTrans(field.label || field.name);
-                        form.add(widget, label, validator, field.attrModelName || field.name, form);
+                        form.add(widget, label, validator, field.customModelName || field.name, form);
 
                     } else {
                         q.messaging.emit("Application", "error", this.tr("Class no found: '%1'.", field.widgetClass));

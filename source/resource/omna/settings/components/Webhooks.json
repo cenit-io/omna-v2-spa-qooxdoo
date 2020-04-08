@@ -17,8 +17,7 @@
     ],
     "fields": [
       {
-        "name": "integration",
-        "attrPath": "channel",
+        "name": "integration.channel",
         "label": "logo",
         "cellRendererClass": "omna.table.cellrenderer.Logo",
         "showInGrid": true,
@@ -37,7 +36,8 @@
         "name": "title",
         "label": "topic",
         "showInGrid": true,
-        "sortByField": "topic"
+        "sortByField": "topic",
+        "gridColumnWidth": 300
       },
       {
         "name": "address",
@@ -48,27 +48,27 @@
         "required": true
       },
       {
-        "name": "integration",
+        "name": "integration.id",
+        "label": "integration",
         "showInGrid": true,
         "sortable": false,
         "isTemplate": true,
+        "isRichText": true,
         "i18n": {
           "subCatalog": "Titles",
           "name": "INTEGRATION"
         },
-        "gridColumnWidth": 250,
         "accessInAddForm": "W",
         "accessInEditForm": "W",
         "required": true,
-        "attrPath": "id",
-        "attrModelName": "integration_id",
+        "customModelName": "integration_id",
         "widgetClass": "omna.form.field.remote.integrations.SelectBox",
         "disableUnauthorized": true
       },
       {
         "name": "integration",
         "includeInSearch": true,
-        "attrModelName": "integration_id",
+        "customModelName": "integration_id",
         "widgetClass": "omna.form.field.remote.integrations.SelectBox",
         "disableUnauthorized": false
       },

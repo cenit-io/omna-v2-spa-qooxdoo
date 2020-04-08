@@ -3,6 +3,7 @@
     "id": "Orders",
     "widgetClass": "omna.management.DataGridRestService",
     "requestManagementClass": "omna.request.Orders",
+    "searchFormWidth": 600,
     "baseParams": {
       "with_details": true
     },
@@ -19,8 +20,7 @@
     ],
     "fields": [
       {
-        "name": "integration",
-        "attrPath": "channel",
+        "name": "integration.channel",
         "label": "logo",
         "cellRendererClass": "omna.table.cellrenderer.Logo",
         "showInGrid": true,
@@ -84,8 +84,8 @@
           "name": "INTEGRATION"
         },
         "includeInSearch": true,
-        "attrModelName": "integration_id",
         "widgetClass": "omna.form.field.remote.integrations.SelectBox",
+        "customModelName": "integration_id",
         "disableUnauthorized": false
       },
       {
