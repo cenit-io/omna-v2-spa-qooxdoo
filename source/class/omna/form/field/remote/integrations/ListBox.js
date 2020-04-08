@@ -5,24 +5,51 @@ qx.Class.define('omna.form.field.remote.integrations.ListBox', {
     construct: function () {
         this.base(arguments);
         this.setSelectionMode('additive');
+        this.__listItems = [];
         this.__loadItems();
     },
 
-    members: {
-        __loadItems: function () {
-            let request = new omna.request.Connections();
+    properties: {
+        disableUnauthorized: {
+            check: 'Boolean',
+            init: true,
+            apply: '_applyDisableUnauthorized'
+        }
+    },
 
-            request.setAsync(false);
-            request.findAll(null, { with_details: true }, function (response) {
-                let label, listItem, enabled;
+    members: {
+        __listItems: null,
+        __requestManagement: null,
+
+        __loadItems: function () {
+            this.__requestManagement = this.__requestManagement || new omna.request.Connections();
+
+            this.__requestManagement.setAsync(false);
+            this.__requestManagement.all(function (response) {
+                let label, listItem, enabled, disableUnauthorized = this.isDisableUnauthorized();
 
                 if (response.successful) response.data.forEach(function (item) {
                     label = qx.bom.Template.render(omna.I18n.trans('Titles', 'INTEGRATION'), { integration: item });
+                    enabled = item.authorized === (disableUnauthorized === false) || (item.authorized === true);
+
                     listItem = new qx.ui.form.ListItem(label, this.integrationLogo(item.channel), item.id);
-                    listItem.set({ enabled: item.authorized === true, rich: true });
+                    listItem.set({ enabled: enabled, rich: true });
                     this.add(listItem);
+                    this.__listItems.push(listItem);
                 }, this);
             }, this);
+        },
+
+        _applyDisableUnauthorized: function () {
+            this.__loadItems();
+        },
+
+        getListItems: function () {
+            return this.__listItems;
         }
+    },
+
+    destruct: function () {
+        delete this.__listItems;
     }
 });

@@ -17,13 +17,13 @@ qx.Class.define('omna.form.field.remote.integrations.SelectBox', {
 
     members: {
         __loadItems: function () {
-            let enabled, request = new omna.request.Connections();
+            this.__requestManagement = this.__requestManagement || new omna.request.Connections();
 
             this.removeAll();
 
-            request.setAsync(false);
-            request.findAll(null, { with_details: true }, function (response) {
-                var label, listItem, disableUnauthorized = this.isDisableUnauthorized();
+            this.__requestManagement.setAsync(false);
+            this.__requestManagement.all(function (response) {
+                let label, listItem, enabled, disableUnauthorized = this.isDisableUnauthorized();
 
                 if (response.successful) response.data.forEach(function (item) {
                     label = qx.bom.Template.render(omna.I18n.trans('Titles', 'INTEGRATION'), { integration: item });

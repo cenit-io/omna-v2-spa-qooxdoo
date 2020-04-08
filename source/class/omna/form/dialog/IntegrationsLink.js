@@ -22,6 +22,20 @@ qx.Class.define("omna.form.dialog.IntegrationsLink", {
             });
 
             form.add(applyToItsVariants, this.i18nTrans('link_with_its_variants'), validator, 'link_with_its_variants', form);
+        },
+
+        _createIntegrationField: function (form) {
+            return new omna.form.field.remote.integrations.ListBox;
+        },
+
+        setData: function (data, redefineResetter) {
+            data = {
+                id: data.id,
+                link_with_its_variants: null,
+                integration_ids: data.integrations ? data.integrations.map((integration) => integration.id) : []
+            };
+
+            return this.base(arguments, data, redefineResetter);
         }
     }
 });

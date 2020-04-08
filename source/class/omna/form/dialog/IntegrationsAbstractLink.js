@@ -23,20 +23,11 @@ qx.Class.define("omna.form.dialog.IntegrationsAbstractLink", {
         },
 
         _createFormFields: function (form) {
-            var list = new omna.form.field.remote.integrations.ListBox;
+            var list = this._createIntegrationField();
 
             list.setRequired(true);
 
             form.add(list, this.i18nTrans('integrations'), null, 'integration_ids', form);
-        },
-
-        setData: function (data, redefineResetter) {
-            data = {
-                id: data.id,
-                integration_ids: data.integrations ? data.integrations.map((integration) => integration.id) : []
-            };
-
-            return this.base(arguments, data, redefineResetter);
         }
     }
 });
