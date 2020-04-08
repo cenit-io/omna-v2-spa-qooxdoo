@@ -45,7 +45,7 @@ qx.Mixin.define('omna.mixin.MFormData', {
 
                 if (model === undefined) {
                     settings = items[name].getSettings ? items[name].getSettings() : items[name].__settings;
-                    model = settings ? _getModel(settings.name, data) : model
+                    model = settings && settings.name ? _getModel(settings.name, data) : model
                 }
 
                 this._setItemValue(items[name], model);
