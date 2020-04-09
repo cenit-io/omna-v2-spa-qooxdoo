@@ -7,7 +7,7 @@ qx.Class.define("omna.request.Connections", {
 
     members: {
         all: function (callBack, scope) {
-            var cacheId = 'integration-connected',
+            var cacheId = 'integrations-connected',
                 cache = this.getCacheItem(cacheId);
 
             if (cache) {
@@ -45,7 +45,7 @@ qx.Class.define("omna.request.Connections", {
                 data = this._signRequest(path, { redirect_uri: this._getAppBaseUrl() }),
                 url = this._getServiceUrl(path) + '?' + qx.util.Uri.toParameter(data);
 
-            this.removeCacheItem('integration-connected');
+            this.removeCacheItem('integrations-connected');
             window.location = url
         },
 
@@ -83,7 +83,7 @@ qx.Class.define("omna.request.Connections", {
         },
 
         cleanCacheItems: function (method, url, response) {
-            if (method.match(/POST|PUT|DELETE|PATCH/)) this.removeCacheItem('integration-connected');
+            if (method.match(/POST|PUT|DELETE|PATCH/)) this.removeCacheItem('integrations-connected');
         }
     }
 });
