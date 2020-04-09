@@ -26,7 +26,7 @@ qx.Class.define("omna.action.product.IntegrationsLink", {
             msg = this.i18nTrans('Messages', 'CONFIRM-LINK', [itemLabel]);
             omna.dialog.Confirm.show(msg, function (response) {
                 if (response === 'yes') {
-                    this._doRequest('publish', item.id, itemLabel, formData);
+                    this._doRequest('link', item.id, itemLabel, formData);
                     dlg.close();
                 }
             }, this);

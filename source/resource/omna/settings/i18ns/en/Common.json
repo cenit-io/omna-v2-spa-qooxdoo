@@ -450,12 +450,12 @@
     "value": "The selected <b class='resource'>%1</b> was successfully canceled."
   },
   {
-    "name": "SUCCESSFUL-PUBLISH",
+    "name": "SUCCESSFUL-LINK",
     "subCatalog": "Messages",
     "value": "The <b>task</b> to <b>link</b> the selected <b class='resource'>%1</b> with the selected <b>integrations</b> was successfully created."
   },
   {
-    "name": "SUCCESSFUL-UNPUBLISH",
+    "name": "SUCCESSFUL-UNLINK",
     "subCatalog": "Messages",
     "value": "The <b>task</b> to <b>unlink</b> the selected <b class='resource'>%1</b> with the selected <b>integrations</b> was successfully created."
   },
@@ -490,12 +490,12 @@
     "value": "The reading failed."
   },
   {
-    "name": "FAILED-PUBLISH",
+    "name": "FAILED-LINK",
     "subCatalog": "Messages",
     "value": "The creation of the <b>task</b> to <b>link</b> the selected <b class='resource'>%1</b> with the selected <b>integrations</b> has failed."
   },
   {
-    "name": "FAILED-UNPUBLISH",
+    "name": "FAILED-UNLINK",
     "subCatalog": "Messages",
     "value": "The creation of the <b>task</b> to <b>unlink</b> the selected <b class='resource'>%1</b> with the selected <b>integrations</b> has failed."
   }

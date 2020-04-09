@@ -6,12 +6,12 @@ qx.Class.define("omna.request.Variants", {
     },
 
     members: {
-        publish: function (id, data, callBack, scope) {
+        link: function (id, data, callBack, scope) {
             // Call remote service
             this.submit("PUT", id, { data: data }, callBack, scope);
         },
 
-        unPublish: function (id, data, callBack, scope) {
+        unLink: function (id, data, callBack, scope) {
             // Call remote service
             this.submit("PATCH", id, { data: data }, callBack, scope);
         },

@@ -27,7 +27,7 @@ qx.Class.define("omna.action.product.IntegrationsUnLink", {
             msg = this.i18nTrans('Messages', 'CONFIRM-UNLINK', [itemLabel]);
             omna.dialog.Confirm.show(msg, function (response) {
                 if (response === 'yes') {
-                    this._doRequest('unPublish', item.id, itemLabel, formData);
+                    this._doRequest('unLink', item.id, itemLabel, formData);
                     dlg.close();
                 }
             }, this);
