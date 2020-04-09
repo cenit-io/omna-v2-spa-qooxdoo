@@ -119,7 +119,7 @@ qx.Class.define("omna.request.AbstractResource", {
         },
 
         getCacheItem: function (cacheId) {
-            qx.module.Storage.getSessionItem(cacheId);
+            return qx.module.Storage.getSessionItem(cacheId);
         },
 
         removeCacheItem: function (cacheId) {

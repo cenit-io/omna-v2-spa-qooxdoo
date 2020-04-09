@@ -6,6 +6,7 @@ qx.Class.define("omna.action.product.IntegrationsUnLink", {
 
     construct: function (management) {
         this.base(arguments, management, 'unlink', 'omna/icon/16/actions/i-unlink.png');
+        this.setEnablingRules('integrations.length > 0');
     },
 
     members: {

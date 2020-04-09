@@ -81,6 +81,7 @@ qx.Class.define("omna.request.Connections", {
         },
 
         cleanCacheItems: function (method, url, response) {
+            console.log(method, 'integration-connected');
             if (method.match(/POST|PUT|DELETE|PATCH/)) this.removeCacheItem('integration-connected');
         }
     }
