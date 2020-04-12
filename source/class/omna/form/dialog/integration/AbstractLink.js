@@ -1,4 +1,4 @@
-qx.Class.define("omna.form.dialog.IntegrationsAbstractLink", {
+qx.Class.define("omna.form.dialog.integration.AbstractLink", {
     extend: omna.form.dialog.AbstractForm,
     include: [omna.mixin.MWithManagement],
 
@@ -23,11 +23,9 @@ qx.Class.define("omna.form.dialog.IntegrationsAbstractLink", {
         },
 
         _createFormFields: function (form) {
-            var list = this._createIntegrationField();
-
-            list.setRequired(true);
-
-            form.add(list, this.i18nTrans('integrations'), null, 'integration_ids', form);
+            this._integrationsListBox = new omna.form.field.remote.integrations.ListBox;
+            this._integrationsListBox.set({width: 480, Required: true});
+            form.add(this._integrationsListBox, this.i18nTrans('integrations'), null, 'integration_ids', form);
         }
     }
 });

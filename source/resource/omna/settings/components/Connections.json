@@ -39,7 +39,9 @@
         "pattern": "\\w+"
       },
       {
-        "name": "channel",
+        "name": "channel_title",
+        "label": "channel",
+        "customModelName": "channel",
         "widgetClass": "omna.form.field.remote.integrations.ChannelSelectBox",
         "accessInAddForm": "W",
         "required": true,

@@ -1,5 +1,5 @@
-qx.Class.define("omna.form.dialog.IntegrationsLink", {
-    extend: omna.form.dialog.IntegrationsAbstractLink,
+qx.Class.define("omna.form.dialog.product.integrations.Link", {
+    extend: omna.form.dialog.integration.AbstractLink,
 
     members: {
 
@@ -10,7 +10,6 @@ qx.Class.define("omna.form.dialog.IntegrationsLink", {
                 validator = new omna.form.validator.SelectBox;
 
             applyToItsVariants.set({
-                width: 480,
                 options: [
                     { value: null, label: '-' },
                     { value: 'NONE', label: this.i18nTrans('not_link_with_its_variants') },
@@ -22,10 +21,6 @@ qx.Class.define("omna.form.dialog.IntegrationsLink", {
             });
 
             form.add(applyToItsVariants, this.i18nTrans('link_with_its_variants'), validator, 'link_with_its_variants', form);
-        },
-
-        _createIntegrationField: function (form) {
-            return new omna.form.field.remote.integrations.ListBox;
         },
 
         setData: function (data, redefineResetter) {

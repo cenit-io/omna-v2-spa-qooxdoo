@@ -1,4 +1,4 @@
-qx.Class.define("omna.action.product.IntegrationsAbstractLink", {
+qx.Class.define("omna.action.integration.AbstractLink", {
     type: 'abstract',
     extend: omna.action.AbstractActionWithSelectedItem,
     include: [omna.mixin.MActionWithDlg],

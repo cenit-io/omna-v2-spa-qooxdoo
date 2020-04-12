@@ -1,8 +1,8 @@
 /**
  * @asset(omna/icon/16/actions/i-unlink.png)
  */
-qx.Class.define("omna.action.product.IntegrationsUnLink", {
-    extend: omna.action.product.IntegrationsAbstractLink,
+qx.Class.define("omna.action.product.integrations.UnLink", {
+    extend: omna.action.integration.AbstractLink,
 
     construct: function (management) {
         this.base(arguments, management, 'unlink', 'omna/icon/16/actions/i-unlink.png');
@@ -14,7 +14,7 @@ qx.Class.define("omna.action.product.IntegrationsUnLink", {
             var itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE').toLowerCase(),
                 caption = this.i18nTrans('Titles', 'integrations-unlink', [itemLabel]);
 
-            return new omna.form.dialog.IntegrationsUnLink(this.getManagement(), caption, this.getIcon());
+            return new omna.form.dialog.product.integrations.UnLink(this.getManagement(), caption, this.getIcon());
         },
 
         onAccept: function (e) {

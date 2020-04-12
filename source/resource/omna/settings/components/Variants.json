@@ -11,6 +11,8 @@
       "omna.action.Reload",
       "omna.action.Separator",
       "omna.action.Edit",
+      "omna.action.variant.integrations.Link",
+      "omna.action.variant.integrations.UnLink",
       "omna.action.Separator",
       "omna.action.Search"
     ],

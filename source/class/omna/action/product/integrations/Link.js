@@ -1,8 +1,8 @@
 /**
  * @asset(omna/icon/16/actions/i-link.png)
  */
-qx.Class.define("omna.action.product.IntegrationsLink", {
-    extend: omna.action.product.IntegrationsAbstractLink,
+qx.Class.define("omna.action.product.integrations.Link", {
+    extend: omna.action.integration.AbstractLink,
 
     construct: function (management) {
         this.base(arguments, management, 'link', 'omna/icon/16/actions/i-link.png');
@@ -13,7 +13,7 @@ qx.Class.define("omna.action.product.IntegrationsLink", {
             let itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE').toLowerCase(),
                 caption = this.i18nTrans('Titles', 'integrations-link', [itemLabel]);
 
-            return new omna.form.dialog.IntegrationsLink(this.getManagement(), caption, this.getIcon());
+            return new omna.form.dialog.product.integrations.Link(this.getManagement(), caption, this.getIcon());
         },
 
         onAccept: function (e) {

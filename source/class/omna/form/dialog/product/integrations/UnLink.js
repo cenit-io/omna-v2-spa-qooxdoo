@@ -1,5 +1,5 @@
-qx.Class.define("omna.form.dialog.IntegrationsUnLink", {
-    extend: omna.form.dialog.IntegrationsAbstractLink,
+qx.Class.define("omna.form.dialog.product.integrations.UnLink", {
+    extend: omna.form.dialog.integration.AbstractLink,
 
     members: {
         _createFormFields: function (form) {
@@ -9,7 +9,6 @@ qx.Class.define("omna.form.dialog.IntegrationsUnLink", {
                 validator = new omna.form.validator.SelectBox;
 
             afterUnLink.set({
-                width: 480,
                 options: [
                     { value: null, label: '-' },
                     { value: false, label: this.i18nTrans('not_remove_from_integration') },
@@ -19,10 +18,6 @@ qx.Class.define("omna.form.dialog.IntegrationsUnLink", {
             });
 
             form.add(afterUnLink, this.i18nTrans('after_unlink'), validator, 'after_unlink', form);
-        },
-
-        _createIntegrationField: function (form) {
-            return this._integrationsListBox = new omna.form.field.remote.integrations.ListBox;
         },
 
         setData: function (data, redefineResetter) {
