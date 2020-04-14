@@ -87,7 +87,7 @@ qx.Class.define("omna.model.DataGridRestService", {
 
             if (!field) return null;
 
-            let sortField = field.sortByField || field.name,
+            let sortField = field.sortByField || field.customModelName || field.name,
                 sort = {};
 
             sort[sortField] = this.isSortAscending() ? "asc" : "desc";
