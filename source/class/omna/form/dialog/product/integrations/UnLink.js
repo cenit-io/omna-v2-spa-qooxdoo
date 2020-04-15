@@ -11,8 +11,8 @@ qx.Class.define("omna.form.dialog.product.integrations.UnLink", {
             afterUnLink.set({
                 options: [
                     { value: null, label: '-' },
-                    { value: false, label: this.i18nTrans('not_remove_from_integration') },
-                    { value: true, label: this.i18nTrans('remove_from_integration') },
+                    { value: false, label: this.i18nTrans('not_remove_from_integrations') },
+                    { value: true, label: this.i18nTrans('remove_from_integrations') },
                 ],
                 required: true,
             });

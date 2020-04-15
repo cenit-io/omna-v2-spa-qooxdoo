@@ -65,14 +65,14 @@
     "value": "Keep it in the remote integration and OMNA database"
   },
   {
-    "name": "remove_from_integration",
+    "name": "remove_from_integrations",
     "subCatalog": "Labels",
-    "value": "Remove it from remote integration"
+    "value": "Remove it from remote integrations"
   },
   {
-    "name": "not_remove_from_integration",
+    "name": "not_remove_from_integrations",
     "subCatalog": "Labels",
-    "value": "Do not remove it from remote integration"
+    "value": "Do not remove it from remote integrations"
   },
   {
     "name": "title",
