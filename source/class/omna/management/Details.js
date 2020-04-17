@@ -36,10 +36,12 @@ qx.Class.define("omna.management.Details", {
 
             this.emitMessaging('enabled-toolbar', false);
             request.reload(data.item, function (response) {
-                if (response.successful) {
-                    this.setCustomData({ item: response.data, index: data.index, label: data.label })
-                }
                 this.emitMessaging('enabled-toolbar', true);
+                if (response.successful) this.setCustomData({
+                    item: response.data,
+                    index: data.index,
+                    label: data.label
+                });
             }, this);
         },
 

@@ -207,9 +207,9 @@ qx.Class.define("omna.management.task.Details", {
             this.emitMessaging('enabled-toolbar', false);
             this.setCustomData({});
             request.reload(data.item, function (response) {
+                this.emitMessaging('enabled-toolbar', true);
                 if (response.successful) data.item = response.data;
                 this.setCustomData(data);
-                this.emitMessaging('enabled-toolbar', true);
             }, this);
         },
 

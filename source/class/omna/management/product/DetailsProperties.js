@@ -93,10 +93,9 @@ qx.Class.define('omna.management.product.DetailsProperties', {
             this.setEnabled(false);
 
             request.updateProperties(integration.id, product.remote_product_id, properties, function (response) {
-                if (response.successful) this.emitMessaging('execute-reload', null, 'ProductsDetails');
-
                 this.setEnabled(true);
                 this.emitMessaging('enabled-toolbar', true);
+                if (response.successful) this.emitMessaging('execute-reload', null, 'ProductsDetails');
             }, this);
         },
 

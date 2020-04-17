@@ -90,9 +90,10 @@ qx.Class.define("omna.management.product.Details", {
             this.emitMessaging('enabled-toolbar', false);
             this.setEnabled(false);
             request.reload(data.item, function (response) {
-                if (response.successful) this.setCustomData({item: response.data});
+                this.setEnabled(true);
                 this.emitMessaging('enabled-toolbar', true);
-                this.setEnabled(true)
+                if (response.successful) data.item = response.data;
+                this.setCustomData(qx.lang.Object.clone(data, false));
             }, this);
         },
 
