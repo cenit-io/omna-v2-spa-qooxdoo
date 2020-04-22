@@ -10,9 +10,11 @@
     "actions": [
       "omna.action.Reload",
       "omna.action.Separator",
+      "omna.action.Add",
       "omna.action.Edit",
       "omna.action.variant.integrations.Link",
       "omna.action.variant.integrations.UnLink",
+      "omna.action.Remove",
       "omna.action.Separator",
       "omna.action.Search"
     ],
