@@ -24,13 +24,15 @@ qx.Class.define('omna.form.field.remote.integrations.ListBox', {
         __loadItems: function () {
             this.__requestManagement = this.__requestManagement || new omna.request.Connections();
 
+            this.removeAll();
+
             this.__requestManagement.setAsync(false);
             this.__requestManagement.all(function (response) {
                 let label, listItem, enabled, disableUnauthorized = this.isDisableUnauthorized();
 
                 if (response.successful) response.data.forEach(function (item) {
                     label = qx.bom.Template.render(omna.I18n.trans('Titles', 'INTEGRATION'), { integration: item });
-                    enabled = item.authorized === (disableUnauthorized === false) || (item.authorized === true);
+                    enabled = disableUnauthorized === false || item.authorized === true;
 
                     listItem = new qx.ui.form.ListItem(label, this.integrationLogo(item.channel), item.id);
                     listItem.set({ enabled: enabled, rich: true });
