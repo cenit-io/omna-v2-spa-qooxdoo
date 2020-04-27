@@ -7,7 +7,7 @@ cache:
     - compiled/build/
 
 install_dependencies:
-  image: node:8.11.1
+  image: node:12.16.2
   stage: install
   only:
     - develop
