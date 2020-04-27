@@ -76,9 +76,12 @@
         }
       },
       {
-        "name": "integration",
+        "name": "integration.id",
+        "label": "integration",
         "showInGrid": true,
+        "sortable": false,
         "isTemplate": true,
+        "isRichText": true,
         "i18n": {
           "subCatalog": "Titles",
           "name": "INTEGRATION"
