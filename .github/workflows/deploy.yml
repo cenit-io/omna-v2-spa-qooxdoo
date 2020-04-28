@@ -26,6 +26,8 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.8
+
+    - name: Install AWS Client
       run: pip install awscli
 
       env:
