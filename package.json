@@ -29,6 +29,7 @@
     "qxcompiler": "^0.3.0"
   },
   "scripts": {
+    "start": "./node_modules/.bin/qx serve --listen-port 8083",
     "build": "./node_modules/.bin/qx compile --target build && npm run del_1 && npm run del_2",
     "del_1": "rm -r ./compiled/build/transpiled && rm ./compiled/build/*/*.map && rm ./compiled/build/*/*.json",
     "del_2": "rm ./compiled/build/*.json && rm ./compiled/build/*.txt"
