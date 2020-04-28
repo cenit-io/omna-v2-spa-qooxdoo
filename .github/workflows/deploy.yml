@@ -35,9 +35,9 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
     - name: Deploy [ DEV ]
-      if: github.ref == 'develop'
+      if: github.ref == 'refs/heads/develop'
       run: aws s3 sync --acl public-read --delete --region us-west-2 compiled/build/ s3://omna-v2-dev
 
     - name: Deploy [ PROD ]
-      if: github.ref == 'master'
+      if: github.ref == 'refs/heads/master'
       run: aws s3 sync --acl public-read --delete --region us-west-2 compiled/build/ s3://omna-v2-prod
