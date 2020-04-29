@@ -34,10 +34,10 @@ jobs:
     - name: Install AWS Client
       run: pip install awscli
 
-    - name: Deploy [ DEV ]
+    - name: Deploy [ DEVELOPMENT ]
       if: github.ref == 'refs/heads/develop'
       run: aws s3 sync --acl public-read --delete --region us-west-2 compiled/build/ s3://omna-v2-dev
 
-    - name: Deploy [ PROD ]
+    - name: Deploy [ PRODUCTION ]
       if: github.ref == 'refs/heads/master'
       run: aws s3 sync --acl public-read --delete --region us-west-2 compiled/build/ s3://omna-v2-prod
