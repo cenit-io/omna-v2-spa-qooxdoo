@@ -1,0 +1,43 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: [ develop, master ]
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      
+jobs:
+  build-and-deploy:
+
+    runs-on: ubuntu-latest
+        
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up NodeJS
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+
+    - name: npm install, build
+      run: |
+        npm install --save-dev
+        npm run build
+        
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+
+    - name: Install AWS Client
+      run: pip install awscli
+
+    - name: Deploy [ DEVELOPMENT ]
+      if: github.ref == 'refs/heads/develop'
+      run: aws s3 sync --acl public-read --delete --region us-west-2 compiled/build/ s3://omna-v2-dev
+
+    - name: Deploy [ PRODUCTION ]
+      if: github.ref == 'refs/heads/master'
+      run: aws s3 sync --acl public-read --delete --region us-west-2 compiled/build/ s3://omna-v2-prod
