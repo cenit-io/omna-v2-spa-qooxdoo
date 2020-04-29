@@ -9,7 +9,7 @@
  ************************************************************************ */
 
 /**
- * This is the main application class of your custom application "omna-gui"
+ * This is the main application class of your custom application "omna-v2-spa-qooxdoo"
  *
  * @require(qx.module.Messaging)
  *
@@ -79,6 +79,16 @@ qx.Class.define("omna.Application", {
             if (qTitle) qTitle.innerText = omna.I18n.trans('APPLICATION-TITLE');
         },
 
+        /**
+         * Check if the application is under development.
+         *
+         * @return {Boolean}
+         * @ignore(__filename)
+         */
+        itIsDeveloping: function () {
+            return String(__filename).match(/source\/class\/guaraiba\/Application.js$/);
+        },
+
         __transformServerBaseUrl: function (v) {
             return this.isDevelopment() ? v.replace(/ecapi-v1/, 'ecapi_v1') : v
         },
@@ -143,6 +153,17 @@ qx.Class.define("omna.Application", {
             return componentClasses.map(function (c) {
                 return qx.lang.Type.isString(c) ? c : c.classname
             })
+        },
+
+        /**
+         * Register new resource uri.
+         *
+         * @param namespace {String} Resources namespace.
+         * @param resourcePath {String} Path to resources.
+         */
+        registerResourceUri: function (namespace, resourcePath) {
+            // Set base path for namespace resources.
+            qx.util.LibraryManager.getInstance().set(namespace, "resourceUri", resourcePath);
         },
 
         __parseToolTipMsg: function (msg) {
