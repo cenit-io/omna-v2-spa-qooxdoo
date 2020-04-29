@@ -28,9 +28,8 @@
     "@qooxdoo/compiler": "^1.0.0-beta.20200424-1525"
   },
   "scripts": {
-    "start": "./node_modules/.bin/qx serve",
-    "build": "./node_modules/.bin/qx compile --target build && npm run del_1 && npm run del_2",
-    "del_1": "rm -r ./compiled/build/transpiled && rm ./compiled/build/*/*.map && rm ./compiled/build/*/*.json",
-    "del_2": "rm ./compiled/build/*.json && rm ./compiled/build/*.txt"
+    "start": "npx qx serve",
+    "build": "npx qx compile --target build",
+    "deploy": "npx qx deploy -o compiled/deploy"
   }
 }

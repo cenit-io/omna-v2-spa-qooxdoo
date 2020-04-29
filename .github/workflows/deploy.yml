@@ -21,11 +21,17 @@ jobs:
       with:
         node-version: 12.x
 
-    - name: npm install, build
-      run: |
-        npm install --save-dev
-        npm run build
-        
+    - name: Install Dependencies
+      run: npm install --save-dev
+
+    - name: Build to deploy in Development
+      if: github.ref == 'refs/heads/develop'
+      run: npx qx compile --target build
+
+    - name: Build to deploy in Production
+      if: github.ref == 'refs/heads/master'
+      run: npx qx deploy -o compiled/deploy
+
     - name: Set up Python
       uses: actions/setup-python@v1
       with:
@@ -34,10 +40,10 @@ jobs:
     - name: Install AWS Client
       run: pip install awscli
 
-    - name: Deploy [ DEVELOPMENT ]
+    - name: Deploy in Development
       if: github.ref == 'refs/heads/develop'
       run: aws s3 sync --acl public-read --delete --region us-west-2 compiled/build/ s3://omna-v2-dev
 
-    - name: Deploy [ PRODUCTION ]
+    - name: Deploy in Production
       if: github.ref == 'refs/heads/master'
-      run: aws s3 sync --acl public-read --delete --region us-west-2 compiled/build/ s3://omna-v2-prod
+      run: aws s3 sync --acl public-read --delete --region us-west-2 compiled/deploy/ s3://omna-v2-prod
