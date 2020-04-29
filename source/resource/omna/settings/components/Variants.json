@@ -12,6 +12,7 @@
       "omna.action.Separator",
       "omna.action.Add",
       "omna.action.Edit",
+      "omna.action.Details",
       "omna.action.variant.integrations.Link",
       "omna.action.variant.integrations.UnLink",
       "omna.action.Remove",

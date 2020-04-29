@@ -1,0 +1,13 @@
+[
+  {
+    "id": "VariantsDetails",
+    "i18n": "Variants",
+    "widgetClass": "omna.management.variant.Details",
+    "actions": [
+      "omna.action.Reload",
+      "omna.action.Separator",
+      "omna.action.variant.integrations.Link",
+      "omna.action.variant.integrations.UnLink"
+    ]
+  }
+]
