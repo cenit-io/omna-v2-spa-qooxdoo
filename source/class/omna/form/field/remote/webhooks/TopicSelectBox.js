@@ -12,7 +12,7 @@ qx.Class.define('omna.form.field.remote.webhooks.TopicSelectBox', {
 
     members: {
         __loadItems: function () {
-            var request = new omna.request.Webhooks();
+            let request = new omna.request.Webhooks();
 
             request.getTopics(function (response) {
                 if (response.successful) response.data.forEach(function (item) {

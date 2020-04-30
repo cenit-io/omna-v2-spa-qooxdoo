@@ -2,7 +2,7 @@ qx.Mixin.define('omna.mixin.MSettings', {
     include: [qx.locale.MTranslation],
     members: {
         __loadResource: function (pathOrClass, container, extension, callback) {
-            var url, id, cache, path, isDev;
+            let url, id, cache, path, isDev;
 
             pathOrClass = pathOrClass || this.constructor;
 
@@ -29,7 +29,7 @@ qx.Mixin.define('omna.mixin.MSettings', {
             if (isDev || !cache[container][id]) {
                 url = isDev ? url + '?tc=' + (new Date()).getTime() : url;
 
-                var req = new omna.request.Xhr(url);
+                let req = new omna.request.Xhr(url);
 
                 req.setAsync(false);
 

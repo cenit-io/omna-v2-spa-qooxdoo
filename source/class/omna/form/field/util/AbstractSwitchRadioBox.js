@@ -21,7 +21,7 @@ qx.Class.define("omna.form.field.util.AbstractSwitchRadioBox", {
             focusable: true
         });
 
-        var properties = [
+        let properties = [
                 String(v1).toLowerCase() + 'Label',
                 String(v2).toLowerCase() + 'Label'
             ],
@@ -65,7 +65,7 @@ qx.Class.define("omna.form.field.util.AbstractSwitchRadioBox", {
         },
 
         _onChangeValue: function (e) {
-            var focusTarget = this.getFocusTarget();
+            let focusTarget = this.getFocusTarget();
             if (focusTarget == this) {
                 (e.getTarget().getValue() ? this._fields[1] : this._fields[0]).focus();
             }

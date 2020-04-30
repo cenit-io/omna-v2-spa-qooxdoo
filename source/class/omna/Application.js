@@ -75,7 +75,7 @@ qx.Class.define("omna.Application", {
             q.messaging.on("Application", "error", this.onTipError, this);
 
             // Set application title in html page.
-            var qTitle = document.getElementsByTagName('title')[0];
+            let qTitle = document.getElementsByTagName('title')[0];
             if (qTitle) qTitle.innerText = omna.I18n.trans('APPLICATION-TITLE');
         },
 
@@ -103,13 +103,13 @@ qx.Class.define("omna.Application", {
          * @private
          */
         __doLayouts: function () {
-            var root = this.getRoot();
+            let root = this.getRoot();
 
             root.setBlockerOpacity(0.6);
             root.setBlockerColor("black");
 
             // Create main layout
-            var dockLayout = new qx.ui.layout.Dock(),
+            let dockLayout = new qx.ui.layout.Dock(),
                 dockLayoutComposite = new qx.ui.container.Composite(dockLayout);
 
             dockLayout.setSort("y");
@@ -120,7 +120,7 @@ qx.Class.define("omna.Application", {
             dockLayoutComposite.add(this.__headerBox, { edge: "north" });
 
             // Create horizontal splitpane for left, main and right boxs
-            var mainBoxWidth = qx.bom.Viewport.getWidth(),
+            let mainBoxWidth = qx.bom.Viewport.getWidth(),
                 leftSplitPane = new qx.ui.splitpane.Pane();
 
             dockLayoutComposite.add(leftSplitPane, { edge: "center" });

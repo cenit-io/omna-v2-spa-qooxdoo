@@ -19,7 +19,7 @@ qx.Class.define('omna.action.order.DocumentSelectBox', {
     members: {
         __applyOrder: function (currentValue, previousValue) {
             if (!previousValue || previousValue.integration.channel !== currentValue.integration.channel) {
-                var request = new omna.request.Orders();
+                let request = new omna.request.Orders();
 
                 this.getChildrenContainer().removeAll();
 

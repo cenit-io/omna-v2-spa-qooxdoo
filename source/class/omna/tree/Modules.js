@@ -34,13 +34,13 @@ qx.Class.define("omna.tree.Modules", {
          * @internal
          */
         __addNodes: function (root, nodes) {
-            var dataModel = this.getDataModel(),
+            let dataModel = this.getDataModel(),
                 node;
 
             nodes.forEach(function (module) {
                 if (module.disabled) return;
 
-                var i18nCatalog = module.i18n || module.id,
+                let i18nCatalog = module.i18n || module.id,
                     label = omna.I18n.trans(i18nCatalog, 'Labels', 'MODULE-REFERENCE');
 
                 if (module.children) {
@@ -71,7 +71,7 @@ qx.Class.define("omna.tree.Modules", {
 
             this.getDataModel().setFilter(function (node) {
                 if (node.type == qx.ui.treevirtual.MTreePrimitive.Type.LEAF) {
-                    var label = node.label.toUpperCase(),
+                    let label = node.label.toUpperCase(),
                         filter = (filterField.getValue() || '').toUpperCase();
 
                     return label.indexOf(filter) != -1;
@@ -86,7 +86,7 @@ qx.Class.define("omna.tree.Modules", {
          * @param e {qx.event.type.Data}
          */
         onStoreLoaded: function (e) {
-            var nodes = qx.util.Serializer.toNativeObject(e.getData());
+            let nodes = qx.util.Serializer.toNativeObject(e.getData());
 
             this.__addNodes(null, nodes);
             this.getDataModel().setData();
@@ -98,7 +98,7 @@ qx.Class.define("omna.tree.Modules", {
          * @param e {qx.event.type.KeySequence} Keypress event.
          */
         onKeyup: function (e) {
-            var keyCode = e.getKeyCode(),
+            let keyCode = e.getKeyCode(),
                 nodes = this.getSelectedNodes();
 
             if (nodes.length == 1 && (keyCode == 13 || keyCode == 32)) {
@@ -112,7 +112,7 @@ qx.Class.define("omna.tree.Modules", {
          * @param e {qx.event.type.Mouse}
          */
         onClick: function (e) {
-            var node = this.getSelectedNodes()[0];
+            let node = this.getSelectedNodes()[0];
 
             if (node) q.messaging.emit("Application", "open-module", node.columnData[0]);
         },

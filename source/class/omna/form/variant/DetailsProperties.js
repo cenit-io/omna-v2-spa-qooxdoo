@@ -15,7 +15,7 @@ qx.Class.define("omna.form.variant.DetailsProperties", {
 
     members: {
         __createFormFields: function () {
-            var widget, integration = this.getIntegration();
+            let widget, integration = this.getIntegration();
 
             integration.variant.properties.forEach(function (property) {
                 widget = this.__createPropertyField(property, integration);
@@ -24,7 +24,7 @@ qx.Class.define("omna.form.variant.DetailsProperties", {
         },
 
         __getColSpan: function (property) {
-            var types = /^(rich_text|data_grid)$/,
+            let types = /^(rich_text|data_grid)$/,
                 ids = /^(category_id)$/;
 
             if (property.input_type.match(types) || property.id.match(ids)) return 4;
@@ -33,7 +33,7 @@ qx.Class.define("omna.form.variant.DetailsProperties", {
         },
 
         __createPropertyField: function (property, integration) {
-            var widget;
+            let widget;
 
             switch ( property.input_type ) {
                 case 'single_select':
@@ -94,7 +94,7 @@ qx.Class.define("omna.form.variant.DetailsProperties", {
         },
 
         setData: function (properties, redefineResetter) {
-            var data = {};
+            let data = {};
 
             properties.forEach((property) => data[property.id] = this.__parsePropertyValue(property), this);
 

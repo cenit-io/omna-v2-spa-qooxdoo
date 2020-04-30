@@ -14,7 +14,7 @@ qx.Class.define("omna.action.integration.Import", {
             omna.form.dialog.Import.show(this.getManagement(), this.getSelectedItem(), function (response, dlg) {
                 if (response === 'yes') {
                     if (response === 'yes') {
-                        var item = this.getSelectedItem(),
+                        let item = this.getSelectedItem(),
                             type = dlg.getImportType();
 
                         this.getRequestManagement().doImportTask(item.id, type);

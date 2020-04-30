@@ -23,7 +23,7 @@ qx.Class.define("omna.management.TabViews", {
     members: {
         // overridden
         _createChildControlImpl: function (id, hash) {
-            var control;
+            let control;
 
             switch ( id ) {
                 case "tabsPanel":
@@ -37,7 +37,7 @@ qx.Class.define("omna.management.TabViews", {
 
         _createTapPage: function (componentId) {
             this.loadSettings('omna/settings/components/' + componentId, function (components) {
-                var page = new omna.management.Page({ id: components[0].id }, components, {});
+                let page = new omna.management.Page({ id: components[0].id }, components, {});
 
                 page.setShowCloseButton(false);
 

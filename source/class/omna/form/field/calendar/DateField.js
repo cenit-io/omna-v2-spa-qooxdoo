@@ -41,7 +41,7 @@ qx.Class.define("omna.form.field.calendar.DateField", {
         },
 
         validate: function (form) {
-            var value = this.getValue();
+            let value = this.getValue();
 
             if (value == null && this.isRequired()) {
                 return this.tr('This field is required');

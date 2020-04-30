@@ -11,7 +11,7 @@ qx.Class.define("omna.action.integration.Authorize", {
 
     members: {
         onExecute: function () {
-            var management = this.getManagement(),
+            let management = this.getManagement(),
                 selectedItemId = this.getSelectedItem().id,
                 isAuthorized = this.getSelectedItem().authorized,
                 itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
@@ -19,7 +19,7 @@ qx.Class.define("omna.action.integration.Authorize", {
 
             omna.dialog.Confirm.show(msg, function (response) {
                 if (response === 'yes') {
-                    var request = management.getRequestManagement();
+                    let request = management.getRequestManagement();
 
                     if (isAuthorized) {
                         request.unauthorize(selectedItemId, function (response) {

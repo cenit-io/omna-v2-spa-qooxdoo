@@ -20,7 +20,7 @@ qx.Class.define("omna.table.cellrenderer.Date", {
     construct: function (settings) {
         settings = settings || {};
 
-        var rendererStyle = settings.gridRendererStyle || {};
+        let rendererStyle = settings.gridRendererStyle || {};
 
         this.base(arguments,
             rendererStyle.textAlign || 'center',

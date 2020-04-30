@@ -10,7 +10,7 @@ qx.Class.define("omna.form.dialog.Search", {
      * @param icon {String} The URL of the caption bar icon.
      */
     construct: function (management, caption, icon) {
-        var settings = management.getSettings();
+        let settings = management.getSettings();
 
         this.set({ management: management, width: settings.searchFormWidth || settings.formWidth });
 
@@ -19,22 +19,22 @@ qx.Class.define("omna.form.dialog.Search", {
 
     members: {
         _createRenderer: function () {
-            var renderer = new omna.form.renderer.SingleWithCheck(this._form);
+            let renderer = new omna.form.renderer.SingleWithCheck(this._form);
             renderer.getLayout().setColumnFlex(1, 0);
             renderer.getLayout().setColumnFlex(2, 1);
             this.add(renderer);
         },
 
         _createFormFields: function (form) {
-            var management = this.getManagement(),
+            let management = this.getManagement(),
                 fields = management.getFields();
 
             fields.forEach(function (field) {
                 if (field.includeInSearch && field.widgetClass) {
-                    var widgetClass = qx.Class.getByName(field.widgetClass);
+                    let widgetClass = qx.Class.getByName(field.widgetClass);
 
                     if (widgetClass) {
-                        var widget = new widgetClass();
+                        let widget = new widgetClass();
                         widget.setSettings ? widget.setSettings(field) : widget.__settings = field;
                         widget.setWidth && widget.setWidth(Math.floor(this.getWidth() * 67 / 100));
                         widget.setFromJSON(field);
@@ -42,7 +42,7 @@ qx.Class.define("omna.form.dialog.Search", {
                         if (qx.Class.hasProperty(widget.constructor, 'required')) widget.setRequired(false);
 
                         if (field.validatorClass) {
-                            var validator,
+                            let validator,
                                 validatorClass = qx.Class.getByName(field.validatorClass);
 
                             if (validatorClass) {
@@ -54,7 +54,7 @@ qx.Class.define("omna.form.dialog.Search", {
                             validator = widgetClass.validatorClass ? new widgetClass.validatorClass : null;
                         }
 
-                        var label = this.i18nTrans(field.label || field.name);
+                        let label = this.i18nTrans(field.label || field.name);
                         form.add(widget, label, validator, field.customModelName || field.name, form);
 
                     } else {

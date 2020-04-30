@@ -25,7 +25,7 @@ qx.Class.define("omna.action.AbstractActionWithSelectedItem", {
 
     members: {
         _checkEnablingRules: function (selectedItem) {
-            var enablingRules = this.getEnablingRules() || 'true';
+            let enablingRules = this.getEnablingRules() || 'true';
 
             return function (enablingRules) {
                 with (this) return eval(enablingRules);
@@ -33,7 +33,7 @@ qx.Class.define("omna.action.AbstractActionWithSelectedItem", {
         },
 
         onSelectionChange: function (data) {
-            var customData = data.customData || {},
+            let customData = data.customData || {},
                 selectedItem = customData.item || null,
                 selectedIndex = customData.index === undefined ? null : customData.index,
                 enabled = qx.lang.Type.isObject(selectedItem) && this._checkEnablingRules(selectedItem);

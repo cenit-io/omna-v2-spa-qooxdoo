@@ -102,7 +102,7 @@ qx.Theme.define("omna.theme.Appearance", {
 
         "textfield": {
             style: function (states) {
-                var textColor,
+                let textColor,
                     decorator = "inset",
                     padding = [2, 3],
                     backgroundColor = "white";
@@ -209,7 +209,7 @@ qx.Theme.define("omna.theme.Appearance", {
             alias: "atom",
 
             style: function (states) {
-                var decorator = "button-box";
+                let decorator = "button-box";
 
                 if (states.disabled) {
                     decorator = "button-box";
@@ -231,7 +231,7 @@ qx.Theme.define("omna.theme.Appearance", {
                 }
 
                 // set the margin
-                var margin = [0, 10];
+                let margin = [0, 10];
                 if (states.left || states.middle || states.right) {
                     margin = [0, 0];
                 }

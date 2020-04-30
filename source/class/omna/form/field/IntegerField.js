@@ -5,7 +5,7 @@ qx.Class.define("omna.form.field.IntegerField", {
         cellRendererClass: omna.table.cellrenderer.Number,
 
         parseValue: function (value) {
-            var n = new Number(value);
+            let n = new Number(value);
             return n.valueOf();
         }
     },

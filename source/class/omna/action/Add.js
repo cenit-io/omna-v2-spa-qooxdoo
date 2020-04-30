@@ -11,7 +11,7 @@ qx.Class.define("omna.action.Add", {
 
     members: {
         _createDlg: function () {
-            var management = this.getManagement(),
+            let management = this.getManagement(),
                 itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
                 caption = this.i18nTrans('Titles', 'add', [itemLabel]);
 
@@ -19,7 +19,7 @@ qx.Class.define("omna.action.Add", {
         },
 
         onAccept: function (e) {
-            var management = this.getManagement(),
+            let management = this.getManagement(),
                 request = management.getRequestManagement(),
                 dlg = e.getTarget(),
                 data = e.getData();

@@ -18,7 +18,7 @@ qx.Class.define("omna.management.flow.Details", {
         _flowId: null,
 
         _createScheduler: function () {
-            var control = new omna.form.task.Scheduler(true);
+            let control = new omna.form.task.Scheduler(true);
 
             return control
         },
@@ -29,7 +29,7 @@ qx.Class.define("omna.management.flow.Details", {
          * @param data {Object} Selected item data.
          */
         onSelectionChange: function (data) {
-            var task = {};
+            let task = {};
 
             if (data.customData) {
                 this._flowId = data.customData.item.id;
@@ -46,7 +46,7 @@ qx.Class.define("omna.management.flow.Details", {
         },
 
         onAcceptUpdateScheduler: function (data) {
-            var request = new omna.request.Flows();
+            let request = new omna.request.Flows();
 
             request.update(this._flowId, { scheduler: data.params });
         }

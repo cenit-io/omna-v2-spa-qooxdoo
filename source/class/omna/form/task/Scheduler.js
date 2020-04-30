@@ -14,7 +14,7 @@ qx.Class.define("omna.form.task.Scheduler", {
         this.__createFormFields();
         this.__createButtons();
 
-        var row, layout = this.getLayout(),
+        let row, layout = this.getLayout(),
             count = layout.getRowCount();
 
         for (row = 0; row < count; row++) {
@@ -27,7 +27,7 @@ qx.Class.define("omna.form.task.Scheduler", {
         __flowId: null,
 
         __createFormFields: function () {
-            var field, validator;
+            let field, validator;
 
             field = new omna.form.field.calendar.DateField();
             field.setStrDateFormat('YYYY-MM-dd');
@@ -51,14 +51,14 @@ qx.Class.define("omna.form.task.Scheduler", {
             field = new omna.form.field.calendar.MonthsOfYear();
             this._form.add(field, this.i18nTrans('months_of_year'), null, 'months_of_year');
 
-            var controller = new qx.data.controller.Form(null, this._form);
+            let controller = new qx.data.controller.Form(null, this._form);
             this.__model = controller.createModel();
         },
 
         __createButtons: function () {
             if (!this.getEnabled()) return;
 
-            var bA = new qx.ui.form.Button(this.tr("Accept"), "icon/16/actions/dialog-apply.png"),
+            let bA = new qx.ui.form.Button(this.tr("Accept"), "icon/16/actions/dialog-apply.png"),
                 bR = new qx.ui.form.Button(this.tr("Reset"), "icon/16/actions/edit-undo.png"),
                 manager = this._form.getValidationManager();
 
@@ -90,7 +90,7 @@ qx.Class.define("omna.form.task.Scheduler", {
         },
 
         getData: function () {
-            var data = qx.util.Serializer.toNativeObject(this.__model),
+            let data = qx.util.Serializer.toNativeObject(this.__model),
                 dateFormat = new qx.util.format.DateFormat('YYYY-MM-dd'),
                 items = this._form.getItems(),
                 name;
@@ -123,7 +123,7 @@ qx.Class.define("omna.form.task.Scheduler", {
     },
 
     destruct: function () {
-        var name, items = this._form.getItems();
+        let name, items = this._form.getItems();
 
         for (name in items) items[name].destroy();
 

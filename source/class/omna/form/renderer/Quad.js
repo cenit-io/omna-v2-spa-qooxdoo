@@ -5,7 +5,7 @@ qx.Class.define("omna.form.renderer.Quad", {
     construct: function (form) {
         this.base(arguments, form);
 
-        var i, layout = this.getLayout();
+        let i, layout = this.getLayout();
 
         for (i = 0; i < this.__maxColumn; i++) layout.setColumnFlex(i, 1);
     },
@@ -25,7 +25,7 @@ qx.Class.define("omna.form.renderer.Quad", {
             }
 
             // add the items
-            var i, itemsOption, colSpan, label, currentColumn = 0;
+            let i, itemsOption, colSpan, label, currentColumn = 0;
 
             for (i = 0; i < items.length; i++) {
                 itemsOption = itemsOptions[i] || {};
@@ -56,7 +56,7 @@ qx.Class.define("omna.form.renderer.Quad", {
         //override
         addButton: function (button) {
             if (this._buttonRow == null) {
-                var hbox = new qx.ui.layout.HBox();
+                let hbox = new qx.ui.layout.HBox();
 
                 this._buttonRow = new qx.ui.container.Composite();
                 this._buttonRow.setMarginTop(5);
@@ -75,7 +75,7 @@ qx.Class.define("omna.form.renderer.Quad", {
         },
 
         _createLabel: function (name, item) {
-            var label = this.base(arguments, name, item);
+            let label = this.base(arguments, name, item);
 
             label.setAlignX("left");
 
@@ -83,7 +83,7 @@ qx.Class.define("omna.form.renderer.Quad", {
         },
 
         _createHeader: function (title) {
-            var header = this.base(arguments, title + ':');
+            let header = this.base(arguments, title + ':');
 
             header.set({ allowGrowX: true, decorator: 'from-group-separator' });
 

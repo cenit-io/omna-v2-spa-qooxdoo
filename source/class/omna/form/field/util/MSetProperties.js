@@ -16,7 +16,7 @@ qx.Mixin.define("omna.form.field.util.MSetProperties", {
          */
         setFromJSON: function (data) {
             data = qx.lang.Type.isString(data) ? qx.lang.Json.parse(data) : data;
-            for (var prop in data) {
+            for (let prop in data) {
                 if (this.canWriteProperty(prop)) this.set(prop, data[prop]);
             }
         },

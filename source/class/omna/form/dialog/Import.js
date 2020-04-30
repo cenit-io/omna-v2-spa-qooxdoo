@@ -17,7 +17,7 @@ qx.Class.define("omna.form.dialog.Import", {
     construct: function (management, integration, callback, scope) {
         this.set({ management: management, width: 500, integration: integration });
 
-        var question = this.i18nTrans('Messages', 'CONFIRM-IMPORT', [integration.name, integration.channel_title]);
+        let question = this.i18nTrans('Messages', 'CONFIRM-IMPORT', [integration.name, integration.channel_title]);
 
         this.base(arguments, question, callback, scope);
     },
@@ -31,7 +31,7 @@ qx.Class.define("omna.form.dialog.Import", {
     members: {
         // override
         _createContent: function () {
-            var integration = this.getIntegration(),
+            let integration = this.getIntegration(),
                 dateFormat = new qx.util.format.DateFormat('YYYY-MM-dd HH:mm:ss'),
                 date;
 

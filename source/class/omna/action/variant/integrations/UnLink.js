@@ -11,14 +11,14 @@ qx.Class.define("omna.action.variant.integrations.UnLink", {
 
     members: {
         _createDlg: function () {
-            var itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE').toLowerCase(),
+            let itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE').toLowerCase(),
                 caption = this.i18nTrans('Titles', 'integrations-unlink', [itemLabel]);
 
             return new omna.form.dialog.variant.integrations.UnLink(this.getManagement(), caption, this.getIcon());
         },
 
         onAccept: function (e) {
-            var itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
+            let itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
                 dlg = e.getTarget(),
                 item = this.getSelectedItem(),
                 formData = e.getData(),

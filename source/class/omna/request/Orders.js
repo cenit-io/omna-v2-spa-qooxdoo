@@ -7,20 +7,20 @@ qx.Class.define("omna.request.Orders", {
 
     members: {
         getOrderDocTypes: function (order, callBack, scope) {
-            var cacheId = 'order-doc-types-' + order.integration.channel,
+            let cacheId = 'order-doc-types-' + order.integration.channel,
                 cache = this.getCacheItem(cacheId);
 
             if (cache) {
                 callBack.call(scope, cache);
             } else {
-                var path = qx.bom.Template.render('/integrations/{{integration.id}}/orders/{{number}}/doc/types', order);
+                let path = qx.bom.Template.render('/integrations/{{integration.id}}/orders/{{number}}/doc/types', order);
 
                 // Call remote service
                 this.submit("GET", path, null, function (response) {
                     if (response.successful) {
                         this.setCacheItem(cacheId, response);
                     } else {
-                        var msg = omna.I18n.trans('Orders', 'Messages', 'FAILED-LOAD-DOC-TYPES');
+                        let msg = omna.I18n.trans('Orders', 'Messages', 'FAILED-LOAD-DOC-TYPES');
                         q.messaging.emit('Application', 'error', msg)
                     }
 
@@ -30,7 +30,7 @@ qx.Class.define("omna.request.Orders", {
         },
 
         getOrderDoc: function (order, documentType, callBack, scope) {
-            var path = qx.bom.Template.render('/integrations/{{integration_id}}/orders/{{number}}/doc/{{type}}', {
+            let path = qx.bom.Template.render('/integrations/{{integration_id}}/orders/{{number}}/doc/{{type}}', {
                 integration_id: order.integration.id,
                 number: order.number,
                 type: documentType
@@ -39,7 +39,7 @@ qx.Class.define("omna.request.Orders", {
             // Call remote service
             this.submit("GET", path, null, function (response) {
                 if (!response.successful) {
-                    var msg = omna.I18n.trans('Orders', 'Messages', 'FAILED-LOAD-DOC', [response.message]);
+                    let msg = omna.I18n.trans('Orders', 'Messages', 'FAILED-LOAD-DOC', [response.message]);
                     q.messaging.emit('Application', 'error', msg)
                 }
 
@@ -48,11 +48,11 @@ qx.Class.define("omna.request.Orders", {
         },
 
         reImport: function (order, callBack, scope) {
-            var path = qx.bom.Template.render('/integrations/{{integration.id}}/orders/{{number}}/import', order);
+            let path = qx.bom.Template.render('/integrations/{{integration.id}}/orders/{{number}}/import', order);
 
             // Call remote service
             this.submit("GET", path, null, function (response) {
-                var msg;
+                let msg;
 
                 if (response.successful) {
                     msg = omna.I18n.trans('Orders', 'Messages', 'SUCCESSFUL-REIMPORT');
@@ -68,11 +68,11 @@ qx.Class.define("omna.request.Orders", {
 
 
         export: function (order, callBack, scope) {
-            var path = qx.bom.Template.render('/integrations/{{integration.id}}/orders/{{number}}', order);
+            let path = qx.bom.Template.render('/integrations/{{integration.id}}/orders/{{number}}', order);
 
             // Call remote service
             this.submit("PUT", path, null, function (response) {
-                var msg;
+                let msg;
 
                 if (response.successful) {
                     msg = omna.I18n.trans('Orders', 'Messages', 'SUCCESSFUL-EXPORT');
@@ -87,11 +87,11 @@ qx.Class.define("omna.request.Orders", {
         },
 
         reload: function (order, callBack, scope) {
-            var path = qx.bom.Template.render('/integrations/{{integration.id}}/orders/{{number}}', order);
+            let path = qx.bom.Template.render('/integrations/{{integration.id}}/orders/{{number}}', order);
 
             // Call remote service
             this.submit("GET", path, null, function (response) {
-                var msg;
+                let msg;
 
                 if (!response.successful) {
                     msg = omna.I18n.trans('Orders', 'Messages', 'FAILED-RELOAD', [response.message]);

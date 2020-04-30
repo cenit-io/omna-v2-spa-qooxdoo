@@ -9,7 +9,7 @@ qx.Class.define("omna.request.Tasks", {
         retry: function (id, callBack, scope) {
             // Call start service
             this.submit("GET", id + '/retry', null, function (response) {
-                var msg;
+                let msg;
 
                 if (response.successful) {
                     msg = omna.I18n.trans('Tasks', 'Messages', 'SUCCESSFUL-RETRY');

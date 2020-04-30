@@ -23,7 +23,7 @@ qx.Class.define("omna.management.order.Documents", {
 
     members: {
         getActions: function () {
-            var a1 = new qx.ui.basic.Label(this.i18nTrans('select_document_type')),
+            let a1 = new qx.ui.basic.Label(this.i18nTrans('select_document_type')),
                 a2 = this.__documentSelectBox = new omna.action.order.DocumentSelectBox(),
                 a3 = this.__documentPrint = new omna.action.Print(this);
 
@@ -52,7 +52,7 @@ qx.Class.define("omna.management.order.Documents", {
         },
 
         __createObjectURL: function (data) {
-            var file = qx.util.Base64.decode(data.file),
+            let file = qx.util.Base64.decode(data.file),
                 contentType = data.mime_type,
                 blod = new Blob([file], { type: contentType }),
                 objUrl = window.URL.createObjectURL(blod);
@@ -65,14 +65,14 @@ qx.Class.define("omna.management.order.Documents", {
         },
 
         onDocumentChangeSelection: function (e) {
-            var data = e.getData();
+            let data = e.getData();
 
             this.__documentTip.set({ label: 'Loading...', icon: 'omna/icon/32/info.png', backgroundColor: 'info' });
             this.__documentTip.show();
             this.__documentIFrame.set({ source: 'about:blank' });
 
             if (data.length !== 0) {
-                var order = this.getCustomData().order,
+                let order = this.getCustomData().order,
                     docType = data[0].getModel().type,
                     request = this.getRequestManagement();
 
@@ -91,7 +91,7 @@ qx.Class.define("omna.management.order.Documents", {
         },
 
         onExecutePrint: function () {
-            var iframe = this.__documentIFrame.getContentElement().getDomElement();
+            let iframe = this.__documentIFrame.getContentElement().getDomElement();
             iframe.focus();
             iframe.contentWindow.print();
         }

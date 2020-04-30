@@ -3,7 +3,7 @@ qx.Class.define("omna.management.Page", {
     include: [omna.mixin.MI18n],
 
     construct: function (module, components, customData) {
-        var layoutClass = new qx.ui.layout.Dock(5),
+        let layoutClass = new qx.ui.layout.Dock(5),
             label;
 
         this.setModule(module);
@@ -26,12 +26,12 @@ qx.Class.define("omna.management.Page", {
         });
 
         components.forEach(function (componentSettings) {
-            var componentClass = qx.Class.getByName(componentSettings.widgetClass);
+            let componentClass = qx.Class.getByName(componentSettings.widgetClass);
 
             if (componentClass) {
                 componentSettings.i18n = componentSettings.i18n || componentSettings.id;
 
-                var component = new componentClass(componentSettings, customData, this),
+                let component = new componentClass(componentSettings, customData, this),
                     width = componentSettings.region || componentClass.propertiesDefaultValues.region,
                     edge = componentSettings.edge || componentClass.propertiesDefaultValues.edge;
 
@@ -65,7 +65,7 @@ qx.Class.define("omna.management.Page", {
         },
 
         getI18nCatalog: function () {
-            var module = this.getModule();
+            let module = this.getModule();
 
             return module.i18n || module.id;
         }

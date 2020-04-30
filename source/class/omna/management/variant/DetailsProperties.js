@@ -28,7 +28,7 @@ qx.Class.define('omna.management.variant.DetailsProperties', {
 
         this._createChildControl('notifications');
 
-        var variant = integration.variant;
+        let variant = integration.variant;
 
         if (variant.errors) q.messaging.emit('Application', 'error', variant.errors, this);
         if (variant.properties && variant.properties.length > 0) this._createChildControl('properties-form');
@@ -45,7 +45,7 @@ qx.Class.define('omna.management.variant.DetailsProperties', {
 
         // overridden
         _createChildControlImpl: function (id, hash) {
-            var control;
+            let control;
 
             switch ( id ) {
                 case 'notifications':
@@ -65,7 +65,7 @@ qx.Class.define('omna.management.variant.DetailsProperties', {
         },
 
         _notify: function (msg, type) {
-            var notifications = this.getChildControl('notifications');
+            let notifications = this.getChildControl('notifications');
 
             notifications.add(
                 new qx.ui.basic.Atom(msg, 'omna/icon/32/' + type + '.png').set({
@@ -79,7 +79,7 @@ qx.Class.define('omna.management.variant.DetailsProperties', {
         },
 
         __onSave: function (e) {
-            var request = this.getRequestManagement(),
+            let request = this.getRequestManagement(),
                 integration = this.getIntegration(),
                 variant = integration.variant,
                 data = e.getData(),

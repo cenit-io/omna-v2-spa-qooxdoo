@@ -11,7 +11,7 @@ qx.Class.define("omna.ToolTip", {
 
     statics: {
         create: function (msg, icon, bgColor, textColor) {
-            var application = qx.core.Init.getApplication(),
+            let application = qx.core.Init.getApplication(),
                 placeWidget = application.getToolTioPlaceToWidget(),
                 applicationWidth = application.getRoot().getLayout().getSizeHint().width,
                 offsetTop = 5;
@@ -20,7 +20,7 @@ qx.Class.define("omna.ToolTip", {
                 this.lastToolTip = new qx.ui.tooltip.ToolTip();
                 this.lastToolTip.addListener("changeVisibility", this.onChangeVisibility, this);
             } else if (this.lastToolTip.isVisible()) {
-                var lastToolTipBounds = this.lastToolTip.getBounds(),
+                let lastToolTipBounds = this.lastToolTip.getBounds(),
                     placeWidgetBounds = placeWidget.getBounds();
 
                 if (!lastToolTipBounds) {
@@ -53,7 +53,7 @@ qx.Class.define("omna.ToolTip", {
         },
 
         onChangeVisibility: function (e) {
-            var toolTip = e.getTarget();
+            let toolTip = e.getTarget();
 
             if (!toolTip.isVisible()) {
                 if (toolTip == this.lastToolTip) {

@@ -16,7 +16,7 @@ qx.Class.define("omna.model.DataGridRestService", {
 
         this.__fields = [];
 
-        var i18nCatalog = settings.i18n,
+        let i18nCatalog = settings.i18n,
             columnNames = [],
             columnIDs = [],
             sortables = [];
@@ -49,7 +49,7 @@ qx.Class.define("omna.model.DataGridRestService", {
 
     members: {
         _loadRowCount: function () {
-            var request = this.getRequestManagement();
+            let request = this.getRequestManagement();
 
             request.count({}, function (response) {
                 this._onRowCountLoaded(response.successful ? response.pagination.total : 0);
@@ -59,7 +59,7 @@ qx.Class.define("omna.model.DataGridRestService", {
         },
 
         _loadRowData: function (pFrom, pTo) {
-            var request = this.getRequestManagement();
+            let request = this.getRequestManagement();
 
             request.findRange(pFrom, pTo, this.getSort(), {}, function (response) {
                 if (response.successful) {
@@ -95,7 +95,7 @@ qx.Class.define("omna.model.DataGridRestService", {
         },
 
         parseValue: function (fieldName, fieldValue) {
-            var field = this.__fields[this.getColumnIndexById(fieldName)],
+            let field = this.__fields[this.getColumnIndexById(fieldName)],
                 widgetClass = field ? qx.Class.getByName(field.widgetClass) : null;
 
             return (widgetClass && widgetClass.parseValue) ? widgetClass.parseValue(fieldValue) : fieldValue;
@@ -103,7 +103,7 @@ qx.Class.define("omna.model.DataGridRestService", {
 
         // overridden
         getValue: function (columnIndex, rowIndex) {
-            var rowData = this.getRowData(rowIndex);
+            let rowData = this.getRowData(rowIndex);
 
             if (rowData == null) return null;
 

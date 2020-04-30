@@ -30,7 +30,7 @@
     "value": "General"
   },
   {
-    "name": "package_overwrite",
+    "name": "package.overwrite",
     "subCatalog": "Labels",
     "value": "Overwrite Package"
   },

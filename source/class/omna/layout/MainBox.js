@@ -25,7 +25,7 @@ qx.Class.define("omna.layout.MainBox", {
          */
         onUpdateSession: function (data) {
             // Close all tabs.
-            for (var id in this._pages) this._pages[id].fireEvent('close');
+            for (let id in this._pages) this._pages[id].fireEvent('close');
         },
 
         /**
@@ -34,7 +34,7 @@ qx.Class.define("omna.layout.MainBox", {
          * @param data {Object} Message data with selected module info.
          */
         onOpenModule: function (data) {
-            var module = data.params,
+            let module = data.params,
                 page = this._pages[module.id],
                 i18nCatalog = module.i18n || module.id,
                 customData = data.customData || module.customData || {};
@@ -74,7 +74,7 @@ qx.Class.define("omna.layout.MainBox", {
          * @param e {qx.event.type.Event}
          */
         onClosePage: function (e) {
-            var page = e.getTarget();
+            let page = e.getTarget();
             delete this._pages[page.id];
             qx.event.Timer.once(page.destroy, page, 500);
         },

@@ -16,7 +16,7 @@ qx.Class.define("omna.form.dialog.integration.AbstractLink", {
 
     members: {
         _createRenderer: function () {
-            var renderer = new qx.ui.form.renderer.Single(this._form);
+            let renderer = new qx.ui.form.renderer.Single(this._form);
             renderer.getLayout().setColumnFlex(1, 0);
             renderer.getLayout().setColumnFlex(2, 1);
             this.add(renderer);

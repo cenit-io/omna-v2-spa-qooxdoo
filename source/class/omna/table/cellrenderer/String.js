@@ -19,7 +19,7 @@ qx.Class.define("omna.table.cellrenderer.String", {
     construct: function (settings) {
         settings = settings || {};
 
-        var rendererStyle = settings.gridRendererStyle || {},
+        let rendererStyle = settings.gridRendererStyle || {},
             conditions = rendererStyle.conditions || [];
 
         this.set({
@@ -37,7 +37,7 @@ qx.Class.define("omna.table.cellrenderer.String", {
         );
 
         conditions.forEach(function (item) {
-            var operator;
+            let operator;
 
             if (qx.lang.Type.isArray(item.value) || this.betweenAllowed.indexOf(item.operator) != -1) {
                 operator = item.operator ? item.operator : 'between';
@@ -74,7 +74,7 @@ qx.Class.define("omna.table.cellrenderer.String", {
 
     members: {
         _getContentHtml: function (cellInfo) {
-            var result = String(cellInfo.value || ""),
+            let result = String(cellInfo.value || ""),
                 i18n = qx.lang.Object.clone(this.getI18nSetting());
 
             if (cellInfo.rowData && !qx.lang.Object.isEmpty(i18n)) {
@@ -82,7 +82,7 @@ qx.Class.define("omna.table.cellrenderer.String", {
                 i18n.subCatalog = i18n.subCatalog || 'Labels';
                 i18n.name = i18n.name || cellInfo.value;
 
-                var catalog = qx.bom.String.unescape(qx.bom.Template.render(i18n.catalog, cellInfo.rowData)),
+                let catalog = qx.bom.String.unescape(qx.bom.Template.render(i18n.catalog, cellInfo.rowData)),
                     subCatalog = qx.bom.String.unescape(qx.bom.Template.render(i18n.subCatalog, cellInfo.rowData)),
                     name = qx.bom.String.unescape(qx.bom.Template.render(i18n.name, cellInfo.rowData));
 
@@ -101,7 +101,7 @@ qx.Class.define("omna.table.cellrenderer.String", {
 
         // overridden
         _getCellStyle: function (cellInfo) {
-            var tableModel = cellInfo.table.getTableModel(),
+            let tableModel = cellInfo.table.getTableModel(),
                 i, cond_test, compareValue,
                 style = {
                     "text-align": this.__defaultTextAlign,
@@ -161,7 +161,7 @@ qx.Class.define("omna.table.cellrenderer.String", {
                 } else if (condition[0] == "regex") {
                     compareValue = condition[6] == null ? cellInfo.value : tableModel.getValueById(condition[6], cellInfo.row);
 
-                    var m = condition[5].match(/\/(.*)\/(\w*)/),
+                    let m = condition[5].match(/\/(.*)\/(\w*)/),
                         the_pattern;
 
                     the_pattern = m ? new RegExp(m[1], m[2]) : new RegExp(condition[5]);
@@ -172,8 +172,8 @@ qx.Class.define("omna.table.cellrenderer.String", {
                 if (cond_test == true) this.__applyCellFormatting(condition, style);
             }, this);
 
-            var styleString = [];
-            for (var key in style) if (style[key]) styleString.push(key, ":", style[key], ";");
+            let styleString = [];
+            for (let key in style) if (style[key]) styleString.push(key, ":", style[key], ";");
 
             return styleString.join("");
         },

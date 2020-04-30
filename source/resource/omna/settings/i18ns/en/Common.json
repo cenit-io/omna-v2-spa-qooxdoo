@@ -290,27 +290,27 @@
     "value": "Package"
   },
   {
-    "name": "package_weight",
+    "name": "package.weight",
     "subCatalog": "Labels",
     "value": "Package Weight"
   },
   {
-    "name": "package_height",
+    "name": "package.height",
     "subCatalog": "Labels",
     "value": "Package Height"
   },
   {
-    "name": "package_length",
+    "name": "package.length",
     "subCatalog": "Labels",
     "value": "Package Length"
   },
   {
-    "name": "package_width",
+    "name": "package.width",
     "subCatalog": "Labels",
     "value": "Package Width"
   },
   {
-    "name": "package_content",
+    "name": "package.content",
     "subCatalog": "Labels",
     "value": "Package Content"
   },

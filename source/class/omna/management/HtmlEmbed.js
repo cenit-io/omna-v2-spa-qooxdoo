@@ -38,7 +38,7 @@ qx.Class.define("omna.management.HtmlEmbed", {
     members: {
         // overridden
         _createChildControlImpl: function (id, hash) {
-            var control;
+            let control;
 
             switch ( id ) {
                 case "title":
@@ -59,7 +59,7 @@ qx.Class.define("omna.management.HtmlEmbed", {
         },
 
         _setContent: function (data) {
-            var contentTemplate = this.getContentTemplate(),
+            let contentTemplate = this.getContentTemplate(),
                 document = this.__documentIFrame ? this.__documentIFrame.getContentElement().getDocument() : null,
                 content;
 
@@ -88,13 +88,13 @@ qx.Class.define("omna.management.HtmlEmbed", {
         },
 
         onExecutePrint: function () {
-            var iframe = this.__documentIFrame.getContentElement().getDomElement();
+            let iframe = this.__documentIFrame.getContentElement().getDomElement();
             iframe.focus();
             iframe.contentWindow.print();
         },
 
         onChangeCustomData: function (e) {
-            var data = e.getData();
+            let data = e.getData();
 
             this._setContent(data);
         }

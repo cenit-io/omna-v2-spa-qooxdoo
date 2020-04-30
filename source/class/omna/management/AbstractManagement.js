@@ -105,11 +105,11 @@ qx.Class.define("omna.management.AbstractManagement", {
 
         // overridden
         _createChildControlImpl: function (id, hash) {
-            var control;
+            let control;
 
             switch ( id ) {
                 case "toolbar":
-                    var actions = this.getActions();
+                    let actions = this.getActions();
 
                     if (actions.length) {
                         control = this._createToolbar(actions);
@@ -123,7 +123,7 @@ qx.Class.define("omna.management.AbstractManagement", {
         },
 
         _setDefaultPropertiesValues: function (settings) {
-            var propertiesSettings = this.constructor.propertiesDefaultValues;
+            let propertiesSettings = this.constructor.propertiesDefaultValues;
 
             Object.keys(propertiesSettings).forEach(function (propertyName) {
                 if (settings[propertyName] === undefined) {
@@ -137,7 +137,7 @@ qx.Class.define("omna.management.AbstractManagement", {
         _getClassByName: function (className, notify) {
             notify = notify !== undefined ? notify : true;
 
-            var klass = qx.Class.getByName(className);
+            let klass = qx.Class.getByName(className);
 
             if (!klass && notify) this.error("CLASS_NO_FOUND", [className]);
 
@@ -145,7 +145,7 @@ qx.Class.define("omna.management.AbstractManagement", {
         },
 
         _createToolbar: function (actions) {
-            var toolbar = new qx.ui.toolbar.ToolBar();
+            let toolbar = new qx.ui.toolbar.ToolBar();
 
             toolbar.setSpacing(5);
             toolbar.setMinHeight(35);
@@ -155,14 +155,14 @@ qx.Class.define("omna.management.AbstractManagement", {
 
             actions.forEach(function (action) {
                 if (!(action instanceof qx.ui.core.Widget)) {
-                    var enablingRules;
+                    let enablingRules;
 
                     if (!qx.lang.Type.isString(action)) {
                         enablingRules = action.enablingRules;
                         action = action.widgetClass
                     }
 
-                    var widgetClass = this._getClassByName(action);
+                    let widgetClass = this._getClassByName(action);
 
                     if (widgetClass) {
                         action = new widgetClass(this);
@@ -177,7 +177,7 @@ qx.Class.define("omna.management.AbstractManagement", {
             }, this);
 
             // Add overflow indicator.
-            var chevron = new qx.ui.form.MenuButton(null, "icon/16/actions/media-seek-forward.png"),
+            let chevron = new qx.ui.form.MenuButton(null, "icon/16/actions/media-seek-forward.png"),
                 overflowMenu = this.__overflowMenu = new qx.ui.menu.Menu();
 
             chevron.setAppearance("button");
@@ -198,9 +198,9 @@ qx.Class.define("omna.management.AbstractManagement", {
          * @param e {qx.event.type.Data} The event.
          */
         _onHideItem: function (e) {
-            var partItem = e.getData();
-            var menuItems = this._getMenuItems(partItem);
-            for (var i = 0, l = menuItems.length; i < l; i++) {
+            let partItem = e.getData();
+            let menuItems = this._getMenuItems(partItem);
+            for (let i = 0, l = menuItems.length; i < l; i++) {
                 menuItems[i].setVisibility("visible");
             }
         },
@@ -210,9 +210,9 @@ qx.Class.define("omna.management.AbstractManagement", {
          * @param e {qx.event.type.Data} The event.
          */
         _onShowItem: function (e) {
-            var partItem = e.getData();
-            var menuItems = this._getMenuItems(partItem);
-            for (var i = 0, l = menuItems.length; i < l; i++) {
+            let partItem = e.getData();
+            let menuItems = this._getMenuItems(partItem);
+            for (let i = 0, l = menuItems.length; i < l; i++) {
                 menuItems[i].setVisibility("excluded");
             }
         },
@@ -229,7 +229,7 @@ qx.Class.define("omna.management.AbstractManagement", {
          * @return {qx.ui.core.Widget} The coresponding menu items.
          */
         _getMenuItems: function (partItem) {
-            var cachedItems = [],
+            let cachedItems = [],
                 cachedItem = this.__menuItemStore[partItem.toHashCode()];
 
             if (!cachedItem) {
@@ -253,9 +253,9 @@ qx.Class.define("omna.management.AbstractManagement", {
                     cachedItem.setToolTipText(partItem.getToolTipText());
                     cachedItem.setEnabled(partItem.getEnabled());
                     partItem.bind("enabled", cachedItem, "enabled");
-                    var listeners = qx.event.Registration.getManager(partItem).getListeners(partItem, 'execute');
+                    let listeners = qx.event.Registration.getManager(partItem).getListeners(partItem, 'execute');
                     if (listeners && listeners.length > 0) {
-                        for (var j = 0, k = listeners.length; j < k; j++) {
+                        for (let j = 0, k = listeners.length; j < k; j++) {
                             cachedItem.addListener('execute', qx.lang.Function.bind(listeners[j].handler, listeners[j].context));
                         }
                     }
@@ -289,7 +289,7 @@ qx.Class.define("omna.management.AbstractManagement", {
         },
 
         getI18nCatalog: function () {
-            var settings = this.getSettings();
+            let settings = this.getSettings();
 
             return settings.i18n || settings.id;
         },
@@ -303,7 +303,7 @@ qx.Class.define("omna.management.AbstractManagement", {
          * @param componentId {Integer?} Id of foraging component that emit message.
          */
         addMessagingListener: function (msgPatternId, handler, componentId) {
-            var channel = 'C' + (componentId || this.getSettings().id);
+            let channel = 'C' + (componentId || this.getSettings().id);
             this.__messagingRouteIds.push(q.messaging.on(channel, msgPatternId, handler, this));
         },
 
@@ -314,7 +314,7 @@ qx.Class.define("omna.management.AbstractManagement", {
          * @param customData {Map?} The given custom data that should be propagated.
          */
         emitMessaging: function (msgId, customData, managementId) {
-            var channel = 'C' + (managementId || this.getSettings().id);
+            let channel = 'C' + (managementId || this.getSettings().id);
             q.messaging.emit(channel, msgId, null, customData);
         },
 

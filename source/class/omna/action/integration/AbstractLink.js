@@ -7,7 +7,7 @@ qx.Class.define("omna.action.integration.AbstractLink", {
         _doRequest: function (action, itemId, itemLabel, params, done) {
             if (params.integration_ids.length === 0) return done.call(this);
 
-            var request = this.getManagement().getRequestManagement();
+            let request = this.getManagement().getRequestManagement();
 
             request[action](itemId, params, function (response) {
                 if (response.successful) {

@@ -12,7 +12,7 @@ qx.Class.define("omna.action.Install", {
         onExecute: function () {
             this.setEnabled(false);
 
-            var management = this.getManagement(),
+            let management = this.getManagement(),
                 itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
                 msg = this.i18nTrans('Messages', 'CONFIRM-INSTALL', [itemLabel]);
 

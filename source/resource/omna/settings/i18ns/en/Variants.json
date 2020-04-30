@@ -10,6 +10,11 @@
     "value": "Variant"
   },
   {
+    "name": "MODULE-REFERENCE-DETAILS",
+    "subCatalog": "Labels",
+    "value": "Variant / {{id}} / Details"
+  },
+  {
     "name": "sku",
     "subCatalog": "Labels",
     "value": "SKU"

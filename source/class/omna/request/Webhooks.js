@@ -7,7 +7,7 @@ qx.Class.define("omna.request.Webhooks", {
 
     members: {
         getTopics: function (callBack, scope) {
-            var cacheId = 'webhook-topics',
+            let cacheId = 'webhook-topics',
                 cache = this.getCacheItem(cacheId);
 
             if (cache) {
@@ -18,7 +18,7 @@ qx.Class.define("omna.request.Webhooks", {
                     if (response.successful) {
                         this.setCacheItem(cacheId, response);
                     } else {
-                        var msg = omna.I18n.trans('Webhooks', 'Messages', 'FAILED-LOADING-WEBHOOK-TOPICS');
+                        let msg = omna.I18n.trans('Webhooks', 'Messages', 'FAILED-LOADING-WEBHOOK-TOPICS');
                         q.messaging.emit('Application', 'error', msg)
                     }
                     callBack.call(scope, response);

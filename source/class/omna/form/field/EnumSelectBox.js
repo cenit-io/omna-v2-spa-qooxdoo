@@ -16,7 +16,7 @@ qx.Class.define("omna.form.field.EnumSelectBox", {
     members: {
         _applyOptions: function (items) {
             items.forEach(function (item) {
-                var label, model, icon;
+                let label, model, icon;
 
                 if (qx.lang.Type.isObject(item)) {
                     model = item.value;
@@ -36,7 +36,7 @@ qx.Class.define("omna.form.field.EnumSelectBox", {
 
         // overridden
         _createChildControlImpl: function (id, hash) {
-            var control;
+            let control;
 
             switch ( id ) {
                 case "list":

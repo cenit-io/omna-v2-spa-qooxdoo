@@ -10,7 +10,7 @@ qx.Mixin.define('omna.mixin.MI18n', {
          * @return {String|boolean}
          */
         i18nTrans: function (catalog, subCatalog, name, args) {
-            var leng = arguments.length;
+            let leng = arguments.length;
 
             if (leng === 1 || (leng === 2 && !qx.lang.Type.isString(subCatalog))) {
                 args = subCatalog;

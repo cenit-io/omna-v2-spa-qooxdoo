@@ -9,7 +9,7 @@ qx.Class.define("omna.form.field.NumberField", {
         cellRendererClass: omna.table.cellrenderer.Number,
 
         parseValue: function (value) {
-            var n = new Number(value);
+            let n = new Number(value);
             return n.valueOf();
         }
     },
@@ -88,7 +88,7 @@ qx.Class.define("omna.form.field.NumberField", {
 
         // overridden
         _onTextChange: function (e) {
-            var value = this.getChildControl("textfield").getValue();
+            let value = this.getChildControl("textfield").getValue();
 
             if (!this.isRequired() && (value === "" || value === null)) {
                 this.setValue(null);
@@ -100,7 +100,7 @@ qx.Class.define("omna.form.field.NumberField", {
         // overridden
         _onRoll: function (e) {
             if (!this.isReadOnly()) {
-                var textField = this.getChildControl('textfield'),
+                let textField = this.getChildControl('textfield'),
                     focusedWidget = qx.ui.core.FocusHandler.getInstance().getFocusedWidget();
 
                 // If this widget has the focus then apply parent _onRoll.

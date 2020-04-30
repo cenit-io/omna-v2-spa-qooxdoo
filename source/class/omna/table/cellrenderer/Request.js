@@ -38,11 +38,11 @@ qx.Class.define("omna.table.cellrenderer.Request", {
                 return '-';
             }
 
-            var id = cellInfo.value,
+            let id = cellInfo.value,
                 items = this.constructor.items;
 
             if (!items.has(id)) {
-                var request = this.getRequest();
+                let request = this.getRequest();
                 request.find(id, function (response) {
                     items.set(id, this.getText(response.data))
                 }, this);

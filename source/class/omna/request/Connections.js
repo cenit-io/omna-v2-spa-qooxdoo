@@ -7,7 +7,7 @@ qx.Class.define("omna.request.Connections", {
 
     members: {
         all: function (callBack, scope) {
-            var cacheId = 'integrations-connected',
+            let cacheId = 'integrations-connected',
                 cache = this.getCacheItem(cacheId);
 
             if (cache) {
@@ -21,7 +21,7 @@ qx.Class.define("omna.request.Connections", {
         },
 
         getChannels: function (callBack, scope) {
-            var cacheId = 'integration-channels',
+            let cacheId = 'integration-channels',
                 cache = this.getCacheItem(cacheId);
 
             if (cache) {
@@ -32,7 +32,7 @@ qx.Class.define("omna.request.Connections", {
                     if (response.successful) {
                         this.setCacheItem(cacheId, response);
                     } else {
-                        var msg = omna.I18n.trans('Connections', 'Messages', 'FAILED-LOADING-CHANNELS');
+                        let msg = omna.I18n.trans('Connections', 'Messages', 'FAILED-LOADING-CHANNELS');
                         q.messaging.emit('Application', 'error', msg)
                     }
                     callBack.call(scope, response);
@@ -41,7 +41,7 @@ qx.Class.define("omna.request.Connections", {
         },
 
         authorize: function (id) {
-            var path = this._getServicePath(id + '/authorize'),
+            let path = this._getServicePath(id + '/authorize'),
                 data = this._signRequest(path, { redirect_uri: this._getAppBaseUrl() }),
                 url = this._getServiceUrl(path) + '?' + qx.util.Uri.toParameter(data);
 
@@ -52,7 +52,7 @@ qx.Class.define("omna.request.Connections", {
         unauthorize: function (id, callBack, scope) {
             // Call remote service
             this.submit("DELETE", id + '/authorize', null, function (response) {
-                var msg;
+                let msg;
 
                 if (response.successful) {
                     msg = omna.I18n.trans('Connections', 'Messages', 'SUCCESSFUL-UNAUTHORIZE');
@@ -68,7 +68,7 @@ qx.Class.define("omna.request.Connections", {
         doImportTask: function (id, type, callBack, scope) {
             // Call remote service
             this.submit("GET", id + '/' + type + '/import', null, function (response) {
-                var msg;
+                let msg;
 
                 if (response.successful) {
                     msg = omna.I18n.trans('Connections', 'Messages', 'SUCCESSFUL-IMPORT', [type]);

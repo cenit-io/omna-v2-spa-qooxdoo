@@ -35,7 +35,7 @@ qx.Class.define("omna.management.variant.Details", {
     members: {
         // overridden
         _createChildControlImpl: function (id, hash) {
-            var control;
+            let control;
 
             switch ( id ) {
                 case "tabsPanel":
@@ -53,7 +53,7 @@ qx.Class.define("omna.management.variant.Details", {
         },
 
         _createTapPage: function (control, label, icon) {
-            var page = new omna.ui.tabview.Page(label, icon);
+            let page = new omna.ui.tabview.Page(label, icon);
 
             page.set({ layout: new qx.ui.layout.VBox() });
             page.add(control, { flex: 1 });
@@ -63,7 +63,7 @@ qx.Class.define("omna.management.variant.Details", {
         },
 
         _removeIntegrationTapPages: function () {
-            var tabsPanel = this.getChildControl('tabsPanel');
+            let tabsPanel = this.getChildControl('tabsPanel');
 
             this._integrationPages.forEach(function (page) {
                 tabsPanel.remove(page);
@@ -76,7 +76,7 @@ qx.Class.define("omna.management.variant.Details", {
         _createIntegrationTapPages: function (integrations) {
             this._removeIntegrationTapPages();
             integrations.forEach(function (integration) {
-                var tab = new omna.management.variant.DetailsProperties(this, integration);
+                let tab = new omna.management.variant.DetailsProperties(this, integration);
 
                 this._integrationPages.push(tab);
                 this.getChildControl('tabsPanel').add(tab);
@@ -84,7 +84,7 @@ qx.Class.define("omna.management.variant.Details", {
         },
 
         onExecuteReload: function (e) {
-            var request = this.getRequestManagement(),
+            let request = this.getRequestManagement(),
                 data = this.getCustomData();
 
             this.emitMessaging('enabled-toolbar', false);
@@ -102,7 +102,7 @@ qx.Class.define("omna.management.variant.Details", {
         },
 
         onChangeCustomData: function (e) {
-            var data = e.getData(),
+            let data = e.getData(),
                 item = data.item || {};
 
             this.getChildControl('general-tab').setData(item, true);

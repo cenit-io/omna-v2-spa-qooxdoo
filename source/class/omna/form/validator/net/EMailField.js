@@ -4,7 +4,7 @@ qx.Class.define("omna.form.validator.net.EMailField", {
     members: {
         // overridden
         onValidate: function (item, value, context) {
-            var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+            let pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
 
             if (value) {
                 if (!pattern.test(value)) {

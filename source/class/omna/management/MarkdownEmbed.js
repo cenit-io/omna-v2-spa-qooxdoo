@@ -22,7 +22,7 @@ qx.Class.define("omna.management.MarkdownEmbed", {
         if (settings.title) this._createChildControl("title");
         this._createChildControlImpl('htmlEmbed');
 
-        var listenFromComponentId = settings.listenFromComponentId;
+        let listenFromComponentId = settings.listenFromComponentId;
 
         if (listenFromComponentId) {
             this.addMessagingListener('selection-change', this.onSelectionChange, listenFromComponentId)
@@ -40,7 +40,7 @@ qx.Class.define("omna.management.MarkdownEmbed", {
     members: {
         // overridden
         _createChildControlImpl: function (id, hash) {
-            var control;
+            let control;
 
             switch ( id ) {
                 case "title":
@@ -63,7 +63,7 @@ qx.Class.define("omna.management.MarkdownEmbed", {
         },
 
         _setContent: function (item) {
-            var contentTemplate = this.getContentTemplate();
+            let contentTemplate = this.getContentTemplate();
 
             if (qx.lang.Type.isArray(contentTemplate)) contentTemplate = contentTemplate.join('\n');
 

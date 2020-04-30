@@ -7,7 +7,7 @@ qx.Class.define("omna.request.Flows", {
 
     members: {
         getTypes: function (callBack, scope) {
-            var cacheId = 'flow-types',
+            let cacheId = 'flow-types',
                 cache = this.getCacheItem(cacheId);
 
             if (cache) {
@@ -18,7 +18,7 @@ qx.Class.define("omna.request.Flows", {
                     if (response.successful) {
                         this.setCacheItem(cacheId, response);
                     } else {
-                        var msg = omna.I18n.trans('Flows', 'Messages', 'FAILED-LOADING-FLOW-TYPES');
+                        let msg = omna.I18n.trans('Flows', 'Messages', 'FAILED-LOADING-FLOW-TYPES');
                         q.messaging.emit('Application', 'error', msg)
                     }
                     callBack.call(scope, response);
@@ -29,7 +29,7 @@ qx.Class.define("omna.request.Flows", {
         toggleSchedule: function (id, callBack, scope) {
             // Call remote service
             this.submit("POST", id + '/toggle/scheduler/status', null, function (response) {
-                var msg, scheduler;
+                let msg, scheduler;
 
                 if (response.successful) {
                     scheduler = response.data.task.scheduler;
@@ -46,7 +46,7 @@ qx.Class.define("omna.request.Flows", {
         start: function (id, callBack, scope) {
             // Call start service
             this.submit("GET", id + '/start', null, function (response) {
-                var msg;
+                let msg;
 
                 if (response.successful) {
                     msg = omna.I18n.trans('Flows', 'Messages', 'SUCCESSFUL-START');

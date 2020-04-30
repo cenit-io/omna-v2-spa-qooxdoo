@@ -18,7 +18,7 @@ qx.Class.define("omna.form.dialog.HtmlEditor", {
 
     members: {
         _createFormFields: function (form) {
-            var content;
+            let content;
 
             this.base(arguments);
 

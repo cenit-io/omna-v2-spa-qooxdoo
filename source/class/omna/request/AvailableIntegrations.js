@@ -13,7 +13,7 @@ qx.Class.define("omna.request.AvailableIntegrations", {
         install: function (id, callBack, scope) {
             // Call remote service
             this.submit("PATCH", id, null, function (response) {
-                var itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
+                let itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
                     msg;
 
                 if (response.successful) {

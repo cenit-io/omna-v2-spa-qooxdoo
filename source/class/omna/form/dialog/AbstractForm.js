@@ -22,7 +22,7 @@ qx.Class.define("omna.form.dialog.AbstractForm", {
         },
 
         _createRenderer: function () {
-            var renderer = new omna.form.renderer.SingleWithOptionalLabel(this._form);
+            let renderer = new omna.form.renderer.SingleWithOptionalLabel(this._form);
 
             this.add(renderer, { flex: 1 });
         },
@@ -32,7 +32,7 @@ qx.Class.define("omna.form.dialog.AbstractForm", {
         },
 
         _createAcceptOrCancelButton: function () {
-            var bA = new qx.ui.form.Button(this.tr("Accept"), "icon/16/actions/dialog-apply.png"),
+            let bA = new qx.ui.form.Button(this.tr("Accept"), "icon/16/actions/dialog-apply.png"),
                 bC = new qx.ui.form.Button(this.tr("Cancel"), "icon/16/actions/dialog-cancel.png"),
                 manager = this._form.getValidationManager();
 
@@ -75,7 +75,7 @@ qx.Class.define("omna.form.dialog.AbstractForm", {
     destruct: function () {
         if (!this._form.isDisposed()) {
 
-            var name, items = this._form.getItems();
+            let name, items = this._form.getItems();
 
             for (name in items) items[name].destroy();
 

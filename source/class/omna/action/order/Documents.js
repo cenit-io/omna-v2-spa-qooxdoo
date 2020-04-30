@@ -10,7 +10,7 @@ qx.Class.define('omna.action.order.Documents', {
 
     members: {
         onExecute: function () {
-            var order = this.getSelectedItem(),
+            let order = this.getSelectedItem(),
                 module = { id: 'OrderDocuments', i18n: 'Orders', 'verticalLayout': false },
                 data = {
                     order: order,

@@ -12,7 +12,7 @@ qx.Class.define('omna.form.field.remote.flows.TypeSelectBox', {
 
     members: {
         __loadItems: function () {
-            var request = new omna.request.Flows();
+            let request = new omna.request.Flows();
 
             request.getTypes(function (response) {
                 if (response.successful) response.data.forEach(function (item) {

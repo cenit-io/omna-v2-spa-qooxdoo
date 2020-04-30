@@ -17,7 +17,7 @@ qx.Class.define("omna.request.Variants", {
         },
 
         updateProperties: function (integration_id, remote_variant_id, properties, callBack, scope) {
-            var path = '/integrations/' + integration_id + '/variants/' + remote_variant_id;
+            let path = '/integrations/' + integration_id + '/variants/' + remote_variant_id;
 
             this.submit("POST", path, { data: { properties: properties } }, callBack, scope);
         }

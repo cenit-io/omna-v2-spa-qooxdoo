@@ -4,7 +4,7 @@ qx.Class.define("omna.form.validator.TextField", {
     members: {
         // overridden
         onValidate: function (item, value, context) {
-            var pattern = new RegExp(item.getPattern()),
+            let pattern = new RegExp(item.getPattern()),
                 minLen = item.getMinLength();
 
             if (value) {

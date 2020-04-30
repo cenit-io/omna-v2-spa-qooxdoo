@@ -21,7 +21,7 @@ qx.Mixin.define('omna.mixin.MWithManagement', {
                 params = null;
             }
 
-            var channel = 'C' + (managementId || this.getManagement().getSettings().id);
+            let channel = 'C' + (managementId || this.getManagement().getSettings().id);
 
             q.messaging.emit(channel, msgId, params, customData);
         },

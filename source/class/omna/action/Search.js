@@ -11,7 +11,7 @@ qx.Class.define("omna.action.Search", {
 
     members: {
         _createDlg: function () {
-            var caption = this.i18nTrans('Titles', 'search');
+            let caption = this.i18nTrans('Titles', 'search');
 
             return new omna.form.dialog.Search(this.getManagement(), caption, this.getIcon());
         },
@@ -21,10 +21,10 @@ qx.Class.define("omna.action.Search", {
         },
 
         onAccept: function (e) {
-            var data = e.getData();
+            let data = e.getData();
 
             // Remove empty attrs.
-            for (var i in data) if (data[i] === undefined) delete data[i];
+            for (let i in data) if (data[i] === undefined) delete data[i];
 
             this.emitMessaging('execute-search', { dlg: e.getTarget() }, data);
 

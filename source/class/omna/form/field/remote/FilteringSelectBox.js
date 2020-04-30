@@ -40,7 +40,7 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
 
         // overridden
         _createChildControlImpl: function (id, hash) {
-            var control;
+            let control;
 
             switch ( id ) {
                 case "searchTextField":
@@ -48,7 +48,7 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
                     control.addListener("changeValue", this._loadItems, this);
                     break;
                 case "popup":
-                    var searchTextField = this.getChildControl("searchTextField");
+                    let searchTextField = this.getChildControl("searchTextField");
 
                     control = new qx.ui.popup.Popup(new qx.ui.layout.VBox());
                     control.setAutoHide(false);
@@ -65,7 +65,7 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
         },
 
         _loadItems: function () {
-            var searchText = this.getChildControl("searchTextField").getValue();
+            let searchText = this.getChildControl("searchTextField").getValue();
 
             if (this.__searchText === searchText) return;
 
@@ -74,7 +74,7 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
             this.__requestManagement.findRange(0, 24, null, { term: searchText }, function (response) {
                 this.removeAll();
                 if (response.successful) {
-                    var labelAttr = this.getLabelAttr(),
+                    let labelAttr = this.getLabelAttr(),
                         valueAttr = this.getValueAttr();
 
                     this.__cache = response.data;
@@ -91,7 +91,7 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
         _loadItem: function (id) {
             this.__requestManagement.find(id, function (response) {
                 if (response.successful) {
-                    var labelAttr = this.getLabelAttr(),
+                    let labelAttr = this.getLabelAttr(),
                         valueAttr = this.getValueAttr(),
                         item = response.data;
 

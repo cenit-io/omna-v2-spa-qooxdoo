@@ -18,7 +18,7 @@ qx.Class.define("omna.form.field.util.SearchTextField", {
         this.__text = this._createChildControlImpl('textField');
         this.__icon = this._createChildControlImpl('icon');
 
-        var layout = new qx.ui.layout.HBox().set({
+        let layout = new qx.ui.layout.HBox().set({
             alignY: "middle"
         });
 
@@ -81,7 +81,7 @@ qx.Class.define("omna.form.field.util.SearchTextField", {
 
         // overridden
         _createChildControlImpl: function (id, hash) {
-            var control;
+            let control;
 
             switch ( id ) {
                 case "textField":
@@ -109,7 +109,7 @@ qx.Class.define("omna.form.field.util.SearchTextField", {
 
         // overridden
         getFocusElement: function () {
-            var el = this.getContentElement();
+            let el = this.getContentElement();
             if (el) return el;
         },
 

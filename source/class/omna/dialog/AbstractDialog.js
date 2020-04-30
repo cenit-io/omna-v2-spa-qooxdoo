@@ -54,7 +54,7 @@ qx.Class.define("omna.dialog.AbstractDialog", {
 
         _createButtons: function () {
             this.__buttonPane = new qx.ui.container.Composite();
-            var bpLayout = new qx.ui.layout.HBox(5);
+            let bpLayout = new qx.ui.layout.HBox(5);
             bpLayout.setAlignX("right");
             this.__buttonPane.setLayout(bpLayout);
             this.add(this.__buttonPane);
@@ -63,7 +63,7 @@ qx.Class.define("omna.dialog.AbstractDialog", {
         },
 
         _createAcceptOrCancelButton: function () {
-            var bP = this.__buttonPane,
+            let bP = this.__buttonPane,
                 bA = new qx.ui.form.Button(this.tr("Accept"), "icon/16/actions/dialog-apply.png"),
                 bC = new qx.ui.form.Button(this.tr("Cancel"), "icon/16/actions/dialog-cancel.png");
 

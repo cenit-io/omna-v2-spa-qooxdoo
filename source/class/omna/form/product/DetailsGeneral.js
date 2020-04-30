@@ -3,52 +3,30 @@ qx.Class.define("omna.form.product.DetailsGeneral", {
 
     members: {
         __createFormFields: function () {
-            var widget, label, field;
+            let widget;
 
-            field = 'name';
             widget = new omna.form.field.TextField();
             widget.set({ required: true });
-            label = this.i18nTrans(field);
-            this.add(widget, label, null, field, this, { colSpan: 3 });
+            this._add(widget, 'name', 3);
 
-            field = 'price';
             widget = new omna.form.field.NumberField();
             widget.set({ required: true, minimum: 0, maximumFractionDigits: 2, prefix: '$' });
-            label = this.i18nTrans(field);
-            this.add(widget, label, null, field, this, { colSpan: 1 });
+            this._add(widget, 'price', 1);
 
-            field = 'description';
             widget = new omna.form.field.TextArea();
             widget.set({ required: true, autoSize: true, wrap: false });
-            label = this.i18nTrans(field);
-            this.add(widget, label, null, field, this, { colSpan: 4 });
+            this._add(widget, 'description', 4);
 
             this.addGroupHeader(this.i18nTrans('package'));
 
-            widget = new omna.form.field.NumberField();
-            widget.set({ required: false, minimum: 0, maximumFractionDigits: 2, postfix: ' kg' });
-            label = this.i18nTrans('package_weight');
-            this.add(widget, label, null, 'package.weight', this, { colSpan: 1 });
-
-            widget = new omna.form.field.NumberField();
-            widget.set({ required: false, minimum: 0, maximumFractionDigits: 2, postfix: ' cm' });
-            label = this.i18nTrans('package_height');
-            this.add(widget, label, null, 'package.height', this, { colSpan: 1 });
-
-            widget = new omna.form.field.NumberField();
-            widget.set({ required: false, minimum: 0, maximumFractionDigits: 2, postfix: ' cm' });
-            label = this.i18nTrans('package_length');
-            this.add(widget, label, null, 'package.length', this, { colSpan: 1 });
-
-            widget = new omna.form.field.NumberField();
-            widget.set({ required: false, minimum: 0, maximumFractionDigits: 2, postfix: ' cm' });
-            label = this.i18nTrans('package_width');
-            this.add(widget, label, null, 'package.width', this, { colSpan: 1 });
+            this._createPackageNumberField('package.weight', ' kg')
+            this._createPackageNumberField('package.height', ' cm');
+            this._createPackageNumberField('package.length', ' cm');
+            this._createPackageNumberField('package.width', ' cm');
 
             widget = new omna.form.field.TextArea();
             widget.set({ required: false });
-            label = this.i18nTrans('package_content');
-            this.add(widget, label, null, 'package.content', this, { colSpan: 3 });
+            this._add(widget, 'package.content', 3);
 
             widget = new omna.form.field.LocalSelectBox();
             widget.set({
@@ -60,8 +38,22 @@ qx.Class.define("omna.form.product.DetailsGeneral", {
                     { value: true, label: "overwrite-package-in-all-variants" }
                 ]
             });
-            label = this.i18nTrans('package_overwrite');
-            this.add(widget, label, null, 'package.overwrite', this, { colSpan: 1 });
+            this._add(widget, 'package.overwrite', 1);
+        },
+
+        _createPackageNumberField: function (name, postfix) {
+            let widget = new omna.form.field.NumberField().set({
+                required: false,
+                minimum: 0,
+                maximumFractionDigits: 2,
+                postfix: postfix
+            });
+
+            this._add(widget, name, 1);
+        },
+
+        _add: function (item, name, colSpan, validator) {
+            this.add(item, this.i18nTrans(name), validator, name, this, { colSpan: colSpan })
         },
 
         getI18nCatalog: function () {

@@ -6,7 +6,6 @@ qx.Class.define('omna.action.product.Variants', {
 
     construct: function (management) {
         this.base(arguments, management, 'variants', 'omna/icon/16/actions/variants.png');
-
         this.addMessagingListener("open-variants", this.onOpenVariants);
     },
 
@@ -16,9 +15,9 @@ qx.Class.define('omna.action.product.Variants', {
         },
 
         onOpenVariants: function (data) {
-            var data = data.customData,
-                module = { id: 'Variants', i18n: this.getI18nCatalog() };
+            let module = { id: 'Variants', i18n: this.getI18nCatalog() };
 
+            data = data.customData;
             data.label = this.i18nTrans('MODULE-REFERENCE-VARIANTS', data.item);
             data.params = { product_id: data.item.id };
 

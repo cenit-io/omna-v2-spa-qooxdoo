@@ -17,7 +17,7 @@ qx.Class.define("omna.request.Products", {
         },
 
         updateProperties: function (integration_id, remote_product_id, properties, callBack, scope) {
-            var path = '/integrations/' + integration_id + '/products/' + remote_product_id;
+            let path = '/integrations/' + integration_id + '/products/' + remote_product_id;
 
             this.submit("POST", path, { data: { properties: properties } }, callBack, scope);
         }

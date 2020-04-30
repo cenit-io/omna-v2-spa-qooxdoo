@@ -29,7 +29,7 @@ qx.Class.define("omna.form.AbstractForm", {
 
     members: {
         __createButtons: function () {
-            var bS = new qx.ui.form.Button(this.i18nTrans("save"), "omna/icon/16/actions/save.png"),
+            let bS = new qx.ui.form.Button(this.i18nTrans("save"), "omna/icon/16/actions/save.png"),
                 bR = new qx.ui.form.Button(this.i18nTrans("reset"), "omna/icon/16/actions/clear.png"),
                 manager = this.getValidationManager();
 
@@ -58,7 +58,7 @@ qx.Class.define("omna.form.AbstractForm", {
 
     destruct: function () {
         if (this.isDisposed()) return;
-        var name, items = this.getItems();
+        let name, items = this.getItems();
         for (name in items) items[name].destroy();
         this.getButtons().forEach((item) => item.destroy());
     }

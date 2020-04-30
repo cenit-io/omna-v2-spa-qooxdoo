@@ -155,7 +155,6 @@
       },
       {
         "name": "package.overwrite",
-        "label": "package_overwrite",
         "widgetClass": "omna.form.field.LocalSelectBox",
         "accessInAddForm": "W",
         "accessInEditForm": "W",

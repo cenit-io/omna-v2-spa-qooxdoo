@@ -26,7 +26,7 @@ qx.Class.define('omna.management.variant.DetailsGeneral', {
 
         // overridden
         _createChildControlImpl: function (id, hash) {
-            var control;
+            let control;
 
             switch ( id ) {
                 case 'general-form':
@@ -42,7 +42,7 @@ qx.Class.define('omna.management.variant.DetailsGeneral', {
         },
 
         __onSave: function (e) {
-            var request = this.getRequestManagement(),
+            let request = this.getRequestManagement(),
                 variant = this.getManagement().getCustomData().item,
                 data = e.getData();
 

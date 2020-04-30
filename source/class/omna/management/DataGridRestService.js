@@ -42,11 +42,11 @@ qx.Class.define("omna.management.DataGridRestService", {
         },
 
         _createTable: function () {
-            var fields = this.getFields(),
+            let fields = this.getFields(),
                 settings = this.getSettings(),
                 columnFields = fields.filter((f) => f.showInGrid);
 
-            var tableModel = new omna.model.DataGridRestService(columnFields, settings, this.getRequestManagement()),
+            let tableModel = new omna.model.DataGridRestService(columnFields, settings, this.getRequestManagement()),
                 table = this.__table = new qx.ui.table.Table(tableModel, {
                     tableColumnModel: function (table) {
                         return new qx.ui.table.columnmodel.Resize(table);
@@ -62,10 +62,10 @@ qx.Class.define("omna.management.DataGridRestService", {
             });
 
             columnFields.forEach(function (field, index) {
-                var cellRendererClass, widgetClass;
+                let cellRendererClass, widgetClass;
 
                 if (field.gridColumnWidth) {
-                    var width = String(field.gridColumnWidth);
+                    let width = String(field.gridColumnWidth);
 
                     width = width.match(/^\d+%$/) ? width : parseInt(width);
 
@@ -91,7 +91,7 @@ qx.Class.define("omna.management.DataGridRestService", {
         },
 
         onChangeCustomData: function (e) {
-            var data = e.getData();
+            let data = e.getData();
 
             if (data.params) this.onExecuteReload();
         },
@@ -111,7 +111,7 @@ qx.Class.define("omna.management.DataGridRestService", {
         },
 
         onExecuteRemove: function (data) {
-            var settings = this.getSettings();
+            let settings = this.getSettings();
 
             if (settings.reloadAfterRemove) return this.onExecuteReload();
 
@@ -123,7 +123,7 @@ qx.Class.define("omna.management.DataGridRestService", {
             // Save original customData before apply first search.
             this._customData = this._customData || qx.lang.Object.clone(this.getCustomData(), true);
 
-            var dlg = data.customData.dlg,
+            let dlg = data.customData.dlg,
                 customData = qx.lang.Object.clone(this._customData, true),
                 baseParams = this.getSettings().baseParams,
                 searchData = data.params;
@@ -138,10 +138,10 @@ qx.Class.define("omna.management.DataGridRestService", {
         },
 
         onExecuteGlobalSearch: function (data) {
-            var globalSearchText = this.getModulePage().getGlobalSearchText();
+            let globalSearchText = this.getModulePage().getGlobalSearchText();
 
             if (globalSearchText != data.customData) {
-                var customData = qx.lang.Object.clone(this.getCustomData(), true),
+                let customData = qx.lang.Object.clone(this.getCustomData(), true),
                     baseParams = this.getSettings().baseParams;
 
                 // Merge params with searchData and baseParams.
@@ -155,7 +155,7 @@ qx.Class.define("omna.management.DataGridRestService", {
         },
 
         onCellDbltap: function (e) {
-            var tableModel = this.__table.getTableModel(),
+            let tableModel = this.__table.getTableModel(),
                 data = { index: e.getRow(), item: tableModel.getRowData(e.getRow()), sender: this };
 
             this.emitMessaging("open-details", data);
@@ -167,7 +167,7 @@ qx.Class.define("omna.management.DataGridRestService", {
          * @param e {qx.event.type.Event}
          */
         onChangeSelection: function (e) {
-            var selectionModel = e.getTarget(),
+            let selectionModel = e.getTarget(),
                 tableModel = this.__table.getTableModel(),
                 index, data, item;
 
@@ -190,14 +190,14 @@ qx.Class.define("omna.management.DataGridRestService", {
          */
         onSelectionChange: function (data) {
             if (data.customData) {
-                var sender = data.customData.sender,
+                let sender = data.customData.sender,
                     settings = this.getSettings(),
                     listenFromComponentId = settings.listenFromComponentId,
                     primaryFieldName = settings.primaryFieldName || 'id',
                     localFieldName = settings.localFieldName || 'id';
 
                 if (sender && sender != this && sender.getSettings().id == listenFromComponentId) {
-                    var customData = qx.lang.Object.clone(this.getCustomData(), true);
+                    let customData = qx.lang.Object.clone(this.getCustomData(), true);
 
                     customData.params = qx.lang.Object.mergeWith(customData.params || {}, settings.baseParams);
                     customData.params[localFieldName] = data.customData.item[primaryFieldName];

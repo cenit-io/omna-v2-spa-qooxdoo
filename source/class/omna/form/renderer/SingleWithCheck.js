@@ -5,7 +5,7 @@ qx.Class.define("omna.form.renderer.SingleWithCheck", {
     construct: function (form) {
         this.base(arguments, form);
 
-        var layout = this.getLayout();
+        let layout = this.getLayout();
 
         layout.setColumnFlex(1, 0);
         layout.setColumnFlex(2, 1);
@@ -23,8 +23,8 @@ qx.Class.define("omna.form.renderer.SingleWithCheck", {
             }
 
             // add the items
-            for (var i = 0; i < items.length; i++) {
-                var label = this._createLabel(names[i], items[i]),
+            for (let i = 0; i < items.length; i++) {
+                let label = this._createLabel(names[i], items[i]),
                     check = this._createCheckBox(items[i]);
 
                 this._add(check, { row: this._row, column: 0 });
@@ -52,7 +52,7 @@ qx.Class.define("omna.form.renderer.SingleWithCheck", {
                 // create button row
                 this._buttonRow = new qx.ui.container.Composite();
                 this._buttonRow.setMarginTop(5);
-                var hbox = new qx.ui.layout.HBox();
+                let hbox = new qx.ui.layout.HBox();
                 hbox.setAlignX("right");
                 hbox.setSpacing(5);
                 this._buttonRow.setLayout(hbox);
@@ -68,7 +68,7 @@ qx.Class.define("omna.form.renderer.SingleWithCheck", {
         },
 
         _createCheckBox: function (item) {
-            var check = new qx.ui.form.CheckBox();
+            let check = new qx.ui.form.CheckBox();
 
             check.bind("value", item, "enabled");
 

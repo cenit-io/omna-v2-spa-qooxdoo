@@ -14,12 +14,12 @@ qx.Class.define("omna.form.field.calendar.AbstractCheckField", {
     ],
 
     construct: function () {
-        var rowSize = this._rowSize;
+        let rowSize = this._rowSize;
 
         this.base(arguments);
 
         this.__fields = this.getItems().map(function (item, idx) {
-            var field = new qx.ui.form.CheckBox(this.getItemLabel(idx));
+            let field = new qx.ui.form.CheckBox(this.getItemLabel(idx));
 
             this.add(field, { row: Math.trunc(idx / rowSize), column: idx % rowSize });
             field.set({ allowGrowY: true, allowGrowX: true });
@@ -79,7 +79,7 @@ qx.Class.define("omna.form.field.calendar.AbstractCheckField", {
         },
 
         validate: function (form) {
-            var value = this.getValue();
+            let value = this.getValue();
 
             if (value == null && this.isRequired()) {
                 return this.tr('This field is required');

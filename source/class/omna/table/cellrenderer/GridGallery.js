@@ -17,10 +17,10 @@ qx.Class.define("omna.table.cellrenderer.GridGallery", {
     members: {
         // overridden
         _getContentHtml: function (cellInfo) {
-            var images = cellInfo.value || [];
+            let images = cellInfo.value || [];
 
             if (images.length != 0) {
-                var idx = Math.round(Math.random() * images.length),
+                let idx = Math.round(Math.random() * images.length),
                     style = qx.bom.Template.render(
                         'max-width:{{w}}px;max-height:{{h}}px;', {
                             w: cellInfo.styleWidth - this._insetX, h: cellInfo.styleHeight - this._insetY

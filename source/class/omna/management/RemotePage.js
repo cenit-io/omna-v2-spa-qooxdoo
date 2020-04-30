@@ -12,7 +12,7 @@ qx.Class.define("omna.management.RemotePage", {
     construct: function (settings, customData, modulePage) {
         this.base(arguments, settings, customData, modulePage);
 
-        var frame = new qx.ui.embed.ThemedIframe();
+        let frame = new qx.ui.embed.ThemedIframe();
 
         frame.setSource(settings.src);
 

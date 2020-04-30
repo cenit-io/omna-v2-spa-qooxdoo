@@ -11,7 +11,7 @@ qx.Class.define("omna.form.dialog.Custom", {
      * @param icon {String} The URL of the caption bar icon.
      */
     construct: function (management, action, caption, icon) {
-        var settings = management.getSettings();
+        let settings = management.getSettings();
 
         this.set({
             management: management,
@@ -31,12 +31,12 @@ qx.Class.define("omna.form.dialog.Custom", {
 
     members: {
         _createFormFields: function (form) {
-            var management = this.getManagement(),
+            let management = this.getManagement(),
                 fields = management.getFields(),
                 accessFormActionProperty = (this.getAction() == 'add') ? 'accessInAddForm' : 'accessInEditForm';
 
             fields.forEach(function (field) {
-                var accessFormAction = field[accessFormActionProperty] || 'N',
+                let accessFormAction = field[accessFormActionProperty] || 'N',
                     widget,
                     widgetClass,
                     validator = null,

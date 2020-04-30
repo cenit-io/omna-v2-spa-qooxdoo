@@ -11,7 +11,7 @@ qx.Class.define("omna.action.Edit", {
 
     members: {
         _createDlg: function () {
-            var itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
+            let itemLabel = this.i18nTrans('SINGLE-ITEM-REFERENCE'),
                 caption = this.i18nTrans('Titles', 'edit', [itemLabel]),
                 dlg = new omna.form.dialog.Custom(this.getManagement(), 'edit', caption, this.getIcon());
 
@@ -21,7 +21,7 @@ qx.Class.define("omna.action.Edit", {
         },
 
         onAccept: function (e) {
-            var management = this.getManagement(),
+            let management = this.getManagement(),
                 request = management.getRequestManagement(),
                 dlg = e.getTarget(),
                 data = e.getData();

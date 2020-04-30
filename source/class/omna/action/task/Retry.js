@@ -16,10 +16,10 @@ qx.Class.define("omna.action.task.Retry", {
 
     members: {
         onExecute: function () {
-            var msg = this.i18nTrans('Messages', 'CONFIRM-RETRY');
+            let msg = this.i18nTrans('Messages', 'CONFIRM-RETRY');
 
             omna.dialog.Confirm.show(msg, function (response) {
-                var request = this.getManagement().getRequestManagement();
+                let request = this.getManagement().getRequestManagement();
 
                 if (response === 'yes') request.retry(this.getSelectedItem().id, function (response) {
                     if (response.successful) this.emitMessaging('execute-reload');

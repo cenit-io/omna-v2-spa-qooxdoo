@@ -41,7 +41,7 @@ qx.Class.define("omna.request.Session", {
         },
 
         getCredentials: function () {
-            var profile = this.getProfile();
+            let profile = this.getProfile();
             return { token: profile.token, secret: profile.secret }
         },
 
@@ -51,12 +51,12 @@ qx.Class.define("omna.request.Session", {
         login: function () {
             this.setProfile(null);
 
-            var params = qx.util.Uri.parseUri(window.location.href),
+            let params = qx.util.Uri.parseUri(window.location.href),
                 serverBaseUrl = this.getServerBaseUrl(),
                 appUrl = this.getAppBaseUrl();
 
             if (params.queryKey.code) {
-                var request = new omna.request.Xhr(serverBaseUrl + '/get_access_token', 'POST');
+                let request = new omna.request.Xhr(serverBaseUrl + '/get_access_token', 'POST');
 
                 request.setRequestData({ code: params.queryKey.code });
                 request.setRequestHeader("Accept", "application/json");
@@ -77,13 +77,13 @@ qx.Class.define("omna.request.Session", {
          */
         logout: function () {
 
-            var msg = omna.I18n.trans('Messages', 'CONFIRM-LOGOUT');
+            let msg = omna.I18n.trans('Messages', 'CONFIRM-LOGOUT');
 
             omna.dialog.Confirm.show(msg, function (response) {
                 if (response === 'yes') {
                     this.setProfile(null);
 
-                    var serverBaseUrl = this.getServerBaseUrl(),
+                    let serverBaseUrl = this.getServerBaseUrl(),
                         appUrl = this.getAppBaseUrl();
 
                     window.location = serverBaseUrl + '/sign_out?redirect_uri=' + appUrl;
@@ -126,7 +126,7 @@ qx.Class.define("omna.request.Session", {
             // Delete the local registry of the current authenticity profile.
             this.setProfile(null);
 
-            var response = e.getTarget().getResponse(),
+            let response = e.getTarget().getResponse(),
                 status = response.statusCode || e.getTarget().getStatus(),
                 msg = response.message || omna.request.AbstractResource.HttpStatus(status);
 

@@ -14,7 +14,7 @@ qx.Class.define("omna.form.dialog.AbstractField", {
         },
 
         _createAcceptOrCancelButton: function () {
-            var bA = new qx.ui.form.Button(this.tr("Accept"), "icon/16/actions/dialog-apply.png"),
+            let bA = new qx.ui.form.Button(this.tr("Accept"), "icon/16/actions/dialog-apply.png"),
                 bC = new qx.ui.form.Button(this.tr("Cancel"), "icon/16/actions/dialog-cancel.png");
 
             bA.setAllowStretchX(true);

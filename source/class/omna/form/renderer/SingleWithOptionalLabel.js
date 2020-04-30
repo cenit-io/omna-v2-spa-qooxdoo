@@ -5,7 +5,7 @@ qx.Class.define("omna.form.renderer.SingleWithOptionalLabel", {
     construct: function (form) {
         this.base(arguments, form);
 
-        var layout = this.getLayout();
+        let layout = this.getLayout();
 
         layout.setColumnFlex(0, 0);
         layout.setColumnFlex(1, 1);
@@ -23,9 +23,9 @@ qx.Class.define("omna.form.renderer.SingleWithOptionalLabel", {
             }
 
             // add the items
-            for (var i = 0; i < items.length; i++) {
+            for (let i = 0; i < items.length; i++) {
                 if (names[i] && names[i] != '') {
-                    var label = this._createLabel(names[i], items[i]);
+                    let label = this._createLabel(names[i], items[i]);
 
                     this._add(label, { row: this._row, column: 0 });
                     label.setBuddy(items[i]);

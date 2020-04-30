@@ -10,7 +10,7 @@ qx.Class.define("omna.action.order.Export", {
 
     members: {
         onExecute: function () {
-            var msg = this.i18nTrans('Messages', 'CONFIRM-EXPORT');
+            let msg = this.i18nTrans('Messages', 'CONFIRM-EXPORT');
 
             omna.dialog.Confirm.show(msg, function (response) {
                 if (response === 'yes') this.getRequestManagement().export(this.getSelectedItem());

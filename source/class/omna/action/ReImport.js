@@ -10,7 +10,7 @@ qx.Class.define("omna.action.ReImport", {
 
     members: {
         onExecute: function () {
-            var msg = this.i18nTrans('Messages', 'CONFIRM-REIMPORT');
+            let msg = this.i18nTrans('Messages', 'CONFIRM-REIMPORT');
 
             omna.dialog.Confirm.show(msg, function (response) {
                 if (response === 'yes') this.getRequestManagement().reImport();

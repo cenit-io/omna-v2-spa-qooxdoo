@@ -10,7 +10,7 @@ qx.Class.define("omna.action.tenant.Switch", {
 
     members: {
         onExecute: function () {
-            var msg = this.i18nTrans('Messages', 'CONFIRM-SWITCH');
+            let msg = this.i18nTrans('Messages', 'CONFIRM-SWITCH');
 
             omna.dialog.Confirm.show(msg, function (response) {
                 if (response === 'yes') omna.request.Session.setProfile(this.getSelectedItem());

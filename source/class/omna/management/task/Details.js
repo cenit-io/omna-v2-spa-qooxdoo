@@ -40,7 +40,7 @@ qx.Class.define("omna.management.task.Details", {
     members: {
         // overridden
         _createChildControlImpl: function (id, hash) {
-            var control;
+            let control;
 
             switch ( id ) {
                 case "title":
@@ -54,7 +54,7 @@ qx.Class.define("omna.management.task.Details", {
                     control.set({ rich: true, padding: [0, 5], margin: 0, minHeight: 120 });
                     this._fillDescription(null, control);
 
-                    var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(0)).set({ decorator: "main" });
+                    let container = new qx.ui.container.Composite(new qx.ui.layout.VBox(0)).set({ decorator: "main" });
                     container._add(control);
 
                     this._add(container, { flex: 2 });
@@ -86,7 +86,7 @@ qx.Class.define("omna.management.task.Details", {
         },
 
         _createTapPage: function (control, label) {
-            var page = new qx.ui.tabview.Page(this.i18nTrans(label));
+            let page = new qx.ui.tabview.Page(this.i18nTrans(label));
 
             page.set({ layout: new qx.ui.layout.VBox(), enabled: false });
             page.add(control, { flex: 1 });
@@ -95,13 +95,13 @@ qx.Class.define("omna.management.task.Details", {
         },
 
         _createScheduler: function () {
-            var control = new omna.form.task.Scheduler(false);
+            let control = new omna.form.task.Scheduler(false);
 
             return control
         },
 
         _createTable: function (fields) {
-            var tableModel = new qx.ui.table.model.Simple(),
+            let tableModel = new qx.ui.table.model.Simple(),
                 table, columnNames = [], columnIDs = [];
 
             fields.forEach(function (field) {
@@ -124,7 +124,7 @@ qx.Class.define("omna.management.task.Details", {
                 columnVisibilityButtonVisible: false
             });
 
-            var tableColumnModel = table.getTableColumnModel(),
+            let tableColumnModel = table.getTableColumnModel(),
                 behavior = tableColumnModel.getBehavior();
 
             behavior.setWidth(0, 90);
@@ -186,7 +186,7 @@ qx.Class.define("omna.management.task.Details", {
         },
 
         _fillTable: function (items, controlId) {
-            var control = this.getChildControl(controlId);
+            let control = this.getChildControl(controlId);
 
             items = items ? items : [];
             control.getLayoutParent().setEnabled(items.length != 0);
@@ -194,14 +194,14 @@ qx.Class.define("omna.management.task.Details", {
         },
 
         _fillScheduler: function (scheduler, controlId) {
-            var control = this.getChildControl('scheduler');
+            let control = this.getChildControl('scheduler');
 
             control.setData(scheduler != 'none' ? scheduler : {}, true);
             control.getLayoutParent().setEnabled(scheduler != 'none');
         },
 
         onExecuteReload: function (e) {
-            var request = this.getRequestManagement(),
+            let request = this.getRequestManagement(),
                 data = this.getCustomData();
 
             this.emitMessaging('enabled-toolbar', false);
@@ -218,7 +218,7 @@ qx.Class.define("omna.management.task.Details", {
         },
 
         onNotificationCellTap: function (cellInfo) {
-            var data = cellInfo.getTarget().getTable().getTableModel().getRowData(cellInfo.getRow());
+            let data = cellInfo.getTarget().getTable().getTableModel().getRowData(cellInfo.getRow());
 
             q.messaging.emit("Application", data[0], data[1]);
         },
@@ -228,7 +228,7 @@ qx.Class.define("omna.management.task.Details", {
         },
 
         onChangeCustomData: function (e) {
-            var data = e.getData(),
+            let data = e.getData(),
                 item = data.item || {};
 
             this._fillDescription(item.description);

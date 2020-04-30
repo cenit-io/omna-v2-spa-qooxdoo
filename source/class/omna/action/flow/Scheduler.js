@@ -11,7 +11,7 @@ qx.Class.define("omna.action.flow.Scheduler", {
 
     members: {
         onExecute: function () {
-            var item = this.getSelectedItem(),
+            let item = this.getSelectedItem(),
                 scheduler = item.task.scheduler,
                 msg = this.i18nTrans('Messages', 'CONFIRM-SCHEDULER-' + (scheduler && scheduler.active ? 'OFF' : 'ON'));
 
@@ -28,7 +28,7 @@ qx.Class.define("omna.action.flow.Scheduler", {
             this.base(arguments, data);
 
             if (this.getEnabled()) {
-                var scheduler = data.customData.item.task.scheduler;
+                let scheduler = data.customData.item.task.scheduler;
 
                 if (scheduler && scheduler.active) {
                     this.set({ icon: 'omna/icon/16/actions/scheduler-off.png' })

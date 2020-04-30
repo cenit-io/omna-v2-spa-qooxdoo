@@ -16,9 +16,9 @@ qx.Class.define('omna.action.Details', {
         },
 
         onOpenDetails: function (data) {
-            var data = data.customData,
-                module = { id: this.getManagement().getSettings().id + 'Details', i18n: this.getI18nCatalog() };
+            let module = { id: this.getManagement().getSettings().id + 'Details', i18n: this.getI18nCatalog() };
 
+            data = data.customData;
             data.label = this.i18nTrans('MODULE-REFERENCE-DETAILS', data.item);
 
             q.messaging.emit('Application', 'open-module', module, data);

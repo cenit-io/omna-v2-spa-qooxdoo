@@ -14,7 +14,7 @@ qx.Class.define("omna.I18n", {
          * @return {String|boolean}
          */
         trans: function (catalog, subCatalog, name, args) {
-            var i18n = omna.I18n.getInstance();
+            let i18n = omna.I18n.getInstance();
 
             return i18n.trans.apply(i18n, arguments);
         }
@@ -34,13 +34,13 @@ qx.Class.define("omna.I18n", {
         __loadedCatalogs: null,
 
         __load: function (catalog) {
-            var manager = qx.locale.Manager.getInstance(),
+            let manager = qx.locale.Manager.getInstance(),
                 locale = manager.getLocale(),
                 translationMap = {},
 
                 fillTranslationMap = function (items) {
                     items.forEach(function (item) {
-                        var i18nId = catalog + '.' + item.subCatalog + '.' + item.name;
+                        let i18nId = catalog + '.' + item.subCatalog + '.' + item.name;
                         translationMap[i18nId] = item.value;
                     });
                 };
@@ -55,7 +55,7 @@ qx.Class.define("omna.I18n", {
         },
 
         __isLoadedCatalogs: function (catalog) {
-            var loaded = this.__loadedCatalogs[catalog];
+            let loaded = this.__loadedCatalogs[catalog];
 
             return this.isDevelopment() ? loaded && (Date.now() - loaded < 30000) : loaded;
         },
@@ -70,7 +70,7 @@ qx.Class.define("omna.I18n", {
          * @return {String|boolean}
          */
         trans: function (catalog, subCatalog, name, args) {
-            var aux, item = null, leng = arguments.length;
+            let aux, item = null, leng = arguments.length;
 
             if (leng === 1 || (leng === 2 && !qx.lang.Type.isString(subCatalog))) {
                 args = subCatalog;
@@ -92,7 +92,7 @@ qx.Class.define("omna.I18n", {
                 args = [];
             }
 
-            var manager = qx.locale.Manager.getInstance(),
+            let manager = qx.locale.Manager.getInstance(),
                 i18nId = catalog + '.' + subCatalog + '.' + name,
                 trans1, trans2;
 

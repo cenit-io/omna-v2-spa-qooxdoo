@@ -39,7 +39,7 @@ qx.Class.define("omna.form.field.util.Html", {
     members: {
         _onOpenDlg: function (e) {
             if (!this.isReadOnly()) {
-                var dlg = new omna.form.dialog.HtmlEditor();
+                let dlg = new omna.form.dialog.HtmlEditor();
 
                 dlg.setData({ content: this.getValue() });
                 dlg.addListener('accept', function (e) {

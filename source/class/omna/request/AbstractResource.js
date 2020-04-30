@@ -9,7 +9,7 @@ qx.Class.define("omna.request.AbstractResource", {
 
     statics: {
         HttpStatus: function (code) {
-            var HTTP_STATUS_CODES = {
+            let HTTP_STATUS_CODES = {
                 100: "Continue",
                 101: "Switching Protocols",
                 102: "Processing",
@@ -161,7 +161,7 @@ qx.Class.define("omna.request.AbstractResource", {
         },
 
         _signRequest: function (path, data, token, secret) {
-            var credentials = omna.request.Session.getCredentials();
+            let credentials = omna.request.Session.getCredentials();
 
             data = qx.lang.Object.clone(data) || {};
 
@@ -170,7 +170,7 @@ qx.Class.define("omna.request.AbstractResource", {
 
             // Join the service path and the ordered sequence of characters, excluding the quotes,
             // corresponding to the JSON of the parameters that will be sent.
-            var msg = path + JSON.stringify(data).replace(/["']/g, '').split('').sort().join('');
+            let msg = path + JSON.stringify(data).replace(/["']/g, '').split('').sort().join('');
 
             // Generate the corresponding hmac parameter using the js-sha256 or similar library.
             data.hmac = sha256.hmac.update(secret || credentials.secret, msg).hex();
@@ -179,7 +179,7 @@ qx.Class.define("omna.request.AbstractResource", {
         },
 
         _toParameter: function (data) {
-            var qs = [],
+            let qs = [],
                 add = function (k, v) {
                     v = qx.lang.Type.isFunction(v) ? v() : v;
                     v = v === null ? '' : v === undefined ? '' : v;
@@ -187,7 +187,7 @@ qx.Class.define("omna.request.AbstractResource", {
                 },
 
                 buildParams = function (prefix, obj) {
-                    var i, len, key;
+                    let i, len, key;
 
                     if (prefix) {
                         if (qx.lang.Type.isArray(obj)) {
@@ -221,7 +221,7 @@ qx.Class.define("omna.request.AbstractResource", {
 
             path = this._getServicePath(path, data);
 
-            var request = this.__requestManagement = new omna.request.Xhr(this._getServiceUrl(path), method),
+            let request = this.__requestManagement = new omna.request.Xhr(this._getServiceUrl(path), method),
                 params = this._signRequest(path, data || {}, token, secret);
 
             request.setAsync(this.getAsync());
@@ -284,7 +284,7 @@ qx.Class.define("omna.request.AbstractResource", {
                 sort = null;
             }
 
-            var data = qx.lang.Object.clone(params) || {};
+            let data = qx.lang.Object.clone(params) || {};
 
             data.offset = from;
             data.limit = to - from + 1;
@@ -295,12 +295,12 @@ qx.Class.define("omna.request.AbstractResource", {
         },
 
         findAll: function (sort, params, callBack, scope) {
-            var findBlock = qx.lang.Function.bind(function (from, to, items) {
+            let findBlock = qx.lang.Function.bind(function (from, to, items) {
                 this.findRange(from, to, sort, params, function (response) {
                     if (response.successful) {
                         items = items.concat(response.data);
 
-                        var total = items.length;
+                        let total = items.length;
 
                         if (total < response.pagination.total) {
                             findBlock(from + response.pagination.limit, to + response.pagination.limit, items)
@@ -319,7 +319,7 @@ qx.Class.define("omna.request.AbstractResource", {
         },
 
         count: function (params, callBack, scope) {
-            var data = qx.lang.Object.clone(params);
+            let data = qx.lang.Object.clone(params);
 
             data.without_data = true;
 
@@ -349,7 +349,7 @@ qx.Class.define("omna.request.AbstractResource", {
         },
 
         openTaskDetails: function (task) {
-            var module = { id: 'TasksDetails', i18n: 'Tasks' },
+            let module = { id: 'TasksDetails', i18n: 'Tasks' },
                 data = { item: task, label: this.i18nTrans('Tasks', 'Labels', 'MODULE-REFERENCE-DETAILS', task) };
 
             q.messaging.emit('Application', 'open-module', module, data);
@@ -358,7 +358,7 @@ qx.Class.define("omna.request.AbstractResource", {
         processResponse: function (i18nActionName, response, e, callBack, scope) {
             scope = scope || this;
 
-            var itemLabel = scope.i18nTrans('SINGLE-ITEM-REFERENCE'),
+            let itemLabel = scope.i18nTrans('SINGLE-ITEM-REFERENCE'),
                 type = 'good',
                 prefix = 'SUCCESSFUL-';
 
@@ -380,7 +380,7 @@ qx.Class.define("omna.request.AbstractResource", {
          * Fired when request completes without error and transport’s status indicates success.
          */
         onSuccess: function (e, callBack, scope) {
-            var target = e.getTarget(),
+            let target = e.getTarget(),
                 response = target.getResponse();
 
             response.statusCode = response.statusCode || target.getStatus();
@@ -398,7 +398,7 @@ qx.Class.define("omna.request.AbstractResource", {
          * Fired when request completes without error but erroneous HTTP status.
          */
         onStatusError: function (e, callBack, scope) {
-            var response = e.getTarget().getResponse();
+            let response = e.getTarget().getResponse();
 
             if (qx.lang.Type.isString(response)) response = { message: response };
 
@@ -414,7 +414,7 @@ qx.Class.define("omna.request.AbstractResource", {
         ,
 
         onError: function (e, callBack, scope) {
-            var response = e.getTarget().getResponse() || '';
+            let response = e.getTarget().getResponse() || '';
 
             if (qx.lang.Type.isString(response)) response = { message: response };
 
@@ -427,7 +427,7 @@ qx.Class.define("omna.request.AbstractResource", {
     },
 
     destruct: function () {
-        var rm = this.__requestManagement;
+        let rm = this.__requestManagement;
         if (rm && !(rm.isDisposed() || rm.isDone())) rm.abort();
     }
 })

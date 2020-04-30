@@ -29,7 +29,7 @@ qx.Class.define("omna.layout.Header", {
         this.setLayout(new qx.ui.layout.HBox(0));
         this.setAppearance("app-header");
 
-        var logo = new qx.ui.basic.Image("omna/images/logo.png"),
+        let logo = new qx.ui.basic.Image("omna/images/logo.png"),
             logout = new qx.ui.menubar.Button(null, "omna/icon/24/actions/logout.png"),
             profile = omna.request.Session.getProfile() || {};
 

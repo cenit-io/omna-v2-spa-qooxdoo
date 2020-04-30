@@ -61,7 +61,7 @@ qx.Class.define('omna.dialog.Confirm', {
         },
 
         _createButtons: function () {
-            var bP = this.base(arguments),
+            let bP = this.base(arguments),
                 bY = new qx.ui.form.Button(this.i18nTrans('yes'), 'icon/16/actions/dialog-apply.png'),
                 bN = new qx.ui.form.Button(this.i18nTrans('no'), 'icon/16/actions/dialog-cancel.png');
 

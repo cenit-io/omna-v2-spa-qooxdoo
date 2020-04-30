@@ -6,7 +6,7 @@ qx.Class.define("omna.action.AbstractAction", {
 
     construct: function (management, label, icon) {
         // Create and configure the command
-        var command = new qx.ui.command.Command();
+        let command = new qx.ui.command.Command();
         command.addListener("execute", this.onExecute, this);
 
         this.set({ management: management, toolTipText: label });
@@ -24,7 +24,7 @@ qx.Class.define("omna.action.AbstractAction", {
         _messagingRouteIds: null,
 
         _applyLabel: function (value, old) {
-            var label = this.getChildControl("label", true);
+            let label = this.getChildControl("label", true);
 
             if (label) label.setValue(this.i18nTrans(value));
 
@@ -40,7 +40,7 @@ qx.Class.define("omna.action.AbstractAction", {
          * @param componentId {Integer?} Id of foraging component that emit message.
          */
         addMessagingListener: function (msgPatternId, handler, componentId) {
-            var channel = 'C' + (componentId || this.getManagement().getSettings().id);
+            let channel = 'C' + (componentId || this.getManagement().getSettings().id);
             this._messagingRouteIds.push(q.messaging.on(channel, msgPatternId, handler, this));
         },
 
