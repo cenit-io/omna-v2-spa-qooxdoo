@@ -2,7 +2,7 @@ qx.Class.define("omna.form.product.DetailsGeneral", {
     extend: omna.form.AbstractForm,
 
     members: {
-        __createFormFields: function () {
+        _createFormFields: function () {
             let widget;
 
             widget = new omna.form.field.TextField();

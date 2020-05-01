@@ -1,8 +1,8 @@
 qx.Class.define("omna.form.variant.DetailsGeneral", {
-    extend: omna.form.AbstractForm,
+    extend: omna.form.product.DetailsGeneral,
 
     members: {
-        __createFormFields: function () {
+        _createFormFields: function () {
             let widget;
 
             widget = new omna.form.field.TextField();
@@ -32,21 +32,6 @@ qx.Class.define("omna.form.variant.DetailsGeneral", {
             widget.set({ required: false });
 
             this._add(widget, 'package.content', 4);
-        },
-
-        _createPackageNumberField: function (name, postfix) {
-            let widget = new omna.form.field.NumberField().set({
-                required: false,
-                minimum: 0,
-                maximumFractionDigits: 2,
-                postfix: postfix
-            });
-
-            this._add(widget, name, 1);
-        },
-
-        _add: function (item, name, colSpan, validator) {
-            this.add(item, this.i18nTrans(name), validator, name, this, { colSpan: colSpan })
         },
 
         getI18nCatalog: function () {

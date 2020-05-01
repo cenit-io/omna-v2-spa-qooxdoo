@@ -15,10 +15,10 @@ qx.Class.define("omna.form.AbstractForm", {
         this.base(arguments);
 
         // Create fields.
-        this.__createFormFields();
+        this._createFormFields();
 
         // Create buttons actions
-        this.__createButtons();
+        this._createButtons();
     },
 
     events: {
@@ -28,7 +28,7 @@ qx.Class.define("omna.form.AbstractForm", {
     properties: {},
 
     members: {
-        __createButtons: function () {
+        _createButtons: function () {
             let bS = new qx.ui.form.Button(this.i18nTrans("save"), "omna/icon/16/actions/save.png"),
                 bR = new qx.ui.form.Button(this.i18nTrans("reset"), "omna/icon/16/actions/clear.png"),
                 manager = this.getValidationManager();

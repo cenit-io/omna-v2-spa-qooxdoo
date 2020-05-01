@@ -6,6 +6,12 @@ qx.Class.define('omna.management.product.DetailsProperties', {
     extend: qx.ui.tabview.Page,
     include: [omna.mixin.MI18n, omna.mixin.MLogo, omna.mixin.MWithManagement],
 
+    statics: {
+        detailsPropertiesClass: omna.form.product.DetailsProperties,
+        managementId: 'ProductsDetails',
+        itemAttr: 'product'
+    },
+
     construct: function (management, integration) {
         this.set({
             management: management,
@@ -22,10 +28,10 @@ qx.Class.define('omna.management.product.DetailsProperties', {
 
         this._createChildControl('notifications');
 
-        let product = integration.product;
+        let item = this._getItem();
 
-        if (product.errors) q.messaging.emit('Application', 'error', product.errors, this);
-        if (product.properties && product.properties.length > 0) this._createChildControl('properties-form');
+        if (item.errors) q.messaging.emit('Application', 'error', item.errors, this);
+        if (item.properties && item.properties.length > 0) this._createChildControl('properties-form');
     },
 
     properties: {
@@ -37,17 +43,21 @@ qx.Class.define('omna.management.product.DetailsProperties', {
     members: {
         _form: null,
 
+        _getItem: function () {
+            return this.getIntegration()[this.constructor.itemAttr];
+        },
+
         // overridden
         _createChildControlImpl: function (id, hash) {
             let control;
 
-            switch ( id ) {
+            switch (id) {
                 case 'notifications':
                     control = new qx.ui.container.Composite(new qx.ui.layout.VBox(5));
                     this.add(control, { flex: 0 });
                     break;
                 case 'properties-form':
-                    this._form = new omna.form.product.DetailsProperties(this.getIntegration());
+                    this._form = new this.constructor.detailsPropertiesClass(this.getIntegration());
                     this._form.addListener('save', this.__onSave, this);
 
                     control = new omna.form.renderer.Quad(this._form);
@@ -75,21 +85,20 @@ qx.Class.define('omna.management.product.DetailsProperties', {
         __onSave: function (e) {
             let request = this.getRequestManagement(),
                 integration = this.getIntegration(),
-                product = integration.product,
                 data = e.getData(),
                 properties = [];
 
-            product.properties.forEach(function (property) {
+            this._getItem().properties.forEach(function (property) {
                 properties.push({ id: property.id, value: data[property.id] })
             });
 
             this.emitMessaging('enabled-toolbar', false);
             this.setEnabled(false);
 
-            request.updateProperties(integration.id, product.remote_product_id, properties, function (response) {
+            request.updateProperties(integration, properties, function (response) {
                 this.setEnabled(true);
                 this.emitMessaging('enabled-toolbar', true);
-                if (response.successful) this.emitMessaging('execute-reload', null, 'ProductsDetails');
+                if (response.successful) this.emitMessaging('execute-reload', null, this.constructor.managementId);
             }, this);
         },
 

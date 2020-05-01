@@ -91,7 +91,12 @@ qx.Class.define("omna.management.AbstractManagement", {
                 let settings = this.getSettings();
 
                 if (settings.requestManagementClass) {
-                    let RequestManagementClass = this._getClassByName(settings.requestManagementClass);
+                    let RequestManagementClass = settings.requestManagementClass;
+
+                    if (qx.lang.Type.isString(RequestManagementClass)) {
+                        RequestManagementClass = this._getClassByName(RequestManagementClass);
+                    }
+
                     this.__requestManagement = RequestManagementClass ? new RequestManagementClass() : null
                 } else if (settings.serviceBasePath) {
                     this.__requestManagement = new omna.request.Customs(settings.serviceBasePath);

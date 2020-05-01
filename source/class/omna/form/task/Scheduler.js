@@ -11,8 +11,8 @@ qx.Class.define("omna.form.task.Scheduler", {
         this.base(arguments, new qx.ui.form.Form());
 
         this.setEnabled(editable);
-        this.__createFormFields();
-        this.__createButtons();
+        this._createFormFields();
+        this._createButtons();
 
         let row, layout = this.getLayout(),
             count = layout.getRowCount();
@@ -26,7 +26,7 @@ qx.Class.define("omna.form.task.Scheduler", {
         __model: null,
         __flowId: null,
 
-        __createFormFields: function () {
+        _createFormFields: function () {
             let field, validator;
 
             field = new omna.form.field.calendar.DateField();
@@ -55,7 +55,7 @@ qx.Class.define("omna.form.task.Scheduler", {
             this.__model = controller.createModel();
         },
 
-        __createButtons: function () {
+        _createButtons: function () {
             if (!this.getEnabled()) return;
 
             let bA = new qx.ui.form.Button(this.tr("Accept"), "icon/16/actions/dialog-apply.png"),

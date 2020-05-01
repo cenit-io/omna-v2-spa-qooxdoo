@@ -7,6 +7,10 @@ qx.Class.define("omna.management.product.Details", {
     include: [omna.mixin.MSettings, omna.mixin.MLogo],
 
     statics: {
+        detailsGeneralClass: omna.management.product.DetailsGeneral,
+        detailsPropertiesClass: omna.management.product.DetailsProperties,
+        requestManagementClass: omna.request.Products,
+        managementId: 'ProductsDetails',
         propertiesDefaultValues: qx.lang.Object.mergeWith(
             {}, omna.management.AbstractManagement.propertiesDefaultValues, false
         )
@@ -14,7 +18,7 @@ qx.Class.define("omna.management.product.Details", {
 
     // override
     construct: function (settings, customData, modulePage) {
-        settings.requestManagementClass = 'omna.request.Products';
+        settings.requestManagementClass = this.constructor.requestManagementClass;
 
         this.base(arguments, settings, customData, modulePage);
 
@@ -42,7 +46,7 @@ qx.Class.define("omna.management.product.Details", {
                     break;
 
                 case "general-tab":
-                    control = new omna.management.product.DetailsGeneral(this);
+                    control = new this.constructor.detailsGeneralClass(this);
                     this.getChildControl('tabsPanel').add(control);
                     break;
             }
@@ -74,7 +78,7 @@ qx.Class.define("omna.management.product.Details", {
         _createIntegrationTapPages: function (integrations) {
             this._removeIntegrationTapPages();
             integrations.forEach(function (integration) {
-                let tab = new omna.management.product.DetailsProperties(this, integration);
+                let tab = new this.constructor.detailsPropertiesClass(this, integration);
 
                 this._integrationPages.push(tab);
                 this.getChildControl('tabsPanel').add(tab);
@@ -114,7 +118,7 @@ qx.Class.define("omna.management.product.Details", {
 
             this.emitMessaging('selection-change', customData);
             if (customData.with_details) return;
-            this.emitMessaging('execute-reload', null, 'ProductsDetails');
+            this.emitMessaging('execute-reload', null, this.constructor.managementId);
         }
 
     }

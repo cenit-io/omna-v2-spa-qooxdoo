@@ -5,6 +5,10 @@ qx.Class.define('omna.management.product.DetailsGeneral', {
     extend: qx.ui.tabview.Page,
     include: [omna.mixin.MI18n, omna.mixin.MLogo, omna.mixin.MWithManagement],
 
+    statics: {
+        detailsGeneralClass: omna.form.product.DetailsGeneral
+    },
+
     construct: function (management) {
         this.set({
             management: management,
@@ -28,9 +32,9 @@ qx.Class.define('omna.management.product.DetailsGeneral', {
         _createChildControlImpl: function (id, hash) {
             let control;
 
-            switch ( id ) {
+            switch (id) {
                 case 'general-form':
-                    this._form = new omna.form.product.DetailsGeneral();
+                    this._form = new this.constructor.detailsGeneralClass();
                     this._form.addListener('save', this.__onSave, this);
 
                     control = new omna.form.renderer.Quad(this._form);
@@ -43,20 +47,22 @@ qx.Class.define('omna.management.product.DetailsGeneral', {
 
         __onSave: function (e) {
             let request = this.getRequestManagement(),
-                product = this.getManagement().getCustomData().item,
+                item = this.getCustomData().item,
                 data = e.getData();
 
             this.emitMessaging('enabled-toolbar', false);
             this.setEnabled(false);
 
-            request.update(product.id, data, function (response) {
+            request.update(item.id, data, function (response) {
                 this.setEnabled(true);
                 this.emitMessaging('enabled-toolbar', true);
-                if (response.successful) {
-                    this.emitMessaging('execute-reload', null, 'ProductsDetails');
-                    this.emitMessaging('execute-reload', null, 'Products');
-                }
+                if (response.successful) this._relaod();
             }, this);
+        },
+
+        _relaod: function () {
+            this.emitMessaging('execute-reload', null, 'ProductsDetails');
+            this.emitMessaging('execute-reload', null, 'Products');
         }
     },
 
