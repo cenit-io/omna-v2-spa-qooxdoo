@@ -16,10 +16,11 @@ qx.Class.define("omna.form.AbstractDetailsProperties", {
 
     members: {
         __createFormFields: function () {
-            let widget, integration = this.getIntegration();
+            let widget;
 
             this.getProperties().forEach(function (property) {
-                widget = this.__createPropertyField(property, integration);
+                if (property.start_section) this.addGroupHeader(property.start_section);
+                widget = this.__createPropertyField(property);
                 this.add(widget, property.label, null, property.id, this, { colSpan: this.__getColSpan(property) });
             }, this);
         },
@@ -32,7 +33,7 @@ qx.Class.define("omna.form.AbstractDetailsProperties", {
             return 1;
         },
 
-        __createPropertyField: function (property, integration) {
+        __createPropertyField: function (property) {
             let widget;
 
             switch (property.input_type) {

@@ -24,12 +24,10 @@ qx.Class.define("omna.management.product.Details", {
 
         this._createChildControl("general-tab");
 
-        this.setCustomData(customData ? customData : {});
-
         this.addMessagingListener("execute-reload", this.onExecuteReload);
         this.addMessagingListener("execute-remove", this.onExecuteRemove);
 
-        this.emitMessaging('execute-reload', null, 'ProductsDetails');
+        this.setCustomData(customData ? customData : {});
     },
 
     members: {
@@ -92,8 +90,12 @@ qx.Class.define("omna.management.product.Details", {
             request.reload(data.item, function (response) {
                 this.setEnabled(true);
                 this.emitMessaging('enabled-toolbar', true);
-                if (response.successful) data.item = response.data;
-                this.setCustomData(qx.lang.Object.clone(data, false));
+                if (response.successful) {
+                    data = qx.lang.Object.clone(data, false)
+                    data.item = response.data;
+                    data.with_details = true;
+                    this.setCustomData(data);
+                }
             }, this);
         },
 
@@ -111,6 +113,8 @@ qx.Class.define("omna.management.product.Details", {
             this._createIntegrationTapPages(item.integrations || []);
 
             this.emitMessaging('selection-change', customData);
+            if (customData.with_details) return;
+            this.emitMessaging('execute-reload', null, 'ProductsDetails');
         }
 
     }
