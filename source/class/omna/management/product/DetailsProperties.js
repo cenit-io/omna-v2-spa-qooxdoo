@@ -1,12 +1,6 @@
 /**
  * @childControl notifications {qx.ui.container.Composite}.
  * @childControl properties-form {omna.form.renderer.Quad}.
- *
- * @asset(omna/icon/32/info.png)
- * @asset(omna/icon/32/good.png)
- * @asset(omna/icon/32/warn.png)
- * @asset(omna/icon/32/error.png)
- * @asset(omna/icon/32/notice.png)
  */
 qx.Class.define('omna.management.product.DetailsProperties', {
     extend: qx.ui.tabview.Page,

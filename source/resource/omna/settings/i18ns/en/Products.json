@@ -25,11 +25,6 @@
     "value": "Variants"
   },
   {
-    "name": "general",
-    "subCatalog": "Labels",
-    "value": "General"
-  },
-  {
     "name": "package.overwrite",
     "subCatalog": "Labels",
     "value": "Overwrite Package"

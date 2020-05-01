@@ -7,7 +7,11 @@ qx.Class.define("omna.form.variant.DetailsGeneral", {
 
             widget = new omna.form.field.TextField();
             widget.set({ required: true });
-            this._add(widget, 'sku', 3);
+            this._add(widget, 'sku', 4);
+
+            widget = new omna.form.field.NumberField();
+            widget.set({ required: true, minimum: 0, maximumFractionDigits: 0 });
+            this._add(widget, 'quantity', 1);
 
             widget = new omna.form.field.NumberField();
             widget.set({ required: true, minimum: 0, maximumFractionDigits: 2, prefix: '$' });
@@ -15,7 +19,7 @@ qx.Class.define("omna.form.variant.DetailsGeneral", {
 
             widget = new omna.form.field.NumberField();
             widget.set({ required: true, minimum: 0, maximumFractionDigits: 2, prefix: '$' });
-            this._add(widget, 'original_price', 4);
+            this._add(widget, 'original_price', 1);
 
             this.addGroupHeader(this.i18nTrans('package'));
 

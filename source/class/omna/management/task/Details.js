@@ -228,15 +228,15 @@ qx.Class.define("omna.management.task.Details", {
         },
 
         onChangeCustomData: function (e) {
-            let data = e.getData(),
-                item = data.item || {};
+            let customData = qx.lang.Object.clone(e.getData(), true),
+                item = customData.item || {};
 
             this._fillDescription(item.description);
             this._fillTable(item.executions, 'executions');
             this._fillTable(item.notifications, 'notifications');
             this._fillScheduler(item.scheduler || 'none');
 
-            this.emitMessaging("selection-change", { index: data.index, item: data.item, sender: this });
+            this.emitMessaging('selection-change', customData);
         }
     }
 });

@@ -285,6 +285,11 @@
     "value": "Images"
   },
   {
+    "name": "general",
+    "subCatalog": "Labels",
+    "value": "General"
+  },
+  {
     "name": "package",
     "subCatalog": "Labels",
     "value": "Package"

@@ -1,12 +1,6 @@
 /**
  * @childControl notifications {qx.ui.container.Composite}.
  * @childControl properties-form {omna.form.renderer.Quad}.
- *
- * @asset(omna/icon/32/info.png)
- * @asset(omna/icon/32/good.png)
- * @asset(omna/icon/32/warn.png)
- * @asset(omna/icon/32/error.png)
- * @asset(omna/icon/32/notice.png)
  */
 qx.Class.define('omna.management.variant.DetailsProperties', {
     extend: qx.ui.tabview.Page,
@@ -92,11 +86,13 @@ qx.Class.define('omna.management.variant.DetailsProperties', {
             this.emitMessaging('enabled-toolbar', false);
             this.setEnabled(false);
 
-            request.updateProperties(integration.id, variant.remote_variant_id, properties, function (response) {
-                this.setEnabled(true);
-                this.emitMessaging('enabled-toolbar', true);
-                if (response.successful) this.emitMessaging('execute-reload', null, 'VariantsDetails');
-            }, this);
+            request.updateProperties(integration.id, variant.remote_product_id, variant.remote_variant_id, properties,
+                function (response) {
+                    this.setEnabled(true);
+                    this.emitMessaging('enabled-toolbar', true);
+                    if (response.successful) this.emitMessaging('execute-reload', null, 'VariantsDetails');
+                }, this
+            );
         },
 
         onNotify: function (data) {

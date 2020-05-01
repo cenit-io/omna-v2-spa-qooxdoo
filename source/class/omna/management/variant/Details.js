@@ -37,7 +37,7 @@ qx.Class.define("omna.management.variant.Details", {
         _createChildControlImpl: function (id, hash) {
             let control;
 
-            switch ( id ) {
+            switch (id) {
                 case "tabsPanel":
                     control = new omna.ui.tabview.TabView();
                     this._add(control, { flex: 2 });
@@ -102,13 +102,13 @@ qx.Class.define("omna.management.variant.Details", {
         },
 
         onChangeCustomData: function (e) {
-            let data = e.getData(),
-                item = data.item || {};
+            let customData = qx.lang.Object.clone(e.getData(), true),
+                item = customData.item || {};
 
             this.getChildControl('general-tab').setData(item, true);
             this._createIntegrationTapPages(item.integrations || []);
 
-            this.emitMessaging("selection-change", { index: data.index, item: data.item, sender: this });
+            this.emitMessaging('selection-change', customData, this.getCustomData().params);
         }
 
     }
