@@ -33,6 +33,11 @@ qx.Class.define("omna.form.renderer.SingleWithOptionalLabel", {
                     this._add(items[i], { row: this._row, column: 1 });
 
                     this._connectVisibility(items[i], label);
+
+                    // store the names for translation
+                    if (qx.core.Environment.get("qx.dynlocale")) {
+                        this._names.push({ name: names[i], label: label, item: items[i] });
+                    }
                 } else {
                     this._add(items[i], { row: this._row, column: 0, colSpan: 2 });
                 }
@@ -40,11 +45,6 @@ qx.Class.define("omna.form.renderer.SingleWithOptionalLabel", {
                 this.getLayout().setRowFlex(this._row, 1);
 
                 this._row++;
-
-                // store the names for translation
-                if (qx.core.Environment.get("qx.dynlocale")) {
-                    this._names.push({ name: names[i], label: label, item: items[i] });
-                }
             }
         },
 

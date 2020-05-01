@@ -169,17 +169,17 @@ qx.Class.define("omna.management.DataGridRestService", {
         onChangeSelection: function (e) {
             let selectionModel = e.getTarget(),
                 tableModel = this.__table.getTableModel(),
-                index, data, item;
+                index, customData, item;
 
             if (selectionModel.getSelectedCount()) {
                 index = selectionModel.getSelectedRanges()[0].minIndex;
                 item = tableModel.getRowData(index);
-                data = item ? { index: index, item: item, sender: this } : null;
+                customData = item ? { index: index, item: item, sender: this } : null;
             } else {
-                data = null
+                customData = null
             }
             // Send message to accions
-            this.emitMessaging("selection-change", data);
+            this.emitMessaging('selection-change', customData, this.getCustomData().params);
         },
 
         /**

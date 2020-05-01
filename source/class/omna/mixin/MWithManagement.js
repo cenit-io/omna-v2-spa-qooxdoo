@@ -30,6 +30,10 @@ qx.Mixin.define('omna.mixin.MWithManagement', {
             return this.getManagement().getRequestManagement();
         },
 
+        getCustomData: function () {
+            return this.getManagement().getCustomData();
+        },
+
         getI18nCatalog: function () {
             return this.getManagement().getI18nCatalog()
         }

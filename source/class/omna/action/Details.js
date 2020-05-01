@@ -12,16 +12,19 @@ qx.Class.define('omna.action.Details', {
 
     members: {
         onExecute: function () {
-            this.emitMessaging("open-details", { item: this.getSelectedItem(), index: this.getSelectedIndex() });
+            let customData = { item: this.getSelectedItem(), index: this.getSelectedIndex() }
+
+            this.emitMessaging("open-details", customData, this.getBaseParams());
         },
 
         onOpenDetails: function (data) {
-            let module = { id: this.getManagement().getSettings().id + 'Details', i18n: this.getI18nCatalog() };
+            let module = { id: this.getManagement().getSettings().id + 'Details', i18n: this.getI18nCatalog() },
+                customData = data.customData;
 
-            data = data.customData;
-            data.label = this.i18nTrans('MODULE-REFERENCE-DETAILS', data.item);
+            customData.label = this.i18nTrans('MODULE-REFERENCE-DETAILS', customData.item);
+            customData.params = data.params;
 
-            q.messaging.emit('Application', 'open-module', module, data);
+            q.messaging.emit('Application', 'open-module', module, customData);
         }
     }
 });

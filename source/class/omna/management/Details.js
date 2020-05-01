@@ -48,7 +48,7 @@ qx.Class.define("omna.management.Details", {
         onChangeCustomData: function (e) {
             let data = e.getData();
             this.base(arguments, e);
-            this.emitMessaging("selection-change", { index: data.index, item: data.item, sender: this });
+            this.emitMessaging('selection-change', { index: data.index, item: data.item, sender: this });
         }
     }
 });

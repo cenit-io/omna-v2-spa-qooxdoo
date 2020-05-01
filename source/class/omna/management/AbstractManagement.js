@@ -107,7 +107,7 @@ qx.Class.define("omna.management.AbstractManagement", {
         _createChildControlImpl: function (id, hash) {
             let control;
 
-            switch ( id ) {
+            switch (id) {
                 case "toolbar":
                     let actions = this.getActions();
 
@@ -312,10 +312,18 @@ qx.Class.define("omna.management.AbstractManagement", {
          *
          * @param msgId {String} Messaging identifier.
          * @param customData {Map?} The given custom data that should be propagated.
+         * @param params {Map?} The given parameters that should be propagated
+         * @param managementId {String} Management id.
          */
-        emitMessaging: function (msgId, customData, managementId) {
+        emitMessaging: function (msgId, customData, params, managementId) {
+            if (qx.lang.Type.isString(params)) {
+                managementId = params;
+                params = null
+            }
+
             let channel = 'C' + (managementId || this.getSettings().id);
-            q.messaging.emit(channel, msgId, null, customData);
+
+            q.messaging.emit(channel, msgId, params, customData);
         },
 
         onChangeCustomData: function (e) {

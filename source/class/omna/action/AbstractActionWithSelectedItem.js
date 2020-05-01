@@ -4,7 +4,7 @@ qx.Class.define("omna.action.AbstractActionWithSelectedItem", {
 
     construct: function (management, label, icon) {
         this.base(arguments, management, label, icon);
-        this.setEnabled(false);
+        this.set({ enabled: false, baseParams: {} });
         this.addMessagingListener('selection-change', this.onSelectionChange);
     },
 
@@ -20,6 +20,10 @@ qx.Class.define("omna.action.AbstractActionWithSelectedItem", {
         enablingRules: {
             check: 'String',
             nullable: true
+        },
+
+        baseParams: {
+            check: 'Object'
         }
     },
 
@@ -38,7 +42,12 @@ qx.Class.define("omna.action.AbstractActionWithSelectedItem", {
                 selectedIndex = customData.index === undefined ? null : customData.index,
                 enabled = qx.lang.Type.isObject(selectedItem) && this._checkEnablingRules(selectedItem);
 
-            this.set({ enabled: enabled, selectedItem: selectedItem, selectedIndex: selectedIndex })
+            this.set({
+                enabled: enabled,
+                selectedItem: selectedItem,
+                selectedIndex: selectedIndex,
+                baseParams: data.params || {}
+            })
         }
     }
 });
