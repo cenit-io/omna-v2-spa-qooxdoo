@@ -60,7 +60,8 @@ qx.Mixin.define('omna.mixin.MFormData', {
             if (qx.Class.hasInterface(item.constructor, qx.ui.core.IMultiSelection)) {
                 return item.getModelSelection().toArray();
             } else if (qx.Class.hasInterface(item.constructor, qx.ui.core.ISingleSelection)) {
-                return item.getModelSelection().getItem(0) || null;
+                let value = item.getModelSelection().getItem(0);
+                return value === undefined ? null : value;
             } else {
                 return item.getValue();
             }
