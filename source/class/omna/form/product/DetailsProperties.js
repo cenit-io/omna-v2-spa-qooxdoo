@@ -32,7 +32,7 @@ qx.Class.define("omna.form.product.DetailsProperties", {
             let types = /^(rich_text|data_grid)$/,
                 ids = /^(category_id)$/;
 
-            if (property.input_type.match(types) || property.id.match(ids)) return 4;
+            if (property.input_type.match(types) || String(property.id).match(ids)) return 4;
 
             return 1;
         },
