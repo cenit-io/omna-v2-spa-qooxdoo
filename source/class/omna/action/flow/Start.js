@@ -13,7 +13,7 @@ qx.Class.define("omna.action.flow.Start", {
             let msg = this.i18nTrans('Messages', 'CONFIRM-START');
 
             omna.dialog.Confirm.show(msg, function (response) {
-                if (response === 'yes') this.getRequestManagement().start();
+                if (response === 'yes') this.getRequestManagement().start(this.getSelectedItem().id);
             }, this);
         }
     }
