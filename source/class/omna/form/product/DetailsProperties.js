@@ -40,7 +40,7 @@ qx.Class.define("omna.form.product.DetailsProperties", {
         __createPropertyField: function (property) {
             let widget;
 
-            switch (property.input_type) {
+            switch ( property.input_type ) {
                 case 'single_select':
                     widget = new omna.form.field.LocalSelectBox();
                     widget.setOptions(property.options);
@@ -89,7 +89,7 @@ qx.Class.define("omna.form.product.DetailsProperties", {
         },
 
         __parsePropertyValue: function (property) {
-            switch (property.input_type) {
+            switch ( property.input_type ) {
                 case 'numeric':
                     return property.value;
                 case 'text':

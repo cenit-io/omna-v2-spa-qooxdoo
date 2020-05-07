@@ -19,10 +19,10 @@ qx.Theme.define("omna.theme.Color", {
         good: "#AAFFAA",
         warn: "#FFFFAA",
         error: "#C00F00",
-        tooltip : "#FFFFE1",
+        tooltip: "#FFFFE1",
 
-        "background-readonly" : "#f5f5dc",
-        "text-readonly" : "#000000"
+        "background-readonly": "#f5f5dc",
+        "text-readonly": "#000000"
     }
 
 });

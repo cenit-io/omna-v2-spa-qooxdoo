@@ -45,7 +45,7 @@ qx.Class.define("omna.form.field.grid.Gallery", {
         _onOpenDlg: function (e) {
             if (!this.isReadOnly()) {
                 let dlg = new omna.form.dialog.GridGallery();
-                
+
                 dlg.setData(this.getValue());
                 dlg.addListener('accept', function (e) {
                     this.setValue(e.getData());

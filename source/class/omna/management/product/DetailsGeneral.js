@@ -32,7 +32,7 @@ qx.Class.define('omna.management.product.DetailsGeneral', {
         _createChildControlImpl: function (id, hash) {
             let control;
 
-            switch (id) {
+            switch ( id ) {
                 case 'general-form':
                     this._form = new this.constructor.detailsGeneralClass();
                     this._form.addListener('save', this.__onSave, this);

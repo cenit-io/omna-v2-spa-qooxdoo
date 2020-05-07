@@ -39,7 +39,7 @@ qx.Class.define("omna.management.product.Details", {
         _createChildControlImpl: function (id, hash) {
             let control;
 
-            switch (id) {
+            switch ( id ) {
                 case "tabsPanel":
                     control = new omna.ui.tabview.TabView();
                     this._add(control, { flex: 2 });

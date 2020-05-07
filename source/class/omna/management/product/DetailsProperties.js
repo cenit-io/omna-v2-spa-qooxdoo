@@ -51,7 +51,7 @@ qx.Class.define('omna.management.product.DetailsProperties', {
         _createChildControlImpl: function (id, hash) {
             let control;
 
-            switch (id) {
+            switch ( id ) {
                 case 'notifications':
                     control = new qx.ui.container.Composite(new qx.ui.layout.VBox(5));
                     this.add(control, { flex: 0 });

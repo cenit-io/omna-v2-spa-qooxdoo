@@ -112,7 +112,7 @@ qx.Class.define("omna.management.AbstractManagement", {
         _createChildControlImpl: function (id, hash) {
             let control;
 
-            switch (id) {
+            switch ( id ) {
                 case "toolbar":
                     let actions = this.getActions();
 

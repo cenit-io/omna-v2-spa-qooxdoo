@@ -228,7 +228,7 @@ qx.Class.define("omna.management.task.Details", {
         },
 
         onChangeCustomData: function (e) {
-            let customData = qx.lang.Object.clone(e.getData(), true),
+            let customData = e.getData(),
                 item = customData.item || {};
 
             this._fillDescription(item.description);

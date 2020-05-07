@@ -24,7 +24,7 @@ qx.Class.define("omna.form.dialog.integration.AbstractLink", {
 
         _createFormFields: function (form) {
             this._integrationsListBox = new omna.form.field.remote.integrations.ListBox;
-            this._integrationsListBox.set({width: 480, Required: true});
+            this._integrationsListBox.set({ width: 480, Required: true });
             form.add(this._integrationsListBox, this.i18nTrans('integrations'), null, 'integration_ids', form);
         }
     }
