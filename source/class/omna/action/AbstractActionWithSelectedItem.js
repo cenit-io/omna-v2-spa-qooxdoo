@@ -43,7 +43,7 @@ qx.Class.define("omna.action.AbstractActionWithSelectedItem", {
                 enabled = qx.lang.Type.isObject(selectedItem) && this._checkEnablingRules(selectedItem);
 
             this.set({
-                enabled: enabled,
+                enabled: enabled === true,
                 selectedItem: selectedItem,
                 selectedIndex: selectedIndex,
                 baseParams: data.params || {}
