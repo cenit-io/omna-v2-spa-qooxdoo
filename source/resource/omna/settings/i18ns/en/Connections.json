@@ -10,6 +10,26 @@
     "value": "Connection"
   },
   {
+    "name": "MODULE-REFERENCE-CATEGORIES",
+    "subCatalog": "Labels",
+    "value": "Connection / {{id}} / Product Categories"
+  },
+  {
+    "name": "MODULE-REFERENCE-BRANDS",
+    "subCatalog": "Labels",
+    "value": "Connection / {{id}} / Product Brands"
+  },
+  {
+    "name": "categories",
+    "subCatalog": "Labels",
+    "value": "Categories"
+  },
+  {
+    "name": "brands",
+    "subCatalog": "Labels",
+    "value": "Brands"
+  },
+  {
     "name": "channel",
     "subCatalog": "Labels",
     "value": "Channel"

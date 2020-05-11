@@ -13,6 +13,8 @@
       "omna.action.Edit",
       "omna.action.integration.Authorize",
       "omna.action.integration.Import",
+      "omna.action.integration.ProductCategories",
+      "omna.action.integration.ProductBrands",
       "omna.action.Remove",
       "omna.action.Separator",
       "omna.action.Search"

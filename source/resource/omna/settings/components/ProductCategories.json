@@ -1,0 +1,27 @@
+[
+  {
+    "id": "ProductCategories",
+    "widgetClass": "omna.management.DataGridRestService",
+    "serviceBasePath": "integrations/{integration_id}/categories",
+    "actions": [
+      "omna.action.Reload",
+      "omna.action.Separator",
+      "omna.action.Search"
+    ],
+    "fields": [
+      {
+        "name": "id",
+        "widgetClass": "omna.form.field.TextField",
+        "showInGrid": true,
+        "includeInSearch": true,
+        "gridColumnWidth": 200
+      },
+      {
+        "name": "name",
+        "widgetClass": "omna.form.field.TextField",
+        "includeInSearch": true,
+        "showInGrid": true
+      }
+    ]
+  }
+]
