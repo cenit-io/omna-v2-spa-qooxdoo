@@ -2,7 +2,7 @@
   {
     "id": "ProductCategories",
     "widgetClass": "omna.management.DataGridRestService",
-    "serviceBasePath": "integrations/{integration_id}/categories",
+    "serviceBasePath": "integrations/{integration_id}/brands",
     "actions": [
       "omna.action.Reload",
       "omna.action.Separator",
