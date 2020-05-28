@@ -15,7 +15,10 @@
       "omna.action.integration.Import",
       "omna.action.integration.ProductCategories",
       "omna.action.integration.ProductBrands",
-      "omna.action.Remove",
+      {
+        "widgetClass": "omna.action.Remove",
+        "enablingRules": "authorized !== true"
+      },
       "omna.action.Separator",
       "omna.action.Search"
     ],
