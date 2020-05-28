@@ -20,6 +20,11 @@ qx.Class.define("omna.request.Tasks", {
                 }
                 callBack && callBack.call(scope, response);
             }, this);
+        },
+
+        openTaskDetails: function (task) {
+            // overwrite
         }
     }
+
 });

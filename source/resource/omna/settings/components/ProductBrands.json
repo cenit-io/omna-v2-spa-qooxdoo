@@ -1,6 +1,6 @@
 [
   {
-    "id": "ProductCategories",
+    "id": "ProductBrands",
     "widgetClass": "omna.management.DataGridRestService",
     "serviceBasePath": "integrations/{integration_id}/brands",
     "actions": [
@@ -18,6 +18,12 @@
       },
       {
         "name": "name",
+        "widgetClass": "omna.form.field.TextField",
+        "includeInSearch": true,
+        "showInGrid": true
+      },
+      {
+        "name": "name_en",
         "widgetClass": "omna.form.field.TextField",
         "includeInSearch": true,
         "showInGrid": true

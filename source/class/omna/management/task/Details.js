@@ -31,10 +31,10 @@ qx.Class.define("omna.management.task.Details", {
             this.addMessagingListener('selection-change', this.onSelectionChange, settings.listenFromComponentId)
         } else {
             this.setCustomData(customData ? customData : {});
+            this.addMessagingListener("execute-remove", this.onExecuteRemove);
         }
 
         this.addMessagingListener("execute-reload", this.onExecuteReload);
-        this.addMessagingListener("execute-remove", this.onExecuteRemove);
     },
 
     members: {
@@ -208,8 +208,10 @@ qx.Class.define("omna.management.task.Details", {
             this.setCustomData({});
             request.reload(data.item, function (response) {
                 this.emitMessaging('enabled-toolbar', true);
-                if (response.successful) data.item = response.data;
-                this.setCustomData(data);
+                if (response.successful) {
+                    data.item = response.data;
+                    this.setCustomData(data);
+                }
             }, this);
         },
 
@@ -218,7 +220,7 @@ qx.Class.define("omna.management.task.Details", {
         },
 
         onNotificationCellTap: function (cellInfo) {
-            let data = cellInfo.getTarget().getTable().getTableModel().getRowData(cellInfo.getRow());
+            let data = cellInfo.getTarget().getTable().getTableModel().getRowData(cellInfo.getRow()) || [];
 
             q.messaging.emit("Application", data[0], data[1]);
         },
@@ -236,7 +238,9 @@ qx.Class.define("omna.management.task.Details", {
             this._fillTable(item.notifications, 'notifications');
             this._fillScheduler(item.scheduler || 'none');
 
-            this.emitMessaging('selection-change', customData);
+            this.emitMessaging('selection-change', customData)
+
+            if (item.id && item.executions === undefined) this.emitMessaging('execute-reload');
         }
     }
 });

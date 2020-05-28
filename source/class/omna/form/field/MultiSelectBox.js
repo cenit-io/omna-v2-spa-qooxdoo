@@ -13,6 +13,12 @@ qx.Class.define("omna.form.field.MultiSelectBox", {
         }
     },
 
+    construct: function () {
+        // TODO: Needs revision, does not work properly
+        q.messaging.emit('Application', 'warn', this.constructor.classname + ': Needs revision, does not work properly');
+        this.base(arguments);
+    },
+
     members: {
         _applyOptions: function (items) {
             items.forEach(function (item) {

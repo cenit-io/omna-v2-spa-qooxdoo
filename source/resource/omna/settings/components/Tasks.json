@@ -5,7 +5,7 @@
     "widgetClass": "omna.management.DataGridRestService",
     "requestManagementClass": "omna.request.Tasks",
     "baseParams": {
-      "with_details": true
+      "with_details": false
     },
     "actions": [
       "omna.action.Reload",
@@ -93,6 +93,7 @@
   {
     "id": "TasksViewDetails",
     "widgetClass": "omna.management.task.Details",
+    "requestManagementClass": "omna.request.Tasks",
     "i18n": "Tasks",
     "edge": "east",
     "region": 30,
