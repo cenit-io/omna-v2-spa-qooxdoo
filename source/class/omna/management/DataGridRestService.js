@@ -156,7 +156,7 @@ qx.Class.define("omna.management.DataGridRestService", {
 
         onCellDbltap: function (e) {
             let tableModel = this.__table.getTableModel(),
-                data = { index: e.getRow(), item: tableModel.getRowData(e.getRow()), sender: this };
+                data = { index: e.getRow(), item: tableModel.getRowData(e.getRow())};
 
             this.emitMessaging("open-details", data);
         },
