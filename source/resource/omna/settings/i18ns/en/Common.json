@@ -375,6 +375,16 @@
     "value": "Copyright"
   },
   {
+    "name": "True",
+    "subCatalog": "Labels",
+    "value": "True"
+  },
+  {
+    "name": "False",
+    "subCatalog": "Labels",
+    "value": "False"
+  },
+  {
     "name": "add",
     "subCatalog": "Messages",
     "value": "New item details"

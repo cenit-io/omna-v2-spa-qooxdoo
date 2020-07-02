@@ -113,10 +113,10 @@
         "widgetClass": "omna.form.field.NumberField",
         "accessInAddForm": "W",
         "accessInEditForm": "W",
-        "required": false,
+        "required": true,
         "minimum": 0,
-        "maximumFractionDigits": 2,
-        "minimumFractionDigits": 2,
+        "maximumFractionDigits": 0,
+        "minimumFractionDigits": 0,
         "postfix": " cm"
       },
       {
@@ -124,10 +124,10 @@
         "widgetClass": "omna.form.field.NumberField",
         "accessInAddForm": "W",
         "accessInEditForm": "W",
-        "required": false,
+        "required": true,
         "minimum": 0,
-        "maximumFractionDigits": 2,
-        "minimumFractionDigits": 2,
+        "maximumFractionDigits": 0,
+        "minimumFractionDigits": 0,
         "postfix": " cm"
       },
       {
@@ -135,10 +135,10 @@
         "widgetClass": "omna.form.field.NumberField",
         "accessInAddForm": "W",
         "accessInEditForm": "W",
-        "required": false,
+        "required": true,
         "minimum": 0,
-        "maximumFractionDigits": 2,
-        "minimumFractionDigits": 2,
+        "maximumFractionDigits": 0,
+        "minimumFractionDigits": 0,
         "postfix": " cm"
       },
       {

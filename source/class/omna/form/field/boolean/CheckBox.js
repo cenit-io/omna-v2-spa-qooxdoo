@@ -6,9 +6,7 @@ qx.Class.define("omna.form.field.boolean.CheckBox", {
         cellRendererClass: omna.table.cellrenderer.Boolean,
 
         parseValue: function (value) {
-            if (qx.lang.Type.isString(value)) {
-                value = value.toLowerCase();
-            }
+            if (qx.lang.Type.isString(value)) value = value.toLowerCase();
 
             return value === true || value === 'true' || value === 'on' || value === 1 || value === '1';
         }

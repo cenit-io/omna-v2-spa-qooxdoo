@@ -72,12 +72,14 @@
         "gridColumnWidth": 100
       },
       {
-        "name": "last_import_orders_date",
+        "name": "last_import_dates.orders",
+        "label": "last_import_orders_date",
         "showInGrid": true,
         "cellRendererClass": "omna.table.cellrenderer.Date",
         "gridColumnWidth": 150
       },
       {
+        "name": "last_import_dates.products",
         "name": "last_import_products_date",
         "showInGrid": true,
         "cellRendererClass": "omna.table.cellrenderer.Date",

@@ -45,6 +45,9 @@ qx.Class.define("omna.form.product.DetailsProperties", {
                     widget = new omna.form.field.LocalSelectBox();
                     widget.setOptions(property.options);
                     break;
+                case 'boolean':
+                    widget = new omna.form.field.boolean.SelectBox();
+                    break;
                 case 'multi_select':
                     widget = new omna.form.field.MultiSelectBox();
                     widget.setOptions(property.options);

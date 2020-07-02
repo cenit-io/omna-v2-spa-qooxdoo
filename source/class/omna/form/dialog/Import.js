@@ -39,8 +39,8 @@ qx.Class.define("omna.form.dialog.Import", {
 
             this.__importType.set({
                 required: true,
-                options: ['orders', 'products', 'categories', 'brands'].map(function (item) {
-                    date = integration['last_import_' + item + '_date'];
+                options: ['orders', 'products', 'categories', 'brands', 'logistics'].map(function (item) {
+                    date = integration.last_import_dates[item];
 
                     if (date) {
                         date = new Date(date);
