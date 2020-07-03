@@ -61,6 +61,8 @@ span.form-control {
 
 div.page-content {
     padding-right: 5px;
+    overflow: auto;
+    height: 100%;
 }
 
 span.list-item.integration.not-authorized::after {

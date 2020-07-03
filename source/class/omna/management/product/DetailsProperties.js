@@ -61,7 +61,11 @@ qx.Class.define('omna.management.product.DetailsProperties', {
                     this._form.addListener('save', this.__onSave, this);
 
                     control = new omna.form.renderer.Quad(this._form);
-                    this.add(control, { flex: 1 });
+
+                    let scroll = new qx.ui.container.Scroll(control);
+                    scroll.setContentPadding(5);
+
+                    this.add(scroll, { flex: 1 });
                     break;
             }
 

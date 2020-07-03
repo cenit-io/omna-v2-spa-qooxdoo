@@ -29,7 +29,7 @@ qx.Class.define("omna.form.product.DetailsProperties", {
         },
 
         __getColSpan: function (property) {
-            let types = /^(rich_text|data_grid)$/,
+            let types = /^(rich_text)$/,
                 ids = /^(category_id)$/;
 
             if (property.input_type.match(types) || String(property.id).match(ids)) return 4;
@@ -46,7 +46,7 @@ qx.Class.define("omna.form.product.DetailsProperties", {
                     widget.setOptions(property.options);
                     break;
                 case 'boolean':
-                    widget = new omna.form.field.boolean.SelectBox();
+                    widget = new omna.form.field.boolean.RadioBox();
                     break;
                 case 'multi_select':
                     widget = new omna.form.field.MultiSelectBox();
@@ -68,9 +68,6 @@ qx.Class.define("omna.form.product.DetailsProperties", {
                     widget = new omna.form.field.TextField();
                     break;
                 case 'rich_text':
-                    widget = new omna.form.field.TextArea();
-                    break;
-                case 'data_grid':
                     widget = new omna.form.field.TextArea();
                     break;
                 case 'single_select_with_remote_options':
@@ -98,8 +95,6 @@ qx.Class.define("omna.form.product.DetailsProperties", {
                 case 'text':
                 case 'rich_text':
                     return property.value || '';
-                case 'data_grid':
-                    return JSON.stringify(property.value);
                 default:
                     return property.value;
             }
