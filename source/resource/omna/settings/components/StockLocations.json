@@ -1,0 +1,142 @@
+[
+  {
+    "id": "StockLocations",
+    "widgetClass": "omna.management.DataGridRestService",
+    "serviceBasePath": "stock/locations",
+    "region": 70,
+    "formWidth": 600,
+    "baseParams": {
+      "with_details": true
+    },
+    "actions": [
+      "omna.action.Reload",
+      "omna.action.Separator",
+      "omna.action.Add",
+      "omna.action.Edit",
+      "omna.action.Remove",
+      "omna.action.Separator",
+      "omna.action.Search"
+    ],
+    "fields": [
+      {
+        "name": "integration.channel",
+        "label": "logo",
+        "cellRendererClass": "omna.table.cellrenderer.Logo",
+        "showInGrid": true,
+        "sortable": false,
+        "gridColumnWidth": 50
+      },
+      {
+        "name": "name",
+        "widgetClass": "omna.form.field.TextField",
+        "showInGrid": true,
+        "sortable": true,
+        "includeInSearch": true,
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": true
+      },
+      {
+        "name": "address1",
+        "widgetClass": "omna.form.field.TextArea",
+        "showInGrid": false,
+        "sortable": false,
+        "includeInSearch": true,
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": true
+      },
+      {
+        "name": "address2",
+        "widgetClass": "omna.form.field.TextArea",
+        "showInGrid": false,
+        "sortable": false,
+        "includeInSearch": true,
+        "accessInAddForm": "W",
+        "accessInEditForm": "W"
+      },
+      {
+        "name": "country",
+        "widgetClass": "omna.form.field.TextField",
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "customModelName": "country",
+        "pattern": "[A-Z]{2}",
+        "required": true,
+        "showInGrid": true,
+        "sortable": false
+      },
+      {
+        "name": "state",
+        "widgetClass": "omna.form.field.TextField",
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "customModelName": "state",
+        "pattern": "[A-Z]{2,3}",
+        "required": true,
+        "showInGrid": true,
+        "sortable": false
+      },
+      {
+        "name": "city",
+        "widgetClass": "omna.form.field.TextField",
+        "showInGrid": true,
+        "sortable": true,
+        "includeInSearch": true,
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": true
+      },
+      {
+        "name": "zip_code",
+        "widgetClass": "omna.form.field.TextField",
+        "showInGrid": true,
+        "sortable": true,
+        "includeInSearch": true,
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": true
+      },
+      {
+        "name": "phone",
+        "widgetClass": "omna.form.field.TextField",
+        "showInGrid": true,
+        "sortable": true,
+        "includeInSearch": true,
+        "accessInAddForm": "W",
+        "accessInEditForm": "W",
+        "required": true
+      },
+      {
+        "name": "integration.id",
+        "label": "integration",
+        "showInGrid": true,
+        "isTemplate": true,
+        "isRichText": true,
+        "i18n": {
+          "subCatalog": "Titles",
+          "name": "INTEGRATION"
+        },
+        "accessInAddForm": "W",
+        "required": true,
+        "widgetClass": "omna.form.field.remote.integrations.SelectBox",
+        "customModelName": "integration_id",
+        "disableUnauthorized": true
+      },
+      {
+        "name": "integration.id",
+        "label": "integration",
+        "includeInSearch": true,
+        "widgetClass": "omna.form.field.remote.integrations.SelectBox",
+        "customModelName": "integration_id",
+        "disableUnauthorized": false
+      },
+      {
+        "name": "updated_at",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 150
+      }
+    ]
+  }
+]

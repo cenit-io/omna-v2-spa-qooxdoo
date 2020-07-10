@@ -22,6 +22,14 @@
       },
       {
         "id": "Orders"
+      },
+      {
+        "id": "Inventories",
+        "children": [
+          {
+            "id": "StockLocations"
+          }
+        ]
       }
     ]
   },

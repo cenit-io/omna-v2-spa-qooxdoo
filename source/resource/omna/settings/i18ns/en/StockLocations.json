@@ -1,0 +1,52 @@
+[
+  {
+    "name": "MODULE-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Stock-Locations"
+  },
+  {
+    "name": "SINGLE-ITEM-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Stock-Location"
+  },
+  {
+    "name": "city",
+    "subCatalog": "Labels",
+    "value": "City"
+  },
+  {
+    "name": "country",
+    "subCatalog": "Labels",
+    "value": "Country"
+  },
+  {
+    "name": "state",
+    "subCatalog": "Labels",
+    "value": "State"
+  },
+  {
+    "name": "address1",
+    "subCatalog": "Labels",
+    "value": "Address-1"
+  },
+  {
+    "name": "address2",
+    "subCatalog": "Labels",
+    "value": "Address-2"
+  },
+  {
+    "name": "zip_code",
+    "subCatalog": "Labels",
+    "value": "Zip-Code"
+  },
+  {
+    "name": "phone",
+    "subCatalog": "Labels",
+    "value": "Phone"
+  },
+  {
+    "name": "SUCCESSFUL-DELETING",
+    "subCatalog": "Messages",
+    "value": "A task was created to remove the selected <b class='resource'>%1</b>."
+  }
+]
