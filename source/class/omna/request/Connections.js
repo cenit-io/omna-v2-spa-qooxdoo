@@ -66,8 +66,17 @@ qx.Class.define("omna.request.Connections", {
         },
 
         doImportTask: function (id, type, callBack, scope) {
+            let path = function (type) {
+                switch ( type ) {
+                    case 'stock-locations':
+                        return id + '/stock/locations/import'
+                    default:
+                        return id + '/' + type + '/import'
+                }
+            }
+
             // Call remote service
-            this.submit("GET", id + '/' + type + '/import', null, function (response) {
+            this.submit("GET", path(type), null, function (response) {
                 let msg;
 
                 if (response.successful) {
