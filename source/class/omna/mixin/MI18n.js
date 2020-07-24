@@ -31,24 +31,51 @@ qx.Mixin.define('omna.mixin.MI18n', {
             return this.getI18nCatalog ? this.getI18nCatalog() : 'Common'
         },
 
-        notify: function (type, name, args) {
-            q.messaging.emit('Application', type, this.i18nTrans('Messages', name, args));
+        /**
+         *
+         * @param type {String}
+         * @param i18nMsgName {String}
+         * @param i18nMsgArgs {String[]?}
+         */
+        notify: function (type, i18nMsgName, i18nMsgArgs) {
+            const msg = this.i18nTrans('Messages', i18nMsgName, i18nMsgArgs);
+            q.messaging.emit('Application', type, msg, this || this);
         },
 
-        good: function (name, args) {
-            this.notify('good', name, args);
+        /**
+         *
+         * @param i18nMsgName {String}
+         * @param i18nMsgArgs {String[]?}
+         */
+        good: function (i18nMsgName, i18nMsgArgs) {
+            this.notify('good', i18nMsgName, i18nMsgArgs, this);
         },
 
-        info: function (name, args) {
-            this.notify('info', name, args);
+        /**
+         *
+         * @param i18nMsgName {String}
+         * @param i18nMsgArgs {String[]?}
+         */
+        info: function (i18nMsgName, i18nMsgArgs) {
+            this.notify('info', i18nMsgName, i18nMsgArgs, this);
         },
 
-        warn: function (name, args) {
-            this.notify('warn', name, args);
+        /**
+         *
+         * @param i18nMsgName {String}
+         * @param i18nMsgArgs {String[]?}
+         */
+        warn: function (i18nMsgName, i18nMsgArgs, emitParams) {
+            this.notify('warn', i18nMsgName, i18nMsgArgs, emitParams, this);
         },
 
-        error: function (name, args) {
-            this.notify('error', name, args);
+        /**
+         *
+         * @param i18nMsgName {String}
+         * @param i18nMsgArgs {String[]?}
+         */
+        error: function (i18nMsgName, i18nMsgArgs, emitParams) {
+            this.notify('error', i18nMsgName, i18nMsgArgs, emitParams, this);
         }
     }
 });

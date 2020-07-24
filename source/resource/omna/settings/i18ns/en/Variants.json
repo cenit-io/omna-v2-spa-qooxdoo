@@ -28,5 +28,10 @@
     "name": "quantity",
     "subCatalog": "Labels",
     "value": "Quantity"
+  },
+  {
+    "name": "NO-VARIANT-PROPERTIES",
+    "subCatalog": "Messages",
+    "value": "There are no particular properties of this variant."
   }
 ]

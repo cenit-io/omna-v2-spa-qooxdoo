@@ -31,7 +31,13 @@ qx.Class.define('omna.management.product.DetailsProperties', {
         let item = this._getItem();
 
         if (item.errors) q.messaging.emit('Application', 'error', item.errors, this);
-        if (item.properties && item.properties.length > 0) this._createChildControl('properties-form');
+        if (item.properties) {
+            if (item.properties.length > 0) {
+                this._createChildControl('properties-form');
+            } else {
+                this._notifyNoProperties();
+            }
+        }
     },
 
     properties: {
@@ -72,6 +78,10 @@ qx.Class.define('omna.management.product.DetailsProperties', {
             return control || this.base(arguments, id);
         },
 
+        _notifyNoProperties: function () {
+            this.info('NO-PRODUCT-PROPERTIES');
+        },
+
         _notify: function (msg, type) {
             let notifications = this.getChildControl('notifications');
 
@@ -107,6 +117,7 @@ qx.Class.define('omna.management.product.DetailsProperties', {
         },
 
         onNotify: function (data) {
+            console.log(data);
             if (data.customData === this) this._notify(data.params, data.path);
         }
     },

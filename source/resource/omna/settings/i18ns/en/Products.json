@@ -63,5 +63,10 @@
     "name": "link_all_with_its_variants",
     "subCatalog": "Labels",
     "value": "Link all product integrations with all its variants"
+  },
+  {
+    "name": "NO-PRODUCT-PROPERTIES",
+    "subCatalog": "Messages",
+    "value": "There are no particular properties of this product."
   }
 ]
