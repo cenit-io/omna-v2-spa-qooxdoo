@@ -28,6 +28,26 @@ qx.Class.define("omna.request.AvailableIntegrations", {
             }, this);
         },
 
+        getChannels: function (callBack, scope) {
+            let cacheId = 'integration-channels',
+                cache = this.getCacheItem(cacheId);
+
+            if (cache) {
+                callBack.call(scope, cache);
+            } else {
+                // Call remote service
+                this.submit("GET", 'channels', null, function (response) {
+                    if (response.successful) {
+                        this.setCacheItem(cacheId, response);
+                    } else {
+                        let msg = omna.I18n.trans('Connections', 'Messages', 'FAILED-LOADING-CHANNELS');
+                        q.messaging.emit('Application', 'error', msg)
+                    }
+                    callBack.call(scope, response);
+                }, this);
+            }
+        },
+
         cleanCacheItems: function (method, url, response) {
             if (method.match(/POST|PUT|DELETE|PATCH/)) this.removeCacheItem('integration-channels');
         }

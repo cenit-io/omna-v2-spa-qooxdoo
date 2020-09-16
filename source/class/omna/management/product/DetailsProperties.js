@@ -117,7 +117,6 @@ qx.Class.define('omna.management.product.DetailsProperties', {
         },
 
         onNotify: function (data) {
-            console.log(data);
             if (data.customData === this) this._notify(data.params, data.path);
         }
     },

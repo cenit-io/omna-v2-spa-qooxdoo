@@ -20,26 +20,6 @@ qx.Class.define("omna.request.Connections", {
             }
         },
 
-        getChannels: function (callBack, scope) {
-            let cacheId = 'integration-channels',
-                cache = this.getCacheItem(cacheId);
-
-            if (cache) {
-                callBack.call(scope, cache);
-            } else {
-                // Call remote service
-                this.submit("GET", 'channels', null, function (response) {
-                    if (response.successful) {
-                        this.setCacheItem(cacheId, response);
-                    } else {
-                        let msg = omna.I18n.trans('Connections', 'Messages', 'FAILED-LOADING-CHANNELS');
-                        q.messaging.emit('Application', 'error', msg)
-                    }
-                    callBack.call(scope, response);
-                }, this);
-            }
-        },
-
         authorize: function (id) {
             let path = this._getServicePath(id + '/authorize'),
                 data = this._signRequest(path, { redirect_uri: this._getAppBaseUrl() }),

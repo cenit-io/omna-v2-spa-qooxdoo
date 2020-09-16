@@ -13,7 +13,7 @@ qx.Class.define('omna.form.field.remote.integrations.ChannelSelectBox', {
 
     members: {
         __loadItems: function () {
-            let request = new omna.request.Connections();
+            let request = new omna.request.AvailableIntegrations();
 
             request.getChannels(function (response) {
                 if (response.successful) response.data.forEach(function (item) {
