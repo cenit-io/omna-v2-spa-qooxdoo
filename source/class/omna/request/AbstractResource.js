@@ -160,17 +160,24 @@ qx.Class.define("omna.request.AbstractResource", {
             return qx.util.Uri.getAbsolute('').replace(/[\?#].*/, '');
         },
 
-        _signRequest: function (path, data, token, secret) {
-            let credentials = omna.request.Session.getCredentials();
+        _signRequest: function (method, path, data, token, secret) {
+            let queryString, body, credentials = omna.request.Session.getCredentials();
 
             data = qx.lang.Object.clone(data) || {};
 
             // Add token and timestamp to URL parameters.
             Object.assign(data, { token: token || credentials.token, timestamp: Date.now() });
 
-            // Join the service path and the ordered sequence of characters, excluding the quotes,
-            // corresponding to the JSON of the parameters that will be sent.
-            let msg = path + JSON.stringify(data).replace(/["']/g, '').split('').sort().join('');
+            if (method.match(/^(POST|PUT|PATCH)$/)) {
+                queryString = '';
+                body = JSON.stringify(data);
+            } else {
+                this._fixNullQueryParams(data)
+                queryString = this._toQueryParams(data);
+                body = '';
+            }
+
+            let msg = path + queryString + body
 
             // Generate the corresponding hmac parameter using the js-sha256 or similar library.
             data.hmac = sha256.hmac.update(secret || credentials.secret, msg).hex();
@@ -178,7 +185,19 @@ qx.Class.define("omna.request.AbstractResource", {
             return data;
         },
 
-        _toParameter: function (data) {
+        _fixNullQueryParams: function (data) {
+            for (key in data) {
+                if (qx.lang.Type.isObject(data[key])) {
+                    data[key] = this._fixNullQueryParams(data[key])
+                } else if (data[key] === undefined || data[key] === null) {
+                    data[key] = ''
+                }
+            }
+
+            return data;
+        },
+
+        _toQueryParams: function (data) {
             let qs = [],
                 add = function (k, v) {
                     v = qx.lang.Type.isFunction(v) ? v() : v;
@@ -222,7 +241,7 @@ qx.Class.define("omna.request.AbstractResource", {
             path = this._getServicePath(path, data);
 
             let request = this.__requestManagement = new omna.request.Xhr(this._getServiceUrl(path), method),
-                params = this._signRequest(path, data || {}, token, secret);
+                params = this._signRequest(method, path, data || {}, token, secret);
 
             request.setAsync(this.getAsync());
 
@@ -231,9 +250,11 @@ qx.Class.define("omna.request.AbstractResource", {
             request.resetRequestData();
             if (method.match(/^(POST|PUT|PATCH)$/)) {
                 request.setRequestHeader("Content-Type", "application/json");
+                request.setRequestHeader("X-OMNA-HMac", params.hmac);
+                delete params.hmac;
                 request.setRequestData(params)
             } else {
-                request.setRequestData(this._toParameter(params))
+                request.setRequestData(params)
             }
 
             // Listener events

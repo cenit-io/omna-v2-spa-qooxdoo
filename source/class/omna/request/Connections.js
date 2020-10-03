@@ -22,7 +22,7 @@ qx.Class.define("omna.request.Connections", {
 
         authorize: function (id) {
             let path = this._getServicePath(id + '/authorize'),
-                data = this._signRequest(path, { redirect_uri: this._getAppBaseUrl() }),
+                data = this._signRequest('GET', path, { redirect_uri: this._getAppBaseUrl() }),
                 url = this._getServiceUrl(path) + '?' + qx.util.Uri.toParameter(data);
 
             this.removeCacheItem('integrations-connected');

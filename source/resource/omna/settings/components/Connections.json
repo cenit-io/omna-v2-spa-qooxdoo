@@ -62,6 +62,7 @@
         "required": false,
         "includeInSearch": true,
         "showInGrid": true,
+        "includeInSearch": false,
         "pattern": "^[^ ,]+( [^ ,]+)*(,[^ ,]+( [^ ,]+)*)*$"
       },
       {
