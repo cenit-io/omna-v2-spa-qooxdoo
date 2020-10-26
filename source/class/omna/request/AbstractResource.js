@@ -173,7 +173,7 @@ qx.Class.define("omna.request.AbstractResource", {
                 body = JSON.stringify(data);
             } else {
                 this._fixNullQueryParams(data)
-                queryString = this._toQueryParams(data);
+                queryString = decodeURIComponent(this._toQueryParams(data));
                 body = '';
             }
 
@@ -250,12 +250,11 @@ qx.Class.define("omna.request.AbstractResource", {
             request.resetRequestData();
             if (method.match(/^(POST|PUT|PATCH)$/)) {
                 request.setRequestHeader("Content-Type", "application/json");
-                request.setRequestHeader("X-OMNA-HMac", params.hmac);
-                delete params.hmac;
-                request.setRequestData(params)
-            } else {
-                request.setRequestData(params)
             }
+
+            request.setRequestHeader("X-OMNA-HMac", params.hmac);
+            delete params.hmac;
+            request.setRequestData(params)
 
             // Listener events
             request.addListener("success", function (e) {
