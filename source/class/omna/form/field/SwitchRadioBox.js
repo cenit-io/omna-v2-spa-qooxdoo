@@ -1,30 +1,30 @@
 qx.Class.define("omna.form.field.SwitchRadioBox", {
-    extend: omna.form.field.util.AbstractSwitchRadioBox,
+  extend: omna.form.field.util.AbstractSwitchRadioBox,
 
-    statics: {
-        cellRendererClass: omna.table.cellrenderer.String
+  statics: {
+    cellRendererClass: omna.table.cellrenderer.String
+  },
+
+  construct: function () {
+    this.base(arguments, 'ON', 'OFF');
+  },
+
+  properties: {
+    value: {
+      check: ['ON', 'OFF'],
+      event: 'changeValue',
+      apply: '_applyValue',
+      transform: '_transformValue'
     },
 
-    construct: function () {
-        this.base(arguments, 'ON', 'OFF');
+    onLabel: {
+      check: 'String',
+      init: 'Common.Labels.On'
     },
 
-    properties: {
-        value: {
-            check: ['ON', 'OFF'],
-            event: 'changeValue',
-            apply: '_applyValue',
-            transform: '_transformValue'
-        },
-
-        onLabel: {
-            check: 'String',
-            init: 'Common.Labels.On'
-        },
-
-        offLabel: {
-            check: 'String',
-            init: 'Common.Labels.Off'
-        }
+    offLabel: {
+      check: 'String',
+      init: 'Common.Labels.Off'
     }
+  }
 });

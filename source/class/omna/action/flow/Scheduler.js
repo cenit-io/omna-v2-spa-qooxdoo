@@ -3,39 +3,39 @@
  * @asset(omna/icon/16/actions/scheduler-off.png)
  */
 qx.Class.define("omna.action.flow.Scheduler", {
-    extend: omna.action.AbstractActionWithSelectedItem,
+  extend: omna.action.AbstractActionWithSelectedItem,
 
-    construct: function (management) {
-        this.base(arguments, management, 'scheduler', 'omna/icon/16/actions/scheduler-on.png');
+  construct: function (management) {
+    this.base(arguments, management, 'scheduler', 'omna/icon/16/actions/scheduler-on.png');
+  },
+
+  members: {
+    onExecute: function () {
+      let item = this.getSelectedItem(),
+        scheduler = item.task.scheduler,
+        msg = this.i18nTrans('Messages', 'CONFIRM-SCHEDULER-' + (scheduler && scheduler.active ? 'OFF' : 'ON'));
+
+      omna.dialog.Confirm.show(msg, function (response) {
+        if (response === 'yes') {
+          this.getManagement().getRequestManagement().toggleSchedule(item.id, function (response) {
+            if (response.successful) this.emitMessaging('execute-reload');
+          }, this)
+        }
+      }, this);
     },
 
-    members: {
-        onExecute: function () {
-            let item = this.getSelectedItem(),
-                scheduler = item.task.scheduler,
-                msg = this.i18nTrans('Messages', 'CONFIRM-SCHEDULER-' + (scheduler && scheduler.active ? 'OFF' : 'ON'));
+    onSelectionChange: function (data) {
+      this.base(arguments, data);
 
-            omna.dialog.Confirm.show(msg, function (response) {
-                if (response === 'yes') {
-                    this.getManagement().getRequestManagement().toggleSchedule(item.id, function (response) {
-                        if (response.successful) this.emitMessaging('execute-reload');
-                    }, this)
-                }
-            }, this);
-        },
+      if (this.getEnabled()) {
+        let scheduler = data.customData.item.task.scheduler;
 
-        onSelectionChange: function (data) {
-            this.base(arguments, data);
-
-            if (this.getEnabled()) {
-                let scheduler = data.customData.item.task.scheduler;
-
-                if (scheduler && scheduler.active) {
-                    this.set({ icon: 'omna/icon/16/actions/scheduler-off.png' })
-                } else {
-                    this.set({ icon: 'omna/icon/16/actions/scheduler-on.png' })
-                }
-            }
+        if (scheduler && scheduler.active) {
+          this.set({ icon: 'omna/icon/16/actions/scheduler-off.png' })
+        } else {
+          this.set({ icon: 'omna/icon/16/actions/scheduler-on.png' })
         }
+      }
     }
+  }
 });

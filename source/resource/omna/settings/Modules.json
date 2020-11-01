@@ -28,6 +28,9 @@
         "children": [
           {
             "id": "StockLocations"
+          },
+          {
+            "id": "StockItems"
           }
         ]
       }

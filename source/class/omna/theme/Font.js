@@ -9,13 +9,13 @@
  ************************************************************************ */
 
 qx.Theme.define("omna.theme.Font", {
-    extend: qx.theme.indigo.Font,
+  extend: qx.theme.indigo.Font,
 
-    fonts: {
-        "footer": {
-            size: 11,
-            lineHeight: 1.4,
-            family: ["Tahoma", "Liberation Sans", "Arial"]
-        }
+  fonts: {
+    "footer": {
+      size: 11,
+      lineHeight: 1.4,
+      family: ["Tahoma", "Liberation Sans", "Arial"]
     }
+  }
 });

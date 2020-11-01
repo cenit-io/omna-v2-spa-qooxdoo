@@ -1,30 +1,30 @@
 qx.Class.define("omna.request.Tasks", {
-    extend: omna.request.AbstractResource,
+  extend: omna.request.AbstractResource,
 
-    construct: function () {
-        this.base(arguments, 'tasks');
+  construct: function () {
+    this.base(arguments, 'tasks');
+  },
+
+  members: {
+    retry: function (id, callBack, scope) {
+      // Call start service
+      this.submit("GET", id + '/retry', null, function (response) {
+        let msg;
+
+        if (response.successful) {
+          msg = omna.I18n.trans('Tasks', 'Messages', 'SUCCESSFUL-RETRY');
+          q.messaging.emit('Application', 'good', msg);
+        } else {
+          msg = omna.I18n.trans('Tasks', 'Messages', 'FAILED-RETRY');
+          q.messaging.emit('Application', 'error', msg)
+        }
+        callBack && callBack.call(scope, response);
+      }, this);
     },
 
-    members: {
-        retry: function (id, callBack, scope) {
-            // Call start service
-            this.submit("GET", id + '/retry', null, function (response) {
-                let msg;
-
-                if (response.successful) {
-                    msg = omna.I18n.trans('Tasks', 'Messages', 'SUCCESSFUL-RETRY');
-                    q.messaging.emit('Application', 'good', msg);
-                } else {
-                    msg = omna.I18n.trans('Tasks', 'Messages', 'FAILED-RETRY');
-                    q.messaging.emit('Application', 'error', msg)
-                }
-                callBack && callBack.call(scope, response);
-            }, this);
-        },
-
-        openTaskDetails: function (task) {
-            // overwrite
-        }
+    openTaskDetails: function (task) {
+      // overwrite
     }
+  }
 
 });

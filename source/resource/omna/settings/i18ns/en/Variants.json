@@ -15,11 +15,6 @@
     "value": "Variant / {{#sku}}{{.}}{{/sku}}{{^sku}}{{id}}{{/sku}} / Details"
   },
   {
-    "name": "sku",
-    "subCatalog": "Labels",
-    "value": "SKU"
-  },
-  {
     "name": "original_price",
     "subCatalog": "Labels",
     "value": "Original price"

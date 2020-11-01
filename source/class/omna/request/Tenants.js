@@ -1,9 +1,9 @@
 qx.Class.define("omna.request.Tenants", {
-    extend: omna.request.AbstractResource,
+  extend: omna.request.AbstractResource,
 
-    construct: function () {
-        this.base(arguments, 'tenants');
-    },
+  construct: function () {
+    this.base(arguments, 'tenants');
+  },
 
-    members: {}
+  members: {}
 });

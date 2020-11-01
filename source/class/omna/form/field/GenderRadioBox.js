@@ -1,30 +1,30 @@
 qx.Class.define("omna.form.field.GenderRadioBox", {
-    extend: omna.form.field.util.AbstractSwitchRadioBox,
+  extend: omna.form.field.util.AbstractSwitchRadioBox,
 
-    statics: {
-        cellRendererClass: omna.table.cellrenderer.String
+  statics: {
+    cellRendererClass: omna.table.cellrenderer.String
+  },
+
+  construct: function () {
+    this.base(arguments, 'M', 'F');
+  },
+
+  properties: {
+    value: {
+      check: ['M', 'F'],
+      event: 'changeValue',
+      apply: '_applyValue',
+      transform: '_transformValue'
     },
 
-    construct: function () {
-        this.base(arguments, 'M', 'F');
+    mLabel: {
+      check: 'String',
+      init: 'Common.Labels.Male'
     },
 
-    properties: {
-        value: {
-            check: ['M', 'F'],
-            event: 'changeValue',
-            apply: '_applyValue',
-            transform: '_transformValue'
-        },
-
-        mLabel: {
-            check: 'String',
-            init: 'Common.Labels.Male'
-        },
-
-        fLabel: {
-            check: 'String',
-            init: 'Common.Labels.Female'
-        }
+    fLabel: {
+      check: 'String',
+      init: 'Common.Labels.Female'
     }
+  }
 });

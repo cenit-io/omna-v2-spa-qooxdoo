@@ -1,0 +1,84 @@
+[
+  {
+    "id": "StockItems",
+    "widgetClass": "omna.management.DataGridRestService",
+    "serviceBasePath": "stock/items",
+    "region": 70,
+    "formWidth": 600,
+    "baseParams": {
+      "with_details": true
+    },
+    "actions": [
+      "omna.action.Reload",
+      "omna.action.Separator",
+      "omna.action.Search"
+    ],
+    "fields": [
+      {
+        "name": "stock_location.integration.channel",
+        "label": "logo",
+        "cellRendererClass": "omna.table.cellrenderer.Logo",
+        "showInGrid": true,
+        "sortable": false,
+        "gridColumnWidth": 50
+      },
+      {
+        "name": "product.name",
+        "label": "product",
+        "widgetClass": "omna.form.field.TextField",
+        "showInGrid": true,
+        "sortable": false
+      },
+      {
+        "name": "product.variant.sku",
+        "label": "sku",
+        "widgetClass": "omna.form.field.TextField",
+        "showInGrid": true,
+        "sortable": false,
+        "gridColumnWidth": 150
+      },
+      {
+        "name": "count_on_hand",
+        "widgetClass": "omna.form.field.NumberField",
+        "showInGrid": true,
+        "sortable": true,
+        "gridColumnWidth": 120
+      },
+      {
+        "name": "stock_location.integration.id",
+        "label": "integration",
+        "showInGrid": true,
+        "isTemplate": true,
+        "isRichText": true,
+        "i18n": {
+          "subCatalog": "Titles",
+          "name": "INTEGRATION"
+        },
+        "disableUnauthorized": true,
+        "gridColumnWidth": 200
+      },
+      {
+        "name": "stock_location.integration.id",
+        "label": "integration",
+        "includeInSearch": true,
+        "widgetClass": "omna.form.field.remote.integrations.SelectBox",
+        "customModelName": "integration_id",
+        "disableUnauthorized": false
+      },
+      {
+        "name": "stock_location.name",
+        "label": "location",
+        "widgetClass": "omna.form.field.TextField",
+        "showInGrid": true,
+        "sortable": true,
+        "gridColumnWidth": 150
+      },
+      {
+        "name": "updated_at",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 150
+      }
+    ]
+  }
+]

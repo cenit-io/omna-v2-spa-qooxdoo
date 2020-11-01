@@ -1,0 +1,27 @@
+[
+  {
+    "name": "MODULE-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Stock-Items"
+  },
+  {
+    "name": "SINGLE-ITEM-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Stock-Item"
+  },
+  {
+    "name": "product",
+    "subCatalog": "Labels",
+    "value": "Product"
+  },
+  {
+    "name": "count_on_hand",
+    "subCatalog": "Labels",
+    "value": "Count on Hand"
+  },
+  {
+    "name": "location",
+    "subCatalog": "Labels",
+    "value": "Location"
+  }
+]

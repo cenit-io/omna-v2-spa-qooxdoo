@@ -1,31 +1,31 @@
 qx.Class.define("omna.form.dialog.HtmlEditor", {
-    extend: omna.form.dialog.AbstractField,
+  extend: omna.form.dialog.AbstractField,
 
-    // override
-    construct: function () {
-        this.base(arguments, this.i18nTrans('content'));
+  // override
+  construct: function () {
+    this.base(arguments, this.i18nTrans('content'));
 
-        // Set properties
-        this.set({
-            modal: true,
-            showMaximize: true,
-            allowMaximize: true,
-            resizable: true,
-            width: 600,
-            height: 350
-        });
-    },
+    // Set properties
+    this.set({
+      modal: true,
+      showMaximize: true,
+      allowMaximize: true,
+      resizable: true,
+      width: 600,
+      height: 350
+    });
+  },
 
-    members: {
-        _createFormFields: function (form) {
-            let content;
+  members: {
+    _createFormFields: function (form) {
+      let content;
 
-            this.base(arguments);
+      this.base(arguments);
 
-            content = new omna.form.field.TextArea;
-            content.setWrap(false);
+      content = new omna.form.field.TextArea;
+      content.setWrap(false);
 
-            form.add(content, null, null, 'content');
-        }
+      form.add(content, null, null, 'content');
     }
+  }
 });

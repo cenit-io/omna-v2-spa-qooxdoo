@@ -20,6 +20,11 @@
     "value": "Name"
   },
   {
+    "name": "sku",
+    "subCatalog": "Labels",
+    "value": "SKU"
+  },
+  {
     "name": "add",
     "subCatalog": "Titles",
     "value": "%1 data to be created:"
