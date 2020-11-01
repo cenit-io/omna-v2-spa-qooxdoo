@@ -461,5 +461,4 @@ qx.Class.define("omna.request.AbstractResource", {
     let rm = this.__requestManagement;
     if (rm && !(rm.isDisposed() || rm.isDone())) rm.abort();
   }
-})
-;
+});
