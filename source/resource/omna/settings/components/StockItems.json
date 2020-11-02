@@ -5,11 +5,11 @@
     "serviceBasePath": "stock/items",
     "region": 70,
     "formWidth": 600,
-    "baseParams": {
-      "with_details": true
-    },
+    "baseParams": {},
     "actions": [
       "omna.action.Reload",
+      "omna.action.Separator",
+      "omna.action.Edit",
       "omna.action.Separator",
       "omna.action.Search"
     ],
@@ -45,8 +45,9 @@
         "gridColumnWidth": 120
       },
       {
-        "name": "stock_location.integration.id",
+        "name": "stock_location",
         "label": "integration",
+        "widgetClass": "omna.form.field.TextField",
         "showInGrid": true,
         "isTemplate": true,
         "isRichText": true,
@@ -54,8 +55,7 @@
           "subCatalog": "Titles",
           "name": "INTEGRATION"
         },
-        "disableUnauthorized": true,
-        "gridColumnWidth": 200
+        "disableUnauthorized": true
       },
       {
         "name": "stock_location.integration.id",
@@ -75,6 +75,60 @@
       },
       {
         "name": "updated_at",
+        "showInGrid": true,
+        "cellRendererClass": "omna.table.cellrenderer.Date",
+        "gridColumnWidth": 150
+      },
+      {
+        "name": "quantity",
+        "widgetClass": "omna.form.field.NumberField",
+        "accessInEditForm": "W",
+        "defaultValue": 10,
+        "required": true,
+        "maximumFractionDigits": 0,
+        "minimumFractionDigits": 0
+      },
+      {
+        "name": "action",
+        "widgetClass": "omna.form.field.TextField",
+        "accessInEditForm": "W",
+        "required": true,
+        "minLength": 2,
+        "maxLength": 15,
+        "pattern": "\\w+( \\w+)*"
+      }
+    ]
+  },
+  {
+    "id": "StockMovements",
+    "widgetClass": "omna.management.DataGridRestService",
+    "serviceBasePath": "stock/items/{stock_item_id}/movements",
+    "region": 70,
+    "formWidth": 600,
+    "edge": "east",
+    "region": 30,
+    "listenFromComponentId": "StockItems",
+    "localFieldName": "stock_item_id",
+    "actions": [
+      "omna.action.Reload",
+      "omna.action.Separator",
+      "omna.action.Add"
+    ],
+    "fields": [
+      {
+        "name": "quantity",
+        "cellRendererClass": "omna.table.cellrenderer.Number",
+        "showInGrid": true,
+        "sortable": false,
+        "gridColumnWidth": 100
+      },
+      {
+        "name": "action",
+        "showInGrid": true,
+        "sortable": false
+      },
+      {
+        "name": "created_at",
         "showInGrid": true,
         "cellRendererClass": "omna.table.cellrenderer.Date",
         "gridColumnWidth": 150

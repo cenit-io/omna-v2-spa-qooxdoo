@@ -34,7 +34,8 @@
         "includeInSearch": true,
         "accessInAddForm": "W",
         "accessInEditForm": "W",
-        "required": true
+        "required": true,
+        "gridColumnWidth": 150
       },
       {
         "name": "address1",
@@ -64,7 +65,8 @@
         "pattern": "[A-Z]{2}",
         "required": true,
         "showInGrid": true,
-        "sortable": false
+        "sortable": false,
+        "gridColumnWidth": 150
       },
       {
         "name": "state",
@@ -75,7 +77,8 @@
         "pattern": "[A-Z]{2,3}",
         "required": true,
         "showInGrid": true,
-        "sortable": false
+        "sortable": false,
+        "gridColumnWidth": 150
       },
       {
         "name": "city",
@@ -85,7 +88,8 @@
         "includeInSearch": true,
         "accessInAddForm": "W",
         "accessInEditForm": "W",
-        "required": true
+        "required": true,
+        "gridColumnWidth": 150
       },
       {
         "name": "zip_code",
@@ -95,7 +99,8 @@
         "includeInSearch": true,
         "accessInAddForm": "W",
         "accessInEditForm": "W",
-        "required": true
+        "required": true,
+        "gridColumnWidth": 80
       },
       {
         "name": "phone",
@@ -105,7 +110,8 @@
         "includeInSearch": true,
         "accessInAddForm": "W",
         "accessInEditForm": "W",
-        "required": true
+        "required": true,
+        "gridColumnWidth": 100
       },
       {
         "name": "integration.id",

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "MODULE-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Stock-Movements"
+  },
+  {
+    "name": "SINGLE-ITEM-REFERENCE",
+    "subCatalog": "Labels",
+    "value": "Stock-Movement"
+  },
+  {
+    "name": "action",
+    "subCatalog": "Labels",
+    "value": "Action"
+  }
+]

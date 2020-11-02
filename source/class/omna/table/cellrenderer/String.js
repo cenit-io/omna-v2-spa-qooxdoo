@@ -89,7 +89,9 @@ qx.Class.define("omna.table.cellrenderer.String", {
         result = omna.I18n.trans(catalog, subCatalog, name);
       }
 
-      if (this.isTemplate()) result = qx.bom.Template.render(result, cellInfo.rowData);
+      if (this.isTemplate()) result = qx.bom.Template.render(
+        result, qx.lang.Type.isObject(cellInfo.value) ? cellInfo.value : cellInfo.rowData
+      );
 
       return this.isRichText() ? result : qx.bom.String.escape(result);
     },

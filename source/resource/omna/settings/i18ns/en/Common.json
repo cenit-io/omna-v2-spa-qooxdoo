@@ -335,6 +335,11 @@
     "value": "Details"
   },
   {
+    "name": "quantity",
+    "subCatalog": "Labels",
+    "value": "Quantity"
+  },
+  {
     "name": "search",
     "subCatalog": "Labels",
     "value": "Search"
