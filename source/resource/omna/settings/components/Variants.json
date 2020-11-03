@@ -74,13 +74,6 @@
         "name": "quantity",
         "widgetClass": "omna.form.field.NumberField",
         "showInGrid": true,
-        "includeInSearch": true,
-        "accessInAddForm": "W",
-        "accessInEditForm": "W",
-        "required": true,
-        "minimum": 0,
-        "maximumFractionDigits": 0,
-        "minimumFractionDigits": 0,
         "gridColumnWidth": 100
       },
       {
