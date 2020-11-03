@@ -23,5 +23,25 @@
     "name": "location",
     "subCatalog": "Labels",
     "value": "Location"
+  },
+  {
+    "name": "edit",
+    "subCatalog": "Labels",
+    "value": "Movement"
+  },
+  {
+    "name": "edit",
+    "subCatalog": "Titles",
+    "value": "%1 movement data:"
+  },
+  {
+    "name": "SUCCESSFUL-UPDATING",
+    "subCatalog": "Messages",
+    "value": "The movement over selected <b class='resource'>%1</b> was successfully created."
+  },
+  {
+    "name": "FAILED-UPDATING",
+    "subCatalog": "Messages",
+    "value": "The creation of movement over selected <b class='resource'>%1</b> has failed."
   }
 ]

@@ -27,7 +27,9 @@
         "label": "product",
         "widgetClass": "omna.form.field.TextField",
         "showInGrid": true,
-        "sortable": false
+        "sortable": false,
+        "gridColumnWidth": 250,
+        "cellRendererClass": "omna.table.cellrenderer.LongText"
       },
       {
         "name": "product.variant.sku",
@@ -55,7 +57,8 @@
           "subCatalog": "Titles",
           "name": "INTEGRATION"
         },
-        "disableUnauthorized": true
+        "disableUnauthorized": true,
+        "gridColumnWidth": 250
       },
       {
         "name": "stock_location.integration.id",
