@@ -113,9 +113,7 @@
     "listenFromComponentId": "StockItems",
     "localFieldName": "stock_item_id",
     "actions": [
-      "omna.action.Reload",
-      "omna.action.Separator",
-      "omna.action.Add"
+      "omna.action.Reload"
     ],
     "fields": [
       {
