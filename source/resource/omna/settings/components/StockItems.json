@@ -25,7 +25,9 @@
       {
         "name": "product.name",
         "label": "product",
-        "widgetClass": "omna.form.field.TextField",
+        "includeInSearch": true,
+        "widgetClass": "omna.form.field.remote.products.FilteringSelectBox",
+        "customModelName": "product_id",
         "showInGrid": true,
         "sortable": false,
         "gridColumnWidth": 250,
@@ -34,7 +36,9 @@
       {
         "name": "product.variant.sku",
         "label": "sku",
+        "includeInSearch": true,
         "widgetClass": "omna.form.field.TextField",
+        "customModelName": "sku",
         "showInGrid": true,
         "sortable": false,
         "gridColumnWidth": 150

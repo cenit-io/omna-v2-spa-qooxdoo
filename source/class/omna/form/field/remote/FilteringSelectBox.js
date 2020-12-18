@@ -10,7 +10,6 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
    */
   construct: function () {
     this.base(arguments);
-
     this.__requestManagement = new omna.request.Customs('/serviceBasePath', true);
   },
 
@@ -42,7 +41,7 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
     _createChildControlImpl: function (id, hash) {
       let control;
 
-      switch ( id ) {
+      switch (id) {
         case "searchTextField":
           control = new omna.form.field.util.SearchTextField().set({ focusable: false });
           control.addListener("changeValue", this._loadItems, this);

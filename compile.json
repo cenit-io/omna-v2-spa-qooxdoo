@@ -70,6 +70,7 @@
         // Remote components.
         "omna.form.field.remote.integrations.ChannelSelectBox",
         "omna.form.field.remote.integrations.SelectBox",
+        "omna.form.field.remote.products.FilteringSelectBox",
         "omna.form.field.remote.flows.TypeSelectBox",
         "omna.form.field.remote.webhooks.TopicSelectBox",
         // General components for bigness.

@@ -38,6 +38,30 @@
         "gridColumnWidth": 150
       },
       {
+        "name": "integration.id",
+        "label": "integration",
+        "showInGrid": true,
+        "isTemplate": true,
+        "isRichText": true,
+        "i18n": {
+          "subCatalog": "Titles",
+          "name": "INTEGRATION"
+        },
+        "accessInAddForm": "W",
+        "required": true,
+        "widgetClass": "omna.form.field.remote.integrations.SelectBox",
+        "customModelName": "integration_id",
+        "disableUnauthorized": true
+      },
+      {
+        "name": "integration.id",
+        "label": "integration",
+        "includeInSearch": true,
+        "widgetClass": "omna.form.field.remote.integrations.SelectBox",
+        "customModelName": "integration_id",
+        "disableUnauthorized": false
+      },
+      {
         "name": "address1",
         "widgetClass": "omna.form.field.TextArea",
         "showInGrid": false,
@@ -112,30 +136,6 @@
         "accessInEditForm": "W",
         "required": true,
         "gridColumnWidth": 100
-      },
-      {
-        "name": "integration.id",
-        "label": "integration",
-        "showInGrid": true,
-        "isTemplate": true,
-        "isRichText": true,
-        "i18n": {
-          "subCatalog": "Titles",
-          "name": "INTEGRATION"
-        },
-        "accessInAddForm": "W",
-        "required": true,
-        "widgetClass": "omna.form.field.remote.integrations.SelectBox",
-        "customModelName": "integration_id",
-        "disableUnauthorized": true
-      },
-      {
-        "name": "integration.id",
-        "label": "integration",
-        "includeInSearch": true,
-        "widgetClass": "omna.form.field.remote.integrations.SelectBox",
-        "customModelName": "integration_id",
-        "disableUnauthorized": false
       },
       {
         "name": "updated_at",
