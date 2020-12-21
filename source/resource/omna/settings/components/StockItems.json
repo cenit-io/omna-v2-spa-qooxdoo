@@ -4,7 +4,7 @@
     "widgetClass": "omna.management.DataGridRestService",
     "serviceBasePath": "stock/items",
     "region": 70,
-    "formWidth": 600,
+    "formWidth": 300,
     "baseParams": {},
     "actions": [
       "omna.action.Reload",
@@ -97,12 +97,7 @@
       },
       {
         "name": "action",
-        "widgetClass": "omna.form.field.TextField",
-        "accessInEditForm": "W",
-        "required": true,
-        "minLength": 2,
-        "maxLength": 15,
-        "pattern": "\\w+( \\w+)*"
+        "widgetClass": "omna.form.field.TextField"
       }
     ]
   },
