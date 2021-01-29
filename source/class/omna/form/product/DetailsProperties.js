@@ -83,7 +83,7 @@ qx.Class.define("omna.form.product.DetailsProperties", {
           widget = new omna.form.field.TextField();
       }
 
-      widget.set({ required: property.required, readOnly: property.read_only });
+      widget.set({ required: property.required, readOnly: property.read_only === true });
 
       return widget
     },
