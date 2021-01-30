@@ -105,7 +105,7 @@
         "minimum": 0,
         "maximumFractionDigits": 2,
         "minimumFractionDigits": 2,
-        "postfix": " kg"
+        "postfix": " g"
       },
       {
         "name": "package.height",
@@ -113,10 +113,10 @@
         "accessInAddForm": "W",
         "accessInEditForm": "W",
         "required": true,
-        "minimum": 0,
+        "minimum": 10,
         "maximumFractionDigits": 0,
         "minimumFractionDigits": 0,
-        "postfix": " cm"
+        "postfix": " mm"
       },
       {
         "name": "package.length",
@@ -124,10 +124,10 @@
         "accessInAddForm": "W",
         "accessInEditForm": "W",
         "required": true,
-        "minimum": 0,
+        "minimum": 10,
         "maximumFractionDigits": 0,
         "minimumFractionDigits": 0,
-        "postfix": " cm"
+        "postfix": " mm"
       },
       {
         "name": "package.width",
@@ -135,10 +135,10 @@
         "accessInAddForm": "W",
         "accessInEditForm": "W",
         "required": true,
-        "minimum": 0,
+        "minimum": 10,
         "maximumFractionDigits": 0,
         "minimumFractionDigits": 0,
-        "postfix": " cm"
+        "postfix": " mm"
       },
       {
         "name": "package.content",

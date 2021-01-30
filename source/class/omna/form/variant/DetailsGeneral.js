@@ -23,10 +23,10 @@ qx.Class.define("omna.form.variant.DetailsGeneral", {
 
       this.addGroupHeader(this.i18nTrans('package'));
 
-      this._createPackageNumberField('package.weight', ' kg')
-      this._createPackageNumberField('package.height', ' cm');
-      this._createPackageNumberField('package.length', ' cm');
-      this._createPackageNumberField('package.width', ' cm');
+      this._createPackageNumberField('package.weight', 10, 1000000000, ' g')
+      this._createPackageNumberField('package.height', 10, null, ' mm');
+      this._createPackageNumberField('package.length', 10, null, ' mm');
+      this._createPackageNumberField('package.width', 10, null, ' mm');
 
       widget = new omna.form.field.TextArea();
       widget.set({ required: false });
