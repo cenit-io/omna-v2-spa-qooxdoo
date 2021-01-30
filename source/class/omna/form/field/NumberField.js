@@ -80,10 +80,8 @@ qx.Class.define("omna.form.field.NumberField", {
 
     // overridden
     _checkValue: function (value) {
-      if (value === "" || value === null) {
-        return true;
-      }
-      return this.base(arguments, value);
+      if (value === "" || value === null) return true;
+      return typeof value === "number";
     },
 
     // overridden

@@ -44,8 +44,8 @@ qx.Class.define("omna.form.product.DetailsGeneral", {
     _createPackageNumberField: function (name, min, max, postfix) {
       let widget = new omna.form.field.NumberField().set({
         required: false,
-        minimum: min,
-        maximum: max,
+        minimum: min ? min : 10,
+        maximum: max ? max : Number.MAX_SAFE_INTEGER,
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,
         postfix: postfix
