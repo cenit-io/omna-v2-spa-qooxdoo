@@ -10,10 +10,6 @@ qx.Class.define("omna.form.variant.DetailsGeneral", {
       this._add(widget, 'sku', 4);
 
       widget = new omna.form.field.NumberField();
-      widget.set({ required: true, minimum: 0, maximumFractionDigits: 0 });
-      this._add(widget, 'quantity', 1);
-
-      widget = new omna.form.field.NumberField();
       widget.set({ required: true, minimum: 0, maximumFractionDigits: 2, prefix: '$' });
       this._add(widget, 'price', 1);
 
@@ -23,7 +19,7 @@ qx.Class.define("omna.form.variant.DetailsGeneral", {
 
       this.addGroupHeader(this.i18nTrans('package'));
 
-      this._createPackageNumberField('package.weight', 10, 1000000000, ' g')
+      this._createPackageNumberField('package.weight', 10, 1000000000, ' g');
       this._createPackageNumberField('package.height', 10, null, ' mm');
       this._createPackageNumberField('package.length', 10, null, ' mm');
       this._createPackageNumberField('package.width', 10, null, ' mm');
