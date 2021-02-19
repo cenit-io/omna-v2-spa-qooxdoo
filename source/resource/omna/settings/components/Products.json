@@ -104,8 +104,8 @@
         "accessInEditForm": "W",
         "required": false,
         "minimum": 0,
-        "maximumFractionDigits": 2,
-        "minimumFractionDigits": 2,
+        "maximumFractionDigits": 0,
+        "minimumFractionDigits": 0,
         "postfix": " g"
       },
       {
