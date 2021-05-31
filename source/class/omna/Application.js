@@ -33,6 +33,11 @@ qx.Class.define("omna.Application", {
       transform: '__transformServerBaseUrl'
     },
 
+    api: {
+      check: 'String',
+      init: 'ecapi-v1'
+    },
+
     locale: {
       check: 'String',
       apply: '__applyLocale'
@@ -90,7 +95,14 @@ qx.Class.define("omna.Application", {
     },
 
     __transformServerBaseUrl: function (v) {
-      return this.isDevelopment() ? v.replace(/ecapi-v1/, 'ecapi_v1') : v
+      const queryParams = window.location.search;
+      const urlParams = new URLSearchParams(queryParams);
+      const store = qx.module.Storage;
+      const api = urlParams.get('api') || store.getSessionItem('api') || (this.isDevelopment() ? 'ecapi_v1' : 'ecapi-v1');
+
+      store.setSessionItem('api', api);
+
+      return v.replace(/ecapi-v1/, api)
     },
 
     __applyLocale: function (v) {

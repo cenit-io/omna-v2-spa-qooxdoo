@@ -96,11 +96,15 @@ qx.Class.define("omna.request.Session", {
     },
 
     setProfile: function (value) {
+      const storage = qx.module.Storage;
+
       if (value == null) {
         // Clean local session.
-        qx.module.Storage.clearSession();
+        const api = storage.getSessionItem('api');
+        storage.clearSession();
+        storage.setSessionItem('api', api);
       } else {
-        qx.module.Storage.setSessionItem('profile', value);
+        storage.setSessionItem('profile', value);
 
         q.messaging.emit("Application", "good", this.tr("Successful login"));
         q.messaging.emit("Application", "update-session", { action: "login", profile: value });
