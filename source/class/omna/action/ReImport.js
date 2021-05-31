@@ -13,7 +13,7 @@ qx.Class.define("omna.action.ReImport", {
       let msg = this.i18nTrans('Messages', 'CONFIRM-REIMPORT');
 
       omna.dialog.Confirm.show(msg, function (response) {
-        if (response === 'yes') this.getRequestManagement().reImport();
+        if (response === 'yes') this.getRequestManagement().reImport(this.getSelectedItem());
       }, this);
     }
   }
