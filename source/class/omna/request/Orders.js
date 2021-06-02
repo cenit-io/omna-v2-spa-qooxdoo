@@ -11,7 +11,7 @@ qx.Class.define("omna.request.Orders", {
         cache = this.getCacheItem(cacheId);
 
       if (cache) {
-        callBack.call(scope, cache);
+        callBack && callBack.call(scope, cache);
       } else {
         let path = qx.bom.Template.render('/integrations/{{integration.id}}/orders/{{number}}/doc/types', order);
 
@@ -24,7 +24,7 @@ qx.Class.define("omna.request.Orders", {
             q.messaging.emit('Application', 'error', msg)
           }
 
-          callBack.call(scope, response);
+          callBack && callBack.call(scope, response);
         }, this);
       }
     },
@@ -43,7 +43,7 @@ qx.Class.define("omna.request.Orders", {
           q.messaging.emit('Application', 'error', msg)
         }
 
-        callBack.call(scope, response);
+        callBack && callBack.call(scope, response);
       }, this);
     },
 
@@ -62,7 +62,7 @@ qx.Class.define("omna.request.Orders", {
           q.messaging.emit('Application', 'error', msg)
         }
 
-        callBack.call(scope, response);
+        callBack && callBack.call(scope, response);
       }, this);
     },
 
@@ -98,7 +98,7 @@ qx.Class.define("omna.request.Orders", {
           q.messaging.emit('Application', 'error', msg)
         }
 
-        callBack.call(scope, response);
+        callBack && callBack.call(scope, response);
       }, this);
     }
   }
