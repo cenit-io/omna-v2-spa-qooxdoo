@@ -38,9 +38,9 @@ qx.Class.define("omna.form.task.Scheduler", {
       this._form.add(field, this.i18nTrans('end_date'), null, 'end_date');
 
       field = new omna.form.field.TextField();
-      field.set({ pattern: 'TIME-24H', filterIn: 'TIME-24H' });
+      field.set({ pattern: 'SCHEDULER-TIME', filterIn: 'SCHEDULER-TIME' });
       validator = new omna.form.validator.TextField();
-      this._form.add(field, this.i18nTrans('time'), validator, 'time');
+      this._form.add(field, this.i18nTrans('scheduler_time'), validator, 'time');
 
       field = new omna.form.field.calendar.DaysOfWeek();
       this._form.add(field, this.i18nTrans('days_of_week'), null, 'days_of_week');

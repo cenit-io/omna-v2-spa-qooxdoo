@@ -20,6 +20,11 @@
     "value": "Switch"
   },
   {
+    "name": "user",
+    "subCatalog": "Labels",
+    "value": "User"
+  },
+  {
     "name": "MODULE-REFERENCE-DETAILS",
     "subCatalog": "Labels",
     "value": "Tenant / {{name}} / Details"

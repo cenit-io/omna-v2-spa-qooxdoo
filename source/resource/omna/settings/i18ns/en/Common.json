@@ -235,9 +235,9 @@
     "value": "End date"
   },
   {
-    "name": "time",
+    "name": "scheduler_time",
     "subCatalog": "Labels",
-    "value": "Time"
+    "value": "Time / Periodicity"
   },
   {
     "name": "days_of_week",

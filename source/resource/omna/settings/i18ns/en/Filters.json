@@ -1,7 +1,7 @@
 [
   {
-    "name": "TIME-24H",
+    "name": "SCHEDULER-TIME",
     "subCatalog": "Values",
-    "value": "[\\d:]"
+    "value": "[\\d:mdwM]"
   }
 ]
