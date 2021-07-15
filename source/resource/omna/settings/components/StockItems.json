@@ -15,7 +15,7 @@
     ],
     "fields": [
       {
-        "name": "stock_location.integration.channel",
+        "name": "stock_location.integration.logo_icon",
         "label": "logo",
         "cellRendererClass": "omna.table.cellrenderer.Logo",
         "showInGrid": true,

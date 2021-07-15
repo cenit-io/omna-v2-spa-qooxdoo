@@ -17,7 +17,7 @@ qx.Class.define('omna.form.field.remote.integrations.ChannelSelectBox', {
 
       request.getChannels(function (response) {
         if (response.successful) response.data.forEach(function (item) {
-          this.add(new qx.ui.form.ListItem(item.title, this.integrationLogo(item.name), item.name));
+          this.add(new qx.ui.form.ListItem(item.title, item.logo_icon, item.name));
         }, this);
       }, this);
     }

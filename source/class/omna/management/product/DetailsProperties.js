@@ -23,7 +23,7 @@ qx.Class.define('omna.management.product.DetailsProperties', {
     // Create route handler for messaging channels.
     q.messaging.on("Application", /^(info|good|notice|warn|error)$/, this.onNotify, this);
 
-    this.base(arguments, integration.name, this.integrationLogo(integration.channel));
+    this.base(arguments, integration.name, integration.logo_icon);
     this.set({ layout: new qx.ui.layout.VBox(), appearance: 'tabview-page' });
 
     this._createChildControl('notifications');

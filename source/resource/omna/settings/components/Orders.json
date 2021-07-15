@@ -20,7 +20,7 @@
     ],
     "fields": [
       {
-        "name": "integration.channel",
+        "name": "integration.logo_icon",
         "label": "logo",
         "cellRendererClass": "omna.table.cellrenderer.Logo",
         "showInGrid": true,
