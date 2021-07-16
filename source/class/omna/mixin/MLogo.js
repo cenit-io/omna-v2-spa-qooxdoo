@@ -13,7 +13,7 @@ qx.Mixin.define('omna.mixin.MLogo', {
       if (!value) return null;
       if (value.match(/^(http|data:image)/)) return value;
 
-      value = this.decamelize(name.replace(/^Ov2|omna_v2_|[A-Z]{2}$/g, ''));
+      value = this.decamelize(value.replace(/^Ov2|omna_v2_|[A-Z]{2}$/g, ''));
 
       return 'omna/icon/24/logos/' + value + '.png'
     }
