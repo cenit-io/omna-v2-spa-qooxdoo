@@ -24,7 +24,7 @@
     ],
     "fields": [
       {
-        "name": "logo_icon",
+        "name": "icon",
         "label": "logo",
         "cellRendererClass": "omna.table.cellrenderer.Logo",
         "showInGrid": true,

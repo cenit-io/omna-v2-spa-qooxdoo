@@ -29,7 +29,7 @@ qx.Class.define('omna.form.field.remote.integrations.SelectBox', {
           label = qx.bom.Template.render(omna.I18n.trans('Titles', 'INTEGRATION'), { integration: item });
           enabled = disableUnauthorized === false || item.authorized === true;
 
-          listItem = new qx.ui.form.ListItem(label, item.logo_icon, item.id);
+          listItem = new qx.ui.form.ListItem(label, item.icon, item.id);
           listItem.set({ enabled: enabled, rich: true });
 
           this.add(listItem);

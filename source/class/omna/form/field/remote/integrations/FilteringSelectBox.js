@@ -8,7 +8,7 @@ qx.Class.define('omna.form.field.remote.integrations.FilteringSelectBox', {
 
   members: {
     _getIcon: function (item) {
-      return item.logo_icon
+      return item.icon
     }
   }
 });
