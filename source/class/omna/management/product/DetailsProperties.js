@@ -49,6 +49,16 @@ qx.Class.define('omna.management.product.DetailsProperties', {
   members: {
     _form: null,
 
+    // property apply
+    _applyIcon: function (value, old) {
+      this.base(arguments, value, old);
+
+      if (value) {
+        let icon = this.getChildControl("button").getChildControl("icon");
+        icon.set({ width: 24, scale: true, height: 24 });
+      }
+    },
+
     _getItem: function () {
       return this.getIntegration()[this.constructor.itemAttr];
     },
@@ -57,7 +67,7 @@ qx.Class.define('omna.management.product.DetailsProperties', {
     _createChildControlImpl: function (id, hash) {
       let control;
 
-      switch ( id ) {
+      switch (id) {
         case 'notifications':
           control = new qx.ui.container.Composite(new qx.ui.layout.VBox(5));
           this.add(control, { flex: 0 });
