@@ -75,10 +75,14 @@ qx.Class.define("omna.management.product.Details", {
       this._integrationPages = []
     },
 
-    _createIntegrationTapPages: function (integrations) {
+    _createIntegrationTapPages: function (item) {
+      const DetailsPropertiesClass = this.constructor.detailsPropertiesClass;
+      const integrations = item.integrations || [];
+
       this._removeIntegrationTapPages();
       integrations.forEach(function (integration) {
-        let tab = new this.constructor.detailsPropertiesClass(this, integration);
+        integration[DetailsPropertiesClass.itemAttr].id = item.id
+        let tab = new DetailsPropertiesClass(this, integration);
 
         this._integrationPages.push(tab);
         this.getChildControl('tabsPanel').add(tab);
@@ -114,7 +118,7 @@ qx.Class.define("omna.management.product.Details", {
       customData.sender = this;
 
       this.getChildControl('general-tab').setData(item, true);
-      this._createIntegrationTapPages(item.integrations || []);
+      this._createIntegrationTapPages(item);
 
       this.emitMessaging('selection-change', customData);
       if (customData.with_details) return;
