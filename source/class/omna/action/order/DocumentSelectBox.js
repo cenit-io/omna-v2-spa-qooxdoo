@@ -27,7 +27,7 @@ qx.Class.define('omna.action.order.DocumentSelectBox', {
           if (response.successful) {
             response.data.forEach(function (item) {
               this.add(
-                new qx.ui.form.ListItem(item.title, 'omna/icon/16/actions/document_down.png', item)
+                new omna.form.field.ListItem(item.title, 'omna/icon/16/actions/document_down.png', item)
               );
             }, this);
           }

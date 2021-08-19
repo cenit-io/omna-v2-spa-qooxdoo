@@ -79,7 +79,7 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
           this.__cache = response.data;
 
           response.data.forEach(function (item) {
-            this.add(new qx.ui.form.ListItem(item[labelAttr], this._getIcon(item), item[valueAttr]));
+            this.add(new omna.form.field.ListItem(item[labelAttr], this._getIcon(item), item[valueAttr]));
           }, this);
         } else {
           q.messaging.emit('Application', 'error', omna.I18n.trans('Messages', 'FAILED-LOAD'));
@@ -95,7 +95,7 @@ qx.Class.define('omna.form.field.remote.FilteringSelectBox', {
             item = response.data;
 
           this.__cache.unshift(item);
-          this.add(new qx.ui.form.ListItem(item[labelAttr], this._getIcon(item), item[valueAttr]));
+          this.add(new omna.form.field.ListItem(item[labelAttr], this._getIcon(item), item[valueAttr]));
           this.setModelSelection([item[valueAttr]])
         } else {
           q.messaging.emit('Application', 'error', omna.I18n.trans('Messages', 'FAILED-LOAD'));

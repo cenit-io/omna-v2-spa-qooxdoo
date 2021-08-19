@@ -37,7 +37,7 @@ qx.Class.define("omna.form.field.LocalSelectBox", {
 
         icon = icon || null;
 
-        this.add(new qx.ui.form.ListItem(label, icon, model));
+        this.add(new omna.form.field.ListItem(label, icon, model));
       }, this);
     }
   }

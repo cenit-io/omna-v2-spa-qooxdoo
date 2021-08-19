@@ -34,7 +34,7 @@ qx.Class.define('omna.form.field.remote.integrations.ListBox', {
           label = qx.bom.Template.render(omna.I18n.trans('Titles', 'INTEGRATION'), { integration: item });
           enabled = disableUnauthorized === false || item.authorized === true;
 
-          listItem = new qx.ui.form.ListItem(label, item.icon, item.id);
+          listItem = new omna.form.field.ListItem(label, item.icon, item.id);
           listItem.set({ enabled: enabled, rich: true });
           this.add(listItem);
           this.__listItems.push(listItem);
