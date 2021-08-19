@@ -160,44 +160,44 @@ qx.Class.define("omna.request.AbstractResource", {
       return qx.util.Uri.getAbsolute('').replace(/[\?#].*/, '');
     },
 
-    _signRequest: function (method, path, data, token, secret) {
+    _signRequest: function (method, path, requestData) {
       let queryString, body, credentials = omna.request.Session.getCredentials();
 
-      data = qx.lang.Object.clone(data) || {};
+      requestData = qx.lang.Object.clone(requestData) || {};
 
-      // Add token and timestamp to URL parameters.
-      Object.assign(data, { token: token || credentials.token, timestamp: Date.now() });
+      // Add timestamp to requestData.
+      requestData.timestamp = Date.now();
 
-      if (method.match(/^(POST|PUT|PATCH)$/)) {
-        queryString = '';
-        body = JSON.stringify(data);
-      } else {
-        this._fixNullQueryParams(data)
-        queryString = decodeURIComponent(this._toQueryParams(data));
+      if (method.match(/^(GET|HEAD)$/)) {
+        this._fixNullQueryParams(requestData)
+        queryString = decodeURIComponent(this._toQueryParams(requestData));
         body = '';
+      } else {
+        queryString = '';
+        body = JSON.stringify(requestData);
       }
 
       let msg = path + queryString + body
 
       // Generate the corresponding hmac parameter using the js-sha256 or similar library.
-      data.hmac = sha256.hmac.update(secret || credentials.secret, msg).hex();
+      requestData.hmac = sha256.hmac.update(credentials.secret, msg).hex();
 
-      return data;
+      return requestData;
     },
 
-    _fixNullQueryParams: function (data) {
-      for (key in data) {
-        if (qx.lang.Type.isObject(data[key])) {
-          data[key] = this._fixNullQueryParams(data[key])
-        } else if (data[key] === undefined || data[key] === null) {
-          data[key] = ''
+    _fixNullQueryParams: function (requestData) {
+      for (key in requestData) {
+        if (qx.lang.Type.isObject(requestData[key])) {
+          requestData[key] = this._fixNullQueryParams(requestData[key])
+        } else if (requestData[key] === undefined || requestData[key] === null) {
+          requestData[key] = ''
         }
       }
 
-      return data;
+      return requestData;
     },
 
-    _toQueryParams: function (data) {
+    _toQueryParams: function (requestData) {
       let qs = [],
         add = function (k, v) {
           v = qx.lang.Type.isFunction(v) ? v() : v;
@@ -229,34 +229,38 @@ qx.Class.define("omna.request.AbstractResource", {
           return qs;
         };
 
-      return buildParams('', data).join('&');
+      return buildParams('', requestData).join('&');
     },
 
-    submit: function (method, path, paramsData, callBack, scope, token, secret) {
-      let data = {};
+    submit: function (method, path, requestData, callBack, scope) {
+      let rData = {};
+      let credentials = omna.request.Session.getCredentials();
 
-      qx.lang.Object.mergeWith(data, qx.lang.Object.clone(this.getBaseParams()));
-      qx.lang.Object.mergeWith(data, qx.lang.Object.clone(paramsData) || {});
+      qx.lang.Object.mergeWith(rData, qx.lang.Object.clone(this.getBaseParams(), true));
+      qx.lang.Object.mergeWith(rData, qx.lang.Object.clone(requestData, true) || {});
 
-      path = this._getServicePath(path, data);
+      path = this._getServicePath(path, rData);
 
-      let request = this.__requestManagement = new omna.request.Xhr(this._getServiceUrl(path), method),
-        params = this._signRequest(method, path, data || {}, token, secret);
+      let request = this.__requestManagement = new omna.request.Xhr(this._getServiceUrl(path), method);
+
+      requestData = this._signRequest(method, path, rData);
 
       request.setAsync(this.getAsync());
 
-      // Set request headers and params
+      // Set request headers and requestData
       request.setRequestHeader("Accept", "application/json");
+      request.setRequestHeader("X-HMac", requestData.hmac);
+      request.setRequestHeader("X-Token", credentials.token);
       request.resetRequestData();
 
-      request.setRequestHeader("X-OMNA-HMac", params.hmac);
-      delete params.hmac;
+      delete requestData.hmac;
+      delete requestData.token;
 
-      if (method.match(/^(POST|PUT|PATCH)$/)) {
-        request.setRequestHeader("Content-Type", "application/json");
-        request.setRequestData(params);
+      if (method.match(/^(GET|HEAD)$/)) {
+        request.setRequestData(this._toQueryParams(requestData));
       } else {
-        request.setRequestData(this._toQueryParams(params));
+        request.setRequestHeader("Content-Type", "application/json");
+        request.setRequestData(requestData);
       }
 
       // Listener events
@@ -307,14 +311,14 @@ qx.Class.define("omna.request.AbstractResource", {
         sort = null;
       }
 
-      let data = qx.lang.Object.clone(params) || {};
+      let requestData = qx.lang.Object.clone(params) || {};
 
-      data.offset = from;
-      data.limit = to - from + 1;
+      requestData.offset = from;
+      requestData.limit = to - from + 1;
 
-      if (sort) data.sort = sort;
+      if (sort) requestData.sort = sort;
 
-      this.submit("GET", null, data, callBack, scope);
+      this.submit("GET", null, requestData, callBack, scope);
     },
 
     /**
@@ -350,24 +354,24 @@ qx.Class.define("omna.request.AbstractResource", {
     },
 
     count: function (params, callBack, scope) {
-      let data = qx.lang.Object.clone(params);
+      let requestData = qx.lang.Object.clone(params);
 
-      data.without_data = true;
+      requestData.without_data = true;
 
       // Call remote service
-      this.submit("GET", null, data, callBack, scope);
+      this.submit("GET", null, requestData, callBack, scope);
     },
 
-    create: function (data, callBack, scope, i18nActionName) {
+    create: function (requestData, callBack, scope, i18nActionName) {
       // Call remote service
-      this.submit("POST", null, { data: data }, function (response, e) {
+      this.submit("POST", null, { data: requestData }, function (response, e) {
         this.processResponse(i18nActionName || 'ADDING', response, e, callBack, scope);
       }, this);
     },
 
-    update: function (id, data, callBack, scope, i18nActionName) {
+    update: function (id, requestData, callBack, scope, i18nActionName) {
       // Call remote service
-      this.submit("POST", id, { data: data }, function (response, e) {
+      this.submit("POST", id, { data: requestData }, function (response, e) {
         this.processResponse(i18nActionName || 'UPDATING', response, e, callBack, scope);
       }, this);
     },

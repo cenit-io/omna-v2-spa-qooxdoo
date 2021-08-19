@@ -22,7 +22,8 @@ qx.Class.define("omna.request.Connections", {
 
     authorize: function (id) {
       let path = this._getServicePath(id + '/authorize'),
-        data = this._signRequest('GET', path, { redirect_uri: this._getAppBaseUrl() }),
+        credentials = omna.request.Session.getCredentials(),
+        data = this._signRequest('GET', path, { redirect_uri: this._getAppBaseUrl(), token: credentials.token }),
         url = this._getServiceUrl(path) + '?' + qx.util.Uri.toParameter(data);
 
       this.removeCacheItem('integrations-connected');
@@ -47,7 +48,7 @@ qx.Class.define("omna.request.Connections", {
 
     doImportTask: function (id, type, callBack, scope) {
       let path = function (type) {
-        switch ( type ) {
+        switch (type) {
           case 'stock-locations':
             return id + '/stock/locations/import'
           default:
