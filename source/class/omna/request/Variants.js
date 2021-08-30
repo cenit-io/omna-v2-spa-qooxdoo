@@ -8,12 +8,12 @@ qx.Class.define("omna.request.Variants", {
   members: {
     link: function (id, data, callBack, scope) {
       // Call remote service
-      this.submit("PUT", id, { data: data }, callBack, scope);
+      this.submit("PUT", `${id}/link`, { data: data }, callBack, scope);
     },
 
     unLink: function (id, data, callBack, scope) {
       // Call remote service
-      this.submit("PATCH", id, { data: data }, callBack, scope);
+      this.submit("DELETE", `${id}/link`, { data: data }, callBack, scope);
     },
 
     updateProperties: function (integration, properties, callBack, scope) {

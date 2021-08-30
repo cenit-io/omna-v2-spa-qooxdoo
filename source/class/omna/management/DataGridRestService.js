@@ -158,7 +158,7 @@ qx.Class.define("omna.management.DataGridRestService", {
       let tableModel = this.__table.getTableModel(),
         data = { index: e.getRow(), item: tableModel.getRowData(e.getRow()) };
 
-      this.emitMessaging("open-details", data);
+      this.emitMessaging("open-details", data, this.getCustomData().params);
     },
 
     /**
