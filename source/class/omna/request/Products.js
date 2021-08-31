@@ -17,7 +17,7 @@ qx.Class.define("omna.request.Products", {
     },
 
     updateProperties: function (integration, properties, callBack, scope) {
-      let path = '/integrations/{{id}}/products/{{product.id}}';
+      let path = '/integrations/{{id}}/products/{{product.local_product_id}}';
 
       path = qx.bom.Template.render(path, integration);
 

@@ -75,13 +75,18 @@ qx.Class.define("omna.management.product.Details", {
       this._integrationPages = []
     },
 
+    _setLocalItemId : function(integration, item){
+      integration[this.constructor.detailsPropertiesClass.itemAttr].local_product_id = item.id
+    },
+
     _createIntegrationTapPages: function (item) {
       const DetailsPropertiesClass = this.constructor.detailsPropertiesClass;
       const integrations = item.integrations || [];
 
       this._removeIntegrationTapPages();
       integrations.forEach(function (integration) {
-        integration[DetailsPropertiesClass.itemAttr].id = item.id
+        this._setLocalItemId(integration, item)
+
         let tab = new DetailsPropertiesClass(this, integration);
 
         this._integrationPages.push(tab);

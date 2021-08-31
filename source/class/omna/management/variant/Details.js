@@ -9,5 +9,12 @@ qx.Class.define("omna.management.variant.Details", {
     propertiesDefaultValues: qx.lang.Object.mergeWith(
       {}, omna.management.AbstractManagement.propertiesDefaultValues, false
     )
+  },
+
+  members: {
+    _setLocalItemId: function (integration, item) {
+      integration[this.constructor.detailsPropertiesClass.itemAttr].local_product_id = item.product.id
+      integration[this.constructor.detailsPropertiesClass.itemAttr].local_variant_id = item.id
+    }
   }
 });

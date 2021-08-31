@@ -17,7 +17,7 @@ qx.Class.define("omna.request.Variants", {
     },
 
     updateProperties: function (integration, properties, callBack, scope) {
-      let path = '/integrations/{{id}}/products/{{variant.product.id}}/variants/{{variant.id}}';
+      let path = '/integrations/{{id}}/products/{{variant.local_product_id}}/variants/{{variant.local_variant_id}}';
 
       path = qx.bom.Template.render(path, integration);
 
