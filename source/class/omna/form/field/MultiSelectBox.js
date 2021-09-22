@@ -1,5 +1,5 @@
 qx.Class.define("omna.form.field.MultiSelectBox", {
-  extend: omna.form.field.util.AbstractSelectBox,
+  extend: omna.form.field.util.AbstractMultiSelectBox,
 
   statics: {
     cellRendererClass: omna.table.cellrenderer.String
@@ -38,19 +38,6 @@ qx.Class.define("omna.form.field.MultiSelectBox", {
 
         this.add(new omna.form.field.ListItem(label, icon, model));
       }, this);
-    },
-
-    // overridden
-    _createChildControlImpl: function (id, hash) {
-      let control;
-
-      switch ( id ) {
-        case "list":
-          control = this.base(arguments, id).set({ selectionMode: "multi" });
-          break;
-      }
-
-      return control || this.base(arguments, id);
     },
   }
 });
