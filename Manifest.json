@@ -2,8 +2,8 @@
   "$schema": "https://raw.githubusercontent.com/qooxdoo/qooxdoo-compiler/master/source/resource/qx/tool/schema/Manifest-1-0-0.json",
   "info": {
     "name": "omna-v2-spa-qooxdoo",
-    "summary": "Simple Page Application of OMNA Pte Ltd.",
-    "description": "This application provides all interface for managing a OMNA application.",
+    "summary": "Simple Page Application of E-Passer Ltd.",
+    "description": "This application provides all interface for managing a E-Passer application.",
     "homepage": "https://github.com/cenit-io/omna-v2-spa-qooxdoo",
     "license": "LGPL-3.0",
     "authors": [

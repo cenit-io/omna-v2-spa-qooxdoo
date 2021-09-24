@@ -67,7 +67,7 @@
   {
     "name": "keep_in_anywhere",
     "subCatalog": "Labels",
-    "value": "Keep it in the remote integration and OMNA database"
+    "value": "Keep it in the remote integration and CenitIO database"
   },
   {
     "name": "remove_from_integrations",
@@ -362,7 +362,7 @@
   {
     "name": "APPLICATION-TITLE",
     "subCatalog": "Labels",
-    "value": "OMNA Pte Ltd"
+    "value": "E-Passer Ltd"
   },
   {
     "name": "integrations",
@@ -422,7 +422,7 @@
   {
     "name": "copyright-company",
     "subCatalog": "Messages",
-    "value": "OMNA Pte Ltd (2019): yoandrypa@gmail.com"
+    "value": "E-Passer Ltd (2021): yoandrypa@gmail.com"
   },
   {
     "name": "REQUIRE_PATH_PARAMETER",

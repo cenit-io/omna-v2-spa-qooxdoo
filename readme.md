@@ -1,6 +1,6 @@
-# OMNA v2 SPA (Qooxdoo)
+# E-Passer SPA (Qooxdoo)
 
-OMNAv2 Simple Page Application for eCommerce integrations. 
+E-Passer Simple Page Application for eCommerce integrations. 
 
 ## Getting started
 ### Installation
