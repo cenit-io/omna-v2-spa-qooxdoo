@@ -174,8 +174,8 @@ qx.Class.define("omna.Application", {
 
       let baseUrlId = urlParams.get('sId');
 
-      if (!baseUrlId) baseUrlId = m ? m[1] : 'passer-prod';
-      if (baseUrlId.match(/^(localhost|127\.0\.0\.1)/)) baseUrlId = 'passer-dev';
+      if (!baseUrlId) baseUrlId = m ? m[1] : 'e-passer';
+      if (baseUrlId.match(/^(localhost|127\.0\.0\.1)/)) baseUrlId = 'e-passer-dev';
 
       return serverBaseURLs[baseUrlId];
     },
