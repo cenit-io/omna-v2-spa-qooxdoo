@@ -43,8 +43,6 @@ qx.Class.define("omna.form.field.util.AbstractMultiSelectBox",
 
       this.addListener("keyinput", this._onKeyInput, this);
       // this.addListener("changeSelection", this.__onChangeSelection, this);
-
-      window.xxx = this
     },
 
 

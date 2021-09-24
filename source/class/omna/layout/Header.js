@@ -14,7 +14,7 @@
  * @asset(omna/icon/24/actions/logout.png)
  * @asset(omna/images/loading.gif)
  * @asset(omna/images/favicon.png)
- * @asset(omna/images/logo.png)
+ * @asset(omna/images/logo-passer.png)
  */
 qx.Class.define("omna.layout.Header", {
   type: "singleton",
@@ -29,7 +29,7 @@ qx.Class.define("omna.layout.Header", {
     this.setLayout(new qx.ui.layout.HBox(0));
     this.setAppearance("app-header");
 
-    let logo = new qx.ui.basic.Image("omna/images/logo.png"),
+    let logo = new qx.ui.basic.Image("omna/images/logo-passer.png"),
       logout = new qx.ui.menubar.Button(null, "omna/icon/24/actions/logout.png"),
       profile = omna.request.Session.getProfile() || {};
 
@@ -40,6 +40,7 @@ qx.Class.define("omna.layout.Header", {
     this.__loading = new qx.ui.basic.Image("omna/images/loading.gif");
     this.__loading.hide();
 
+    logo.setWidth(160)
     this.add(logo);
     this.add(new qx.ui.core.Spacer, { flex: 1 });
     this.add(this.__loading);

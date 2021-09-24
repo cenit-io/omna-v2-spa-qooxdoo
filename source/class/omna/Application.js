@@ -28,9 +28,8 @@ qx.Class.define("omna.Application", {
   },
 
   properties: {
-    serverBaseUrl: {
-      init: null,
-      transform: '__transformServerBaseUrl'
+    serverBaseURLs: {
+      init: {},
     },
 
     api: {
@@ -92,17 +91,6 @@ qx.Class.define("omna.Application", {
      */
     itIsDeveloping: function () {
       return String(__filename).match(/source\/class\/guaraiba\/Application.js$/);
-    },
-
-    __transformServerBaseUrl: function (v) {
-      const queryParams = window.location.search;
-      const urlParams = new URLSearchParams(queryParams);
-      const store = qx.module.Storage;
-      const api = urlParams.get('api') || store.getSessionItem('api') || (this.isDevelopment() ? 'ecapi_v1' : 'ecapi-v1');
-
-      store.setSessionItem('api', api);
-
-      return v.replace(/ecapi-v1/, api)
     },
 
     __applyLocale: function (v) {
@@ -176,6 +164,20 @@ qx.Class.define("omna.Application", {
     registerResourceUri: function (namespace, resourcePath) {
       // Set base path for namespace resources.
       qx.util.LibraryManager.getInstance().set(namespace, "resourceUri", resourcePath);
+    },
+
+    getServerBaseUrl: function () {
+      const queryParams = window.location.search;
+      const urlParams = new URLSearchParams(queryParams);
+      const serverBaseURLs = this.getServerBaseURLs();
+      const m = window.location.href.match(/https?:\/\/([\w-]+|127\.0\.0\.1)/);
+
+      let baseUrlId = urlParams.get('sId');
+
+      if (!baseUrlId) baseUrlId = m ? m[1] : 'passer-prod';
+      if (baseUrlId.match(/^(localhost|127\.0\.0\.1)/)) baseUrlId = 'passer-dev';
+
+      return serverBaseURLs[baseUrlId];
     },
 
     __parseToolTipMsg: function (msg) {

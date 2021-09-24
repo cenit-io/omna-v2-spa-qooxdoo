@@ -100,9 +100,7 @@ qx.Class.define("omna.request.Session", {
 
       if (value == null) {
         // Clean local session.
-        const api = storage.getSessionItem('api');
         storage.clearSession();
-        storage.setSessionItem('api', api);
       } else {
         storage.setSessionItem('profile', value);
 

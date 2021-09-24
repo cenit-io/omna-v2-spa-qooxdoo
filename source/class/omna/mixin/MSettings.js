@@ -62,7 +62,7 @@ qx.Mixin.define('omna.mixin.MSettings', {
     },
 
     isDevelopment: function () {
-      return window.location.href.match(/https?:\/\/(omna-v2-dev|localhost|127.0.0.1)/)
+      return window.location.href.match(/https?:\/\/(omna-v2-dev|passer-dev|localhost|127.0.0.1)/)
     }
   }
 });

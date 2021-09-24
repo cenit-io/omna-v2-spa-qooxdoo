@@ -288,7 +288,6 @@ qx.Class.define("omna.request.AbstractResource", {
       this.find(item.id, callBack, scope);
     },
 
-
     /**
      * Call REST services to find all record in a given range.
      *
@@ -426,8 +425,7 @@ qx.Class.define("omna.request.AbstractResource", {
       if (response.type === 'task' && qx.lang.Type.isObject(response.data)) this.openTaskDetails(response.data);
 
       this.cleanCacheItems(target.getMethod(), target.getUrl(), response)
-    }
-    ,
+    },
 
     /**
      * Fired when request completes without error but erroneous HTTP status.
@@ -445,8 +443,7 @@ qx.Class.define("omna.request.AbstractResource", {
 
       callBack && callBack.call(scope || this, response, e);
       q.messaging.emit("Application", "error", response.message);
-    }
-    ,
+    },
 
     onError: function (e, callBack, scope) {
       let response = e.getTarget().getResponse() || '';
