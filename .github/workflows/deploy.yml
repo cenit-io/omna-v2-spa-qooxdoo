@@ -37,14 +37,16 @@ jobs:
 
     - name: Deploy in Development
       if: github.ref == 'refs/heads/develop'
-      run: aws s3 sync --acl public-read --delete --region us-west-2 compiled/deploy/ s3://e-passer
+      run: aws s3 sync --acl public-read --delete --region us-west-2 compiled/deploy/ s3://e-passer-dev
 
     - name: Deploy in Production
       if: github.ref == 'refs/heads/master'
-      run: aws s3 sync --acl public-read --delete --region us-west-2 compiled/deploy/ s3://e-passer-dev
+      run: aws s3 sync --acl public-read --delete --region us-west-2 compiled/deploy/ s3://e-passer
 
     - name: Deploy in OMNA-Development
+      if: github.ref == 'refs/heads/develop'
       run: aws s3 sync --acl public-read --delete --region us-west-2 compiled/deploy/ s3://omna-v2-dev
 
     - name: Deploy in OMNA-Production
+      if: github.ref == 'refs/heads/master'
       run: aws s3 sync --acl public-read --delete --region us-west-2 compiled/deploy/ s3://omna-v2-prod
