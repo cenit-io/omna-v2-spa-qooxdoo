@@ -57,20 +57,6 @@
         "gridColumnWidth": 100
       },
       {
-        "name": "original_price",
-        "widgetClass": "omna.form.field.NumberField",
-        "showInGrid": true,
-        "includeInSearch": true,
-        "accessInAddForm": "W",
-        "accessInEditForm": "W",
-        "required": true,
-        "minimum": 0,
-        "maximumFractionDigits": 2,
-        "minimumFractionDigits": 2,
-        "prefix": "$",
-        "gridColumnWidth": 100
-      },
-      {
         "name": "quantity",
         "widgetClass": "omna.form.field.NumberField",
         "showInGrid": true,

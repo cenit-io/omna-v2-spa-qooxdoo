@@ -13,10 +13,6 @@ qx.Class.define("omna.form.variant.DetailsGeneral", {
       widget.set({ required: true, minimum: 0, maximumFractionDigits: 2, prefix: '$' });
       this._add(widget, 'price', 1);
 
-      widget = new omna.form.field.NumberField();
-      widget.set({ required: true, minimum: 0, maximumFractionDigits: 2, prefix: '$' });
-      this._add(widget, 'original_price', 1);
-
       this.addGroupHeader(this.i18nTrans('package'));
 
       this._createPackageNumberField('package.weight', 10, 1000000000, ' g');
