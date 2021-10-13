@@ -7,7 +7,7 @@ qx.Class.define("omna.form.variant.DetailsGeneral", {
 
       widget = new omna.form.field.TextField();
       widget.set({ required: true });
-      this._add(widget, 'sku', 4);
+      this._add(widget, 'sku', 1);
 
       widget = new omna.form.field.NumberField();
       widget.set({ required: true, minimum: 0, maximumFractionDigits: 2, prefix: '$' });

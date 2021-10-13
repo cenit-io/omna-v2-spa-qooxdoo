@@ -15,11 +15,6 @@
     "value": "Variant / {{#sku}}{{.}}{{/sku}}{{^sku}}{{id}}{{/sku}} / Details"
   },
   {
-    "name": "original_price",
-    "subCatalog": "Labels",
-    "value": "Original price"
-  },
-  {
     "name": "NO-VARIANT-PROPERTIES",
     "subCatalog": "Messages",
     "value": "There are no particular properties of this variant."

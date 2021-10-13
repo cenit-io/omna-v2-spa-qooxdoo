@@ -170,12 +170,11 @@ qx.Class.define("omna.Application", {
       const queryParams = window.location.search;
       const urlParams = new URLSearchParams(queryParams);
       const serverBaseURLs = this.getServerBaseURLs();
-      const m = window.location.href.match(/https?:\/\/([\w-]+|127\.0\.0\.1)/);
+      const m = window.location.href.match(/https?:\/\/(127\.0\.0\.\d+|[\w-]+)/);
 
       let baseUrlId = urlParams.get('sId');
 
       if (!baseUrlId) baseUrlId = m ? m[1] : 'e-passer';
-      if (baseUrlId.match(/^(localhost|127\.0\.0\.1)/)) baseUrlId = 'e-passer-dev';
 
       return serverBaseURLs[baseUrlId];
     },

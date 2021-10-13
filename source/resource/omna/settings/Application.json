@@ -3,6 +3,9 @@
     "omna-v2-prod": "https://cenit.io/app/ecapi-v1",
     "omna-v2-dev": "https://cenit.io/app/ecapi_v1",
 
+    "127.0.0.1": "https://cenit.io/app/ecapi_v1",
+    "127.0.0.2": "https://server.cenit.io/app/ecapi_v1_dev",
+
     "e-passer": "https://server.cenit.io/app/ecapi_v1",
     "e-passer-dev": "https://server.cenit.io/app/ecapi_v1_dev"
   },
