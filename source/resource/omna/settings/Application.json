@@ -6,7 +6,7 @@
     "127.0.0.1": "https://cenit.io/app/ecapi_v1",
     "127.0.0.2": "https://server.cenit.io/app/ecapi_v1_dev",
 
-    "e-passer": "https://server.cenit.io/app/ecapi_v1",
+    "e-passer-prod": "https://server.cenit.io/app/ecapi_v1_prod",
     "e-passer-dev": "https://server.cenit.io/app/ecapi_v1_dev"
   },
   "locale": "en"
